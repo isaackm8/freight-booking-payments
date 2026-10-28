@@ -1,0 +1,4 @@
+payer_id,name,payer_type,issuer,network,credit_limit_usd,current_terms_to_carriers_days,statement_close_day,grace_days,fee_model
+PAY-01,Great Lakes Freight Brokerage (fictional),broker,Example Commercial Bank (fictional),Mastercard,2500000,30,last day of month,15,carrier_pays
+PAY-02,Harborline Global Forwarding (fictional),forwarder,Example Commercial Bank (fictional),Mastercard,1500000,10,last day of month,15,split
+PAY-03,Midwest Home Goods Co. (fictional shipper),shipper,Example Commercial Bank (fictional),Mastercard,1000000,45,last day of month,15,payer_pays

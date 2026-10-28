@@ -106,6 +106,62 @@ Freight payments slow down when the shipment record and the payment record drift
 
   The prototype simulates all of these with sample data rather than live feeds.
 
+## Sample Data
+
+The approach: synthetic data generated from a defined schema, and live partner feeds later. Everything is in [`data/`](data/), as CSVs plus a combined `all_data.json`. [`data/README.md`](data/README.md) documents every field. All names, USDOT/MC numbers and fees are fictional.
+
+### Data sets
+
+| File | Rows | Holds |
+|---|---|---|
+| `payers.csv` | 3 | Broker, forwarder and shipper: card program, credit limit, current terms, statement cycle, fee model |
+| `carriers.csv` | 20 | Fleet size, segment (12 small, 5 mid, 3 large), how they get cash today (factoring, credit line or waiting), verified bank account |
+| `rate_rules.csv` | 15 | Allowed extra charges and caps per payer |
+| `fuel_index.csv` | 10 | Weekly diesel price and fuel surcharge |
+| `shipments.csv` | 500 | Lane, dates, booked rate, approved maximum, virtual card ID, test scenario |
+| `tracking_events.csv` | 3,143 | Pickup, in transit, RFID scan, delivered and proof of delivery, with GPS and off-route distance |
+| `invoices.csv` | 505 | Itemized charges, including 5 duplicate invoices |
+| `payments_expected.csv` | 500 | **Answer key:** expected decision, hold reasons, timing, float and fee split |
+
+### Scenario mix
+
+| Scenario | Shipments | Expected decision |
+|---|---|---|
+| Clean | 350 | Paid automatically |
+| Extras within approved range | 100 | Paid automatically |
+| Above approved range | 25 | Held |
+| Off route, wrong recipient, recent bank change | 5 each | Held |
+| Missing proof of delivery | 5 | Held |
+| Duplicate invoice | 5 | Original paid, duplicate blocked |
+
+Result: 455 paid automatically (91%) and 45 held (9%).
+
+### Default hold rules
+
+1. The invoice total is above the approved maximum, which is (booked rate + fuel) × 1.10.
+2. Any in-transit event is more than 50 km off the expected route.
+3. The delivery recipient doesn't match the consignee.
+4. The carrier's bank details changed within 14 days before payment.
+5. The same shipment is invoiced twice: pay once, block the duplicate.
+6. There is no proof-of-delivery event.
+
+### Real sources to add later
+
+- **Carrier identity:** FMCSA's carrier registry (SAFER / QCMobile)
+- **Fuel:** EIA weekly diesel prices
+- **Lanes:** BTS Freight Analysis Framework
+- **Routes:** OpenStreetMap with OSRM
+- **Currency:** central bank exchange rates
+- **EDI formats:** sample EDI 204, 214 and 210 files
+
+Sandboxes worth exploring:
+
+- **Payments:** Mastercard Developers, Stripe Issuing (test mode)
+- **Bank verification:** Plaid
+- **Tracking:** UPS, project44 and FourKites. Some of these require a partner agreement.
+
+No real customer or shipment data from past employers is used, even anonymized.
+
 ## Getting Started
 
 _Setup instructions will be added as the project takes shape._

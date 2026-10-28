@@ -9,6 +9,9 @@ __pycache__/
 .env.*
 !.env.example
 
+# Original data archive (contents are unzipped into data/)
+data/*.zip
+
 # Build output
 dist/
 build/

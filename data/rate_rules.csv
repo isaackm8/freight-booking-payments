@@ -1,0 +1,16 @@
+payer_id,charge_type,allowed,max_usd_per_shipment
+PAY-01,detention,True,150
+PAY-01,liftgate,True,100
+PAY-01,reweigh,True,120
+PAY-01,lumper,True,200
+PAY-01,fuel_surcharge,True,indexed weekly
+PAY-02,detention,True,150
+PAY-02,liftgate,True,100
+PAY-02,reweigh,True,120
+PAY-02,lumper,True,200
+PAY-02,fuel_surcharge,True,indexed weekly
+PAY-03,detention,True,150
+PAY-03,liftgate,True,100
+PAY-03,reweigh,True,120
+PAY-03,lumper,True,200
+PAY-03,fuel_surcharge,True,indexed weekly
