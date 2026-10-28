@@ -10,7 +10,7 @@ All data is **synthetic**. Company names are fictional, USDOT/MC numbers are mad
 | `carriers.csv` | 20 | Fleet size, segment (small/mid/large), how they get cash today (factoring / credit line / waits), factoring rate or credit APR, verified bank account |
 | `rate_rules.csv` | 15 | Allowed extra charges and caps per payer (detention, liftgate, reweigh, lumper, fuel) |
 | `fuel_index.csv` | 10 | Weekly diesel price and fuel surcharge % (synthetic; real index = EIA weekly diesel) |
-| `shipments.csv` | 500 | Lane, pickup and scheduled delivery, booked rate, fuel surcharge, **approved maximum**, virtual card ID, test **scenario** |
+| `shipments.csv` | 500 | Lane, pickup and scheduled delivery, booked rate, fuel surcharge, **approved maximum**, factoring rate, virtual card ID, test **scenario** |
 | `tracking_events.csv` | ~3,100 | PICKUP, IN_TRANSIT, RFID_SCAN, DELIVERED, POD with GPS, source and off-route distance |
 | `invoices.csv` | 505 | Base, fuel, detention, liftgate, reweigh and total; includes 5 duplicate invoices (`duplicate_of`) |
 | `payments_expected.csv` | 500 | **Answer key**: expected decision, hold reasons, timing, float and fee split under default rules |
@@ -19,6 +19,7 @@ All data is **synthetic**. Company names are fictional, USDOT/MC numbers are mad
 ## Key fields
 
 - **shipments.approved_max_usd**: (booked rate + fuel) × 1.10. Invoices at or under this amount can be auto-approved if the other checks pass.
+- **shipments.factoring_rate_pct**: what factoring this load would cost, randomized per shipment between 6% and 8% (the white paper's range). `carriers.factoring_rate_pct` is the average across that carrier's shipments.
 - **shipments.scenario**: the test case the row was built for (see mix below). Use it to check the prototype's decisions against `payments_expected.csv`.
 - **shipments.carrier_bank_change_request_date**: only on `fraud_bank_changed` rows; a bank-detail change requested days before delivery.
 - **tracking_events.off_route_km**: distance from the expected route. Above 50 km is the default hold threshold.
@@ -63,7 +64,7 @@ Result: 455 paid automatically (91%), 45 held (9%).
 - **Payment trigger:** card charged 1 hour after confirmed delivery; carrier funds arrive 4–20 hours later (same-day target).
 - **Float days** = payer's statement due date − date carrier received funds. Averages about 32 days, range 14–44.
 - **Total fee** = interchange + provider margin, split by the payer's fee model.
-- **carrier_factoring_avoided_usd** = what a factoring carrier would have paid at its own rate.
+- **carrier_factoring_avoided_usd** = what a factoring carrier would have paid at the shipment's factoring rate (amount paid × `shipments.factoring_rate_pct`).
 
 ## Metrics the data supports
 

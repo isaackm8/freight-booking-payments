@@ -118,7 +118,7 @@ The approach: synthetic data generated from a defined schema, and live partner f
 | `carriers.csv` | 20 | Fleet size, segment (12 small, 5 mid, 3 large), how they get cash today (factoring, credit line or waiting), verified bank account |
 | `rate_rules.csv` | 15 | Allowed extra charges and caps per payer |
 | `fuel_index.csv` | 10 | Weekly diesel price and fuel surcharge |
-| `shipments.csv` | 500 | Lane, dates, booked rate, approved maximum, virtual card ID, test scenario |
+| `shipments.csv` | 500 | Lane, dates, booked rate, approved maximum, factoring rate (6–8%, randomized per shipment), virtual card ID, test scenario |
 | `tracking_events.csv` | 3,143 | Pickup, in transit, RFID scan, delivered and proof of delivery, with GPS and off-route distance |
 | `invoices.csv` | 505 | Itemized charges, including 5 duplicate invoices |
 | `payments_expected.csv` | 500 | **Answer key:** expected decision, hold reasons, timing, float and fee split |

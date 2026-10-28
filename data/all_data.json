@@ -6,7 +6,11 @@
   "provider_fee_pct": 0.75,
   "approved_range_pct": 10.0,
   "off_route_threshold_km": 50,
-  "bank_change_lookback_days": 14
+  "bank_change_lookback_days": 14,
+  "factoring_rate_range_pct": [
+   6.0,
+   8.0
+  ]
  },
  "payers": [
   {
@@ -56,7 +60,7 @@
    "segment": "mid",
    "accepts_cards": false,
    "cash_preference": "factoring",
-   "factoring_rate_pct": 6.5,
+   "factoring_rate_pct": 6.6,
    "credit_line_apr_pct": "",
    "bank_account_verified": true,
    "bank_account_last4": "3286",
@@ -71,7 +75,7 @@
    "segment": "small",
    "accepts_cards": true,
    "cash_preference": "factoring",
-   "factoring_rate_pct": 6.8,
+   "factoring_rate_pct": 6.9,
    "credit_line_apr_pct": "",
    "bank_account_verified": true,
    "bank_account_last4": "1488",
@@ -86,7 +90,7 @@
    "segment": "small",
    "accepts_cards": false,
    "cash_preference": "factoring",
-   "factoring_rate_pct": 7.1,
+   "factoring_rate_pct": 7.0,
    "credit_line_apr_pct": "",
    "bank_account_verified": true,
    "bank_account_last4": "9928",
@@ -101,7 +105,7 @@
    "segment": "small",
    "accepts_cards": false,
    "cash_preference": "factoring",
-   "factoring_rate_pct": 7.7,
+   "factoring_rate_pct": 7.1,
    "credit_line_apr_pct": "",
    "bank_account_verified": true,
    "bank_account_last4": "3615",
@@ -116,7 +120,7 @@
    "segment": "small",
    "accepts_cards": true,
    "cash_preference": "factoring",
-   "factoring_rate_pct": 7.9,
+   "factoring_rate_pct": 6.9,
    "credit_line_apr_pct": "",
    "bank_account_verified": true,
    "bank_account_last4": "6514",
@@ -131,7 +135,7 @@
    "segment": "small",
    "accepts_cards": false,
    "cash_preference": "factoring",
-   "factoring_rate_pct": 6.7,
+   "factoring_rate_pct": 6.9,
    "credit_line_apr_pct": "",
    "bank_account_verified": true,
    "bank_account_last4": "5333",
@@ -146,7 +150,7 @@
    "segment": "small",
    "accepts_cards": false,
    "cash_preference": "factoring",
-   "factoring_rate_pct": 7.9,
+   "factoring_rate_pct": 7.2,
    "credit_line_apr_pct": "",
    "bank_account_verified": true,
    "bank_account_last4": "7201",
@@ -161,7 +165,7 @@
    "segment": "small",
    "accepts_cards": false,
    "cash_preference": "factoring",
-   "factoring_rate_pct": 7.7,
+   "factoring_rate_pct": 7.0,
    "credit_line_apr_pct": "",
    "bank_account_verified": true,
    "bank_account_last4": "4150",
@@ -341,7 +345,7 @@
    "segment": "mid",
    "accepts_cards": false,
    "cash_preference": "factoring",
-   "factoring_rate_pct": 6.1,
+   "factoring_rate_pct": 7.1,
    "credit_line_apr_pct": "",
    "bank_account_verified": true,
    "bank_account_last4": "7252",
@@ -523,6 +527,7 @@
    "booked_rate_usd": 1224.64,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1406.37,
+   "factoring_rate_pct": 7.95,
    "currency": "USD",
    "virtual_card_id": "VCN-87267850",
    "scenario": "clean"
@@ -547,6 +552,7 @@
    "booked_rate_usd": 2403.89,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 2747.4,
+   "factoring_rate_pct": 7.12,
    "currency": "USD",
    "virtual_card_id": "VCN-13895645",
    "scenario": "clean"
@@ -571,6 +577,7 @@
    "booked_rate_usd": 1419.13,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1628.17,
+   "factoring_rate_pct": 7.45,
    "currency": "USD",
    "virtual_card_id": "VCN-28213276",
    "scenario": "clean"
@@ -595,6 +602,7 @@
    "booked_rate_usd": 767.77,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 880.86,
+   "factoring_rate_pct": 7.87,
    "currency": "USD",
    "virtual_card_id": "VCN-40094589",
    "scenario": "clean"
@@ -619,6 +627,7 @@
    "booked_rate_usd": 1806.13,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2074.16,
+   "factoring_rate_pct": 7.16,
    "currency": "USD",
    "virtual_card_id": "VCN-32520277",
    "scenario": "fraud_wrong_recipient"
@@ -643,6 +652,7 @@
    "booked_rate_usd": 916.24,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1051.2,
+   "factoring_rate_pct": 6.42,
    "currency": "USD",
    "virtual_card_id": "VCN-90585882",
    "scenario": "in_range_extras"
@@ -667,6 +677,7 @@
    "booked_rate_usd": 1224.21,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1404.54,
+   "factoring_rate_pct": 7.0,
    "currency": "USD",
    "virtual_card_id": "VCN-33640702",
    "scenario": "clean"
@@ -691,6 +702,7 @@
    "booked_rate_usd": 910.34,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1040.42,
+   "factoring_rate_pct": 6.28,
    "currency": "USD",
    "virtual_card_id": "VCN-55150390",
    "scenario": "out_of_range"
@@ -715,6 +727,7 @@
    "booked_rate_usd": 2195.73,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 2509.5,
+   "factoring_rate_pct": 6.53,
    "currency": "USD",
    "virtual_card_id": "VCN-73900135",
    "scenario": "clean"
@@ -739,6 +752,7 @@
    "booked_rate_usd": 2107.16,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2417.55,
+   "factoring_rate_pct": 6.92,
    "currency": "USD",
    "virtual_card_id": "VCN-46361787",
    "scenario": "clean"
@@ -763,6 +777,7 @@
    "booked_rate_usd": 1019.14,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1169.26,
+   "factoring_rate_pct": 6.47,
    "currency": "USD",
    "virtual_card_id": "VCN-36054020",
    "scenario": "clean"
@@ -787,6 +802,7 @@
    "booked_rate_usd": 1475.04,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1690.69,
+   "factoring_rate_pct": 7.66,
    "currency": "USD",
    "virtual_card_id": "VCN-74251933",
    "scenario": "clean"
@@ -811,6 +827,7 @@
    "booked_rate_usd": 931.13,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1067.26,
+   "factoring_rate_pct": 7.17,
    "currency": "USD",
    "virtual_card_id": "VCN-43311626",
    "scenario": "clean"
@@ -835,6 +852,7 @@
    "booked_rate_usd": 758.16,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 869.84,
+   "factoring_rate_pct": 7.55,
    "currency": "USD",
    "virtual_card_id": "VCN-37888820",
    "scenario": "clean"
@@ -859,6 +877,7 @@
    "booked_rate_usd": 896.88,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1029.0,
+   "factoring_rate_pct": 7.55,
    "currency": "USD",
    "virtual_card_id": "VCN-19553585",
    "scenario": "in_range_extras"
@@ -883,6 +902,7 @@
    "booked_rate_usd": 656.93,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 753.7,
+   "factoring_rate_pct": 6.07,
    "currency": "USD",
    "virtual_card_id": "VCN-68942178",
    "scenario": "clean"
@@ -907,6 +927,7 @@
    "booked_rate_usd": 1546.55,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1776.06,
+   "factoring_rate_pct": 7.7,
    "currency": "USD",
    "virtual_card_id": "VCN-46173157",
    "scenario": "clean"
@@ -931,6 +952,7 @@
    "booked_rate_usd": 979.07,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1123.29,
+   "factoring_rate_pct": 6.43,
    "currency": "USD",
    "virtual_card_id": "VCN-54265498",
    "scenario": "clean"
@@ -955,6 +977,7 @@
    "booked_rate_usd": 1716.11,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1968.89,
+   "factoring_rate_pct": 6.81,
    "currency": "USD",
    "virtual_card_id": "VCN-65465150",
    "scenario": "clean"
@@ -979,6 +1002,7 @@
    "booked_rate_usd": 1935.47,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2222.69,
+   "factoring_rate_pct": 7.37,
    "currency": "USD",
    "virtual_card_id": "VCN-31257157",
    "scenario": "clean"
@@ -1003,6 +1027,7 @@
    "booked_rate_usd": 1912.33,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2194.02,
+   "factoring_rate_pct": 6.41,
    "currency": "USD",
    "virtual_card_id": "VCN-73380266",
    "scenario": "clean"
@@ -1027,6 +1052,7 @@
    "booked_rate_usd": 666.16,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 765.02,
+   "factoring_rate_pct": 6.93,
    "currency": "USD",
    "virtual_card_id": "VCN-29944139",
    "scenario": "clean"
@@ -1051,6 +1077,7 @@
    "booked_rate_usd": 1356.64,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1550.51,
+   "factoring_rate_pct": 7.22,
    "currency": "USD",
    "virtual_card_id": "VCN-61167978",
    "scenario": "clean"
@@ -1075,6 +1102,7 @@
    "booked_rate_usd": 816.23,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 932.87,
+   "factoring_rate_pct": 7.78,
    "currency": "USD",
    "virtual_card_id": "VCN-12059919",
    "scenario": "out_of_range"
@@ -1099,6 +1127,7 @@
    "booked_rate_usd": 1487.82,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1706.98,
+   "factoring_rate_pct": 7.85,
    "currency": "USD",
    "virtual_card_id": "VCN-82613940",
    "scenario": "clean"
@@ -1123,6 +1152,7 @@
    "booked_rate_usd": 1520.82,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1746.51,
+   "factoring_rate_pct": 7.65,
    "currency": "USD",
    "virtual_card_id": "VCN-49375156",
    "scenario": "clean"
@@ -1147,6 +1177,7 @@
    "booked_rate_usd": 2021.92,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2319.75,
+   "factoring_rate_pct": 7.36,
    "currency": "USD",
    "virtual_card_id": "VCN-71682508",
    "scenario": "in_range_extras"
@@ -1171,6 +1202,7 @@
    "booked_rate_usd": 1003.21,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1150.99,
+   "factoring_rate_pct": 6.39,
    "currency": "USD",
    "virtual_card_id": "VCN-24314759",
    "scenario": "fraud_bank_changed",
@@ -1196,6 +1228,7 @@
    "booked_rate_usd": 721.65,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 828.74,
+   "factoring_rate_pct": 6.11,
    "currency": "USD",
    "virtual_card_id": "VCN-40885967",
    "scenario": "out_of_range"
@@ -1220,6 +1253,7 @@
    "booked_rate_usd": 1001.79,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1149.36,
+   "factoring_rate_pct": 7.86,
    "currency": "USD",
    "virtual_card_id": "VCN-49609054",
    "scenario": "clean"
@@ -1244,6 +1278,7 @@
    "booked_rate_usd": 764.04,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 876.58,
+   "factoring_rate_pct": 6.69,
    "currency": "USD",
    "virtual_card_id": "VCN-20106509",
    "scenario": "in_range_extras"
@@ -1268,6 +1303,7 @@
    "booked_rate_usd": 2090.39,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2398.31,
+   "factoring_rate_pct": 6.31,
    "currency": "USD",
    "virtual_card_id": "VCN-88458327",
    "scenario": "out_of_range"
@@ -1292,6 +1328,7 @@
    "booked_rate_usd": 919.91,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1051.37,
+   "factoring_rate_pct": 6.28,
    "currency": "USD",
    "virtual_card_id": "VCN-28760553",
    "scenario": "clean"
@@ -1316,6 +1353,7 @@
    "booked_rate_usd": 1417.69,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1624.95,
+   "factoring_rate_pct": 7.47,
    "currency": "USD",
    "virtual_card_id": "VCN-92631441",
    "scenario": "clean"
@@ -1340,6 +1378,7 @@
    "booked_rate_usd": 2996.41,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 3424.6,
+   "factoring_rate_pct": 7.42,
    "currency": "USD",
    "virtual_card_id": "VCN-71031132",
    "scenario": "in_range_extras"
@@ -1364,6 +1403,7 @@
    "booked_rate_usd": 1365.42,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1568.05,
+   "factoring_rate_pct": 7.62,
    "currency": "USD",
    "virtual_card_id": "VCN-47215199",
    "scenario": "clean"
@@ -1388,6 +1428,7 @@
    "booked_rate_usd": 1717.77,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1972.69,
+   "factoring_rate_pct": 6.99,
    "currency": "USD",
    "virtual_card_id": "VCN-18530615",
    "scenario": "clean"
@@ -1412,6 +1453,7 @@
    "booked_rate_usd": 958.28,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1100.48,
+   "factoring_rate_pct": 6.47,
    "currency": "USD",
    "virtual_card_id": "VCN-67213476",
    "scenario": "in_range_extras"
@@ -1436,6 +1478,7 @@
    "booked_rate_usd": 1519.81,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1743.68,
+   "factoring_rate_pct": 6.77,
    "currency": "USD",
    "virtual_card_id": "VCN-23311507",
    "scenario": "in_range_extras"
@@ -1460,6 +1503,7 @@
    "booked_rate_usd": 1338.49,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1529.76,
+   "factoring_rate_pct": 6.84,
    "currency": "USD",
    "virtual_card_id": "VCN-30486849",
    "scenario": "clean"
@@ -1484,6 +1528,7 @@
    "booked_rate_usd": 2136.5,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 2441.8,
+   "factoring_rate_pct": 7.38,
    "currency": "USD",
    "virtual_card_id": "VCN-16904975",
    "scenario": "clean"
@@ -1508,6 +1553,7 @@
    "booked_rate_usd": 1762.82,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2022.48,
+   "factoring_rate_pct": 7.58,
    "currency": "USD",
    "virtual_card_id": "VCN-91737913",
    "scenario": "clean"
@@ -1532,6 +1578,7 @@
    "booked_rate_usd": 839.42,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 963.99,
+   "factoring_rate_pct": 6.46,
    "currency": "USD",
    "virtual_card_id": "VCN-60491958",
    "scenario": "clean"
@@ -1556,6 +1603,7 @@
    "booked_rate_usd": 1036.6,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1189.29,
+   "factoring_rate_pct": 6.2,
    "currency": "USD",
    "virtual_card_id": "VCN-75184410",
    "scenario": "clean"
@@ -1580,6 +1628,7 @@
    "booked_rate_usd": 859.94,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 982.83,
+   "factoring_rate_pct": 6.97,
    "currency": "USD",
    "virtual_card_id": "VCN-50455821",
    "scenario": "clean"
@@ -1604,6 +1653,7 @@
    "booked_rate_usd": 967.15,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1109.61,
+   "factoring_rate_pct": 6.83,
    "currency": "USD",
    "virtual_card_id": "VCN-68548403",
    "scenario": "clean"
@@ -1628,6 +1678,7 @@
    "booked_rate_usd": 1717.49,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1970.47,
+   "factoring_rate_pct": 6.23,
    "currency": "USD",
    "virtual_card_id": "VCN-21828592",
    "scenario": "clean"
@@ -1652,6 +1703,7 @@
    "booked_rate_usd": 971.63,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1114.75,
+   "factoring_rate_pct": 7.79,
    "currency": "USD",
    "virtual_card_id": "VCN-56892354",
    "scenario": "clean"
@@ -1676,6 +1728,7 @@
    "booked_rate_usd": 1037.81,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1186.11,
+   "factoring_rate_pct": 7.8,
    "currency": "USD",
    "virtual_card_id": "VCN-85764804",
    "scenario": "clean"
@@ -1700,6 +1753,7 @@
    "booked_rate_usd": 2065.01,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 2360.11,
+   "factoring_rate_pct": 7.9,
    "currency": "USD",
    "virtual_card_id": "VCN-48530827",
    "scenario": "clean"
@@ -1724,6 +1778,7 @@
    "booked_rate_usd": 1536.77,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1764.83,
+   "factoring_rate_pct": 6.61,
    "currency": "USD",
    "virtual_card_id": "VCN-18304547",
    "scenario": "clean"
@@ -1748,6 +1803,7 @@
    "booked_rate_usd": 1237.48,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1418.4,
+   "factoring_rate_pct": 6.27,
    "currency": "USD",
    "virtual_card_id": "VCN-61998170",
    "scenario": "clean"
@@ -1772,6 +1828,7 @@
    "booked_rate_usd": 1054.03,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1209.29,
+   "factoring_rate_pct": 6.11,
    "currency": "USD",
    "virtual_card_id": "VCN-20939011",
    "scenario": "error_duplicate_invoice"
@@ -1796,6 +1853,7 @@
    "booked_rate_usd": 1184.27,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1358.71,
+   "factoring_rate_pct": 7.57,
    "currency": "USD",
    "virtual_card_id": "VCN-78248169",
    "scenario": "clean"
@@ -1820,6 +1878,7 @@
    "booked_rate_usd": 833.26,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 955.09,
+   "factoring_rate_pct": 7.61,
    "currency": "USD",
    "virtual_card_id": "VCN-98842638",
    "scenario": "out_of_range"
@@ -1844,6 +1903,7 @@
    "booked_rate_usd": 1367.67,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1570.64,
+   "factoring_rate_pct": 6.37,
    "currency": "USD",
    "virtual_card_id": "VCN-41407343",
    "scenario": "clean"
@@ -1868,6 +1928,7 @@
    "booked_rate_usd": 998.34,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1141.01,
+   "factoring_rate_pct": 6.7,
    "currency": "USD",
    "virtual_card_id": "VCN-43554863",
    "scenario": "clean"
@@ -1892,6 +1953,7 @@
    "booked_rate_usd": 1192.43,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1362.82,
+   "factoring_rate_pct": 7.88,
    "currency": "USD",
    "virtual_card_id": "VCN-70549373",
    "scenario": "fraud_off_route"
@@ -1916,6 +1978,7 @@
    "booked_rate_usd": 978.97,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1123.18,
+   "factoring_rate_pct": 6.03,
    "currency": "USD",
    "virtual_card_id": "VCN-72962895",
    "scenario": "clean"
@@ -1940,6 +2003,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 516.78,
+   "factoring_rate_pct": 6.22,
    "currency": "USD",
    "virtual_card_id": "VCN-18429833",
    "scenario": "clean"
@@ -1964,6 +2028,7 @@
    "booked_rate_usd": 1264.89,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1452.61,
+   "factoring_rate_pct": 6.81,
    "currency": "USD",
    "virtual_card_id": "VCN-19083764",
    "scenario": "clean"
@@ -1988,6 +2053,7 @@
    "booked_rate_usd": 985.97,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1130.12,
+   "factoring_rate_pct": 7.67,
    "currency": "USD",
    "virtual_card_id": "VCN-27905932",
    "scenario": "clean"
@@ -2012,6 +2078,7 @@
    "booked_rate_usd": 1121.17,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1287.55,
+   "factoring_rate_pct": 7.57,
    "currency": "USD",
    "virtual_card_id": "VCN-15624520",
    "scenario": "clean"
@@ -2036,6 +2103,7 @@
    "booked_rate_usd": 1424.53,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1632.8,
+   "factoring_rate_pct": 7.73,
    "currency": "USD",
    "virtual_card_id": "VCN-69020451",
    "scenario": "in_range_extras"
@@ -2060,6 +2128,7 @@
    "booked_rate_usd": 2114.1,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 2423.18,
+   "factoring_rate_pct": 7.13,
    "currency": "USD",
    "virtual_card_id": "VCN-69849800",
    "scenario": "out_of_range"
@@ -2084,6 +2153,7 @@
    "booked_rate_usd": 973.44,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1116.83,
+   "factoring_rate_pct": 7.48,
    "currency": "USD",
    "virtual_card_id": "VCN-29163535",
    "scenario": "error_missing_pod"
@@ -2108,6 +2178,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 516.29,
+   "factoring_rate_pct": 7.34,
    "currency": "USD",
    "virtual_card_id": "VCN-87030477",
    "scenario": "in_range_extras"
@@ -2132,6 +2203,7 @@
    "booked_rate_usd": 980.13,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1120.2,
+   "factoring_rate_pct": 7.09,
    "currency": "USD",
    "virtual_card_id": "VCN-75927774",
    "scenario": "clean"
@@ -2156,6 +2228,7 @@
    "booked_rate_usd": 1209.26,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1387.39,
+   "factoring_rate_pct": 7.66,
    "currency": "USD",
    "virtual_card_id": "VCN-58518659",
    "scenario": "error_missing_pod"
@@ -2180,6 +2253,7 @@
    "booked_rate_usd": 1586.13,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1818.03,
+   "factoring_rate_pct": 7.89,
    "currency": "USD",
    "virtual_card_id": "VCN-51512297",
    "scenario": "in_range_extras"
@@ -2204,6 +2278,7 @@
    "booked_rate_usd": 1327.53,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1523.07,
+   "factoring_rate_pct": 6.44,
    "currency": "USD",
    "virtual_card_id": "VCN-68065043",
    "scenario": "in_range_extras"
@@ -2228,6 +2303,7 @@
    "booked_rate_usd": 2986.3,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 3426.18,
+   "factoring_rate_pct": 7.25,
    "currency": "USD",
    "virtual_card_id": "VCN-77454225",
    "scenario": "clean"
@@ -2252,6 +2328,7 @@
    "booked_rate_usd": 906.51,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1041.04,
+   "factoring_rate_pct": 7.72,
    "currency": "USD",
    "virtual_card_id": "VCN-97393186",
    "scenario": "in_range_extras"
@@ -2276,6 +2353,7 @@
    "booked_rate_usd": 889.84,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1021.89,
+   "factoring_rate_pct": 6.31,
    "currency": "USD",
    "virtual_card_id": "VCN-72336371",
    "scenario": "clean"
@@ -2300,6 +2378,7 @@
    "booked_rate_usd": 2475.0,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2842.29,
+   "factoring_rate_pct": 6.71,
    "currency": "USD",
    "virtual_card_id": "VCN-43275109",
    "scenario": "clean"
@@ -2324,6 +2403,7 @@
    "booked_rate_usd": 1217.75,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1397.12,
+   "factoring_rate_pct": 6.31,
    "currency": "USD",
    "virtual_card_id": "VCN-76755908",
    "scenario": "clean"
@@ -2348,6 +2428,7 @@
    "booked_rate_usd": 981.62,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1121.89,
+   "factoring_rate_pct": 6.8,
    "currency": "USD",
    "virtual_card_id": "VCN-67838146",
    "scenario": "clean"
@@ -2372,6 +2453,7 @@
    "booked_rate_usd": 778.29,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 889.5,
+   "factoring_rate_pct": 7.73,
    "currency": "USD",
    "virtual_card_id": "VCN-27268907",
    "scenario": "clean"
@@ -2396,6 +2478,7 @@
    "booked_rate_usd": 684.62,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 785.47,
+   "factoring_rate_pct": 6.24,
    "currency": "USD",
    "virtual_card_id": "VCN-29990477",
    "scenario": "clean"
@@ -2420,6 +2503,7 @@
    "booked_rate_usd": 1259.8,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1445.37,
+   "factoring_rate_pct": 7.18,
    "currency": "USD",
    "virtual_card_id": "VCN-54458225",
    "scenario": "clean"
@@ -2444,6 +2528,7 @@
    "booked_rate_usd": 1354.43,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1553.94,
+   "factoring_rate_pct": 7.58,
    "currency": "USD",
    "virtual_card_id": "VCN-29834119",
    "scenario": "clean"
@@ -2468,6 +2553,7 @@
    "booked_rate_usd": 2743.2,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 3135.2,
+   "factoring_rate_pct": 7.34,
    "currency": "USD",
    "virtual_card_id": "VCN-85280948",
    "scenario": "clean"
@@ -2492,6 +2578,7 @@
    "booked_rate_usd": 1050.23,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1206.08,
+   "factoring_rate_pct": 7.07,
    "currency": "USD",
    "virtual_card_id": "VCN-49945150",
    "scenario": "clean"
@@ -2516,6 +2603,7 @@
    "booked_rate_usd": 1446.31,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1657.77,
+   "factoring_rate_pct": 6.38,
    "currency": "USD",
    "virtual_card_id": "VCN-56488123",
    "scenario": "clean"
@@ -2540,6 +2628,7 @@
    "booked_rate_usd": 2301.31,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2642.83,
+   "factoring_rate_pct": 7.83,
    "currency": "USD",
    "virtual_card_id": "VCN-95623471",
    "scenario": "in_range_extras"
@@ -2564,6 +2653,7 @@
    "booked_rate_usd": 803.47,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 921.82,
+   "factoring_rate_pct": 6.76,
    "currency": "USD",
    "virtual_card_id": "VCN-22007214",
    "scenario": "clean"
@@ -2588,6 +2678,7 @@
    "booked_rate_usd": 1490.53,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1710.08,
+   "factoring_rate_pct": 7.72,
    "currency": "USD",
    "virtual_card_id": "VCN-54968591",
    "scenario": "clean"
@@ -2612,6 +2703,7 @@
    "booked_rate_usd": 1309.91,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1502.86,
+   "factoring_rate_pct": 6.71,
    "currency": "USD",
    "virtual_card_id": "VCN-55246430",
    "scenario": "clean"
@@ -2636,6 +2728,7 @@
    "booked_rate_usd": 865.83,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 992.41,
+   "factoring_rate_pct": 7.63,
    "currency": "USD",
    "virtual_card_id": "VCN-10916723",
    "scenario": "clean"
@@ -2660,6 +2753,7 @@
    "booked_rate_usd": 914.57,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1048.28,
+   "factoring_rate_pct": 6.56,
    "currency": "USD",
    "virtual_card_id": "VCN-77447155",
    "scenario": "clean"
@@ -2684,6 +2778,7 @@
    "booked_rate_usd": 656.14,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 749.9,
+   "factoring_rate_pct": 7.6,
    "currency": "USD",
    "virtual_card_id": "VCN-43214247",
    "scenario": "clean"
@@ -2708,6 +2803,7 @@
    "booked_rate_usd": 2643.11,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 3032.44,
+   "factoring_rate_pct": 6.56,
    "currency": "USD",
    "virtual_card_id": "VCN-88268756",
    "scenario": "in_range_extras"
@@ -2732,6 +2828,7 @@
    "booked_rate_usd": 590.55,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 678.18,
+   "factoring_rate_pct": 6.9,
    "currency": "USD",
    "virtual_card_id": "VCN-66867700",
    "scenario": "clean"
@@ -2756,6 +2853,7 @@
    "booked_rate_usd": 1054.36,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1209.67,
+   "factoring_rate_pct": 6.52,
    "currency": "USD",
    "virtual_card_id": "VCN-70201634",
    "scenario": "clean"
@@ -2780,6 +2878,7 @@
    "booked_rate_usd": 2710.71,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 3112.98,
+   "factoring_rate_pct": 7.64,
    "currency": "USD",
    "virtual_card_id": "VCN-72143331",
    "scenario": "clean"
@@ -2804,6 +2903,7 @@
    "booked_rate_usd": 2408.5,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2765.92,
+   "factoring_rate_pct": 6.78,
    "currency": "USD",
    "virtual_card_id": "VCN-89717834",
    "scenario": "clean"
@@ -2828,6 +2928,7 @@
    "booked_rate_usd": 2742.59,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 3149.59,
+   "factoring_rate_pct": 6.43,
    "currency": "USD",
    "virtual_card_id": "VCN-41796721",
    "scenario": "clean"
@@ -2852,6 +2953,7 @@
    "booked_rate_usd": 975.96,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1115.42,
+   "factoring_rate_pct": 6.22,
    "currency": "USD",
    "virtual_card_id": "VCN-80392240",
    "scenario": "in_range_extras"
@@ -2876,6 +2978,7 @@
    "booked_rate_usd": 747.43,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 854.24,
+   "factoring_rate_pct": 6.44,
    "currency": "USD",
    "virtual_card_id": "VCN-42595918",
    "scenario": "clean"
@@ -2900,6 +3003,7 @@
    "booked_rate_usd": 1936.46,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2223.83,
+   "factoring_rate_pct": 6.24,
    "currency": "USD",
    "virtual_card_id": "VCN-74343201",
    "scenario": "in_range_extras"
@@ -2924,6 +3028,7 @@
    "booked_rate_usd": 954.71,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1096.39,
+   "factoring_rate_pct": 7.03,
    "currency": "USD",
    "virtual_card_id": "VCN-61091554",
    "scenario": "clean"
@@ -2948,6 +3053,7 @@
    "booked_rate_usd": 1646.62,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1890.98,
+   "factoring_rate_pct": 7.96,
    "currency": "USD",
    "virtual_card_id": "VCN-85500790",
    "scenario": "clean"
@@ -2972,6 +3078,7 @@
    "booked_rate_usd": 1428.62,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1632.77,
+   "factoring_rate_pct": 6.01,
    "currency": "USD",
    "virtual_card_id": "VCN-44537812",
    "scenario": "in_range_extras"
@@ -2996,6 +3103,7 @@
    "booked_rate_usd": 2979.12,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 3414.66,
+   "factoring_rate_pct": 7.98,
    "currency": "USD",
    "virtual_card_id": "VCN-65350347",
    "scenario": "clean"
@@ -3020,6 +3128,7 @@
    "booked_rate_usd": 1657.12,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1903.03,
+   "factoring_rate_pct": 6.19,
    "currency": "USD",
    "virtual_card_id": "VCN-11590610",
    "scenario": "in_range_extras"
@@ -3044,6 +3153,7 @@
    "booked_rate_usd": 730.25,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 838.62,
+   "factoring_rate_pct": 7.82,
    "currency": "USD",
    "virtual_card_id": "VCN-20605783",
    "scenario": "clean"
@@ -3068,6 +3178,7 @@
    "booked_rate_usd": 1154.43,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1324.48,
+   "factoring_rate_pct": 6.42,
    "currency": "USD",
    "virtual_card_id": "VCN-33002714",
    "scenario": "out_of_range"
@@ -3092,6 +3203,7 @@
    "booked_rate_usd": 886.67,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1016.3,
+   "factoring_rate_pct": 6.54,
    "currency": "USD",
    "virtual_card_id": "VCN-34072553",
    "scenario": "clean"
@@ -3116,6 +3228,7 @@
    "booked_rate_usd": 741.29,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 850.49,
+   "factoring_rate_pct": 7.43,
    "currency": "USD",
    "virtual_card_id": "VCN-20526386",
    "scenario": "out_of_range"
@@ -3140,6 +3253,7 @@
    "booked_rate_usd": 1527.04,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1751.97,
+   "factoring_rate_pct": 7.8,
    "currency": "USD",
    "virtual_card_id": "VCN-34929311",
    "scenario": "clean"
@@ -3164,6 +3278,7 @@
    "booked_rate_usd": 1365.08,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1564.65,
+   "factoring_rate_pct": 7.61,
    "currency": "USD",
    "virtual_card_id": "VCN-69691437",
    "scenario": "clean"
@@ -3188,6 +3303,7 @@
    "booked_rate_usd": 2067.27,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2371.78,
+   "factoring_rate_pct": 7.06,
    "currency": "USD",
    "virtual_card_id": "VCN-49171088",
    "scenario": "in_range_extras"
@@ -3212,6 +3328,7 @@
    "booked_rate_usd": 1026.36,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1176.42,
+   "factoring_rate_pct": 7.62,
    "currency": "USD",
    "virtual_card_id": "VCN-50232066",
    "scenario": "in_range_extras"
@@ -3236,6 +3353,7 @@
    "booked_rate_usd": 672.9,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 772.01,
+   "factoring_rate_pct": 6.19,
    "currency": "USD",
    "virtual_card_id": "VCN-97380687",
    "scenario": "clean"
@@ -3260,6 +3378,7 @@
    "booked_rate_usd": 2325.24,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2667.75,
+   "factoring_rate_pct": 6.52,
    "currency": "USD",
    "virtual_card_id": "VCN-58991556",
    "scenario": "in_range_extras"
@@ -3284,6 +3403,7 @@
    "booked_rate_usd": 1048.65,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1201.96,
+   "factoring_rate_pct": 7.51,
    "currency": "USD",
    "virtual_card_id": "VCN-95004924",
    "scenario": "in_range_extras"
@@ -3308,6 +3428,7 @@
    "booked_rate_usd": 986.11,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1131.36,
+   "factoring_rate_pct": 7.74,
    "currency": "USD",
    "virtual_card_id": "VCN-82062301",
    "scenario": "clean"
@@ -3332,6 +3453,7 @@
    "booked_rate_usd": 721.12,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 824.16,
+   "factoring_rate_pct": 6.26,
    "currency": "USD",
    "virtual_card_id": "VCN-39796480",
    "scenario": "out_of_range"
@@ -3356,6 +3478,7 @@
    "booked_rate_usd": 1122.85,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1287.01,
+   "factoring_rate_pct": 6.96,
    "currency": "USD",
    "virtual_card_id": "VCN-37765262",
    "scenario": "clean"
@@ -3380,6 +3503,7 @@
    "booked_rate_usd": 1392.06,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1597.11,
+   "factoring_rate_pct": 6.89,
    "currency": "USD",
    "virtual_card_id": "VCN-79255529",
    "scenario": "clean"
@@ -3404,6 +3528,7 @@
    "booked_rate_usd": 1412.45,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1622.06,
+   "factoring_rate_pct": 7.16,
    "currency": "USD",
    "virtual_card_id": "VCN-10597274",
    "scenario": "clean"
@@ -3428,6 +3553,7 @@
    "booked_rate_usd": 1391.48,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1590.33,
+   "factoring_rate_pct": 7.08,
    "currency": "USD",
    "virtual_card_id": "VCN-90124068",
    "scenario": "out_of_range"
@@ -3452,6 +3578,7 @@
    "booked_rate_usd": 859.73,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 985.42,
+   "factoring_rate_pct": 7.75,
    "currency": "USD",
    "virtual_card_id": "VCN-60104292",
    "scenario": "clean"
@@ -3476,6 +3603,7 @@
    "booked_rate_usd": 2682.13,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 3074.26,
+   "factoring_rate_pct": 7.89,
    "currency": "USD",
    "virtual_card_id": "VCN-93135800",
    "scenario": "clean"
@@ -3500,6 +3628,7 @@
    "booked_rate_usd": 1842.28,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 2105.54,
+   "factoring_rate_pct": 6.46,
    "currency": "USD",
    "virtual_card_id": "VCN-39598969",
    "scenario": "clean"
@@ -3524,6 +3653,7 @@
    "booked_rate_usd": 824.95,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 946.46,
+   "factoring_rate_pct": 6.37,
    "currency": "USD",
    "virtual_card_id": "VCN-69239219",
    "scenario": "in_range_extras"
@@ -3548,6 +3678,7 @@
    "booked_rate_usd": 804.41,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 923.78,
+   "factoring_rate_pct": 7.77,
    "currency": "USD",
    "virtual_card_id": "VCN-91907952",
    "scenario": "clean"
@@ -3572,6 +3703,7 @@
    "booked_rate_usd": 1339.66,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1537.0,
+   "factoring_rate_pct": 7.33,
    "currency": "USD",
    "virtual_card_id": "VCN-28198434",
    "scenario": "clean"
@@ -3596,6 +3728,7 @@
    "booked_rate_usd": 1689.34,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1930.74,
+   "factoring_rate_pct": 7.97,
    "currency": "USD",
    "virtual_card_id": "VCN-94263610",
    "scenario": "clean"
@@ -3620,6 +3753,7 @@
    "booked_rate_usd": 999.9,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1146.09,
+   "factoring_rate_pct": 7.37,
    "currency": "USD",
    "virtual_card_id": "VCN-18500100",
    "scenario": "clean"
@@ -3644,6 +3778,7 @@
    "booked_rate_usd": 741.57,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 850.81,
+   "factoring_rate_pct": 6.89,
    "currency": "USD",
    "virtual_card_id": "VCN-12185246",
    "scenario": "in_range_extras"
@@ -3668,6 +3803,7 @@
    "booked_rate_usd": 661.94,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 759.44,
+   "factoring_rate_pct": 6.4,
    "currency": "USD",
    "virtual_card_id": "VCN-16950770",
    "scenario": "in_range_extras"
@@ -3692,6 +3828,7 @@
    "booked_rate_usd": 2267.05,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2603.48,
+   "factoring_rate_pct": 7.28,
    "currency": "USD",
    "virtual_card_id": "VCN-66682016",
    "scenario": "clean"
@@ -3716,6 +3853,7 @@
    "booked_rate_usd": 1698.57,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1946.9,
+   "factoring_rate_pct": 6.03,
    "currency": "USD",
    "virtual_card_id": "VCN-19182050",
    "scenario": "clean"
@@ -3740,6 +3878,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 515.79,
+   "factoring_rate_pct": 6.98,
    "currency": "USD",
    "virtual_card_id": "VCN-67631581",
    "scenario": "out_of_range"
@@ -3764,6 +3903,7 @@
    "booked_rate_usd": 2258.28,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2593.4,
+   "factoring_rate_pct": 7.59,
    "currency": "USD",
    "virtual_card_id": "VCN-42123815",
    "scenario": "clean"
@@ -3788,6 +3928,7 @@
    "booked_rate_usd": 785.59,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 897.85,
+   "factoring_rate_pct": 6.35,
    "currency": "USD",
    "virtual_card_id": "VCN-73218512",
    "scenario": "clean"
@@ -3812,6 +3953,7 @@
    "booked_rate_usd": 988.82,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1130.12,
+   "factoring_rate_pct": 6.89,
    "currency": "USD",
    "virtual_card_id": "VCN-47241089",
    "scenario": "clean"
@@ -3836,6 +3978,7 @@
    "booked_rate_usd": 1000.88,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1149.41,
+   "factoring_rate_pct": 6.92,
    "currency": "USD",
    "virtual_card_id": "VCN-25567455",
    "scenario": "in_range_extras"
@@ -3860,6 +4003,7 @@
    "booked_rate_usd": 2118.17,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2432.51,
+   "factoring_rate_pct": 7.36,
    "currency": "USD",
    "virtual_card_id": "VCN-25845304",
    "scenario": "in_range_extras"
@@ -3884,6 +4028,7 @@
    "booked_rate_usd": 659.38,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 755.78,
+   "factoring_rate_pct": 6.63,
    "currency": "USD",
    "virtual_card_id": "VCN-40655922",
    "scenario": "in_range_extras"
@@ -3908,6 +4053,7 @@
    "booked_rate_usd": 1226.2,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1406.82,
+   "factoring_rate_pct": 6.1,
    "currency": "USD",
    "virtual_card_id": "VCN-26025721",
    "scenario": "clean"
@@ -3932,6 +4078,7 @@
    "booked_rate_usd": 2360.98,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2708.75,
+   "factoring_rate_pct": 6.95,
    "currency": "USD",
    "virtual_card_id": "VCN-93579731",
    "scenario": "in_range_extras"
@@ -3956,6 +4103,7 @@
    "booked_rate_usd": 2227.02,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2555.06,
+   "factoring_rate_pct": 6.04,
    "currency": "USD",
    "virtual_card_id": "VCN-98221829",
    "scenario": "clean"
@@ -3980,6 +4128,7 @@
    "booked_rate_usd": 747.58,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 857.7,
+   "factoring_rate_pct": 6.27,
    "currency": "USD",
    "virtual_card_id": "VCN-71533194",
    "scenario": "clean"
@@ -4004,6 +4153,7 @@
    "booked_rate_usd": 1069.29,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1222.09,
+   "factoring_rate_pct": 6.09,
    "currency": "USD",
    "virtual_card_id": "VCN-41354768",
    "scenario": "clean"
@@ -4028,6 +4178,7 @@
    "booked_rate_usd": 2171.86,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2494.16,
+   "factoring_rate_pct": 7.84,
    "currency": "USD",
    "virtual_card_id": "VCN-26094525",
    "scenario": "clean"
@@ -4052,6 +4203,7 @@
    "booked_rate_usd": 633.53,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 726.85,
+   "factoring_rate_pct": 6.78,
    "currency": "USD",
    "virtual_card_id": "VCN-14171767",
    "scenario": "clean"
@@ -4076,6 +4228,7 @@
    "booked_rate_usd": 533.07,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 611.59,
+   "factoring_rate_pct": 6.7,
    "currency": "USD",
    "virtual_card_id": "VCN-88158177",
    "scenario": "clean"
@@ -4100,6 +4253,7 @@
    "booked_rate_usd": 1777.93,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2039.82,
+   "factoring_rate_pct": 7.67,
    "currency": "USD",
    "virtual_card_id": "VCN-76588957",
    "scenario": "clean"
@@ -4124,6 +4278,7 @@
    "booked_rate_usd": 1266.9,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1453.52,
+   "factoring_rate_pct": 7.0,
    "currency": "USD",
    "virtual_card_id": "VCN-18184472",
    "scenario": "clean"
@@ -4148,6 +4303,7 @@
    "booked_rate_usd": 1023.6,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1169.87,
+   "factoring_rate_pct": 6.83,
    "currency": "USD",
    "virtual_card_id": "VCN-85920407",
    "scenario": "clean"
@@ -4172,6 +4328,7 @@
    "booked_rate_usd": 675.31,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 775.52,
+   "factoring_rate_pct": 6.91,
    "currency": "USD",
    "virtual_card_id": "VCN-45772648",
    "scenario": "clean"
@@ -4196,6 +4353,7 @@
    "booked_rate_usd": 1091.65,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1252.45,
+   "factoring_rate_pct": 7.02,
    "currency": "USD",
    "virtual_card_id": "VCN-86188876",
    "scenario": "clean"
@@ -4220,6 +4378,7 @@
    "booked_rate_usd": 718.2,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 824.78,
+   "factoring_rate_pct": 6.54,
    "currency": "USD",
    "virtual_card_id": "VCN-92427773",
    "scenario": "clean"
@@ -4244,6 +4403,7 @@
    "booked_rate_usd": 1769.19,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2029.8,
+   "factoring_rate_pct": 6.13,
    "currency": "USD",
    "virtual_card_id": "VCN-88653825",
    "scenario": "in_range_extras"
@@ -4268,6 +4428,7 @@
    "booked_rate_usd": 2325.33,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2670.4,
+   "factoring_rate_pct": 7.75,
    "currency": "USD",
    "virtual_card_id": "VCN-60785855",
    "scenario": "clean"
@@ -4292,6 +4453,7 @@
    "booked_rate_usd": 1799.96,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2065.1,
+   "factoring_rate_pct": 6.6,
    "currency": "USD",
    "virtual_card_id": "VCN-76596831",
    "scenario": "clean"
@@ -4316,6 +4478,7 @@
    "booked_rate_usd": 1803.68,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2071.34,
+   "factoring_rate_pct": 7.41,
    "currency": "USD",
    "virtual_card_id": "VCN-10171954",
    "scenario": "clean"
@@ -4340,6 +4503,7 @@
    "booked_rate_usd": 741.62,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 850.86,
+   "factoring_rate_pct": 7.55,
    "currency": "USD",
    "virtual_card_id": "VCN-31831387",
    "scenario": "clean"
@@ -4364,6 +4528,7 @@
    "booked_rate_usd": 1208.9,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1385.64,
+   "factoring_rate_pct": 6.38,
    "currency": "USD",
    "virtual_card_id": "VCN-14159837",
    "scenario": "clean"
@@ -4388,6 +4553,7 @@
    "booked_rate_usd": 1314.46,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1508.08,
+   "factoring_rate_pct": 6.25,
    "currency": "USD",
    "virtual_card_id": "VCN-16661956",
    "scenario": "clean"
@@ -4412,6 +4578,7 @@
    "booked_rate_usd": 1080.29,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1240.6,
+   "factoring_rate_pct": 7.75,
    "currency": "USD",
    "virtual_card_id": "VCN-73561576",
    "scenario": "in_range_extras"
@@ -4436,6 +4603,7 @@
    "booked_rate_usd": 1442.89,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1649.08,
+   "factoring_rate_pct": 6.78,
    "currency": "USD",
    "virtual_card_id": "VCN-85731895",
    "scenario": "clean"
@@ -4460,6 +4628,7 @@
    "booked_rate_usd": 2979.33,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 3418.18,
+   "factoring_rate_pct": 6.57,
    "currency": "USD",
    "virtual_card_id": "VCN-86868410",
    "scenario": "in_range_extras"
@@ -4484,6 +4653,7 @@
    "booked_rate_usd": 1721.49,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1973.17,
+   "factoring_rate_pct": 7.16,
    "currency": "USD",
    "virtual_card_id": "VCN-15727862",
    "scenario": "in_range_extras"
@@ -4508,6 +4678,7 @@
    "booked_rate_usd": 1799.71,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2064.81,
+   "factoring_rate_pct": 6.21,
    "currency": "USD",
    "virtual_card_id": "VCN-93625419",
    "scenario": "out_of_range"
@@ -4532,6 +4703,7 @@
    "booked_rate_usd": 2013.74,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2312.57,
+   "factoring_rate_pct": 6.72,
    "currency": "USD",
    "virtual_card_id": "VCN-15028557",
    "scenario": "out_of_range"
@@ -4556,6 +4728,7 @@
    "booked_rate_usd": 1074.82,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1234.32,
+   "factoring_rate_pct": 7.61,
    "currency": "USD",
    "virtual_card_id": "VCN-51734908",
    "scenario": "clean"
@@ -4580,6 +4753,7 @@
    "booked_rate_usd": 998.4,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1145.46,
+   "factoring_rate_pct": 6.38,
    "currency": "USD",
    "virtual_card_id": "VCN-64649480",
    "scenario": "clean"
@@ -4604,6 +4778,7 @@
    "booked_rate_usd": 1671.1,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1917.26,
+   "factoring_rate_pct": 6.58,
    "currency": "USD",
    "virtual_card_id": "VCN-17734634",
    "scenario": "clean"
@@ -4628,6 +4803,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 514.31,
+   "factoring_rate_pct": 6.66,
    "currency": "USD",
    "virtual_card_id": "VCN-88769733",
    "scenario": "in_range_extras"
@@ -4652,6 +4828,7 @@
    "booked_rate_usd": 694.88,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 797.24,
+   "factoring_rate_pct": 7.48,
    "currency": "USD",
    "virtual_card_id": "VCN-78891441",
    "scenario": "clean"
@@ -4676,6 +4853,7 @@
    "booked_rate_usd": 1445.62,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1658.56,
+   "factoring_rate_pct": 6.19,
    "currency": "USD",
    "virtual_card_id": "VCN-56802956",
    "scenario": "clean"
@@ -4700,6 +4878,7 @@
    "booked_rate_usd": 3024.62,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 3470.15,
+   "factoring_rate_pct": 6.93,
    "currency": "USD",
    "virtual_card_id": "VCN-18568064",
    "scenario": "clean"
@@ -4724,6 +4903,7 @@
    "booked_rate_usd": 1306.59,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1499.05,
+   "factoring_rate_pct": 6.85,
    "currency": "USD",
    "virtual_card_id": "VCN-13416548",
    "scenario": "clean"
@@ -4748,6 +4928,7 @@
    "booked_rate_usd": 3029.97,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 3462.95,
+   "factoring_rate_pct": 7.33,
    "currency": "USD",
    "virtual_card_id": "VCN-32815223",
    "scenario": "clean"
@@ -4772,6 +4953,7 @@
    "booked_rate_usd": 1223.21,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1403.39,
+   "factoring_rate_pct": 7.45,
    "currency": "USD",
    "virtual_card_id": "VCN-59886371",
    "scenario": "in_range_extras"
@@ -4796,6 +4978,7 @@
    "booked_rate_usd": 793.01,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 909.82,
+   "factoring_rate_pct": 7.23,
    "currency": "USD",
    "virtual_card_id": "VCN-28436852",
    "scenario": "out_of_range"
@@ -4820,6 +5003,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 516.78,
+   "factoring_rate_pct": 7.03,
    "currency": "USD",
    "virtual_card_id": "VCN-32629881",
    "scenario": "clean"
@@ -4844,6 +5028,7 @@
    "booked_rate_usd": 744.0,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 853.59,
+   "factoring_rate_pct": 6.12,
    "currency": "USD",
    "virtual_card_id": "VCN-12404661",
    "scenario": "clean"
@@ -4868,6 +5053,7 @@
    "booked_rate_usd": 716.82,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 822.4,
+   "factoring_rate_pct": 7.11,
    "currency": "USD",
    "virtual_card_id": "VCN-68205561",
    "scenario": "clean"
@@ -4892,6 +5078,7 @@
    "booked_rate_usd": 909.75,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1043.76,
+   "factoring_rate_pct": 6.33,
    "currency": "USD",
    "virtual_card_id": "VCN-60357475",
    "scenario": "clean"
@@ -4916,6 +5103,7 @@
    "booked_rate_usd": 532.15,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 611.12,
+   "factoring_rate_pct": 6.69,
    "currency": "USD",
    "virtual_card_id": "VCN-94598956",
    "scenario": "in_range_extras"
@@ -4940,6 +5128,7 @@
    "booked_rate_usd": 826.1,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 944.15,
+   "factoring_rate_pct": 6.88,
    "currency": "USD",
    "virtual_card_id": "VCN-80215481",
    "scenario": "clean"
@@ -4964,6 +5153,7 @@
    "booked_rate_usd": 952.49,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1092.8,
+   "factoring_rate_pct": 7.14,
    "currency": "USD",
    "virtual_card_id": "VCN-78679929",
    "scenario": "clean"
@@ -4988,6 +5178,7 @@
    "booked_rate_usd": 1208.76,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1386.81,
+   "factoring_rate_pct": 6.66,
    "currency": "USD",
    "virtual_card_id": "VCN-67176108",
    "scenario": "clean"
@@ -5012,6 +5203,7 @@
    "booked_rate_usd": 959.54,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1100.88,
+   "factoring_rate_pct": 6.38,
    "currency": "USD",
    "virtual_card_id": "VCN-71275585",
    "scenario": "clean"
@@ -5036,6 +5228,7 @@
    "booked_rate_usd": 1116.3,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1280.73,
+   "factoring_rate_pct": 6.78,
    "currency": "USD",
    "virtual_card_id": "VCN-34328380",
    "scenario": "in_range_extras"
@@ -5060,6 +5253,7 @@
    "booked_rate_usd": 1779.45,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2041.57,
+   "factoring_rate_pct": 6.26,
    "currency": "USD",
    "virtual_card_id": "VCN-99904987",
    "scenario": "clean"
@@ -5084,6 +5278,7 @@
    "booked_rate_usd": 1203.03,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1380.24,
+   "factoring_rate_pct": 7.07,
    "currency": "USD",
    "virtual_card_id": "VCN-77856130",
    "scenario": "clean"
@@ -5108,6 +5303,7 @@
    "booked_rate_usd": 1338.37,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1536.99,
+   "factoring_rate_pct": 7.64,
    "currency": "USD",
    "virtual_card_id": "VCN-21813825",
    "scenario": "clean"
@@ -5132,6 +5328,7 @@
    "booked_rate_usd": 806.34,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 925.11,
+   "factoring_rate_pct": 6.68,
    "currency": "USD",
    "virtual_card_id": "VCN-97858385",
    "scenario": "clean"
@@ -5156,6 +5353,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 514.31,
+   "factoring_rate_pct": 6.83,
    "currency": "USD",
    "virtual_card_id": "VCN-10294869",
    "scenario": "clean"
@@ -5180,6 +5378,7 @@
    "booked_rate_usd": 1189.88,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1359.92,
+   "factoring_rate_pct": 6.52,
    "currency": "USD",
    "virtual_card_id": "VCN-35171649",
    "scenario": "clean"
@@ -5204,6 +5403,7 @@
    "booked_rate_usd": 1774.62,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 2028.21,
+   "factoring_rate_pct": 7.17,
    "currency": "USD",
    "virtual_card_id": "VCN-76951647",
    "scenario": "clean"
@@ -5228,6 +5428,7 @@
    "booked_rate_usd": 513.88,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 589.01,
+   "factoring_rate_pct": 6.45,
    "currency": "USD",
    "virtual_card_id": "VCN-77660514",
    "scenario": "clean"
@@ -5252,6 +5453,7 @@
    "booked_rate_usd": 992.81,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1139.05,
+   "factoring_rate_pct": 6.92,
    "currency": "USD",
    "virtual_card_id": "VCN-84300459",
    "scenario": "clean"
@@ -5276,6 +5478,7 @@
    "booked_rate_usd": 3160.36,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 3625.89,
+   "factoring_rate_pct": 7.35,
    "currency": "USD",
    "virtual_card_id": "VCN-88222933",
    "scenario": "clean"
@@ -5300,6 +5503,7 @@
    "booked_rate_usd": 502.06,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 576.57,
+   "factoring_rate_pct": 7.72,
    "currency": "USD",
    "virtual_card_id": "VCN-48468887",
    "scenario": "clean"
@@ -5324,6 +5528,7 @@
    "booked_rate_usd": 1473.44,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1692.1,
+   "factoring_rate_pct": 7.69,
    "currency": "USD",
    "virtual_card_id": "VCN-78574830",
    "scenario": "fraud_bank_changed",
@@ -5349,6 +5554,7 @@
    "booked_rate_usd": 573.2,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 657.64,
+   "factoring_rate_pct": 6.7,
    "currency": "USD",
    "virtual_card_id": "VCN-88971743",
    "scenario": "in_range_extras"
@@ -5373,6 +5579,7 @@
    "booked_rate_usd": 2107.26,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 2415.34,
+   "factoring_rate_pct": 7.37,
    "currency": "USD",
    "virtual_card_id": "VCN-54367386",
    "scenario": "in_range_extras"
@@ -5397,6 +5604,7 @@
    "booked_rate_usd": 2362.17,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 2707.52,
+   "factoring_rate_pct": 7.13,
    "currency": "USD",
    "virtual_card_id": "VCN-79874593",
    "scenario": "out_of_range"
@@ -5421,6 +5629,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 516.29,
+   "factoring_rate_pct": 6.6,
    "currency": "USD",
    "virtual_card_id": "VCN-25397719",
    "scenario": "in_range_extras"
@@ -5445,6 +5654,7 @@
    "booked_rate_usd": 2162.43,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2483.34,
+   "factoring_rate_pct": 6.8,
    "currency": "USD",
    "virtual_card_id": "VCN-79029393",
    "scenario": "in_range_extras"
@@ -5469,6 +5679,7 @@
    "booked_rate_usd": 788.3,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 905.29,
+   "factoring_rate_pct": 7.47,
    "currency": "USD",
    "virtual_card_id": "VCN-37592422",
    "scenario": "clean"
@@ -5493,6 +5704,7 @@
    "booked_rate_usd": 992.69,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1137.82,
+   "factoring_rate_pct": 7.31,
    "currency": "USD",
    "virtual_card_id": "VCN-64711545",
    "scenario": "clean"
@@ -5517,6 +5729,7 @@
    "booked_rate_usd": 1078.21,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1237.03,
+   "factoring_rate_pct": 6.62,
    "currency": "USD",
    "virtual_card_id": "VCN-48901209",
    "scenario": "clean"
@@ -5541,6 +5754,7 @@
    "booked_rate_usd": 462.97,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 531.17,
+   "factoring_rate_pct": 7.87,
    "currency": "USD",
    "virtual_card_id": "VCN-50004466",
    "scenario": "clean"
@@ -5565,6 +5779,7 @@
    "booked_rate_usd": 757.14,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 868.67,
+   "factoring_rate_pct": 7.62,
    "currency": "USD",
    "virtual_card_id": "VCN-31602928",
    "scenario": "clean"
@@ -5589,6 +5804,7 @@
    "booked_rate_usd": 2962.15,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 3398.47,
+   "factoring_rate_pct": 7.47,
    "currency": "USD",
    "virtual_card_id": "VCN-87926229",
    "scenario": "out_of_range"
@@ -5613,6 +5829,7 @@
    "booked_rate_usd": 2006.49,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2302.05,
+   "factoring_rate_pct": 7.34,
    "currency": "USD",
    "virtual_card_id": "VCN-52457517",
    "scenario": "clean"
@@ -5637,6 +5854,7 @@
    "booked_rate_usd": 1633.54,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1874.16,
+   "factoring_rate_pct": 6.03,
    "currency": "USD",
    "virtual_card_id": "VCN-33591471",
    "scenario": "in_range_extras"
@@ -5661,6 +5879,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 516.29,
+   "factoring_rate_pct": 6.22,
    "currency": "USD",
    "virtual_card_id": "VCN-14919926",
    "scenario": "clean"
@@ -5685,6 +5904,7 @@
    "booked_rate_usd": 1497.67,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1716.63,
+   "factoring_rate_pct": 7.42,
    "currency": "USD",
    "virtual_card_id": "VCN-98943201",
    "scenario": "clean"
@@ -5709,6 +5929,7 @@
    "booked_rate_usd": 1500.83,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1715.3,
+   "factoring_rate_pct": 7.11,
    "currency": "USD",
    "virtual_card_id": "VCN-41104946",
    "scenario": "clean"
@@ -5733,6 +5954,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 516.29,
+   "factoring_rate_pct": 7.75,
    "currency": "USD",
    "virtual_card_id": "VCN-45341684",
    "scenario": "clean"
@@ -5757,6 +5979,7 @@
    "booked_rate_usd": 669.98,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 768.67,
+   "factoring_rate_pct": 6.12,
    "currency": "USD",
    "virtual_card_id": "VCN-77355419",
    "scenario": "clean"
@@ -5781,6 +6004,7 @@
    "booked_rate_usd": 762.51,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 874.83,
+   "factoring_rate_pct": 6.95,
    "currency": "USD",
    "virtual_card_id": "VCN-74293132",
    "scenario": "in_range_extras"
@@ -5805,6 +6029,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 516.78,
+   "factoring_rate_pct": 6.49,
    "currency": "USD",
    "virtual_card_id": "VCN-98817918",
    "scenario": "clean"
@@ -5829,6 +6054,7 @@
    "booked_rate_usd": 2394.6,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2749.96,
+   "factoring_rate_pct": 7.18,
    "currency": "USD",
    "virtual_card_id": "VCN-32511225",
    "scenario": "clean"
@@ -5853,6 +6079,7 @@
    "booked_rate_usd": 1176.52,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1351.12,
+   "factoring_rate_pct": 7.44,
    "currency": "USD",
    "virtual_card_id": "VCN-81327320",
    "scenario": "clean"
@@ -5877,6 +6104,7 @@
    "booked_rate_usd": 1319.52,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1513.89,
+   "factoring_rate_pct": 6.56,
    "currency": "USD",
    "virtual_card_id": "VCN-61168696",
    "scenario": "in_range_extras"
@@ -5901,6 +6129,7 @@
    "booked_rate_usd": 1324.42,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1520.96,
+   "factoring_rate_pct": 7.23,
    "currency": "USD",
    "virtual_card_id": "VCN-87576121",
    "scenario": "fraud_off_route"
@@ -5925,6 +6154,7 @@
    "booked_rate_usd": 1601.66,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1837.58,
+   "factoring_rate_pct": 7.63,
    "currency": "USD",
    "virtual_card_id": "VCN-37339300",
    "scenario": "clean"
@@ -5949,6 +6179,7 @@
    "booked_rate_usd": 518.65,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 595.04,
+   "factoring_rate_pct": 7.59,
    "currency": "USD",
    "virtual_card_id": "VCN-31715773",
    "scenario": "clean"
@@ -5973,6 +6204,7 @@
    "booked_rate_usd": 1766.4,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 2018.82,
+   "factoring_rate_pct": 6.89,
    "currency": "USD",
    "virtual_card_id": "VCN-45311610",
    "scenario": "clean"
@@ -5997,6 +6229,7 @@
    "booked_rate_usd": 1523.27,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1747.65,
+   "factoring_rate_pct": 7.5,
    "currency": "USD",
    "virtual_card_id": "VCN-98165507",
    "scenario": "clean"
@@ -6021,6 +6254,7 @@
    "booked_rate_usd": 870.12,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 994.46,
+   "factoring_rate_pct": 7.47,
    "currency": "USD",
    "virtual_card_id": "VCN-88662348",
    "scenario": "in_range_extras"
@@ -6045,6 +6279,7 @@
    "booked_rate_usd": 1322.43,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1511.4,
+   "factoring_rate_pct": 7.41,
    "currency": "USD",
    "virtual_card_id": "VCN-64644684",
    "scenario": "fraud_wrong_recipient"
@@ -6069,6 +6304,7 @@
    "booked_rate_usd": 1993.23,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2286.83,
+   "factoring_rate_pct": 7.44,
    "currency": "USD",
    "virtual_card_id": "VCN-71585593",
    "scenario": "clean"
@@ -6093,6 +6329,7 @@
    "booked_rate_usd": 633.89,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 727.96,
+   "factoring_rate_pct": 6.75,
    "currency": "USD",
    "virtual_card_id": "VCN-63543563",
    "scenario": "clean"
@@ -6117,6 +6354,7 @@
    "booked_rate_usd": 1901.27,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2183.42,
+   "factoring_rate_pct": 6.55,
    "currency": "USD",
    "virtual_card_id": "VCN-43513553",
    "scenario": "clean"
@@ -6141,6 +6379,7 @@
    "booked_rate_usd": 691.52,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 793.39,
+   "factoring_rate_pct": 6.25,
    "currency": "USD",
    "virtual_card_id": "VCN-75874779",
    "scenario": "in_range_extras"
@@ -6165,6 +6404,7 @@
    "booked_rate_usd": 2103.35,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2413.17,
+   "factoring_rate_pct": 6.78,
    "currency": "USD",
    "virtual_card_id": "VCN-79552316",
    "scenario": "clean"
@@ -6189,6 +6429,7 @@
    "booked_rate_usd": 2104.01,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 2404.68,
+   "factoring_rate_pct": 7.62,
    "currency": "USD",
    "virtual_card_id": "VCN-76943778",
    "scenario": "clean"
@@ -6213,6 +6454,7 @@
    "booked_rate_usd": 797.83,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 916.22,
+   "factoring_rate_pct": 7.75,
    "currency": "USD",
    "virtual_card_id": "VCN-36315159",
    "scenario": "clean"
@@ -6237,6 +6479,7 @@
    "booked_rate_usd": 3121.83,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 3567.94,
+   "factoring_rate_pct": 6.55,
    "currency": "USD",
    "virtual_card_id": "VCN-63472598",
    "scenario": "clean"
@@ -6261,6 +6504,7 @@
    "booked_rate_usd": 2123.0,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2438.05,
+   "factoring_rate_pct": 6.04,
    "currency": "USD",
    "virtual_card_id": "VCN-57122567",
    "scenario": "error_duplicate_invoice"
@@ -6285,6 +6529,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 516.29,
+   "factoring_rate_pct": 6.6,
    "currency": "USD",
    "virtual_card_id": "VCN-32491607",
    "scenario": "in_range_extras"
@@ -6309,6 +6554,7 @@
    "booked_rate_usd": 2040.47,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 2332.06,
+   "factoring_rate_pct": 7.17,
    "currency": "USD",
    "virtual_card_id": "VCN-65564671",
    "scenario": "in_range_extras"
@@ -6333,6 +6579,7 @@
    "booked_rate_usd": 1425.81,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1637.4,
+   "factoring_rate_pct": 6.45,
    "currency": "USD",
    "virtual_card_id": "VCN-23949034",
    "scenario": "clean"
@@ -6357,6 +6604,7 @@
    "booked_rate_usd": 1571.31,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1804.5,
+   "factoring_rate_pct": 6.87,
    "currency": "USD",
    "virtual_card_id": "VCN-73908407",
    "scenario": "clean"
@@ -6381,6 +6629,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 516.29,
+   "factoring_rate_pct": 6.65,
    "currency": "USD",
    "virtual_card_id": "VCN-56596140",
    "scenario": "fraud_off_route"
@@ -6405,6 +6654,7 @@
    "booked_rate_usd": 1175.75,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1343.76,
+   "factoring_rate_pct": 6.33,
    "currency": "USD",
    "virtual_card_id": "VCN-49315407",
    "scenario": "clean"
@@ -6429,6 +6679,7 @@
    "booked_rate_usd": 711.39,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 815.4,
+   "factoring_rate_pct": 7.95,
    "currency": "USD",
    "virtual_card_id": "VCN-48208680",
    "scenario": "clean"
@@ -6453,6 +6704,7 @@
    "booked_rate_usd": 1107.13,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1268.99,
+   "factoring_rate_pct": 7.83,
    "currency": "USD",
    "virtual_card_id": "VCN-34956121",
    "scenario": "clean"
@@ -6477,6 +6729,7 @@
    "booked_rate_usd": 1044.83,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1198.74,
+   "factoring_rate_pct": 6.24,
    "currency": "USD",
    "virtual_card_id": "VCN-54325223",
    "scenario": "clean"
@@ -6501,6 +6754,7 @@
    "booked_rate_usd": 1291.32,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1481.54,
+   "factoring_rate_pct": 7.67,
    "currency": "USD",
    "virtual_card_id": "VCN-43173547",
    "scenario": "clean"
@@ -6525,6 +6779,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 516.29,
+   "factoring_rate_pct": 7.17,
    "currency": "USD",
    "virtual_card_id": "VCN-95700705",
    "scenario": "clean"
@@ -6549,6 +6804,7 @@
    "booked_rate_usd": 1019.06,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1164.68,
+   "factoring_rate_pct": 6.35,
    "currency": "USD",
    "virtual_card_id": "VCN-87990837",
    "scenario": "clean"
@@ -6573,6 +6829,7 @@
    "booked_rate_usd": 1774.21,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2035.55,
+   "factoring_rate_pct": 6.16,
    "currency": "USD",
    "virtual_card_id": "VCN-75477163",
    "scenario": "in_range_extras"
@@ -6597,6 +6854,7 @@
    "booked_rate_usd": 738.18,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 843.67,
+   "factoring_rate_pct": 6.85,
    "currency": "USD",
    "virtual_card_id": "VCN-35471281",
    "scenario": "clean"
@@ -6621,6 +6879,7 @@
    "booked_rate_usd": 979.41,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1123.67,
+   "factoring_rate_pct": 6.6,
    "currency": "USD",
    "virtual_card_id": "VCN-34901990",
    "scenario": "clean"
@@ -6645,6 +6904,7 @@
    "booked_rate_usd": 1884.3,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 2159.78,
+   "factoring_rate_pct": 7.54,
    "currency": "USD",
    "virtual_card_id": "VCN-96020669",
    "scenario": "clean"
@@ -6669,6 +6929,7 @@
    "booked_rate_usd": 705.54,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 809.47,
+   "factoring_rate_pct": 7.01,
    "currency": "USD",
    "virtual_card_id": "VCN-16588161",
    "scenario": "fraud_wrong_recipient"
@@ -6693,6 +6954,7 @@
    "booked_rate_usd": 2145.32,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 2451.89,
+   "factoring_rate_pct": 7.05,
    "currency": "USD",
    "virtual_card_id": "VCN-92803389",
    "scenario": "clean"
@@ -6717,6 +6979,7 @@
    "booked_rate_usd": 1774.76,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2036.18,
+   "factoring_rate_pct": 7.54,
    "currency": "USD",
    "virtual_card_id": "VCN-84950330",
    "scenario": "in_range_extras"
@@ -6741,6 +7004,7 @@
    "booked_rate_usd": 2135.01,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2449.5,
+   "factoring_rate_pct": 6.25,
    "currency": "USD",
    "virtual_card_id": "VCN-52299387",
    "scenario": "clean"
@@ -6765,6 +7029,7 @@
    "booked_rate_usd": 2780.96,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 3193.65,
+   "factoring_rate_pct": 6.55,
    "currency": "USD",
    "virtual_card_id": "VCN-63296593",
    "scenario": "clean"
@@ -6789,6 +7054,7 @@
    "booked_rate_usd": 1316.91,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1510.89,
+   "factoring_rate_pct": 6.58,
    "currency": "USD",
    "virtual_card_id": "VCN-22655004",
    "scenario": "in_range_extras"
@@ -6813,6 +7079,7 @@
    "booked_rate_usd": 1230.09,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1405.87,
+   "factoring_rate_pct": 7.54,
    "currency": "USD",
    "virtual_card_id": "VCN-89890579",
    "scenario": "clean"
@@ -6837,6 +7104,7 @@
    "booked_rate_usd": 917.57,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1053.73,
+   "factoring_rate_pct": 7.27,
    "currency": "USD",
    "virtual_card_id": "VCN-95078886",
    "scenario": "clean"
@@ -6861,6 +7129,7 @@
    "booked_rate_usd": 1539.59,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1766.37,
+   "factoring_rate_pct": 7.39,
    "currency": "USD",
    "virtual_card_id": "VCN-62925057",
    "scenario": "in_range_extras"
@@ -6885,6 +7154,7 @@
    "booked_rate_usd": 1020.17,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1171.57,
+   "factoring_rate_pct": 7.3,
    "currency": "USD",
    "virtual_card_id": "VCN-85318641",
    "scenario": "in_range_extras"
@@ -6909,6 +7179,7 @@
    "booked_rate_usd": 1979.66,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2273.45,
+   "factoring_rate_pct": 6.26,
    "currency": "USD",
    "virtual_card_id": "VCN-92707781",
    "scenario": "clean"
@@ -6933,6 +7204,7 @@
    "booked_rate_usd": 572.2,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 656.48,
+   "factoring_rate_pct": 6.71,
    "currency": "USD",
    "virtual_card_id": "VCN-11843251",
    "scenario": "clean"
@@ -6957,6 +7229,7 @@
    "booked_rate_usd": 1014.75,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1164.22,
+   "factoring_rate_pct": 6.01,
    "currency": "USD",
    "virtual_card_id": "VCN-60547291",
    "scenario": "clean"
@@ -6981,6 +7254,7 @@
    "booked_rate_usd": 1322.53,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1517.34,
+   "factoring_rate_pct": 7.22,
    "currency": "USD",
    "virtual_card_id": "VCN-49258091",
    "scenario": "clean"
@@ -7005,6 +7279,7 @@
    "booked_rate_usd": 1242.03,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1424.98,
+   "factoring_rate_pct": 7.97,
    "currency": "USD",
    "virtual_card_id": "VCN-54770958",
    "scenario": "clean"
@@ -7029,6 +7304,7 @@
    "booked_rate_usd": 1499.94,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1720.88,
+   "factoring_rate_pct": 6.6,
    "currency": "USD",
    "virtual_card_id": "VCN-40277197",
    "scenario": "fraud_off_route"
@@ -7053,6 +7329,7 @@
    "booked_rate_usd": 1286.19,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1475.65,
+   "factoring_rate_pct": 6.35,
    "currency": "USD",
    "virtual_card_id": "VCN-37750491",
    "scenario": "clean"
@@ -7077,6 +7354,7 @@
    "booked_rate_usd": 2103.07,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2412.85,
+   "factoring_rate_pct": 6.96,
    "currency": "USD",
    "virtual_card_id": "VCN-34714210",
    "scenario": "fraud_off_route"
@@ -7101,6 +7379,7 @@
    "booked_rate_usd": 985.01,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1129.02,
+   "factoring_rate_pct": 6.73,
    "currency": "USD",
    "virtual_card_id": "VCN-91282861",
    "scenario": "clean"
@@ -7125,6 +7404,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 516.29,
+   "factoring_rate_pct": 6.68,
    "currency": "USD",
    "virtual_card_id": "VCN-35938895",
    "scenario": "clean"
@@ -7149,6 +7429,7 @@
    "booked_rate_usd": 1541.59,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1761.88,
+   "factoring_rate_pct": 7.59,
    "currency": "USD",
    "virtual_card_id": "VCN-67385552",
    "scenario": "clean"
@@ -7173,6 +7454,7 @@
    "booked_rate_usd": 2360.36,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2710.64,
+   "factoring_rate_pct": 6.69,
    "currency": "USD",
    "virtual_card_id": "VCN-15268263",
    "scenario": "clean"
@@ -7197,6 +7479,7 @@
    "booked_rate_usd": 955.84,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1097.69,
+   "factoring_rate_pct": 7.84,
    "currency": "USD",
    "virtual_card_id": "VCN-96718276",
    "scenario": "clean"
@@ -7221,6 +7504,7 @@
    "booked_rate_usd": 1793.32,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2057.47,
+   "factoring_rate_pct": 7.93,
    "currency": "USD",
    "virtual_card_id": "VCN-43565477",
    "scenario": "clean"
@@ -7245,6 +7529,7 @@
    "booked_rate_usd": 2391.04,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2743.24,
+   "factoring_rate_pct": 6.36,
    "currency": "USD",
    "virtual_card_id": "VCN-83866174",
    "scenario": "clean"
@@ -7269,6 +7554,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 514.31,
+   "factoring_rate_pct": 7.83,
    "currency": "USD",
    "virtual_card_id": "VCN-27659164",
    "scenario": "clean"
@@ -7293,6 +7579,7 @@
    "booked_rate_usd": 1346.99,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1539.47,
+   "factoring_rate_pct": 6.12,
    "currency": "USD",
    "virtual_card_id": "VCN-42844845",
    "scenario": "clean"
@@ -7317,6 +7604,7 @@
    "booked_rate_usd": 2093.58,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2401.96,
+   "factoring_rate_pct": 7.23,
    "currency": "USD",
    "virtual_card_id": "VCN-24614652",
    "scenario": "clean"
@@ -7341,6 +7629,7 @@
    "booked_rate_usd": 2274.12,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2611.6,
+   "factoring_rate_pct": 7.43,
    "currency": "USD",
    "virtual_card_id": "VCN-59468550",
    "scenario": "fraud_wrong_recipient"
@@ -7365,6 +7654,7 @@
    "booked_rate_usd": 1777.21,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2040.95,
+   "factoring_rate_pct": 6.27,
    "currency": "USD",
    "virtual_card_id": "VCN-74916146",
    "scenario": "clean"
@@ -7389,6 +7679,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 516.78,
+   "factoring_rate_pct": 6.32,
    "currency": "USD",
    "virtual_card_id": "VCN-35978571",
    "scenario": "clean"
@@ -7413,6 +7704,7 @@
    "booked_rate_usd": 1975.64,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2266.65,
+   "factoring_rate_pct": 6.38,
    "currency": "USD",
    "virtual_card_id": "VCN-47799296",
    "scenario": "out_of_range"
@@ -7437,6 +7729,7 @@
    "booked_rate_usd": 1931.48,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2218.12,
+   "factoring_rate_pct": 6.99,
    "currency": "USD",
    "virtual_card_id": "VCN-73686372",
    "scenario": "clean"
@@ -7461,6 +7754,7 @@
    "booked_rate_usd": 1586.75,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1820.48,
+   "factoring_rate_pct": 6.67,
    "currency": "USD",
    "virtual_card_id": "VCN-37952515",
    "scenario": "clean"
@@ -7485,6 +7779,7 @@
    "booked_rate_usd": 1172.38,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1345.07,
+   "factoring_rate_pct": 6.06,
    "currency": "USD",
    "virtual_card_id": "VCN-52211394",
    "scenario": "clean"
@@ -7509,6 +7804,7 @@
    "booked_rate_usd": 1765.5,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2027.5,
+   "factoring_rate_pct": 6.41,
    "currency": "USD",
    "virtual_card_id": "VCN-74781956",
    "scenario": "clean"
@@ -7533,6 +7829,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 516.78,
+   "factoring_rate_pct": 7.31,
    "currency": "USD",
    "virtual_card_id": "VCN-10551617",
    "scenario": "clean"
@@ -7557,6 +7854,7 @@
    "booked_rate_usd": 1922.65,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2205.85,
+   "factoring_rate_pct": 7.73,
    "currency": "USD",
    "virtual_card_id": "VCN-48462422",
    "scenario": "clean"
@@ -7581,6 +7879,7 @@
    "booked_rate_usd": 2330.96,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2674.31,
+   "factoring_rate_pct": 6.49,
    "currency": "USD",
    "virtual_card_id": "VCN-48019546",
    "scenario": "clean"
@@ -7605,6 +7904,7 @@
    "booked_rate_usd": 1115.37,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1274.76,
+   "factoring_rate_pct": 6.98,
    "currency": "USD",
    "virtual_card_id": "VCN-92720444",
    "scenario": "clean"
@@ -7629,6 +7929,7 @@
    "booked_rate_usd": 1397.24,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1603.05,
+   "factoring_rate_pct": 7.07,
    "currency": "USD",
    "virtual_card_id": "VCN-29289997",
    "scenario": "clean"
@@ -7653,6 +7954,7 @@
    "booked_rate_usd": 1402.17,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1602.54,
+   "factoring_rate_pct": 6.13,
    "currency": "USD",
    "virtual_card_id": "VCN-91126594",
    "scenario": "fraud_wrong_recipient"
@@ -7677,6 +7979,7 @@
    "booked_rate_usd": 1378.23,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1581.24,
+   "factoring_rate_pct": 7.36,
    "currency": "USD",
    "virtual_card_id": "VCN-61514973",
    "scenario": "in_range_extras"
@@ -7701,6 +8004,7 @@
    "booked_rate_usd": 1318.55,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1506.97,
+   "factoring_rate_pct": 6.94,
    "currency": "USD",
    "virtual_card_id": "VCN-53671508",
    "scenario": "clean"
@@ -7725,6 +8029,7 @@
    "booked_rate_usd": 1871.63,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 2145.26,
+   "factoring_rate_pct": 7.58,
    "currency": "USD",
    "virtual_card_id": "VCN-29693143",
    "scenario": "in_range_extras"
@@ -7749,6 +8054,7 @@
    "booked_rate_usd": 1434.24,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1645.5,
+   "factoring_rate_pct": 7.96,
    "currency": "USD",
    "virtual_card_id": "VCN-27120235",
    "scenario": "in_range_extras"
@@ -7773,6 +8079,7 @@
    "booked_rate_usd": 1397.9,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1603.81,
+   "factoring_rate_pct": 6.82,
    "currency": "USD",
    "virtual_card_id": "VCN-61212793",
    "scenario": "clean"
@@ -7797,6 +8104,7 @@
    "booked_rate_usd": 1399.77,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1607.5,
+   "factoring_rate_pct": 7.49,
    "currency": "USD",
    "virtual_card_id": "VCN-75323947",
    "scenario": "in_range_extras"
@@ -7821,6 +8129,7 @@
    "booked_rate_usd": 1225.64,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1400.78,
+   "factoring_rate_pct": 6.56,
    "currency": "USD",
    "virtual_card_id": "VCN-67011913",
    "scenario": "clean"
@@ -7845,6 +8154,7 @@
    "booked_rate_usd": 1111.75,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1274.28,
+   "factoring_rate_pct": 6.2,
    "currency": "USD",
    "virtual_card_id": "VCN-29070658",
    "scenario": "in_range_extras"
@@ -7869,6 +8179,7 @@
    "booked_rate_usd": 2333.65,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2679.96,
+   "factoring_rate_pct": 6.93,
    "currency": "USD",
    "virtual_card_id": "VCN-72930506",
    "scenario": "clean"
@@ -7893,6 +8204,7 @@
    "booked_rate_usd": 1035.62,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1188.16,
+   "factoring_rate_pct": 6.54,
    "currency": "USD",
    "virtual_card_id": "VCN-87596783",
    "scenario": "clean"
@@ -7917,6 +8229,7 @@
    "booked_rate_usd": 1641.53,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1881.52,
+   "factoring_rate_pct": 7.04,
    "currency": "USD",
    "virtual_card_id": "VCN-11906295",
    "scenario": "clean"
@@ -7941,6 +8254,7 @@
    "booked_rate_usd": 1533.46,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1761.02,
+   "factoring_rate_pct": 7.76,
    "currency": "USD",
    "virtual_card_id": "VCN-89932574",
    "scenario": "clean"
@@ -7965,6 +8279,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 515.79,
+   "factoring_rate_pct": 6.34,
    "currency": "USD",
    "virtual_card_id": "VCN-73918769",
    "scenario": "error_missing_pod"
@@ -7989,6 +8304,7 @@
    "booked_rate_usd": 2727.8,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 3132.6,
+   "factoring_rate_pct": 7.96,
    "currency": "USD",
    "virtual_card_id": "VCN-61271721",
    "scenario": "out_of_range"
@@ -8013,6 +8329,7 @@
    "booked_rate_usd": 914.39,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1048.07,
+   "factoring_rate_pct": 7.7,
    "currency": "USD",
    "virtual_card_id": "VCN-71888947",
    "scenario": "clean"
@@ -8037,6 +8354,7 @@
    "booked_rate_usd": 712.77,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 816.98,
+   "factoring_rate_pct": 6.48,
    "currency": "USD",
    "virtual_card_id": "VCN-57179735",
    "scenario": "clean"
@@ -8061,6 +8379,7 @@
    "booked_rate_usd": 928.63,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1064.39,
+   "factoring_rate_pct": 6.36,
    "currency": "USD",
    "virtual_card_id": "VCN-60460287",
    "scenario": "clean"
@@ -8085,6 +8404,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 516.29,
+   "factoring_rate_pct": 7.71,
    "currency": "USD",
    "virtual_card_id": "VCN-47216895",
    "scenario": "clean"
@@ -8109,6 +8429,7 @@
    "booked_rate_usd": 997.96,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1143.86,
+   "factoring_rate_pct": 7.04,
    "currency": "USD",
    "virtual_card_id": "VCN-39311339",
    "scenario": "clean"
@@ -8133,6 +8454,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 516.78,
+   "factoring_rate_pct": 6.82,
    "currency": "USD",
    "virtual_card_id": "VCN-54269149",
    "scenario": "clean"
@@ -8157,6 +8479,7 @@
    "booked_rate_usd": 1673.35,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1917.99,
+   "factoring_rate_pct": 7.06,
    "currency": "USD",
    "virtual_card_id": "VCN-54753520",
    "scenario": "in_range_extras"
@@ -8181,6 +8504,7 @@
    "booked_rate_usd": 2628.09,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 3015.21,
+   "factoring_rate_pct": 7.6,
    "currency": "USD",
    "virtual_card_id": "VCN-24330160",
    "scenario": "clean"
@@ -8205,6 +8529,7 @@
    "booked_rate_usd": 524.88,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 602.2,
+   "factoring_rate_pct": 6.86,
    "currency": "USD",
    "virtual_card_id": "VCN-12203625",
    "scenario": "clean"
@@ -8229,6 +8554,7 @@
    "booked_rate_usd": 485.57,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 556.56,
+   "factoring_rate_pct": 7.12,
    "currency": "USD",
    "virtual_card_id": "VCN-97755782",
    "scenario": "out_of_range"
@@ -8253,6 +8579,7 @@
    "booked_rate_usd": 1862.02,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 2134.24,
+   "factoring_rate_pct": 7.93,
    "currency": "USD",
    "virtual_card_id": "VCN-18470495",
    "scenario": "clean"
@@ -8277,6 +8604,7 @@
    "booked_rate_usd": 1633.78,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1876.24,
+   "factoring_rate_pct": 7.42,
    "currency": "USD",
    "virtual_card_id": "VCN-26206185",
    "scenario": "clean"
@@ -8301,6 +8629,7 @@
    "booked_rate_usd": 956.92,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1093.66,
+   "factoring_rate_pct": 7.59,
    "currency": "USD",
    "virtual_card_id": "VCN-21964334",
    "scenario": "in_range_extras"
@@ -8325,6 +8654,7 @@
    "booked_rate_usd": 2235.41,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2567.15,
+   "factoring_rate_pct": 6.47,
    "currency": "USD",
    "virtual_card_id": "VCN-94180238",
    "scenario": "clean"
@@ -8349,6 +8679,7 @@
    "booked_rate_usd": 1161.09,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1332.12,
+   "factoring_rate_pct": 7.76,
    "currency": "USD",
    "virtual_card_id": "VCN-25123535",
    "scenario": "clean"
@@ -8373,6 +8704,7 @@
    "booked_rate_usd": 709.53,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 814.04,
+   "factoring_rate_pct": 7.52,
    "currency": "USD",
    "virtual_card_id": "VCN-82123324",
    "scenario": "clean"
@@ -8397,6 +8729,7 @@
    "booked_rate_usd": 988.34,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1133.92,
+   "factoring_rate_pct": 6.69,
    "currency": "USD",
    "virtual_card_id": "VCN-40572391",
    "scenario": "in_range_extras"
@@ -8421,6 +8754,7 @@
    "booked_rate_usd": 1292.0,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1482.32,
+   "factoring_rate_pct": 6.07,
    "currency": "USD",
    "virtual_card_id": "VCN-94828438",
    "scenario": "clean"
@@ -8445,6 +8779,7 @@
    "booked_rate_usd": 1011.75,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1161.9,
+   "factoring_rate_pct": 6.02,
    "currency": "USD",
    "virtual_card_id": "VCN-87594146",
    "scenario": "error_missing_pod"
@@ -8469,6 +8804,7 @@
    "booked_rate_usd": 1415.42,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1625.47,
+   "factoring_rate_pct": 6.61,
    "currency": "USD",
    "virtual_card_id": "VCN-89426243",
    "scenario": "in_range_extras"
@@ -8493,6 +8829,7 @@
    "booked_rate_usd": 1960.61,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 2247.26,
+   "factoring_rate_pct": 6.77,
    "currency": "USD",
    "virtual_card_id": "VCN-84958851",
    "scenario": "clean"
@@ -8517,6 +8854,7 @@
    "booked_rate_usd": 471.16,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 540.56,
+   "factoring_rate_pct": 6.62,
    "currency": "USD",
    "virtual_card_id": "VCN-72244899",
    "scenario": "error_duplicate_invoice"
@@ -8541,6 +8879,7 @@
    "booked_rate_usd": 1367.03,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1569.9,
+   "factoring_rate_pct": 6.98,
    "currency": "USD",
    "virtual_card_id": "VCN-92208524",
    "scenario": "clean"
@@ -8565,6 +8904,7 @@
    "booked_rate_usd": 627.75,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 720.91,
+   "factoring_rate_pct": 6.71,
    "currency": "USD",
    "virtual_card_id": "VCN-85263692",
    "scenario": "in_range_extras"
@@ -8589,6 +8929,7 @@
    "booked_rate_usd": 942.77,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1077.49,
+   "factoring_rate_pct": 7.16,
    "currency": "USD",
    "virtual_card_id": "VCN-56335527",
    "scenario": "in_range_extras"
@@ -8613,6 +8954,7 @@
    "booked_rate_usd": 1079.13,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1233.34,
+   "factoring_rate_pct": 6.13,
    "currency": "USD",
    "virtual_card_id": "VCN-24678711",
    "scenario": "clean"
@@ -8637,6 +8979,7 @@
    "booked_rate_usd": 970.6,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1109.3,
+   "factoring_rate_pct": 7.71,
    "currency": "USD",
    "virtual_card_id": "VCN-49126722",
    "scenario": "in_range_extras"
@@ -8661,6 +9004,7 @@
    "booked_rate_usd": 2076.64,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2382.53,
+   "factoring_rate_pct": 7.58,
    "currency": "USD",
    "virtual_card_id": "VCN-51137063",
    "scenario": "clean"
@@ -8685,6 +9029,7 @@
    "booked_rate_usd": 1847.19,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2119.28,
+   "factoring_rate_pct": 6.98,
    "currency": "USD",
    "virtual_card_id": "VCN-31643241",
    "scenario": "in_range_extras"
@@ -8709,6 +9054,7 @@
    "booked_rate_usd": 994.85,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1140.29,
+   "factoring_rate_pct": 6.0,
    "currency": "USD",
    "virtual_card_id": "VCN-64299436",
    "scenario": "in_range_extras"
@@ -8733,6 +9079,7 @@
    "booked_rate_usd": 1083.53,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1243.13,
+   "factoring_rate_pct": 6.35,
    "currency": "USD",
    "virtual_card_id": "VCN-55457454",
    "scenario": "clean"
@@ -8757,6 +9104,7 @@
    "booked_rate_usd": 1710.47,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1962.42,
+   "factoring_rate_pct": 6.56,
    "currency": "USD",
    "virtual_card_id": "VCN-47302753",
    "scenario": "in_range_extras"
@@ -8781,6 +9129,7 @@
    "booked_rate_usd": 2987.45,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 3427.5,
+   "factoring_rate_pct": 7.12,
    "currency": "USD",
    "virtual_card_id": "VCN-59610894",
    "scenario": "clean"
@@ -8805,6 +9154,7 @@
    "booked_rate_usd": 1502.81,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1717.56,
+   "factoring_rate_pct": 6.61,
    "currency": "USD",
    "virtual_card_id": "VCN-29278938",
    "scenario": "clean"
@@ -8829,6 +9179,7 @@
    "booked_rate_usd": 1399.7,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1599.72,
+   "factoring_rate_pct": 6.79,
    "currency": "USD",
    "virtual_card_id": "VCN-36743897",
    "scenario": "out_of_range"
@@ -8853,6 +9204,7 @@
    "booked_rate_usd": 740.95,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 849.28,
+   "factoring_rate_pct": 7.2,
    "currency": "USD",
    "virtual_card_id": "VCN-26666744",
    "scenario": "clean"
@@ -8877,6 +9229,7 @@
    "booked_rate_usd": 1543.83,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1771.23,
+   "factoring_rate_pct": 7.11,
    "currency": "USD",
    "virtual_card_id": "VCN-26050250",
    "scenario": "clean"
@@ -8901,6 +9254,7 @@
    "booked_rate_usd": 1228.52,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1409.49,
+   "factoring_rate_pct": 6.65,
    "currency": "USD",
    "virtual_card_id": "VCN-16538403",
    "scenario": "error_duplicate_invoice"
@@ -8925,6 +9279,7 @@
    "booked_rate_usd": 1352.25,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1551.44,
+   "factoring_rate_pct": 6.65,
    "currency": "USD",
    "virtual_card_id": "VCN-22862542",
    "scenario": "in_range_extras"
@@ -8949,6 +9304,7 @@
    "booked_rate_usd": 712.6,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 817.56,
+   "factoring_rate_pct": 7.85,
    "currency": "USD",
    "virtual_card_id": "VCN-66015266",
    "scenario": "clean"
@@ -8973,6 +9329,7 @@
    "booked_rate_usd": 2786.23,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 3199.7,
+   "factoring_rate_pct": 7.52,
    "currency": "USD",
    "virtual_card_id": "VCN-39844365",
    "scenario": "clean"
@@ -8997,6 +9354,7 @@
    "booked_rate_usd": 1482.96,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1694.88,
+   "factoring_rate_pct": 7.75,
    "currency": "USD",
    "virtual_card_id": "VCN-98555359",
    "scenario": "in_range_extras"
@@ -9021,6 +9379,7 @@
    "booked_rate_usd": 1576.52,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1807.0,
+   "factoring_rate_pct": 6.29,
    "currency": "USD",
    "virtual_card_id": "VCN-57271923",
    "scenario": "clean"
@@ -9045,6 +9404,7 @@
    "booked_rate_usd": 1022.83,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1172.37,
+   "factoring_rate_pct": 7.87,
    "currency": "USD",
    "virtual_card_id": "VCN-38724658",
    "scenario": "in_range_extras"
@@ -9069,6 +9429,7 @@
    "booked_rate_usd": 1785.76,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 2046.84,
+   "factoring_rate_pct": 7.77,
    "currency": "USD",
    "virtual_card_id": "VCN-76547299",
    "scenario": "clean"
@@ -9093,6 +9454,7 @@
    "booked_rate_usd": 1437.98,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1649.79,
+   "factoring_rate_pct": 6.48,
    "currency": "USD",
    "virtual_card_id": "VCN-35338291",
    "scenario": "in_range_extras"
@@ -9117,6 +9479,7 @@
    "booked_rate_usd": 934.89,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1071.58,
+   "factoring_rate_pct": 6.65,
    "currency": "USD",
    "virtual_card_id": "VCN-32645646",
    "scenario": "clean"
@@ -9141,6 +9504,7 @@
    "booked_rate_usd": 1034.51,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1186.89,
+   "factoring_rate_pct": 7.91,
    "currency": "USD",
    "virtual_card_id": "VCN-57794571",
    "scenario": "clean"
@@ -9165,6 +9529,7 @@
    "booked_rate_usd": 1144.05,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1311.31,
+   "factoring_rate_pct": 7.5,
    "currency": "USD",
    "virtual_card_id": "VCN-19157497",
    "scenario": "clean"
@@ -9189,6 +9554,7 @@
    "booked_rate_usd": 1563.3,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1795.3,
+   "factoring_rate_pct": 6.18,
    "currency": "USD",
    "virtual_card_id": "VCN-77752405",
    "scenario": "in_range_extras"
@@ -9213,6 +9579,7 @@
    "booked_rate_usd": 1775.8,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2037.38,
+   "factoring_rate_pct": 6.75,
    "currency": "USD",
    "virtual_card_id": "VCN-32031067",
    "scenario": "clean"
@@ -9237,6 +9604,7 @@
    "booked_rate_usd": 1084.27,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1242.79,
+   "factoring_rate_pct": 6.36,
    "currency": "USD",
    "virtual_card_id": "VCN-76396319",
    "scenario": "clean"
@@ -9261,6 +9629,7 @@
    "booked_rate_usd": 1078.02,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1236.81,
+   "factoring_rate_pct": 7.23,
    "currency": "USD",
    "virtual_card_id": "VCN-56324312",
    "scenario": "clean"
@@ -9285,6 +9654,7 @@
    "booked_rate_usd": 1691.68,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1940.86,
+   "factoring_rate_pct": 7.71,
    "currency": "USD",
    "virtual_card_id": "VCN-86242300",
    "scenario": "out_of_range"
@@ -9309,6 +9679,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 514.31,
+   "factoring_rate_pct": 7.37,
    "currency": "USD",
    "virtual_card_id": "VCN-32364326",
    "scenario": "clean"
@@ -9333,6 +9704,7 @@
    "booked_rate_usd": 1397.25,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1604.6,
+   "factoring_rate_pct": 6.69,
    "currency": "USD",
    "virtual_card_id": "VCN-87603784",
    "scenario": "clean"
@@ -9357,6 +9729,7 @@
    "booked_rate_usd": 2705.81,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 3104.38,
+   "factoring_rate_pct": 7.14,
    "currency": "USD",
    "virtual_card_id": "VCN-63995920",
    "scenario": "clean"
@@ -9381,6 +9754,7 @@
    "booked_rate_usd": 828.21,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 946.56,
+   "factoring_rate_pct": 7.07,
    "currency": "USD",
    "virtual_card_id": "VCN-85982862",
    "scenario": "clean"
@@ -9405,6 +9779,7 @@
    "booked_rate_usd": 1012.44,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1161.57,
+   "factoring_rate_pct": 7.53,
    "currency": "USD",
    "virtual_card_id": "VCN-48526473",
    "scenario": "clean"
@@ -9429,6 +9804,7 @@
    "booked_rate_usd": 1293.7,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1478.57,
+   "factoring_rate_pct": 7.59,
    "currency": "USD",
    "virtual_card_id": "VCN-31388734",
    "scenario": "clean"
@@ -9453,6 +9829,7 @@
    "booked_rate_usd": 1384.26,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1588.16,
+   "factoring_rate_pct": 7.01,
    "currency": "USD",
    "virtual_card_id": "VCN-64627534",
    "scenario": "clean"
@@ -9477,6 +9854,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 516.29,
+   "factoring_rate_pct": 6.13,
    "currency": "USD",
    "virtual_card_id": "VCN-41954134",
    "scenario": "clean"
@@ -9501,6 +9879,7 @@
    "booked_rate_usd": 776.2,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 891.39,
+   "factoring_rate_pct": 7.76,
    "currency": "USD",
    "virtual_card_id": "VCN-75814814",
    "scenario": "clean"
@@ -9525,6 +9904,7 @@
    "booked_rate_usd": 1921.43,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2204.46,
+   "factoring_rate_pct": 6.71,
    "currency": "USD",
    "virtual_card_id": "VCN-98882124",
    "scenario": "in_range_extras"
@@ -9549,6 +9929,7 @@
    "booked_rate_usd": 1579.2,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1804.87,
+   "factoring_rate_pct": 6.34,
    "currency": "USD",
    "virtual_card_id": "VCN-44297151",
    "scenario": "clean"
@@ -9573,6 +9954,7 @@
    "booked_rate_usd": 1457.73,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1670.85,
+   "factoring_rate_pct": 6.08,
    "currency": "USD",
    "virtual_card_id": "VCN-54657219",
    "scenario": "clean"
@@ -9597,6 +9979,7 @@
    "booked_rate_usd": 1528.49,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1755.31,
+   "factoring_rate_pct": 7.72,
    "currency": "USD",
    "virtual_card_id": "VCN-94578152",
    "scenario": "in_range_extras"
@@ -9621,6 +10004,7 @@
    "booked_rate_usd": 721.65,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 827.95,
+   "factoring_rate_pct": 6.91,
    "currency": "USD",
    "virtual_card_id": "VCN-44987861",
    "scenario": "clean"
@@ -9645,6 +10029,7 @@
    "booked_rate_usd": 759.78,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 871.7,
+   "factoring_rate_pct": 6.66,
    "currency": "USD",
    "virtual_card_id": "VCN-21942232",
    "scenario": "clean"
@@ -9669,6 +10054,7 @@
    "booked_rate_usd": 1154.25,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1324.27,
+   "factoring_rate_pct": 7.07,
    "currency": "USD",
    "virtual_card_id": "VCN-76323560",
    "scenario": "clean"
@@ -9693,6 +10079,7 @@
    "booked_rate_usd": 1387.28,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1591.62,
+   "factoring_rate_pct": 7.77,
    "currency": "USD",
    "virtual_card_id": "VCN-64831176",
    "scenario": "clean"
@@ -9717,6 +10104,7 @@
    "booked_rate_usd": 1787.84,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2051.19,
+   "factoring_rate_pct": 7.79,
    "currency": "USD",
    "virtual_card_id": "VCN-66813149",
    "scenario": "in_range_extras"
@@ -9741,6 +10129,7 @@
    "booked_rate_usd": 929.65,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1066.58,
+   "factoring_rate_pct": 6.89,
    "currency": "USD",
    "virtual_card_id": "VCN-27748717",
    "scenario": "clean"
@@ -9765,6 +10154,7 @@
    "booked_rate_usd": 951.75,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1091.95,
+   "factoring_rate_pct": 7.24,
    "currency": "USD",
    "virtual_card_id": "VCN-47715268",
    "scenario": "clean"
@@ -9789,6 +10179,7 @@
    "booked_rate_usd": 1593.45,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1826.41,
+   "factoring_rate_pct": 7.98,
    "currency": "USD",
    "virtual_card_id": "VCN-17143361",
    "scenario": "clean"
@@ -9813,6 +10204,7 @@
    "booked_rate_usd": 1048.73,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1203.21,
+   "factoring_rate_pct": 7.08,
    "currency": "USD",
    "virtual_card_id": "VCN-29871432",
    "scenario": "clean"
@@ -9837,6 +10229,7 @@
    "booked_rate_usd": 1387.62,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1593.55,
+   "factoring_rate_pct": 6.03,
    "currency": "USD",
    "virtual_card_id": "VCN-65890810",
    "scenario": "in_range_extras"
@@ -9861,6 +10254,7 @@
    "booked_rate_usd": 1332.76,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1527.61,
+   "factoring_rate_pct": 7.66,
    "currency": "USD",
    "virtual_card_id": "VCN-70942299",
    "scenario": "clean"
@@ -9885,6 +10279,7 @@
    "booked_rate_usd": 537.82,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 617.05,
+   "factoring_rate_pct": 6.29,
    "currency": "USD",
    "virtual_card_id": "VCN-19492426",
    "scenario": "in_range_extras"
@@ -9909,6 +10304,7 @@
    "booked_rate_usd": 1336.08,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1531.42,
+   "factoring_rate_pct": 7.87,
    "currency": "USD",
    "virtual_card_id": "VCN-51621092",
    "scenario": "clean"
@@ -9933,6 +10329,7 @@
    "booked_rate_usd": 1199.7,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1376.42,
+   "factoring_rate_pct": 7.95,
    "currency": "USD",
    "virtual_card_id": "VCN-22475197",
    "scenario": "error_duplicate_invoice"
@@ -9957,6 +10354,7 @@
    "booked_rate_usd": 788.12,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 903.34,
+   "factoring_rate_pct": 7.4,
    "currency": "USD",
    "virtual_card_id": "VCN-50320166",
    "scenario": "clean"
@@ -9981,6 +10379,7 @@
    "booked_rate_usd": 1878.84,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2157.66,
+   "factoring_rate_pct": 7.45,
    "currency": "USD",
    "virtual_card_id": "VCN-77571186",
    "scenario": "clean"
@@ -10005,6 +10404,7 @@
    "booked_rate_usd": 2014.25,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2310.95,
+   "factoring_rate_pct": 6.35,
    "currency": "USD",
    "virtual_card_id": "VCN-55813124",
    "scenario": "clean"
@@ -10029,6 +10429,7 @@
    "booked_rate_usd": 657.63,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 751.61,
+   "factoring_rate_pct": 6.48,
    "currency": "USD",
    "virtual_card_id": "VCN-50641125",
    "scenario": "clean"
@@ -10053,6 +10454,7 @@
    "booked_rate_usd": 1010.2,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1160.12,
+   "factoring_rate_pct": 6.24,
    "currency": "USD",
    "virtual_card_id": "VCN-68490538",
    "scenario": "in_range_extras"
@@ -10077,6 +10479,7 @@
    "booked_rate_usd": 717.2,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 823.64,
+   "factoring_rate_pct": 6.94,
    "currency": "USD",
    "virtual_card_id": "VCN-16834659",
    "scenario": "clean"
@@ -10101,6 +10504,7 @@
    "booked_rate_usd": 1819.82,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2087.88,
+   "factoring_rate_pct": 6.04,
    "currency": "USD",
    "virtual_card_id": "VCN-41125867",
    "scenario": "clean"
@@ -10125,6 +10529,7 @@
    "booked_rate_usd": 2034.63,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2334.33,
+   "factoring_rate_pct": 6.74,
    "currency": "USD",
    "virtual_card_id": "VCN-35796821",
    "scenario": "clean"
@@ -10149,6 +10554,7 @@
    "booked_rate_usd": 583.31,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 669.23,
+   "factoring_rate_pct": 7.55,
    "currency": "USD",
    "virtual_card_id": "VCN-73394367",
    "scenario": "in_range_extras"
@@ -10173,6 +10579,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 516.78,
+   "factoring_rate_pct": 7.95,
    "currency": "USD",
    "virtual_card_id": "VCN-57921617",
    "scenario": "clean"
@@ -10197,6 +10604,7 @@
    "booked_rate_usd": 1099.59,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1261.56,
+   "factoring_rate_pct": 6.03,
    "currency": "USD",
    "virtual_card_id": "VCN-30290817",
    "scenario": "clean"
@@ -10221,6 +10629,7 @@
    "booked_rate_usd": 1721.87,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1975.5,
+   "factoring_rate_pct": 7.17,
    "currency": "USD",
    "virtual_card_id": "VCN-94547252",
    "scenario": "in_range_extras"
@@ -10245,6 +10654,7 @@
    "booked_rate_usd": 1118.62,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1284.62,
+   "factoring_rate_pct": 7.76,
    "currency": "USD",
    "virtual_card_id": "VCN-42925764",
    "scenario": "clean"
@@ -10269,6 +10679,7 @@
    "booked_rate_usd": 1940.57,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2228.56,
+   "factoring_rate_pct": 7.73,
    "currency": "USD",
    "virtual_card_id": "VCN-64936566",
    "scenario": "clean"
@@ -10293,6 +10704,7 @@
    "booked_rate_usd": 1709.08,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1958.95,
+   "factoring_rate_pct": 7.93,
    "currency": "USD",
    "virtual_card_id": "VCN-98607345",
    "scenario": "clean"
@@ -10317,6 +10729,7 @@
    "booked_rate_usd": 1008.79,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1157.39,
+   "factoring_rate_pct": 7.28,
    "currency": "USD",
    "virtual_card_id": "VCN-47551535",
    "scenario": "in_range_extras"
@@ -10341,6 +10754,7 @@
    "booked_rate_usd": 1304.34,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1495.03,
+   "factoring_rate_pct": 7.52,
    "currency": "USD",
    "virtual_card_id": "VCN-26912191",
    "scenario": "clean"
@@ -10365,6 +10779,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 516.29,
+   "factoring_rate_pct": 6.95,
    "currency": "USD",
    "virtual_card_id": "VCN-18045780",
    "scenario": "clean"
@@ -10389,6 +10804,7 @@
    "booked_rate_usd": 1048.02,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1202.39,
+   "factoring_rate_pct": 6.08,
    "currency": "USD",
    "virtual_card_id": "VCN-57021454",
    "scenario": "clean"
@@ -10413,6 +10829,7 @@
    "booked_rate_usd": 1298.49,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1489.76,
+   "factoring_rate_pct": 7.3,
    "currency": "USD",
    "virtual_card_id": "VCN-65304811",
    "scenario": "clean"
@@ -10437,6 +10854,7 @@
    "booked_rate_usd": 2717.19,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 3120.43,
+   "factoring_rate_pct": 7.7,
    "currency": "USD",
    "virtual_card_id": "VCN-69066531",
    "scenario": "clean"
@@ -10461,6 +10879,7 @@
    "booked_rate_usd": 1565.0,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1797.25,
+   "factoring_rate_pct": 6.72,
    "currency": "USD",
    "virtual_card_id": "VCN-85031292",
    "scenario": "clean"
@@ -10485,6 +10904,7 @@
    "booked_rate_usd": 1001.26,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1148.74,
+   "factoring_rate_pct": 7.01,
    "currency": "USD",
    "virtual_card_id": "VCN-29077681",
    "scenario": "clean"
@@ -10509,6 +10929,7 @@
    "booked_rate_usd": 716.69,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 819.1,
+   "factoring_rate_pct": 7.01,
    "currency": "USD",
    "virtual_card_id": "VCN-55341868",
    "scenario": "clean"
@@ -10533,6 +10954,7 @@
    "booked_rate_usd": 1191.2,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1365.35,
+   "factoring_rate_pct": 6.93,
    "currency": "USD",
    "virtual_card_id": "VCN-61973818",
    "scenario": "clean"
@@ -10557,6 +10979,7 @@
    "booked_rate_usd": 2088.56,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2396.21,
+   "factoring_rate_pct": 7.42,
    "currency": "USD",
    "virtual_card_id": "VCN-96424699",
    "scenario": "clean"
@@ -10581,6 +11004,7 @@
    "booked_rate_usd": 956.0,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1097.87,
+   "factoring_rate_pct": 6.28,
    "currency": "USD",
    "virtual_card_id": "VCN-42921822",
    "scenario": "clean"
@@ -10605,6 +11029,7 @@
    "booked_rate_usd": 1340.03,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1537.41,
+   "factoring_rate_pct": 6.18,
    "currency": "USD",
    "virtual_card_id": "VCN-82716383",
    "scenario": "clean"
@@ -10629,6 +11054,7 @@
    "booked_rate_usd": 507.22,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 581.93,
+   "factoring_rate_pct": 7.09,
    "currency": "USD",
    "virtual_card_id": "VCN-65408139",
    "scenario": "out_of_range"
@@ -10653,6 +11079,7 @@
    "booked_rate_usd": 1141.23,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1309.33,
+   "factoring_rate_pct": 7.9,
    "currency": "USD",
    "virtual_card_id": "VCN-74984400",
    "scenario": "clean"
@@ -10677,6 +11104,7 @@
    "booked_rate_usd": 1397.82,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1602.18,
+   "factoring_rate_pct": 7.13,
    "currency": "USD",
    "virtual_card_id": "VCN-60104178",
    "scenario": "clean"
@@ -10701,6 +11129,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 514.31,
+   "factoring_rate_pct": 7.19,
    "currency": "USD",
    "virtual_card_id": "VCN-57166514",
    "scenario": "clean"
@@ -10725,6 +11154,7 @@
    "booked_rate_usd": 1190.87,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1367.6,
+   "factoring_rate_pct": 7.8,
    "currency": "USD",
    "virtual_card_id": "VCN-55987725",
    "scenario": "clean"
@@ -10749,6 +11179,7 @@
    "booked_rate_usd": 559.08,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 642.05,
+   "factoring_rate_pct": 6.22,
    "currency": "USD",
    "virtual_card_id": "VCN-33291610",
    "scenario": "in_range_extras"
@@ -10773,6 +11204,7 @@
    "booked_rate_usd": 886.02,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1016.53,
+   "factoring_rate_pct": 6.27,
    "currency": "USD",
    "virtual_card_id": "VCN-11131640",
    "scenario": "clean"
@@ -10797,6 +11229,7 @@
    "booked_rate_usd": 522.64,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 599.62,
+   "factoring_rate_pct": 7.87,
    "currency": "USD",
    "virtual_card_id": "VCN-41441568",
    "scenario": "in_range_extras"
@@ -10821,6 +11254,7 @@
    "booked_rate_usd": 1195.21,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1372.58,
+   "factoring_rate_pct": 7.19,
    "currency": "USD",
    "virtual_card_id": "VCN-18772554",
    "scenario": "in_range_extras"
@@ -10845,6 +11279,7 @@
    "booked_rate_usd": 1430.69,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1635.14,
+   "factoring_rate_pct": 7.96,
    "currency": "USD",
    "virtual_card_id": "VCN-53352227",
    "scenario": "in_range_extras"
@@ -10869,6 +11304,7 @@
    "booked_rate_usd": 930.69,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1068.8,
+   "factoring_rate_pct": 6.02,
    "currency": "USD",
    "virtual_card_id": "VCN-40283277",
    "scenario": "out_of_range"
@@ -10893,6 +11329,7 @@
    "booked_rate_usd": 2371.3,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2720.6,
+   "factoring_rate_pct": 6.16,
    "currency": "USD",
    "virtual_card_id": "VCN-41992031",
    "scenario": "clean"
@@ -10917,6 +11354,7 @@
    "booked_rate_usd": 1162.82,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1335.38,
+   "factoring_rate_pct": 7.46,
    "currency": "USD",
    "virtual_card_id": "VCN-27117564",
    "scenario": "clean"
@@ -10941,6 +11379,7 @@
    "booked_rate_usd": 733.12,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 841.1,
+   "factoring_rate_pct": 7.19,
    "currency": "USD",
    "virtual_card_id": "VCN-70855827",
    "scenario": "clean"
@@ -10965,6 +11404,7 @@
    "booked_rate_usd": 1950.45,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 2235.61,
+   "factoring_rate_pct": 7.05,
    "currency": "USD",
    "virtual_card_id": "VCN-89575878",
    "scenario": "clean"
@@ -10989,6 +11429,7 @@
    "booked_rate_usd": 1432.1,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1643.05,
+   "factoring_rate_pct": 7.32,
    "currency": "USD",
    "virtual_card_id": "VCN-51766978",
    "scenario": "clean"
@@ -11013,6 +11454,7 @@
    "booked_rate_usd": 2283.75,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2620.14,
+   "factoring_rate_pct": 7.36,
    "currency": "USD",
    "virtual_card_id": "VCN-36893461",
    "scenario": "clean"
@@ -11037,6 +11479,7 @@
    "booked_rate_usd": 1963.31,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2252.5,
+   "factoring_rate_pct": 6.12,
    "currency": "USD",
    "virtual_card_id": "VCN-76562688",
    "scenario": "clean"
@@ -11061,6 +11504,7 @@
    "booked_rate_usd": 701.48,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 805.59,
+   "factoring_rate_pct": 7.96,
    "currency": "USD",
    "virtual_card_id": "VCN-14028892",
    "scenario": "clean"
@@ -11085,6 +11529,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 516.29,
+   "factoring_rate_pct": 7.94,
    "currency": "USD",
    "virtual_card_id": "VCN-12884611",
    "scenario": "clean"
@@ -11109,6 +11554,7 @@
    "booked_rate_usd": 1113.01,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1276.96,
+   "factoring_rate_pct": 7.97,
    "currency": "USD",
    "virtual_card_id": "VCN-18774822",
    "scenario": "clean"
@@ -11133,6 +11579,7 @@
    "booked_rate_usd": 771.52,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 885.17,
+   "factoring_rate_pct": 7.14,
    "currency": "USD",
    "virtual_card_id": "VCN-29940314",
    "scenario": "clean"
@@ -11157,6 +11604,7 @@
    "booked_rate_usd": 1563.09,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1793.33,
+   "factoring_rate_pct": 6.13,
    "currency": "USD",
    "virtual_card_id": "VCN-96580039",
    "scenario": "in_range_extras"
@@ -11181,6 +11629,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 516.78,
+   "factoring_rate_pct": 7.39,
    "currency": "USD",
    "virtual_card_id": "VCN-39339153",
    "scenario": "clean"
@@ -11205,6 +11654,7 @@
    "booked_rate_usd": 1216.94,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1396.2,
+   "factoring_rate_pct": 7.19,
    "currency": "USD",
    "virtual_card_id": "VCN-67190488",
    "scenario": "in_range_extras"
@@ -11229,6 +11679,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 516.29,
+   "factoring_rate_pct": 7.84,
    "currency": "USD",
    "virtual_card_id": "VCN-47101128",
    "scenario": "clean"
@@ -11253,6 +11704,7 @@
    "booked_rate_usd": 979.6,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1122.81,
+   "factoring_rate_pct": 7.37,
    "currency": "USD",
    "virtual_card_id": "VCN-50194740",
    "scenario": "in_range_extras"
@@ -11277,6 +11729,7 @@
    "booked_rate_usd": 742.68,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 852.9,
+   "factoring_rate_pct": 7.06,
    "currency": "USD",
    "virtual_card_id": "VCN-71928212",
    "scenario": "clean"
@@ -11301,6 +11754,7 @@
    "booked_rate_usd": 1291.48,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1480.29,
+   "factoring_rate_pct": 6.35,
    "currency": "USD",
    "virtual_card_id": "VCN-77082048",
    "scenario": "in_range_extras"
@@ -11325,6 +11779,7 @@
    "booked_rate_usd": 1290.36,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1480.43,
+   "factoring_rate_pct": 6.31,
    "currency": "USD",
    "virtual_card_id": "VCN-61179711",
    "scenario": "clean"
@@ -11349,6 +11804,7 @@
    "booked_rate_usd": 831.49,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 954.89,
+   "factoring_rate_pct": 6.67,
    "currency": "USD",
    "virtual_card_id": "VCN-13602203",
    "scenario": "clean"
@@ -11373,6 +11829,7 @@
    "booked_rate_usd": 2899.05,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 3313.32,
+   "factoring_rate_pct": 6.41,
    "currency": "USD",
    "virtual_card_id": "VCN-27332564",
    "scenario": "clean"
@@ -11397,6 +11854,7 @@
    "booked_rate_usd": 1830.78,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2100.45,
+   "factoring_rate_pct": 6.78,
    "currency": "USD",
    "virtual_card_id": "VCN-46969062",
    "scenario": "out_of_range"
@@ -11421,6 +11879,7 @@
    "booked_rate_usd": 1920.1,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2202.93,
+   "factoring_rate_pct": 6.65,
    "currency": "USD",
    "virtual_card_id": "VCN-56544270",
    "scenario": "clean"
@@ -11445,6 +11904,7 @@
    "booked_rate_usd": 946.71,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1086.16,
+   "factoring_rate_pct": 7.09,
    "currency": "USD",
    "virtual_card_id": "VCN-42171352",
    "scenario": "clean"
@@ -11469,6 +11929,7 @@
    "booked_rate_usd": 1680.49,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1926.18,
+   "factoring_rate_pct": 7.05,
    "currency": "USD",
    "virtual_card_id": "VCN-65042162",
    "scenario": "clean"
@@ -11493,6 +11954,7 @@
    "booked_rate_usd": 1429.77,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1634.08,
+   "factoring_rate_pct": 7.99,
    "currency": "USD",
    "virtual_card_id": "VCN-28318112",
    "scenario": "clean"
@@ -11517,6 +11979,7 @@
    "booked_rate_usd": 1106.03,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1267.73,
+   "factoring_rate_pct": 7.03,
    "currency": "USD",
    "virtual_card_id": "VCN-32609429",
    "scenario": "in_range_extras"
@@ -11541,6 +12004,7 @@
    "booked_rate_usd": 1482.08,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1700.39,
+   "factoring_rate_pct": 6.23,
    "currency": "USD",
    "virtual_card_id": "VCN-62427912",
    "scenario": "in_range_extras"
@@ -11565,6 +12029,7 @@
    "booked_rate_usd": 720.4,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 827.31,
+   "factoring_rate_pct": 6.18,
    "currency": "USD",
    "virtual_card_id": "VCN-22965862",
    "scenario": "in_range_extras"
@@ -11589,6 +12054,7 @@
    "booked_rate_usd": 1136.81,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1303.02,
+   "factoring_rate_pct": 6.77,
    "currency": "USD",
    "virtual_card_id": "VCN-63974248",
    "scenario": "clean"
@@ -11613,6 +12079,7 @@
    "booked_rate_usd": 487.87,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 557.59,
+   "factoring_rate_pct": 7.82,
    "currency": "USD",
    "virtual_card_id": "VCN-43814834",
    "scenario": "error_missing_pod"
@@ -11637,6 +12104,7 @@
    "booked_rate_usd": 1327.62,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1523.18,
+   "factoring_rate_pct": 7.28,
    "currency": "USD",
    "virtual_card_id": "VCN-12368781",
    "scenario": "clean"
@@ -11661,6 +12129,7 @@
    "booked_rate_usd": 958.54,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1100.79,
+   "factoring_rate_pct": 6.38,
    "currency": "USD",
    "virtual_card_id": "VCN-60267710",
    "scenario": "clean"
@@ -11685,6 +12154,7 @@
    "booked_rate_usd": 534.66,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 614.01,
+   "factoring_rate_pct": 7.42,
    "currency": "USD",
    "virtual_card_id": "VCN-96979318",
    "scenario": "clean"
@@ -11709,6 +12179,7 @@
    "booked_rate_usd": 1305.1,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1498.77,
+   "factoring_rate_pct": 6.5,
    "currency": "USD",
    "virtual_card_id": "VCN-34635056",
    "scenario": "clean"
@@ -11733,6 +12204,7 @@
    "booked_rate_usd": 1827.63,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 2098.86,
+   "factoring_rate_pct": 6.68,
    "currency": "USD",
    "virtual_card_id": "VCN-72689644",
    "scenario": "clean"
@@ -11757,6 +12229,7 @@
    "booked_rate_usd": 744.49,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 853.34,
+   "factoring_rate_pct": 6.47,
    "currency": "USD",
    "virtual_card_id": "VCN-73178094",
    "scenario": "clean"
@@ -11781,6 +12254,7 @@
    "booked_rate_usd": 802.39,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 920.58,
+   "factoring_rate_pct": 7.52,
    "currency": "USD",
    "virtual_card_id": "VCN-44533110",
    "scenario": "in_range_extras"
@@ -11805,6 +12279,7 @@
    "booked_rate_usd": 1336.76,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1533.66,
+   "factoring_rate_pct": 6.25,
    "currency": "USD",
    "virtual_card_id": "VCN-62968985",
    "scenario": "clean"
@@ -11829,6 +12304,7 @@
    "booked_rate_usd": 1250.98,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1436.62,
+   "factoring_rate_pct": 6.78,
    "currency": "USD",
    "virtual_card_id": "VCN-95225538",
    "scenario": "clean"
@@ -11853,6 +12329,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 516.78,
+   "factoring_rate_pct": 6.86,
    "currency": "USD",
    "virtual_card_id": "VCN-44129962",
    "scenario": "fraud_bank_changed",
@@ -11878,6 +12355,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 516.78,
+   "factoring_rate_pct": 7.92,
    "currency": "USD",
    "virtual_card_id": "VCN-43939802",
    "scenario": "clean"
@@ -11902,6 +12380,7 @@
    "booked_rate_usd": 1136.14,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1304.74,
+   "factoring_rate_pct": 6.55,
    "currency": "USD",
    "virtual_card_id": "VCN-32602089",
    "scenario": "clean"
@@ -11926,6 +12405,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 516.78,
+   "factoring_rate_pct": 7.17,
    "currency": "USD",
    "virtual_card_id": "VCN-86113817",
    "scenario": "clean"
@@ -11950,6 +12430,7 @@
    "booked_rate_usd": 1404.64,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1611.54,
+   "factoring_rate_pct": 6.35,
    "currency": "USD",
    "virtual_card_id": "VCN-18625158",
    "scenario": "clean"
@@ -11974,6 +12455,7 @@
    "booked_rate_usd": 1436.47,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1648.06,
+   "factoring_rate_pct": 7.86,
    "currency": "USD",
    "virtual_card_id": "VCN-75219904",
    "scenario": "fraud_bank_changed",
@@ -11999,6 +12481,7 @@
    "booked_rate_usd": 1335.48,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1532.2,
+   "factoring_rate_pct": 6.69,
    "currency": "USD",
    "virtual_card_id": "VCN-71326664",
    "scenario": "clean"
@@ -12023,6 +12506,7 @@
    "booked_rate_usd": 1109.5,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1268.05,
+   "factoring_rate_pct": 7.23,
    "currency": "USD",
    "virtual_card_id": "VCN-10419981",
    "scenario": "in_range_extras"
@@ -12047,6 +12531,7 @@
    "booked_rate_usd": 1709.41,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1953.69,
+   "factoring_rate_pct": 7.93,
    "currency": "USD",
    "virtual_card_id": "VCN-61654839",
    "scenario": "clean"
@@ -12071,6 +12556,7 @@
    "booked_rate_usd": 731.51,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 839.26,
+   "factoring_rate_pct": 6.14,
    "currency": "USD",
    "virtual_card_id": "VCN-25526124",
    "scenario": "clean"
@@ -12095,6 +12581,7 @@
    "booked_rate_usd": 1330.49,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1527.93,
+   "factoring_rate_pct": 6.35,
    "currency": "USD",
    "virtual_card_id": "VCN-26521948",
    "scenario": "in_range_extras"
@@ -12119,6 +12606,7 @@
    "booked_rate_usd": 1338.8,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1536.01,
+   "factoring_rate_pct": 6.03,
    "currency": "USD",
    "virtual_card_id": "VCN-41322048",
    "scenario": "clean"
@@ -12143,6 +12631,7 @@
    "booked_rate_usd": 1324.57,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1519.68,
+   "factoring_rate_pct": 6.09,
    "currency": "USD",
    "virtual_card_id": "VCN-18306055",
    "scenario": "out_of_range"
@@ -12167,6 +12656,7 @@
    "booked_rate_usd": 472.12,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 541.66,
+   "factoring_rate_pct": 7.89,
    "currency": "USD",
    "virtual_card_id": "VCN-39380829",
    "scenario": "clean"
@@ -12191,6 +12681,7 @@
    "booked_rate_usd": 1176.07,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1349.3,
+   "factoring_rate_pct": 7.92,
    "currency": "USD",
    "virtual_card_id": "VCN-76441201",
    "scenario": "clean"
@@ -12215,6 +12706,7 @@
    "booked_rate_usd": 996.23,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 1138.59,
+   "factoring_rate_pct": 6.01,
    "currency": "USD",
    "virtual_card_id": "VCN-12894515",
    "scenario": "in_range_extras"
@@ -12239,6 +12731,7 @@
    "booked_rate_usd": 1124.62,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1290.28,
+   "factoring_rate_pct": 7.42,
    "currency": "USD",
    "virtual_card_id": "VCN-71408972",
    "scenario": "clean"
@@ -12263,6 +12756,7 @@
    "booked_rate_usd": 1648.86,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 1891.74,
+   "factoring_rate_pct": 7.27,
    "currency": "USD",
    "virtual_card_id": "VCN-32578497",
    "scenario": "clean"
@@ -12287,6 +12781,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 516.78,
+   "factoring_rate_pct": 7.45,
    "currency": "USD",
    "virtual_card_id": "VCN-50626311",
    "scenario": "in_range_extras"
@@ -12311,6 +12806,7 @@
    "booked_rate_usd": 1711.26,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 1961.44,
+   "factoring_rate_pct": 6.13,
    "currency": "USD",
    "virtual_card_id": "VCN-13090599",
    "scenario": "in_range_extras"
@@ -12335,6 +12831,7 @@
    "booked_rate_usd": 1756.96,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2015.76,
+   "factoring_rate_pct": 7.43,
    "currency": "USD",
    "virtual_card_id": "VCN-62854477",
    "scenario": "in_range_extras"
@@ -12359,6 +12856,7 @@
    "booked_rate_usd": 450,
    "fuel_surcharge_pct": 3.9,
    "approved_max_usd": 514.31,
+   "factoring_rate_pct": 6.27,
    "currency": "USD",
    "virtual_card_id": "VCN-87186069",
    "scenario": "fraud_bank_changed",
@@ -12384,6 +12882,7 @@
    "booked_rate_usd": 2674.14,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 3068.04,
+   "factoring_rate_pct": 6.72,
    "currency": "USD",
    "virtual_card_id": "VCN-79718468",
    "scenario": "clean"
@@ -12408,6 +12907,7 @@
    "booked_rate_usd": 1222.77,
    "fuel_surcharge_pct": 4.4,
    "approved_max_usd": 1404.23,
+   "factoring_rate_pct": 7.38,
    "currency": "USD",
    "virtual_card_id": "VCN-50226291",
    "scenario": "clean"
@@ -12432,6 +12932,7 @@
    "booked_rate_usd": 473.74,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 543.0,
+   "factoring_rate_pct": 6.18,
    "currency": "USD",
    "virtual_card_id": "VCN-67088619",
    "scenario": "clean"
@@ -12456,6 +12957,7 @@
    "booked_rate_usd": 1812.14,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 2077.08,
+   "factoring_rate_pct": 7.21,
    "currency": "USD",
    "virtual_card_id": "VCN-60860721",
    "scenario": "clean"
@@ -12480,6 +12982,7 @@
    "booked_rate_usd": 2001.76,
    "fuel_surcharge_pct": 4.2,
    "approved_max_usd": 2294.41,
+   "factoring_rate_pct": 7.69,
    "currency": "USD",
    "virtual_card_id": "VCN-60621018",
    "scenario": "clean"
@@ -12504,6 +13007,7 @@
    "booked_rate_usd": 2140.16,
    "fuel_surcharge_pct": 4.3,
    "approved_max_usd": 2455.41,
+   "factoring_rate_pct": 6.13,
    "currency": "USD",
    "virtual_card_id": "VCN-16437523",
    "scenario": "clean"
@@ -54723,7 +55227,7 @@
    "total_fee_usd": 40.7,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 40.7,
-   "carrier_factoring_avoided_usd": 96.21
+   "carrier_factoring_avoided_usd": 110.27
   },
   {
    "payment_id": "PMT-10004",
@@ -54849,7 +55353,7 @@
    "total_fee_usd": 62.74,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 62.74,
-   "carrier_factoring_avoided_usd": 148.29
+   "carrier_factoring_avoided_usd": 148.97
   },
   {
    "payment_id": "PMT-10010",
@@ -54912,7 +55416,7 @@
    "total_fee_usd": 42.27,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 42.27,
-   "carrier_factoring_avoided_usd": 121.42
+   "carrier_factoring_avoided_usd": 117.73
   },
   {
    "payment_id": "PMT-10013",
@@ -54996,7 +55500,7 @@
    "total_fee_usd": 18.84,
    "fee_paid_by_carrier_usd": 11.3,
    "fee_paid_by_payer_usd": 7.54,
-   "carrier_factoring_avoided_usd": 54.13
+   "carrier_factoring_avoided_usd": 41.59
   },
   {
    "payment_id": "PMT-10017",
@@ -55038,7 +55542,7 @@
    "total_fee_usd": 28.08,
    "fee_paid_by_carrier_usd": 16.85,
    "fee_paid_by_payer_usd": 11.23,
-   "carrier_factoring_avoided_usd": 72.5
+   "carrier_factoring_avoided_usd": 65.66
   },
   {
    "payment_id": "PMT-10019",
@@ -55101,7 +55605,7 @@
    "total_fee_usd": 54.85,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 54.85,
-   "carrier_factoring_avoided_usd": 157.57
+   "carrier_factoring_avoided_usd": 127.85
   },
   {
    "payment_id": "PMT-10022",
@@ -55143,7 +55647,7 @@
    "total_fee_usd": 38.76,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 38.76,
-   "carrier_factoring_avoided_usd": 108.54
+   "carrier_factoring_avoided_usd": 101.77
   },
   {
    "payment_id": "PMT-10024",
@@ -55206,7 +55710,7 @@
    "total_fee_usd": 43.66,
    "fee_paid_by_carrier_usd": 43.66,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 122.26
+   "carrier_factoring_avoided_usd": 121.46
   },
   {
    "payment_id": "PMT-10027",
@@ -55290,7 +55794,7 @@
    "total_fee_usd": 28.74,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 28.74,
-   "carrier_factoring_avoided_usd": 71.05
+   "carrier_factoring_avoided_usd": 82.13
   },
   {
    "payment_id": "PMT-10031",
@@ -55311,7 +55815,7 @@
    "total_fee_usd": 24.1,
    "fee_paid_by_carrier_usd": 14.46,
    "fee_paid_by_payer_usd": 9.64,
-   "carrier_factoring_avoided_usd": 58.73
+   "carrier_factoring_avoided_usd": 58.64
   },
   {
    "payment_id": "PMT-10032",
@@ -55353,7 +55857,7 @@
    "total_fee_usd": 26.29,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 26.29,
-   "carrier_factoring_avoided_usd": 73.6
+   "carrier_factoring_avoided_usd": 60.02
   },
   {
    "payment_id": "PMT-10034",
@@ -55416,7 +55920,7 @@
    "total_fee_usd": 39.2,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 39.2,
-   "carrier_factoring_avoided_usd": 112.61
+   "carrier_factoring_avoided_usd": 108.62
   },
   {
    "payment_id": "PMT-10037",
@@ -55584,7 +56088,7 @@
    "total_fee_usd": 29.73,
    "fee_paid_by_carrier_usd": 29.73,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 85.41
+   "carrier_factoring_avoided_usd": 67.03
   },
   {
    "payment_id": "PMT-10045",
@@ -55689,7 +56193,7 @@
    "total_fee_usd": 29.66,
    "fee_paid_by_carrier_usd": 29.66,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 76.56
+   "carrier_factoring_avoided_usd": 84.11
   },
   {
    "payment_id": "PMT-10050",
@@ -55710,7 +56214,7 @@
    "total_fee_usd": 59.0,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 59.0,
-   "carrier_factoring_avoided_usd": 145.9
+   "carrier_factoring_avoided_usd": 169.5
   },
   {
    "payment_id": "PMT-10051",
@@ -55731,7 +56235,7 @@
    "total_fee_usd": 44.12,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 44.12,
-   "carrier_factoring_avoided_usd": 109.1
+   "carrier_factoring_avoided_usd": 106.05
   },
   {
    "payment_id": "PMT-10052",
@@ -55941,7 +56445,7 @@
    "total_fee_usd": 36.31,
    "fee_paid_by_carrier_usd": 36.31,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 80.55
+   "carrier_factoring_avoided_usd": 89.93
   },
   {
    "payment_id": "PMT-10062",
@@ -55983,7 +56487,7 @@
    "total_fee_usd": 32.19,
    "fee_paid_by_carrier_usd": 32.19,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 83.11
+   "carrier_factoring_avoided_usd": 88.61
   },
   {
    "payment_id": "PMT-10064",
@@ -56004,7 +56508,7 @@
    "total_fee_usd": 43.27,
    "fee_paid_by_carrier_usd": 25.96,
    "fee_paid_by_payer_usd": 17.31,
-   "carrier_factoring_avoided_usd": 106.99
+   "carrier_factoring_avoided_usd": 121.63
   },
   {
    "payment_id": "PMT-10065",
@@ -56067,7 +56571,7 @@
    "total_fee_usd": 12.91,
    "fee_paid_by_carrier_usd": 12.91,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 28.63
+   "carrier_factoring_avoided_usd": 34.45
   },
   {
    "payment_id": "PMT-10068",
@@ -56088,7 +56592,7 @@
    "total_fee_usd": 28.01,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 28.01,
-   "carrier_factoring_avoided_usd": 78.41
+   "carrier_factoring_avoided_usd": 72.2
   },
   {
    "payment_id": "PMT-10069",
@@ -56172,7 +56676,7 @@
    "total_fee_usd": 85.65,
    "fee_paid_by_carrier_usd": 51.39,
    "fee_paid_by_payer_usd": 34.26,
-   "carrier_factoring_avoided_usd": 246.06
+   "carrier_factoring_avoided_usd": 225.82
   },
   {
    "payment_id": "PMT-10073",
@@ -56193,7 +56697,7 @@
    "total_fee_usd": 28.63,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 28.63,
-   "carrier_factoring_avoided_usd": 70.79
+   "carrier_factoring_avoided_usd": 80.37
   },
   {
    "payment_id": "PMT-10074",
@@ -56277,7 +56781,7 @@
    "total_fee_usd": 28.05,
    "fee_paid_by_carrier_usd": 16.83,
    "fee_paid_by_payer_usd": 11.22,
-   "carrier_factoring_avoided_usd": 62.21
+   "carrier_factoring_avoided_usd": 69.35
   },
   {
    "payment_id": "PMT-10078",
@@ -56445,7 +56949,7 @@
    "total_fee_usd": 68.82,
    "fee_paid_by_carrier_usd": 68.82,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 192.7
+   "carrier_factoring_avoided_usd": 195.95
   },
   {
    "payment_id": "PMT-10086",
@@ -56508,7 +57012,7 @@
    "total_fee_usd": 37.57,
    "fee_paid_by_carrier_usd": 37.57,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 105.2
+   "carrier_factoring_avoided_usd": 91.67
   },
   {
    "payment_id": "PMT-10089",
@@ -56571,7 +57075,7 @@
    "total_fee_usd": 18.74,
    "fee_paid_by_carrier_usd": 11.24,
    "fee_paid_by_payer_usd": 7.5,
-   "carrier_factoring_avoided_usd": 41.59
+   "carrier_factoring_avoided_usd": 51.81
   },
   {
    "payment_id": "PMT-10092",
@@ -56634,7 +57138,7 @@
    "total_fee_usd": 30.24,
    "fee_paid_by_carrier_usd": 18.14,
    "fee_paid_by_payer_usd": 12.1,
-   "carrier_factoring_avoided_usd": 73.68
+   "carrier_factoring_avoided_usd": 71.7
   },
   {
    "payment_id": "PMT-10095",
@@ -56697,7 +57201,7 @@
    "total_fee_usd": 78.74,
    "fee_paid_by_carrier_usd": 78.74,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 194.7
+   "carrier_factoring_avoided_usd": 184.11
   },
   {
    "payment_id": "PMT-10098",
@@ -56718,7 +57222,7 @@
    "total_fee_usd": 29.56,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 29.56,
-   "carrier_factoring_avoided_usd": 72.02
+   "carrier_factoring_avoided_usd": 66.86
   },
   {
    "payment_id": "PMT-10099",
@@ -56760,7 +57264,7 @@
    "total_fee_usd": 55.59,
    "fee_paid_by_carrier_usd": 33.35,
    "fee_paid_by_payer_usd": 22.24,
-   "carrier_factoring_avoided_usd": 123.32
+   "carrier_factoring_avoided_usd": 126.15
   },
   {
    "payment_id": "PMT-10101",
@@ -56781,7 +57285,7 @@
    "total_fee_usd": 27.41,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 27.41,
-   "carrier_factoring_avoided_usd": 60.8
+   "carrier_factoring_avoided_usd": 70.07
   },
   {
    "payment_id": "PMT-10102",
@@ -56823,7 +57327,7 @@
    "total_fee_usd": 43.57,
    "fee_paid_by_carrier_usd": 26.14,
    "fee_paid_by_payer_usd": 17.43,
-   "carrier_factoring_avoided_usd": 121.99
+   "carrier_factoring_avoided_usd": 95.22
   },
   {
    "payment_id": "PMT-10104",
@@ -56844,7 +57348,7 @@
    "total_fee_usd": 85.36,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 85.36,
-   "carrier_factoring_avoided_usd": 211.09
+   "carrier_factoring_avoided_usd": 247.72
   },
   {
    "payment_id": "PMT-10105",
@@ -56865,7 +57369,7 @@
    "total_fee_usd": 50.43,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 50.43,
-   "carrier_factoring_avoided_usd": 111.86
+   "carrier_factoring_avoided_usd": 113.51
   },
   {
    "payment_id": "PMT-10106",
@@ -56886,7 +57390,7 @@
    "total_fee_usd": 20.97,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 20.97,
-   "carrier_factoring_avoided_usd": 60.23
+   "carrier_factoring_avoided_usd": 59.62
   },
   {
    "payment_id": "PMT-10107",
@@ -56991,7 +57495,7 @@
    "total_fee_usd": 39.12,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 39.12,
-   "carrier_factoring_avoided_usd": 112.37
+   "carrier_factoring_avoided_usd": 108.25
   },
   {
    "payment_id": "PMT-10112",
@@ -57012,7 +57516,7 @@
    "total_fee_usd": 59.29,
    "fee_paid_by_carrier_usd": 59.29,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 153.09
+   "carrier_factoring_avoided_usd": 152.22
   },
   {
    "payment_id": "PMT-10113",
@@ -57054,7 +57558,7 @@
    "total_fee_usd": 19.3,
    "fee_paid_by_carrier_usd": 11.58,
    "fee_paid_by_payer_usd": 7.72,
-   "carrier_factoring_avoided_usd": 45.62
+   "carrier_factoring_avoided_usd": 43.44
   },
   {
    "payment_id": "PMT-10115",
@@ -57180,7 +57684,7 @@
    "total_fee_usd": 39.93,
    "fee_paid_by_carrier_usd": 39.93,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 94.37
+   "carrier_factoring_avoided_usd": 100.04
   },
   {
    "payment_id": "PMT-10121",
@@ -57264,7 +57768,7 @@
    "total_fee_usd": 76.86,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 76.86,
-   "carrier_factoring_avoided_usd": 187.25
+   "carrier_factoring_avoided_usd": 220.51
   },
   {
    "payment_id": "PMT-10125",
@@ -57369,7 +57873,7 @@
    "total_fee_usd": 48.26,
    "fee_paid_by_carrier_usd": 28.96,
    "fee_paid_by_payer_usd": 19.3,
-   "carrier_factoring_avoided_usd": 135.15
+   "carrier_factoring_avoided_usd": 139.89
   },
   {
    "payment_id": "PMT-10130",
@@ -57432,7 +57936,7 @@
    "total_fee_usd": 18.99,
    "fee_paid_by_carrier_usd": 11.39,
    "fee_paid_by_payer_usd": 7.6,
-   "carrier_factoring_avoided_usd": 46.26
+   "carrier_factoring_avoided_usd": 44.19
   },
   {
    "payment_id": "PMT-10133",
@@ -57537,7 +58041,7 @@
    "total_fee_usd": 22.44,
    "fee_paid_by_carrier_usd": 13.46,
    "fee_paid_by_payer_usd": 8.98,
-   "carrier_factoring_avoided_usd": 64.48
+   "carrier_factoring_avoided_usd": 51.83
   },
   {
    "payment_id": "PMT-10138",
@@ -57579,7 +58083,7 @@
    "total_fee_usd": 31.49,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 31.49,
-   "carrier_factoring_avoided_usd": 81.29
+   "carrier_factoring_avoided_usd": 79.23
   },
   {
    "payment_id": "PMT-10140",
@@ -57684,7 +58188,7 @@
    "total_fee_usd": 63.88,
    "fee_paid_by_carrier_usd": 38.33,
    "fee_paid_by_payer_usd": 25.55,
-   "carrier_factoring_avoided_usd": 150.98
+   "carrier_factoring_avoided_usd": 140.3
   },
   {
    "payment_id": "PMT-10145",
@@ -57726,7 +58230,7 @@
    "total_fee_usd": 30.55,
    "fee_paid_by_carrier_usd": 30.55,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 85.55
+   "carrier_factoring_avoided_usd": 67.66
   },
   {
    "payment_id": "PMT-10147",
@@ -57747,7 +58251,7 @@
    "total_fee_usd": 62.36,
    "fee_paid_by_carrier_usd": 37.42,
    "fee_paid_by_payer_usd": 24.94,
-   "carrier_factoring_avoided_usd": 174.59
+   "carrier_factoring_avoided_usd": 177.77
   },
   {
    "payment_id": "PMT-10148",
@@ -57768,7 +58272,7 @@
    "total_fee_usd": 18.18,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 18.18,
-   "carrier_factoring_avoided_usd": 50.88
+   "carrier_factoring_avoided_usd": 44.8
   },
   {
    "payment_id": "PMT-10149",
@@ -57789,7 +58293,7 @@
    "total_fee_usd": 15.29,
    "fee_paid_by_carrier_usd": 15.29,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 42.81
+   "carrier_factoring_avoided_usd": 37.25
   },
   {
    "payment_id": "PMT-10150",
@@ -57810,7 +58314,7 @@
    "total_fee_usd": 51.0,
    "fee_paid_by_carrier_usd": 30.6,
    "fee_paid_by_payer_usd": 20.4,
-   "carrier_factoring_avoided_usd": 142.79
+   "carrier_factoring_avoided_usd": 142.23
   },
   {
    "payment_id": "PMT-10151",
@@ -57831,7 +58335,7 @@
    "total_fee_usd": 36.34,
    "fee_paid_by_carrier_usd": 36.34,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 80.6
+   "carrier_factoring_avoided_usd": 92.5
   },
   {
    "payment_id": "PMT-10152",
@@ -57852,7 +58356,7 @@
    "total_fee_usd": 29.25,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 29.25,
-   "carrier_factoring_avoided_usd": 69.13
+   "carrier_factoring_avoided_usd": 72.64
   },
   {
    "payment_id": "PMT-10153",
@@ -57915,7 +58419,7 @@
    "total_fee_usd": 20.62,
    "fee_paid_by_carrier_usd": 20.62,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 53.24
+   "carrier_factoring_avoided_usd": 49.04
   },
   {
    "payment_id": "PMT-10156",
@@ -57936,7 +58440,7 @@
    "total_fee_usd": 54.87,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 54.87,
-   "carrier_factoring_avoided_usd": 157.63
+   "carrier_factoring_avoided_usd": 122.31
   },
   {
    "payment_id": "PMT-10157",
@@ -57978,7 +58482,7 @@
    "total_fee_usd": 51.63,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 51.63,
-   "carrier_factoring_avoided_usd": 127.66
+   "carrier_factoring_avoided_usd": 123.91
   },
   {
    "payment_id": "PMT-10159",
@@ -58020,7 +58524,7 @@
    "total_fee_usd": 21.27,
    "fee_paid_by_carrier_usd": 12.76,
    "fee_paid_by_payer_usd": 8.51,
-   "carrier_factoring_avoided_usd": 59.56
+   "carrier_factoring_avoided_usd": 58.4
   },
   {
    "payment_id": "PMT-10161",
@@ -58041,7 +58545,7 @@
    "total_fee_usd": 34.64,
    "fee_paid_by_carrier_usd": 20.78,
    "fee_paid_by_payer_usd": 13.86,
-   "carrier_factoring_avoided_usd": 84.4
+   "carrier_factoring_avoided_usd": 80.37
   },
   {
    "payment_id": "PMT-10162",
@@ -58083,7 +58587,7 @@
    "total_fee_usd": 33.08,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 33.08,
-   "carrier_factoring_avoided_usd": 73.37
+   "carrier_factoring_avoided_usd": 93.22
   },
   {
    "payment_id": "PMT-10164",
@@ -58125,7 +58629,7 @@
    "total_fee_usd": 92.33,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 92.33,
-   "carrier_factoring_avoided_usd": 258.52
+   "carrier_factoring_avoided_usd": 220.58
   },
   {
    "payment_id": "PMT-10166",
@@ -58146,7 +58650,7 @@
    "total_fee_usd": 51.4,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 51.4,
-   "carrier_factoring_avoided_usd": 147.63
+   "carrier_factoring_avoided_usd": 133.81
   },
   {
    "payment_id": "PMT-10167",
@@ -58251,7 +58755,7 @@
    "total_fee_usd": 47.93,
    "fee_paid_by_carrier_usd": 28.76,
    "fee_paid_by_payer_usd": 19.17,
-   "carrier_factoring_avoided_usd": 137.69
+   "carrier_factoring_avoided_usd": 114.69
   },
   {
    "payment_id": "PMT-10172",
@@ -58272,7 +58776,7 @@
    "total_fee_usd": 14.15,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 14.15,
-   "carrier_factoring_avoided_usd": 39.6
+   "carrier_factoring_avoided_usd": 34.25
   },
   {
    "payment_id": "PMT-10173",
@@ -58293,7 +58797,7 @@
    "total_fee_usd": 19.94,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 19.94,
-   "carrier_factoring_avoided_usd": 57.26
+   "carrier_factoring_avoided_usd": 54.21
   },
   {
    "payment_id": "PMT-10174",
@@ -58314,7 +58818,7 @@
    "total_fee_usd": 41.47,
    "fee_paid_by_carrier_usd": 41.47,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 116.1
+   "carrier_factoring_avoided_usd": 93.33
   },
   {
    "payment_id": "PMT-10175",
@@ -58377,7 +58881,7 @@
    "total_fee_usd": 86.57,
    "fee_paid_by_carrier_usd": 51.94,
    "fee_paid_by_payer_usd": 34.63,
-   "carrier_factoring_avoided_usd": 242.41
+   "carrier_factoring_avoided_usd": 230.76
   },
   {
    "payment_id": "PMT-10178",
@@ -58398,7 +58902,7 @@
    "total_fee_usd": 38.6,
    "fee_paid_by_carrier_usd": 23.16,
    "fee_paid_by_payer_usd": 15.44,
-   "carrier_factoring_avoided_usd": 99.64
+   "carrier_factoring_avoided_usd": 104.55
   },
   {
    "payment_id": "PMT-10179",
@@ -58482,7 +58986,7 @@
    "total_fee_usd": 20.56,
    "fee_paid_by_carrier_usd": 12.34,
    "fee_paid_by_payer_usd": 8.22,
-   "carrier_factoring_avoided_usd": 50.09
+   "carrier_factoring_avoided_usd": 53.16
   },
   {
    "payment_id": "PMT-10183",
@@ -58503,7 +59007,7 @@
    "total_fee_usd": 26.1,
    "fee_paid_by_carrier_usd": 26.1,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 74.96
+   "carrier_factoring_avoided_usd": 60.06
   },
   {
    "payment_id": "PMT-10184",
@@ -58545,7 +59049,7 @@
    "total_fee_usd": 23.61,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 23.61,
-   "carrier_factoring_avoided_usd": 66.09
+   "carrier_factoring_avoided_usd": 59.05
   },
   {
    "payment_id": "PMT-10186",
@@ -58566,7 +59070,7 @@
    "total_fee_usd": 27.32,
    "fee_paid_by_carrier_usd": 27.32,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 64.57
+   "carrier_factoring_avoided_usd": 70.93
   },
   {
    "payment_id": "PMT-10187",
@@ -58587,7 +59091,7 @@
    "total_fee_usd": 34.67,
    "fee_paid_by_carrier_usd": 34.67,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 97.08
+   "carrier_factoring_avoided_usd": 83.97
   },
   {
    "payment_id": "PMT-10188",
@@ -58608,7 +59112,7 @@
    "total_fee_usd": 27.53,
    "fee_paid_by_carrier_usd": 16.52,
    "fee_paid_by_payer_usd": 11.01,
-   "carrier_factoring_avoided_usd": 61.05
+   "carrier_factoring_avoided_usd": 63.85
   },
   {
    "payment_id": "PMT-10189",
@@ -58629,7 +59133,7 @@
    "total_fee_usd": 33.94,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 33.94,
-   "carrier_factoring_avoided_usd": 83.92
+   "carrier_factoring_avoided_usd": 83.68
   },
   {
    "payment_id": "PMT-10190",
@@ -58713,7 +59217,7 @@
    "total_fee_usd": 23.13,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 23.13,
-   "carrier_factoring_avoided_usd": 54.67
+   "carrier_factoring_avoided_usd": 56.18
   },
   {
    "payment_id": "PMT-10194",
@@ -58818,7 +59322,7 @@
    "total_fee_usd": 28.48,
    "fee_paid_by_carrier_usd": 17.09,
    "fee_paid_by_payer_usd": 11.39,
-   "carrier_factoring_avoided_usd": 81.8
+   "carrier_factoring_avoided_usd": 71.66
   },
   {
    "payment_id": "PMT-10199",
@@ -58902,7 +59406,7 @@
    "total_fee_usd": 17.42,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 17.42,
-   "carrier_factoring_avoided_usd": 43.09
+   "carrier_factoring_avoided_usd": 42.46
   },
   {
    "payment_id": "PMT-10203",
@@ -59007,7 +59511,7 @@
    "total_fee_usd": 22.63,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 22.63,
-   "carrier_factoring_avoided_usd": 58.43
+   "carrier_factoring_avoided_usd": 61.48
   },
   {
    "payment_id": "PMT-10208",
@@ -59028,7 +59532,7 @@
    "total_fee_usd": 28.45,
    "fee_paid_by_carrier_usd": 28.45,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 70.34
+   "carrier_factoring_avoided_usd": 75.61
   },
   {
    "payment_id": "PMT-10209",
@@ -59049,7 +59553,7 @@
    "total_fee_usd": 30.92,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 30.92,
-   "carrier_factoring_avoided_usd": 79.84
+   "carrier_factoring_avoided_usd": 74.45
   },
   {
    "payment_id": "PMT-10210",
@@ -59070,7 +59574,7 @@
    "total_fee_usd": 13.28,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 13.28,
-   "carrier_factoring_avoided_usd": 37.18
+   "carrier_factoring_avoided_usd": 38.0
   },
   {
    "payment_id": "PMT-10211",
@@ -59238,7 +59742,7 @@
    "total_fee_usd": 12.91,
    "fee_paid_by_carrier_usd": 7.75,
    "fee_paid_by_payer_usd": 5.16,
-   "carrier_factoring_avoided_usd": 31.92
+   "carrier_factoring_avoided_usd": 36.37
   },
   {
    "payment_id": "PMT-10219",
@@ -59280,7 +59784,7 @@
    "total_fee_usd": 21.87,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 21.87,
-   "carrier_factoring_avoided_usd": 61.24
+   "carrier_factoring_avoided_usd": 55.27
   },
   {
    "payment_id": "PMT-10221",
@@ -59322,7 +59826,7 @@
    "total_fee_usd": 68.75,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 68.75,
-   "carrier_factoring_avoided_usd": 197.5
+   "carrier_factoring_avoided_usd": 179.5
   },
   {
    "payment_id": "PMT-10223",
@@ -59448,7 +59952,7 @@
    "total_fee_usd": 50.47,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 50.47,
-   "carrier_factoring_avoided_usd": 119.29
+   "carrier_factoring_avoided_usd": 126.45
   },
   {
    "payment_id": "PMT-10229",
@@ -59469,7 +59973,7 @@
    "total_fee_usd": 43.7,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 43.7,
-   "carrier_factoring_avoided_usd": 96.91
+   "carrier_factoring_avoided_usd": 119.16
   },
   {
    "payment_id": "PMT-10230",
@@ -59490,7 +59994,7 @@
    "total_fee_usd": 27.35,
    "fee_paid_by_carrier_usd": 27.35,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 64.64
+   "carrier_factoring_avoided_usd": 74.29
   },
   {
    "payment_id": "PMT-10231",
@@ -59574,7 +60078,7 @@
    "total_fee_usd": 54.59,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 54.59,
-   "carrier_factoring_avoided_usd": 156.81
+   "carrier_factoring_avoided_usd": 130.01
   },
   {
    "payment_id": "PMT-10235",
@@ -59595,7 +60099,7 @@
    "total_fee_usd": 21.82,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 21.82,
-   "carrier_factoring_avoided_usd": 53.95
+   "carrier_factoring_avoided_usd": 49.59
   },
   {
    "payment_id": "PMT-10236",
@@ -59616,7 +60120,7 @@
    "total_fee_usd": 60.33,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 60.33,
-   "carrier_factoring_avoided_usd": 149.18
+   "carrier_factoring_avoided_usd": 148.74
   },
   {
    "payment_id": "PMT-10237",
@@ -59637,7 +60141,7 @@
    "total_fee_usd": 60.12,
    "fee_paid_by_carrier_usd": 36.07,
    "fee_paid_by_payer_usd": 24.05,
-   "carrier_factoring_avoided_usd": 146.47
+   "carrier_factoring_avoided_usd": 166.58
   },
   {
    "payment_id": "PMT-10238",
@@ -59658,7 +60162,7 @@
    "total_fee_usd": 22.91,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 22.91,
-   "carrier_factoring_avoided_usd": 64.14
+   "carrier_factoring_avoided_usd": 64.55
   },
   {
    "payment_id": "PMT-10239",
@@ -59763,7 +60267,7 @@
    "total_fee_usd": 40.93,
    "fee_paid_by_carrier_usd": 40.93,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 114.62
+   "carrier_factoring_avoided_usd": 96.01
   },
   {
    "payment_id": "PMT-10244",
@@ -59784,7 +60288,7 @@
    "total_fee_usd": 45.11,
    "fee_paid_by_carrier_usd": 45.11,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 129.6
+   "carrier_factoring_avoided_usd": 112.7
   },
   {
    "payment_id": "PMT-10245",
@@ -59868,7 +60372,7 @@
    "total_fee_usd": 31.72,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 31.72,
-   "carrier_factoring_avoided_usd": 70.37
+   "carrier_factoring_avoided_usd": 90.33
   },
   {
    "payment_id": "PMT-10249",
@@ -59952,7 +60456,7 @@
    "total_fee_usd": 29.12,
    "fee_paid_by_carrier_usd": 29.12,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 70.94
+   "carrier_factoring_avoided_usd": 67.23
   },
   {
    "payment_id": "PMT-10253",
@@ -59973,7 +60477,7 @@
    "total_fee_usd": 52.95,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 52.95,
-   "carrier_factoring_avoided_usd": 130.93
+   "carrier_factoring_avoided_usd": 118.61
   },
   {
    "payment_id": "PMT-10254",
@@ -60015,7 +60519,7 @@
    "total_fee_usd": 28.09,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 28.09,
-   "carrier_factoring_avoided_usd": 80.7
+   "carrier_factoring_avoided_usd": 67.42
   },
   {
    "payment_id": "PMT-10256",
@@ -60078,7 +60582,7 @@
    "total_fee_usd": 61.3,
    "fee_paid_by_carrier_usd": 36.78,
    "fee_paid_by_payer_usd": 24.52,
-   "carrier_factoring_avoided_usd": 151.57
+   "carrier_factoring_avoided_usd": 157.14
   },
   {
    "payment_id": "PMT-10259",
@@ -60099,7 +60603,7 @@
    "total_fee_usd": 53.96,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 53.96,
-   "carrier_factoring_avoided_usd": 151.08
+   "carrier_factoring_avoided_usd": 147.95
   },
   {
    "payment_id": "PMT-10260",
@@ -60162,7 +60666,7 @@
    "total_fee_usd": 39.83,
    "fee_paid_by_carrier_usd": 39.83,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 114.43
+   "carrier_factoring_avoided_usd": 95.31
   },
   {
    "payment_id": "PMT-10263",
@@ -60183,7 +60687,7 @@
    "total_fee_usd": 35.15,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 35.15,
-   "carrier_factoring_avoided_usd": 100.97
+   "carrier_factoring_avoided_usd": 96.37
   },
   {
    "payment_id": "PMT-10264",
@@ -60246,7 +60750,7 @@
    "total_fee_usd": 32.22,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 32.22,
-   "carrier_factoring_avoided_usd": 92.55
+   "carrier_factoring_avoided_usd": 85.52
   },
   {
    "payment_id": "PMT-10267",
@@ -60267,7 +60771,7 @@
    "total_fee_usd": 56.84,
    "fee_paid_by_carrier_usd": 34.1,
    "fee_paid_by_payer_usd": 22.74,
-   "carrier_factoring_avoided_usd": 163.27
+   "carrier_factoring_avoided_usd": 129.38
   },
   {
    "payment_id": "PMT-10268",
@@ -60288,7 +60792,7 @@
    "total_fee_usd": 16.42,
    "fee_paid_by_carrier_usd": 16.42,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 45.95
+   "carrier_factoring_avoided_usd": 40.05
   },
   {
    "payment_id": "PMT-10269",
@@ -60330,7 +60834,7 @@
    "total_fee_usd": 37.94,
    "fee_paid_by_carrier_usd": 37.94,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 97.94
+   "carrier_factoring_avoided_usd": 99.59
   },
   {
    "payment_id": "PMT-10271",
@@ -60351,7 +60855,7 @@
    "total_fee_usd": 35.63,
    "fee_paid_by_carrier_usd": 35.63,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 102.34
+   "carrier_factoring_avoided_usd": 103.25
   },
   {
    "payment_id": "PMT-10272",
@@ -60477,7 +60981,7 @@
    "total_fee_usd": 44.04,
    "fee_paid_by_carrier_usd": 44.04,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 113.72
+   "carrier_factoring_avoided_usd": 121.57
   },
   {
    "payment_id": "PMT-10278",
@@ -60498,7 +61002,7 @@
    "total_fee_usd": 67.76,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 67.76,
-   "carrier_factoring_avoided_usd": 167.57
+   "carrier_factoring_avoided_usd": 164.86
   },
   {
    "payment_id": "PMT-10279",
@@ -60582,7 +61086,7 @@
    "total_fee_usd": 12.86,
    "fee_paid_by_carrier_usd": 12.86,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 31.79
+   "carrier_factoring_avoided_usd": 36.61
   },
   {
    "payment_id": "PMT-10283",
@@ -60603,7 +61107,7 @@
    "total_fee_usd": 38.49,
    "fee_paid_by_carrier_usd": 23.09,
    "fee_paid_by_payer_usd": 15.4,
-   "carrier_factoring_avoided_usd": 107.76
+   "carrier_factoring_avoided_usd": 85.65
   },
   {
    "payment_id": "PMT-10284",
@@ -60624,7 +61128,7 @@
    "total_fee_usd": 60.05,
    "fee_paid_by_carrier_usd": 60.05,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 148.48
+   "carrier_factoring_avoided_usd": 157.87
   },
   {
    "payment_id": "PMT-10285",
@@ -60750,7 +61254,7 @@
    "total_fee_usd": 45.51,
    "fee_paid_by_carrier_usd": 27.31,
    "fee_paid_by_payer_usd": 18.2,
-   "carrier_factoring_avoided_usd": 112.54
+   "carrier_factoring_avoided_usd": 110.39
   },
   {
    "payment_id": "PMT-10291",
@@ -60792,7 +61296,7 @@
    "total_fee_usd": 50.68,
    "fee_paid_by_carrier_usd": 30.41,
    "fee_paid_by_payer_usd": 20.27,
-   "carrier_factoring_avoided_usd": 123.49
+   "carrier_factoring_avoided_usd": 118.15
   },
   {
    "payment_id": "PMT-10293",
@@ -60876,7 +61380,7 @@
    "total_fee_usd": 31.87,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 31.87,
-   "carrier_factoring_avoided_usd": 78.8
+   "carrier_factoring_avoided_usd": 80.89
   },
   {
    "payment_id": "PMT-10297",
@@ -60960,7 +61464,7 @@
    "total_fee_usd": 37.67,
    "fee_paid_by_carrier_usd": 37.67,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 97.27
+   "carrier_factoring_avoided_usd": 95.08
   },
   {
    "payment_id": "PMT-10301",
@@ -61023,7 +61527,7 @@
    "total_fee_usd": 40.1,
    "fee_paid_by_carrier_usd": 40.1,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 112.27
+   "carrier_factoring_avoided_usd": 99.44
   },
   {
    "payment_id": "PMT-10304",
@@ -61065,7 +61569,7 @@
    "total_fee_usd": 35.02,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 35.02,
-   "carrier_factoring_avoided_usd": 85.32
+   "carrier_factoring_avoided_usd": 83.54
   },
   {
    "payment_id": "PMT-10306",
@@ -61086,7 +61590,7 @@
    "total_fee_usd": 35.05,
    "fee_paid_by_carrier_usd": 35.05,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 86.65
+   "carrier_factoring_avoided_usd": 79.01
   },
   {
    "payment_id": "PMT-10307",
@@ -61128,7 +61632,7 @@
    "total_fee_usd": 29.7,
    "fee_paid_by_carrier_usd": 29.7,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 65.89
+   "carrier_factoring_avoided_usd": 70.64
   },
   {
    "payment_id": "PMT-10309",
@@ -61149,7 +61653,7 @@
    "total_fee_usd": 47.04,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 47.04,
-   "carrier_factoring_avoided_usd": 121.44
+   "carrier_factoring_avoided_usd": 120.42
   },
   {
    "payment_id": "PMT-10310",
@@ -61170,7 +61674,7 @@
    "total_fee_usd": 44.03,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 44.03,
-   "carrier_factoring_avoided_usd": 123.27
+   "carrier_factoring_avoided_usd": 124.23
   },
   {
    "payment_id": "PMT-10311",
@@ -61254,7 +61758,7 @@
    "total_fee_usd": 20.42,
    "fee_paid_by_carrier_usd": 20.42,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 48.28
+   "carrier_factoring_avoided_usd": 48.13
   },
   {
    "payment_id": "PMT-10315",
@@ -61275,7 +61779,7 @@
    "total_fee_usd": 26.61,
    "fee_paid_by_carrier_usd": 26.61,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 59.03
+   "carrier_factoring_avoided_usd": 61.54
   },
   {
    "payment_id": "PMT-10316",
@@ -61317,7 +61821,7 @@
    "total_fee_usd": 28.6,
    "fee_paid_by_carrier_usd": 28.6,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 63.43
+   "carrier_factoring_avoided_usd": 73.21
   },
   {
    "payment_id": "PMT-10318",
@@ -61380,7 +61884,7 @@
    "total_fee_usd": 75.38,
    "fee_paid_by_carrier_usd": 45.23,
    "fee_paid_by_payer_usd": 30.15,
-   "carrier_factoring_avoided_usd": 216.55
+   "carrier_factoring_avoided_usd": 208.32
   },
   {
    "payment_id": "PMT-10321",
@@ -61401,7 +61905,7 @@
    "total_fee_usd": 15.06,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 15.06,
-   "carrier_factoring_avoided_usd": 42.15
+   "carrier_factoring_avoided_usd": 37.56
   },
   {
    "payment_id": "PMT-10322",
@@ -61485,7 +61989,7 @@
    "total_fee_usd": 29.4,
    "fee_paid_by_carrier_usd": 29.4,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 65.22
+   "carrier_factoring_avoided_usd": 81.16
   },
   {
    "payment_id": "PMT-10326",
@@ -61506,7 +62010,7 @@
    "total_fee_usd": 64.18,
    "fee_paid_by_carrier_usd": 64.18,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 156.36
+   "carrier_factoring_avoided_usd": 150.99
   },
   {
    "payment_id": "PMT-10327",
@@ -61590,7 +62094,7 @@
    "total_fee_usd": 37.06,
    "fee_paid_by_carrier_usd": 37.06,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 106.46
+   "carrier_factoring_avoided_usd": 81.8
   },
   {
    "payment_id": "PMT-10331",
@@ -61632,7 +62136,7 @@
    "total_fee_usd": 44.7,
    "fee_paid_by_carrier_usd": 26.82,
    "fee_paid_by_payer_usd": 17.88,
-   "carrier_factoring_avoided_usd": 105.66
+   "carrier_factoring_avoided_usd": 107.44
   },
   {
    "payment_id": "PMT-10333",
@@ -61695,7 +62199,7 @@
    "total_fee_usd": 39.24,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 39.24,
-   "carrier_factoring_avoided_usd": 101.33
+   "carrier_factoring_avoided_usd": 99.62
   },
   {
    "payment_id": "PMT-10336",
@@ -61716,7 +62220,7 @@
    "total_fee_usd": 19.83,
    "fee_paid_by_carrier_usd": 19.83,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 55.51
+   "carrier_factoring_avoided_usd": 48.37
   },
   {
    "payment_id": "PMT-10337",
@@ -61758,7 +62262,7 @@
    "total_fee_usd": 30.83,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 30.83,
-   "carrier_factoring_avoided_usd": 79.61
+   "carrier_factoring_avoided_usd": 68.73
   },
   {
    "payment_id": "PMT-10339",
@@ -61821,7 +62325,7 @@
    "total_fee_usd": 55.73,
    "fee_paid_by_carrier_usd": 33.44,
    "fee_paid_by_payer_usd": 22.29,
-   "carrier_factoring_avoided_usd": 135.78
+   "carrier_factoring_avoided_usd": 141.46
   },
   {
    "payment_id": "PMT-10342",
@@ -61842,7 +62346,7 @@
    "total_fee_usd": 31.36,
    "fee_paid_by_carrier_usd": 18.82,
    "fee_paid_by_payer_usd": 12.54,
-   "carrier_factoring_avoided_usd": 90.08
+   "carrier_factoring_avoided_usd": 68.42
   },
   {
    "payment_id": "PMT-10343",
@@ -61905,7 +62409,7 @@
    "total_fee_usd": 85.69,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 85.69,
-   "carrier_factoring_avoided_usd": 190.07
+   "carrier_factoring_avoided_usd": 221.85
   },
   {
    "payment_id": "PMT-10346",
@@ -61989,7 +62493,7 @@
    "total_fee_usd": 44.28,
    "fee_paid_by_carrier_usd": 44.28,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 98.22
+   "carrier_factoring_avoided_usd": 114.49
   },
   {
    "payment_id": "PMT-10350",
@@ -62010,7 +62514,7 @@
    "total_fee_usd": 35.24,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 35.24,
-   "carrier_factoring_avoided_usd": 101.23
+   "carrier_factoring_avoided_usd": 85.21
   },
   {
    "payment_id": "PMT-10351",
@@ -62052,7 +62556,7 @@
    "total_fee_usd": 20.43,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 20.43,
-   "carrier_factoring_avoided_usd": 57.23
+   "carrier_factoring_avoided_usd": 58.34
   },
   {
    "payment_id": "PMT-10353",
@@ -62073,7 +62577,7 @@
    "total_fee_usd": 80.0,
    "fee_paid_by_carrier_usd": 48.0,
    "fee_paid_by_payer_usd": 32.0,
-   "carrier_factoring_avoided_usd": 177.44
+   "carrier_factoring_avoided_usd": 218.74
   },
   {
    "payment_id": "PMT-10354",
@@ -62094,7 +62598,7 @@
    "total_fee_usd": 42.38,
    "fee_paid_by_carrier_usd": 42.38,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 109.4
+   "carrier_factoring_avoided_usd": 119.41
   },
   {
    "payment_id": "PMT-10355",
@@ -62115,7 +62619,7 @@
    "total_fee_usd": 45.17,
    "fee_paid_by_carrier_usd": 45.17,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 110.06
+   "carrier_factoring_avoided_usd": 103.33
   },
   {
    "payment_id": "PMT-10356",
@@ -62136,7 +62640,7 @@
    "total_fee_usd": 31.38,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 31.38,
-   "carrier_factoring_avoided_usd": 90.12
+   "carrier_factoring_avoided_usd": 89.78
   },
   {
    "payment_id": "PMT-10357",
@@ -62367,7 +62871,7 @@
    "total_fee_usd": 12.86,
    "fee_paid_by_carrier_usd": 7.72,
    "fee_paid_by_payer_usd": 5.14,
-   "carrier_factoring_avoided_usd": 36.0
+   "carrier_factoring_avoided_usd": 34.46
   },
   {
    "payment_id": "PMT-10368",
@@ -62388,7 +62892,7 @@
    "total_fee_usd": 40.11,
    "fee_paid_by_carrier_usd": 24.07,
    "fee_paid_by_payer_usd": 16.04,
-   "carrier_factoring_avoided_usd": 99.19
+   "carrier_factoring_avoided_usd": 97.59
   },
   {
    "payment_id": "PMT-10369",
@@ -62493,7 +62997,7 @@
    "total_fee_usd": 39.71,
    "fee_paid_by_carrier_usd": 23.83,
    "fee_paid_by_payer_usd": 15.88,
-   "carrier_factoring_avoided_usd": 93.85
+   "carrier_factoring_avoided_usd": 101.21
   },
   {
    "payment_id": "PMT-10374",
@@ -62535,7 +63039,7 @@
    "total_fee_usd": 22.29,
    "fee_paid_by_carrier_usd": 22.29,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 64.02
+   "carrier_factoring_avoided_usd": 62.88
   },
   {
    "payment_id": "PMT-10376",
@@ -62577,7 +63081,7 @@
    "total_fee_usd": 45.13,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 45.13,
-   "carrier_factoring_avoided_usd": 126.34
+   "carrier_factoring_avoided_usd": 104.03
   },
   {
    "payment_id": "PMT-10378",
@@ -62640,7 +63144,7 @@
    "total_fee_usd": 20.7,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 20.7,
-   "carrier_factoring_avoided_usd": 59.46
+   "carrier_factoring_avoided_usd": 52.01
   },
   {
    "payment_id": "PMT-10381",
@@ -62682,7 +63186,7 @@
    "total_fee_usd": 33.11,
    "fee_paid_by_carrier_usd": 19.87,
    "fee_paid_by_payer_usd": 13.24,
-   "carrier_factoring_avoided_usd": 80.66
+   "carrier_factoring_avoided_usd": 85.11
   },
   {
    "payment_id": "PMT-10383",
@@ -62703,7 +63207,7 @@
    "total_fee_usd": 39.79,
    "fee_paid_by_carrier_usd": 23.87,
    "fee_paid_by_payer_usd": 15.92,
-   "carrier_factoring_avoided_usd": 114.31
+   "carrier_factoring_avoided_usd": 112.43
   },
   {
    "payment_id": "PMT-10384",
@@ -62724,7 +63228,7 @@
    "total_fee_usd": 56.09,
    "fee_paid_by_carrier_usd": 33.65,
    "fee_paid_by_payer_usd": 22.44,
-   "carrier_factoring_avoided_usd": 144.82
+   "carrier_factoring_avoided_usd": 158.89
   },
   {
    "payment_id": "PMT-10385",
@@ -62745,7 +63249,7 @@
    "total_fee_usd": 26.66,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 26.66,
-   "carrier_factoring_avoided_usd": 65.93
+   "carrier_factoring_avoided_usd": 66.81
   },
   {
    "payment_id": "PMT-10386",
@@ -62787,7 +63291,7 @@
    "total_fee_usd": 45.66,
    "fee_paid_by_carrier_usd": 27.4,
    "fee_paid_by_payer_usd": 18.26,
-   "carrier_factoring_avoided_usd": 111.24
+   "carrier_factoring_avoided_usd": 132.5
   },
   {
    "payment_id": "PMT-10388",
@@ -62808,7 +63312,7 @@
    "total_fee_usd": 30.08,
    "fee_paid_by_carrier_usd": 18.05,
    "fee_paid_by_payer_usd": 12.03,
-   "carrier_factoring_avoided_usd": 74.38
+   "carrier_factoring_avoided_usd": 77.44
   },
   {
    "payment_id": "PMT-10389",
@@ -62850,7 +63354,7 @@
    "total_fee_usd": 38.19,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 38.19,
-   "carrier_factoring_avoided_usd": 106.93
+   "carrier_factoring_avoided_usd": 106.38
   },
   {
    "payment_id": "PMT-10391",
@@ -62913,7 +63417,7 @@
    "total_fee_usd": 34.41,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 34.41,
-   "carrier_factoring_avoided_usd": 76.33
+   "carrier_factoring_avoided_usd": 99.48
   },
   {
    "payment_id": "PMT-10394",
@@ -62955,7 +63459,7 @@
    "total_fee_usd": 53.94,
    "fee_paid_by_carrier_usd": 32.36,
    "fee_paid_by_payer_usd": 21.58,
-   "carrier_factoring_avoided_usd": 151.04
+   "carrier_factoring_avoided_usd": 146.13
   },
   {
    "payment_id": "PMT-10396",
@@ -63018,7 +63522,7 @@
    "total_fee_usd": 29.0,
    "fee_paid_by_carrier_usd": 29.0,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 68.55
+   "carrier_factoring_avoided_usd": 65.81
   },
   {
    "payment_id": "PMT-10399",
@@ -63039,7 +63543,7 @@
    "total_fee_usd": 20.6,
    "fee_paid_by_carrier_usd": 12.36,
    "fee_paid_by_payer_usd": 8.24,
-   "carrier_factoring_avoided_usd": 48.67
+   "carrier_factoring_avoided_usd": 51.96
   },
   {
    "payment_id": "PMT-10400",
@@ -63165,7 +63669,7 @@
    "total_fee_usd": 53.51,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 53.51,
-   "carrier_factoring_avoided_usd": 118.7
+   "carrier_factoring_avoided_usd": 139.52
   },
   {
    "payment_id": "PMT-10406",
@@ -63207,7 +63711,7 @@
    "total_fee_usd": 55.71,
    "fee_paid_by_carrier_usd": 55.71,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 160.05
+   "carrier_factoring_avoided_usd": 156.61
   },
   {
    "payment_id": "PMT-10408",
@@ -63228,7 +63732,7 @@
    "total_fee_usd": 48.98,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 48.98,
-   "carrier_factoring_avoided_usd": 126.44
+   "carrier_factoring_avoided_usd": 141.22
   },
   {
    "payment_id": "PMT-10409",
@@ -63312,7 +63816,7 @@
    "total_fee_usd": 30.06,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 30.06,
-   "carrier_factoring_avoided_usd": 71.05
+   "carrier_factoring_avoided_usd": 66.46
   },
   {
    "payment_id": "PMT-10413",
@@ -63396,7 +63900,7 @@
    "total_fee_usd": 28.72,
    "fee_paid_by_carrier_usd": 28.72,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 80.41
+   "carrier_factoring_avoided_usd": 73.21
   },
   {
    "payment_id": "PMT-10417",
@@ -63459,7 +63963,7 @@
    "total_fee_usd": 59.91,
    "fee_paid_by_carrier_usd": 59.91,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 141.59
+   "carrier_factoring_avoided_usd": 161.64
   },
   {
    "payment_id": "PMT-10420",
@@ -63480,7 +63984,7 @@
    "total_fee_usd": 27.45,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 27.45,
-   "carrier_factoring_avoided_usd": 64.87
+   "carrier_factoring_avoided_usd": 62.68
   },
   {
    "payment_id": "PMT-10421",
@@ -63564,7 +64068,7 @@
    "total_fee_usd": 40.05,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 40.05,
-   "carrier_factoring_avoided_usd": 115.07
+   "carrier_factoring_avoided_usd": 103.85
   },
   {
    "payment_id": "PMT-10425",
@@ -63606,7 +64110,7 @@
    "total_fee_usd": 34.19,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 34.19,
-   "carrier_factoring_avoided_usd": 95.73
+   "carrier_factoring_avoided_usd": 96.98
   },
   {
    "payment_id": "PMT-10427",
@@ -63753,7 +64257,7 @@
    "total_fee_usd": 68.02,
    "fee_paid_by_carrier_usd": 40.81,
    "fee_paid_by_payer_usd": 27.21,
-   "carrier_factoring_avoided_usd": 160.76
+   "carrier_factoring_avoided_usd": 152.35
   },
   {
    "payment_id": "PMT-10434",
@@ -63837,7 +64341,7 @@
    "total_fee_usd": 41.07,
    "fee_paid_by_carrier_usd": 41.07,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 118.0
+   "carrier_factoring_avoided_usd": 109.34
   },
   {
    "payment_id": "PMT-10438",
@@ -63858,7 +64362,7 @@
    "total_fee_usd": 65.5,
    "fee_paid_by_carrier_usd": 65.5,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 161.97
+   "carrier_factoring_avoided_usd": 175.31
   },
   {
    "payment_id": "PMT-10439",
@@ -63921,7 +64425,7 @@
    "total_fee_usd": 12.91,
    "fee_paid_by_carrier_usd": 7.75,
    "fee_paid_by_payer_usd": 5.16,
-   "carrier_factoring_avoided_usd": 31.45
+   "carrier_factoring_avoided_usd": 37.27
   },
   {
    "payment_id": "PMT-10442",
@@ -63963,7 +64467,7 @@
    "total_fee_usd": 22.13,
    "fee_paid_by_carrier_usd": 13.28,
    "fee_paid_by_payer_usd": 8.85,
-   "carrier_factoring_avoided_usd": 61.96
+   "carrier_factoring_avoided_usd": 57.46
   },
   {
    "payment_id": "PMT-10444",
@@ -63984,7 +64488,7 @@
    "total_fee_usd": 49.32,
    "fee_paid_by_carrier_usd": 49.32,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 127.33
+   "carrier_factoring_avoided_usd": 109.93
   },
   {
    "payment_id": "PMT-10445",
@@ -64110,7 +64614,7 @@
    "total_fee_usd": 40.71,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 40.71,
-   "carrier_factoring_avoided_usd": 96.22
+   "carrier_factoring_avoided_usd": 94.0
   },
   {
    "payment_id": "PMT-10451",
@@ -64131,7 +64635,7 @@
    "total_fee_usd": 37.01,
    "fee_paid_by_carrier_usd": 37.01,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 106.32
+   "carrier_factoring_avoided_usd": 84.92
   },
   {
    "payment_id": "PMT-10452",
@@ -64152,7 +64656,7 @@
    "total_fee_usd": 23.87,
    "fee_paid_by_carrier_usd": 14.32,
    "fee_paid_by_payer_usd": 9.55,
-   "carrier_factoring_avoided_usd": 61.63
+   "carrier_factoring_avoided_usd": 57.9
   },
   {
    "payment_id": "PMT-10453",
@@ -64299,7 +64803,7 @@
    "total_fee_usd": 31.69,
    "fee_paid_by_carrier_usd": 19.01,
    "fee_paid_by_payer_usd": 12.68,
-   "carrier_factoring_avoided_usd": 77.22
+   "carrier_factoring_avoided_usd": 81.02
   },
   {
    "payment_id": "PMT-10460",
@@ -64320,7 +64824,7 @@
    "total_fee_usd": 44.58,
    "fee_paid_by_carrier_usd": 26.75,
    "fee_paid_by_payer_usd": 17.83,
-   "carrier_factoring_avoided_usd": 110.22
+   "carrier_factoring_avoided_usd": 100.98
   },
   {
    "payment_id": "PMT-10461",
@@ -64404,7 +64908,7 @@
    "total_fee_usd": 38.08,
    "fee_paid_by_carrier_usd": 22.85,
    "fee_paid_by_payer_usd": 15.23,
-   "carrier_factoring_avoided_usd": 92.78
+   "carrier_factoring_avoided_usd": 100.81
   },
   {
    "payment_id": "PMT-10465",
@@ -64467,7 +64971,7 @@
    "total_fee_usd": 37.47,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 37.47,
-   "carrier_factoring_avoided_usd": 104.91
+   "carrier_factoring_avoided_usd": 88.56
   },
   {
    "payment_id": "PMT-10468",
@@ -64488,7 +64992,7 @@
    "total_fee_usd": 52.47,
    "fee_paid_by_carrier_usd": 52.47,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 135.47
+   "carrier_factoring_avoided_usd": 127.46
   },
   {
    "payment_id": "PMT-10469",
@@ -64509,7 +65013,7 @@
    "total_fee_usd": 21.34,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 21.34,
-   "carrier_factoring_avoided_usd": 61.29
+   "carrier_factoring_avoided_usd": 50.19
   },
   {
    "payment_id": "PMT-10470",
@@ -64551,7 +65055,7 @@
    "total_fee_usd": 38.34,
    "fee_paid_by_carrier_usd": 38.34,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 90.63
+   "carrier_factoring_avoided_usd": 87.14
   },
   {
    "payment_id": "PMT-10472",
@@ -64572,7 +65076,7 @@
    "total_fee_usd": 35.92,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 35.92,
-   "carrier_factoring_avoided_usd": 87.5
+   "carrier_factoring_avoided_usd": 88.55
   },
   {
    "payment_id": "PMT-10473",
@@ -64656,7 +65160,7 @@
    "total_fee_usd": 12.92,
    "fee_paid_by_carrier_usd": 7.75,
    "fee_paid_by_payer_usd": 5.17,
-   "carrier_factoring_avoided_usd": 31.48
+   "carrier_factoring_avoided_usd": 33.68
   },
   {
    "payment_id": "PMT-10477",
@@ -64677,7 +65181,7 @@
    "total_fee_usd": 40.29,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 40.29,
-   "carrier_factoring_avoided_usd": 112.81
+   "carrier_factoring_avoided_usd": 93.03
   },
   {
    "payment_id": "PMT-10478",
@@ -64761,7 +65265,7 @@
    "total_fee_usd": 48.84,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 48.84,
-   "carrier_factoring_avoided_usd": 108.34
+   "carrier_factoring_avoided_usd": 140.84
   },
   {
    "payment_id": "PMT-10482",
@@ -64782,7 +65286,7 @@
    "total_fee_usd": 20.98,
    "fee_paid_by_carrier_usd": 12.59,
    "fee_paid_by_payer_usd": 8.39,
-   "carrier_factoring_avoided_usd": 54.17
+   "carrier_factoring_avoided_usd": 46.85
   },
   {
    "payment_id": "PMT-10483",
@@ -64803,7 +65307,7 @@
    "total_fee_usd": 40.95,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 40.95,
-   "carrier_factoring_avoided_usd": 96.79
+   "carrier_factoring_avoided_usd": 94.55
   },
   {
    "payment_id": "PMT-10484",
@@ -64908,7 +65412,7 @@
    "total_fee_usd": 31.31,
    "fee_paid_by_carrier_usd": 31.31,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 77.42
+   "carrier_factoring_avoided_usd": 68.43
   },
   {
    "payment_id": "PMT-10489",
@@ -64971,7 +65475,7 @@
    "total_fee_usd": 14.22,
    "fee_paid_by_carrier_usd": 8.53,
    "fee_paid_by_payer_usd": 5.69,
-   "carrier_factoring_avoided_usd": 40.83
+   "carrier_factoring_avoided_usd": 38.5
   },
   {
    "payment_id": "PMT-10492",
@@ -65013,7 +65517,7 @@
    "total_fee_usd": 53.42,
    "fee_paid_by_carrier_usd": 53.42,
    "fee_paid_by_payer_usd": 0.0,
-   "carrier_factoring_avoided_usd": 149.57
+   "carrier_factoring_avoided_usd": 144.32
   },
   {
    "payment_id": "PMT-10494",
@@ -65076,7 +65580,7 @@
    "total_fee_usd": 35.1,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 35.1,
-   "carrier_factoring_avoided_usd": 100.85
+   "carrier_factoring_avoided_usd": 94.21
   },
   {
    "payment_id": "PMT-10497",
@@ -65139,7 +65643,7 @@
    "total_fee_usd": 57.36,
    "fee_paid_by_carrier_usd": 0.0,
    "fee_paid_by_payer_usd": 57.36,
-   "carrier_factoring_avoided_usd": 148.09
+   "carrier_factoring_avoided_usd": 160.4
   },
   {
    "payment_id": "PMT-10500",
@@ -65160,7 +65664,7 @@
    "total_fee_usd": 61.38,
    "fee_paid_by_carrier_usd": 36.83,
    "fee_paid_by_payer_usd": 24.55,
-   "carrier_factoring_avoided_usd": 171.88
+   "carrier_factoring_avoided_usd": 136.83
   }
  ]
 }

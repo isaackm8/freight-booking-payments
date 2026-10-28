@@ -1,12 +1,12 @@
 carrier_id,name,usdot_number,mc_number,fleet_size,segment,accepts_cards,cash_preference,factoring_rate_pct,credit_line_apr_pct,bank_account_verified,bank_account_last4,bank_account_last_changed
-CAR-01,Buckeye Trucking (fictional),9216739,MC-913278,12,mid,False,factoring,6.5,,True,3286,2026-01-13
-CAR-02,Riverbend Trucking (fictional),9809570,MC-981482,1,small,True,factoring,6.8,,True,1488,2025-02-17
-CAR-03,Northstar Trucking (fictional),9343962,MC-976237,2,small,False,factoring,7.1,,True,9928,2025-08-03
-CAR-04,Prairie Trucking (fictional),9571029,MC-987236,2,small,False,factoring,7.7,,True,3615,2025-12-24
-CAR-05,Iron Horse Trucking (fictional),9456778,MC-946421,5,small,True,factoring,7.9,,True,6514,2025-02-22
-CAR-06,Blue Line Trucking (fictional),9498382,MC-922676,1,small,False,factoring,6.7,,True,5333,2026-02-18
-CAR-07,Summit Trucking (fictional),9865179,MC-970217,1,small,False,factoring,7.9,,True,7201,2025-02-10
-CAR-08,Crossroads Trucking (fictional),9407419,MC-992397,8,small,False,factoring,7.7,,True,4150,2025-12-27
+CAR-01,Buckeye Trucking (fictional),9216739,MC-913278,12,mid,False,factoring,6.6,,True,3286,2026-01-13
+CAR-02,Riverbend Trucking (fictional),9809570,MC-981482,1,small,True,factoring,6.9,,True,1488,2025-02-17
+CAR-03,Northstar Trucking (fictional),9343962,MC-976237,2,small,False,factoring,7.0,,True,9928,2025-08-03
+CAR-04,Prairie Trucking (fictional),9571029,MC-987236,2,small,False,factoring,7.1,,True,3615,2025-12-24
+CAR-05,Iron Horse Trucking (fictional),9456778,MC-946421,5,small,True,factoring,6.9,,True,6514,2025-02-22
+CAR-06,Blue Line Trucking (fictional),9498382,MC-922676,1,small,False,factoring,6.9,,True,5333,2026-02-18
+CAR-07,Summit Trucking (fictional),9865179,MC-970217,1,small,False,factoring,7.2,,True,7201,2025-02-10
+CAR-08,Crossroads Trucking (fictional),9407419,MC-992397,8,small,False,factoring,7.0,,True,4150,2025-12-27
 CAR-09,Lakeview Trucking (fictional),9148050,MC-996673,1,small,False,credit_line,,13.3,True,2307,2026-03-14
 CAR-10,Red Oak Trucking (fictional),9205907,MC-959823,2,small,False,credit_line,,18.5,True,6977,2025-03-25
 CAR-11,Keystone Trucking (fictional),9472528,MC-937460,3,small,False,credit_line,,19.5,True,2169,2025-11-08
@@ -18,4 +18,4 @@ CAR-16,Big Sky Trucking (fictional),9581141,MC-928726,12,mid,False,waits,,,True,
 CAR-17,Mapleton Trucking (fictional),9665158,MC-944438,350,large,False,waits,,,True,8019,2026-04-05
 CAR-18,Copper Ridge Trucking (fictional),9518801,MC-957447,350,large,False,waits,,,True,3266,2025-09-18
 CAR-19,Westfield Trucking (fictional),9195325,MC-916175,120,large,False,waits,,,True,3504,2025-11-18
-CAR-20,Eastgate Trucking (fictional),9930555,MC-999192,40,mid,False,factoring,6.1,,True,7252,2025-11-02
+CAR-20,Eastgate Trucking (fictional),9930555,MC-999192,40,mid,False,factoring,7.1,,True,7252,2025-11-02
