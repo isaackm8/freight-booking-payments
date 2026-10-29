@@ -69,6 +69,7 @@ Example: SHP-10001, a $1,278.52 invoice, forwarder on the 60/40 split.
     - who pays (the fee model)
     - a shorter float
 - **The comparison that matters:** factoring costs 6–8% and broker quick pay 2–5%, so even 2.75% beats both.
+- **Credit-line carriers are a harder sell.** A credit line charges yearly interest only for the days borrowed: invoice × rate × days waiting ÷ 365. At 11.5–19.5% a year for 30 days, that's roughly 0.9–1.6% of the invoice. In the sample data, 4 of the 5 credit-line carriers would pay more in CashBridge fees than in interest. At a 60/40 split and 30-day terms, a credit-line carrier breaks even at about 20% a year. For them the pitch is speed and freeing up their credit line, or a forwarder that covers more of the fee.
 
 ## How the carrier pays its share, and agrees to it
 
@@ -88,6 +89,8 @@ Example: SHP-10001, a $1,278.52 invoice, forwarder on the 60/40 split.
     - From sources: 30–45 day waits, 6–8% factoring cost, 45%, 52%, 60%, 58% and 63%. The 60% is from a 2022 Denim report cited in the paper; the rest are from Mastercard's survey.
     - Assumptions to test: the 80% auto-approval, 50% time saved, 24-hour and 2% false-hold targets.
 - **Factoring rates** are randomized per shipment between 6% and 8%, the white paper's range.
+- **Terms to carriers are 30 days** for all three forwarders: the typical "net 30" (the white paper puts carrier waits at 30–45 days).
+- **Credit line rates** (11.5–19.5% a year, one per credit-line carrier) are made up for the demo; real small-business credit lines vary widely, so check current rates before quoting. The Cash Flow Hub's sliders let you try other factoring and credit line rates, for every carrier or just one.
 - **US units throughout:** distances in miles, money in US dollars, diesel per gallon. An in-transit update more than 2 miles off the expected route is held for review.
 - **Approved max** = (booked rate + fuel surcharge) × 1.10, which leaves 10% room for extra charges such as detention or a liftgate.
 - **Fraud cases are generated on purpose.** Hold rates show how the mechanism works, not real-world catch rates.

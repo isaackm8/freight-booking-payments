@@ -11,15 +11,18 @@ export function Layout() {
             <span className="hidden border-l border-stone-300 pl-2.5 text-sm text-stone-500 sm:inline">Freight paid faster. Cash gap closed.</span>
           </Link>
           <nav className="flex gap-1 text-sm">
-            <NavLink
-              to="/"
-              end
-              className={({ isActive }) =>
-                `rounded-full px-4 py-1.5 font-medium ${isActive ? 'bg-ink text-white' : 'text-stone-600 hover:bg-stone-100 hover:text-ink'}`
-              }
-            >
-              Shipments
-            </NavLink>
+            {[{ to: '/cash-flow-hub', name: 'Cash Flow Hub' }, { to: '/', name: 'Shipments' }].map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end
+                className={({ isActive }) =>
+                  `rounded-full px-4 py-1.5 font-medium ${isActive ? 'bg-ink text-white' : 'text-stone-600 hover:bg-stone-100 hover:text-ink'}`
+                }
+              >
+                {item.name}
+              </NavLink>
+            ))}
           </nav>
         </div>
         <div className="border-y border-stone-200 bg-accent-soft px-4 py-1.5 text-center text-xs font-medium text-accent-ink">

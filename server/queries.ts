@@ -13,10 +13,11 @@ export interface ShipmentFilters {
   scenario?: string;
   decision?: string;
   review?: string;
+  reason?: string; // a hold reason, e.g. off_route
   q?: string;
 }
 
-export const FILTER_KEYS = ['payer_id', 'shipper_id', 'carrier_id', 'segment', 'scenario', 'decision', 'review', 'q'] as const;
+export const FILTER_KEYS = ['payer_id', 'shipper_id', 'carrier_id', 'segment', 'scenario', 'decision', 'review', 'reason', 'q'] as const;
 
 // A held payment is awaiting review until the forwarder releases or rejects it; other decisions have no review.
 const REVIEW_STATUS_SQL = "CASE WHEN d.decision = 'held_for_review' THEN COALESCE(r.status, 'awaiting_review') END";
@@ -52,6 +53,7 @@ export function listShipments(db: DatabaseSync, f: ShipmentFilters = {}): Shipme
   if (f.scenario) { where.push('s.scenario = ?'); params.push(f.scenario); }
   if (f.decision) { where.push('d.decision = ?'); params.push(f.decision); }
   if (f.review) { where.push(`${REVIEW_STATUS_SQL} = ?`); params.push(f.review); }
+  if (f.reason) { where.push("d.decision = 'held_for_review' AND (';' || d.hold_reasons || ';') LIKE ?"); params.push(`%;${f.reason};%`); }
   if (f.q) {
     where.push('(s.shipment_id LIKE ? OR s.origin_city LIKE ? OR s.dest_city LIKE ? OR c.name LIKE ? OR sh.name LIKE ?)');
     params.push(...Array(5).fill(`%${f.q}%`));

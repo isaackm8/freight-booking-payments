@@ -36,7 +36,7 @@
    "network": "Mastercard",
    "credit_limit_usd": 1500000,
    "customer_terms_days": 45,
-   "current_terms_to_carriers_days": 10,
+   "current_terms_to_carriers_days": 30,
    "statement_close_day": "last day of month",
    "grace_days": 15,
    "fee_model": "split"
@@ -50,7 +50,7 @@
    "network": "Mastercard",
    "credit_limit_usd": 1000000,
    "customer_terms_days": 45,
-   "current_terms_to_carriers_days": 45,
+   "current_terms_to_carriers_days": 30,
    "statement_close_day": "last day of month",
    "grace_days": 15,
    "fee_model": "payer_pays"

@@ -1,5 +1,5 @@
 // Shapes returned by the API. Money is integer cents; timestamps are UTC ISO strings.
-import type { DecisionKind, DecisionRecord, Review, ReviewStatus } from './decisions.ts';
+import type { DecisionKind, DecisionRecord, HoldReason, Review, ReviewStatus } from './decisions.ts';
 
 export interface ShipmentSummary {
   shipment_id: string;
@@ -168,4 +168,37 @@ export interface ShipmentNeighbors {
   total: number;
   prev: string | null;
   next: string | null;
+}
+
+// The forwarder dashboard, for one forwarder (payer) or all of them.
+export interface Dashboard {
+  payer: Payer | null;          // null = all forwarders
+  payers: Option[];
+  period: { from: string; to: string }; // first and last tracking update in the sample data
+  totals: {
+    shipments: number;
+    paid: number;               // paid automatically (including duplicates blocked)
+    held: number;
+    awaiting_delivery: number;
+    paid_within_24h: number;    // paid loads funded within 24 hours of delivery
+    avg_hours_to_funds: number | null;
+    max_hours_to_funds: number | null;
+    avg_float_days: number | null;
+    paid_cents: number;
+    fees_total_cents: number;
+    fees_forwarder_cents: number;
+    fees_carrier_cents: number;
+    factoring_avoided_cents: number;
+  };
+  reviews: { awaiting_review: number; released: number; rejected: number; oldest_days_waiting: number | null };
+  card_bills: { due_date: string; loads: number; invoice_cents: number; forwarder_fee_cents: number; total_cents: number }[];
+  holds_by_reason: { reason: HoldReason; count: number }[];
+  queue: { shipment_id: string; carrier_name: string; invoice_cents: number | null; reasons: HoldReason[]; held_since: string; days_waiting: number }[];
+  carriers: {
+    carrier_id: string; name: string; segment: string; cash_preference: string; credit_line_apr_pct: number | null;
+    loads: number; paid: number; held: number; paid_cents: number; avg_hours_to_funds: number | null;
+    fees_paid_by_carrier_cents: number;
+    factoring_avoided_cents: number; // factoring at each load's rate, for carriers that factor today
+    paid_cent_days: number;          // sum of invoice cents x days the carrier would otherwise wait (forwarder's terms)
+  }[];
 }

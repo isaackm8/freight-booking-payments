@@ -35,6 +35,7 @@ All data is **synthetic**. Company names are fictional, USDOT/MC numbers are mad
 - **carriers.cash_preference**: `factoring`, `credit_line` or `waits`, which drives the carrier's break-even fee.
 - **shipments.shipper_id**: the shipper whose goods are moving; always one of that shipment's forwarder's customers (`shippers.payer_id` = `shipments.payer_id`).
 - **payers.service_level**: `full` (full forwarding) or `brokerage_only` (the forwarder acts as a broker because the shipper wants limited service). Every payer is a forwarder, never a carrier; the service level doesn't change the hold rules or the economics.
+- **payers.current_terms_to_carriers_days**: how long each forwarder makes carriers wait today: 30 days for all three (typical "net 30"; the white paper's range is 30–45). The Cash Flow Hub uses it for credit-line interest and days unpaid.
 - **payers.customer_terms_days**: days the shipper (the forwarder's customer) takes to pay the forwarder.
 - **payers.fee_model**: `carrier_pays`, `split` (60% carrier / 40% payer) or `payer_pays`.
 

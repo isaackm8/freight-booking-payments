@@ -2,6 +2,7 @@ import express from 'express';
 import type { DatabaseSync } from 'node:sqlite';
 import { FILTER_KEYS, getShipment, listShipments, shipmentNeighbors, type ShipmentFilters } from './queries.ts';
 import { ReviewError, ReviewStore } from './reviews.ts';
+import { getDashboard } from './dashboard.ts';
 
 const str = (v: unknown) => (typeof v === 'string' && v !== '' ? v : undefined);
 
@@ -14,6 +15,16 @@ export function createApp(db: DatabaseSync, reviews = new ReviewStore(db)) {
 
   app.get('/api/health', (_req, res) => {
     res.json({ ok: true });
+  });
+
+  // ?payer_id=PAY-01 for one forwarder; omit it for all forwarders.
+  app.get('/api/dashboard', (req, res) => {
+    const dashboard = getDashboard(db, str(req.query.payer_id));
+    if (!dashboard) {
+      res.status(404).json({ error: `No forwarder with ID ${req.query.payer_id}` });
+      return;
+    }
+    res.json(dashboard);
   });
 
   app.get('/api/shipments', (req, res) => {

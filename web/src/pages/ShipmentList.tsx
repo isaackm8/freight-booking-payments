@@ -10,7 +10,7 @@ import {
 } from '../../../shared/decisions.ts';
 import { REVIEW_STYLE } from '../ReviewPanel.tsx';
 
-const FILTER_KEYS = ['q', 'decision', 'review', 'shipper_id', 'payer_id', 'carrier_id', 'segment', 'scenario'] as const;
+const FILTER_KEYS = ['q', 'decision', 'review', 'reason', 'shipper_id', 'payer_id', 'carrier_id', 'segment', 'scenario'] as const;
 
 // Column headers and the plain-language definition shown in each header's tooltip.
 const COLUMNS: { key: string; title: string; tip: ReactNode; align?: 'right' }[] = [

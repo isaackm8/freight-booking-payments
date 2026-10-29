@@ -25,7 +25,7 @@ One app with a role switcher at the top; each role sees its own view of the same
 
 | Role | Key jobs | Main view |
 | --- | --- | --- |
-| Forwarder finance / AP lead | See what paid automatically, clear exceptions, track float and fees | Payer dashboard + exceptions queue |
+| Forwarder finance / AP lead | See what paid automatically, clear exceptions, track float and fees | Cash Flow Hub + exceptions queue |
 | Forwarder operations coordinator | Book loads, set booked rate and approved range | Shipment booking and detail |
 | Carrier owner / dispatcher | See each load's payment status, when funds arrive, why a payment is held, fees vs. factoring | Carrier portal |
 | Risk analyst (payer or issuer) | Review holds, see the shipment signals behind each one, release or reject | Risk review |
@@ -49,7 +49,7 @@ Held payments go to the exceptions queue with their evidence; a reviewer release
 
 ## Screens and features (MVP)
 
-1. **Payer dashboard:** KPI tiles (auto-approval rate, holds by reason, average hours to carrier funds, average float days, fees this period) and a shipment table filterable by status, carrier, segment and scenario.
+1. **Cash Flow Hub (payer dashboard):** KPI tiles (auto-approval rate, holds by reason, average hours to carrier funds, average float days, fees this period) and a shipment table filterable by status, carrier, segment and scenario.
 2. **Shipment detail:** one page per shipment ID that joins booking, approved range, tracking timeline with a map (expected route vs. actual GPS), invoice line items vs. approved maximum, decision with reasons, payment timeline and fee split.
 3. **Exceptions queue:** held payments sorted by age, each with its reason, the evidence (off-route map, recipient mismatch, bank-change date, duplicate invoice), and Release / Reject / Request info actions with an audit note.
 4. **Carrier portal:** a carrier's loads with status (in transit, delivered, paid, held), funds-arrival time, plain-language hold reasons, and a comparison of fee paid vs. their factoring or credit-line cost.
@@ -132,10 +132,10 @@ Each success metric from the problem framing appears on a screen, computed from 
 
 | Metric | Target (placeholder) | Where it shows |
 | --- | --- | --- |
-| Shipments paid within 24 hours of confirmed delivery, no manual touch (north star) | Tracked | Payer dashboard, program analytics |
-| Auto-approval rate | ≥ 80% (sample: 89%) | Payer dashboard |
-| Hours from delivery to carrier funds | < 24 | Payer dashboard, carrier portal |
-| Float days kept by payer | 30–45 (sample avg ~32) | Payer dashboard, fee simulator, savings view |
+| Shipments paid within 24 hours of confirmed delivery, no manual touch (north star) | Tracked | Cash Flow Hub, program analytics |
+| Auto-approval rate | ≥ 80% (sample: 89%) | Cash Flow Hub |
+| Hours from delivery to carrier funds | < 24 | Cash Flow Hub, carrier portal |
+| Float days kept by payer | 30–45 (sample avg ~32) | Cash Flow Hub, fee simulator, savings view |
 | Holds by reason; time to clear a hold | Clear < 24 h | Exceptions queue, risk review |
 | False-hold rate | < 2% | Risk review (once reviewers mark outcomes) |
 | Duplicate payments | 0 | Program analytics |
@@ -198,11 +198,11 @@ Each phase ends with something you can click and a check you can run.
     - Done when: all 500 shipments, ~3,050 milestones, 634 pieces of delivery evidence and 500 invoices load, and any shipment ID shows its full record.
 2. **Decision engine:** implement the eight hold rules, payment timing, float and fees as a tested module.
     - Done when: decisions match `payments_expected.csv` for 500 of 500 shipments, with unit tests per rule.
-3. **Payer views:** payer dashboard, exceptions queue with evidence and Release / Reject actions, map of route vs. GPS. (Started early: held payments already show a notification, a review status and Release / Reject on the shipment page.)
+3. **Payer views:** Cash Flow Hub (payer dashboard), exceptions queue with evidence and Release / Reject actions, map of route vs. GPS. (Started early: held payments already show a notification, a review status and Release / Reject on the shipment page. Cash Flow Hub built: KPI tiles, card bills, holds by reason, oldest awaiting review and a by-carrier table comparing each carrier's cost of cash today (factoring or credit-line interest) with its CashBridge fee, with what-if sliders for the rates, for one forwarder or all. Still to do: the full exceptions queue with evidence and Request info, the audit log, the route map, and simulating the payout of released payments.)
     - Done when: auto-approval 89%, 50 holds shown with correct reasons, and actions update status and audit log.
 4. **Carrier and risk views:** carrier portal with payment status and fee vs. factoring; risk review screen. Only the forwarder can release or reject a held payment; carriers see status and reasons and can respond (upload proof, explain, dispute), and the API enforces the role.
     - Done when: switching role to any carrier shows only its loads, funds timing and plain-language hold reasons.
-5. **Economics and analytics:** fee model simulator, payer and carrier savings views with editable rates, and program analytics by segment and cash preference.
+5. **Economics and analytics:** fee model simulator, payer and carrier savings views with editable rates, and program analytics by segment and cash preference. The by-carrier cost what-if (factoring and credit line rates, now on the Cash Flow Hub for the demo) moves here, as part of choosing a fee model; a real forwarder won't know each carrier's rates, so it uses market-rate estimates.
     - Done when: changing the fee model updates who pays and the break-even comparison for every segment.
 6. **Replay and polish:** time-replay control, synthetic-data labels, responsive layout, shareable demo link.
     - Done when: a 3-minute demo can walk from booking to paid, held and reconciled shipments without explanation.
