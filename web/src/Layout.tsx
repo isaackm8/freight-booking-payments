@@ -1,26 +1,36 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 
 export function Layout() {
   return (
-    <div className="min-h-screen">
-      <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-3">
-          <Link to="/" className="text-lg font-semibold tracking-tight">
-            Pay on Delivery
+    <div className="flex min-h-screen flex-col">
+      <header className="bg-white">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-4">
+          <Link to="/" className="flex items-center gap-2.5">
+            <span className="h-3 w-3 rounded-full bg-accent" aria-hidden />
+            <span className="text-lg font-bold tracking-tight">Pay on Delivery</span>
           </Link>
-          <nav className="text-sm">
-            <Link to="/" className="font-medium text-slate-600 hover:text-slate-900">
+          <nav className="flex gap-1 text-sm">
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) =>
+                `rounded-full px-4 py-1.5 font-medium ${isActive ? 'bg-ink text-white' : 'text-stone-600 hover:bg-stone-100 hover:text-ink'}`
+              }
+            >
               Shipments
-            </Link>
+            </NavLink>
           </nav>
         </div>
-        <div className="bg-amber-50 px-4 py-1.5 text-center text-xs font-medium text-amber-800">
+        <div className="border-y border-stone-200 bg-accent-soft px-4 py-1.5 text-center text-xs font-medium text-accent-ink">
           Synthetic data, illustrative pricing.
         </div>
       </header>
-      <main className="mx-auto max-w-7xl px-4 py-6">
+      <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8">
         <Outlet />
       </main>
+      <footer className="bg-ink px-4 py-5 text-xs text-stone-400">
+        <div className="mx-auto max-w-7xl">Prototype · amounts in USD · times in UTC</div>
+      </footer>
     </div>
   );
 }

@@ -93,6 +93,7 @@ Load the synthetic sample set (the CSVs in [`data/`](../data/)) at startup; ever
 | Table | Key | Joins to | Notes |
 | --- | --- | --- | --- |
 | payers | payer_id | shipments | forwarders: customer terms, fee model, statement cycle |
+| shippers | shipper_id | shipments, payers | the forwarders' customers; each uses one forwarder |
 | carriers | carrier_id | shipments, invoices | segment, cash preference, factoring rate or credit APR, bank details |
 | rate_rules | payer_id + charge_type | payers | allowed extras and caps |
 | fuel_index | week_start | shipments | weekly fuel surcharge % |
@@ -206,6 +207,8 @@ Each phase ends with something you can click and a check you can run.
 ## Risks, assumptions and hand-off
 
 **Risks and assumptions**
+
+Points to level-set with an audience are tracked in [AUDIENCE_NOTES.md](AUDIENCE_NOTES.md).
 
 - **Illustrative economics:** fees, interchange and funding costs are assumptions; label them on screen so the demo isn't read as real pricing.
 - **Synthetic fraud:** fraud cases are generated, so hold rates show the mechanism, not real-world catch rates.

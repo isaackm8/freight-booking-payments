@@ -12,9 +12,10 @@ export function createApp(db: DatabaseSync) {
   });
 
   app.get('/api/shipments', (req, res) => {
-    const { payer_id, carrier_id, segment, scenario, q } = req.query;
+    const { payer_id, shipper_id, carrier_id, segment, scenario, q } = req.query;
     res.json(listShipments(db, {
-      payer_id: str(payer_id), carrier_id: str(carrier_id), segment: str(segment), scenario: str(scenario), q: str(q),
+      payer_id: str(payer_id), shipper_id: str(shipper_id), carrier_id: str(carrier_id),
+      segment: str(segment), scenario: str(scenario), q: str(q),
     }));
   });
 

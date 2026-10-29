@@ -39,19 +39,31 @@ test('loads 500 shipments, 3,143 tracking events and 505 invoices', () => {
   assert.equal(counts.tracking_events, 3143);
   assert.equal(counts.invoices, 505);
   assert.equal(counts.payers, 3);
+  assert.equal(counts.shippers, 9);
   assert.equal(counts.carriers, 20);
   assert.equal(counts.payments_expected, 500);
 });
 
 test('every row in every CSV made it into SQLite', () => {
   for (const [table, file] of [
-    ['payers', 'payers.csv'], ['carriers', 'carriers.csv'], ['rate_rules', 'rate_rules.csv'],
+    ['payers', 'payers.csv'], ['shippers', 'shippers.csv'], ['carriers', 'carriers.csv'], ['rate_rules', 'rate_rules.csv'],
     ['fuel_index', 'fuel_index.csv'], ['shipments', 'shipments.csv'], ['tracking_events', 'tracking_events.csv'],
     ['invoices', 'invoices.csv'], ['payments_expected', 'payments_expected.csv'],
   ]) {
     const { n } = db.prepare(`SELECT COUNT(*) AS n FROM ${table}`).get() as { n: number };
     assert.equal(n, csv(file).length, table);
   }
+});
+
+test("every shipment's shipper is a customer of that shipment's forwarder", () => {
+  const { bad } = db.prepare(
+    'SELECT COUNT(*) AS bad FROM shipments s JOIN shippers sh ON sh.shipper_id = s.shipper_id WHERE sh.payer_id <> s.payer_id',
+  ).get() as { bad: number };
+  assert.equal(bad, 0);
+  const { forwarders_as_carriers } = db.prepare(
+    'SELECT COUNT(*) AS forwarders_as_carriers FROM payers p JOIN carriers c ON c.name = p.name',
+  ).get() as { forwarders_as_carriers: number };
+  assert.equal(forwarders_as_carriers, 0, 'a forwarder is never a carrier');
 });
 
 test('money is stored as exact integer cents', () => {
@@ -101,6 +113,9 @@ test('shipment list returns all 500 and filters work', () => {
   const byCarrier = listShipments(db, { carrier_id: 'CAR-01' });
   assert.ok(byCarrier.total > 0 && byCarrier.shipments.every((s) => s.carrier_id === 'CAR-01'));
   assert.equal(listShipments(db, { q: 'SHP-10001' }).shipments[0].shipment_id, 'SHP-10001');
+  const byShipper = listShipments(db, { shipper_id: 'SHPR-01' });
+  assert.ok(byShipper.total > 0 && byShipper.shipments.every((s) => s.shipper_id === 'SHPR-01' && s.shipper_name));
+  assert.ok(listShipments(db, { q: 'Bluewater' }).shipments.every((s) => s.shipper_id === 'SHPR-04'));
 });
 
 test('API serves the list, any shipment detail, and 404 for unknown IDs', async () => {

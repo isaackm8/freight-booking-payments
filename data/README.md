@@ -7,10 +7,11 @@ All data is **synthetic**. Company names are fictional, USDOT/MC numbers are mad
 | File | Rows | What it holds |
 |---|---|---|
 | `payers.csv` | 3 | Three forwarders (the payers in this demo); card program, credit limit, customer (shipper) terms, today's terms to carriers, statement cycle, fee model |
+| `shippers.csv` | 9 | The forwarders' customers (3 per forwarder): name, industry, and which forwarder they use |
 | `carriers.csv` | 20 | Fleet size, segment (small/mid/large), how they get cash today (factoring / credit line / waits), factoring rate or credit APR, verified bank account |
 | `rate_rules.csv` | 15 | Allowed extra charges and caps per payer (detention, liftgate, reweigh, lumper, fuel) |
 | `fuel_index.csv` | 10 | Weekly diesel price and fuel surcharge % (synthetic; real index = EIA weekly diesel) |
-| `shipments.csv` | 500 | Lane, pickup and scheduled delivery, booked rate, fuel surcharge, **approved maximum**, factoring rate, virtual card ID, test **scenario** |
+| `shipments.csv` | 500 | Shipper, lane, pickup and scheduled delivery, booked rate, fuel surcharge, **approved maximum**, factoring rate, virtual card ID, test **scenario** |
 | `tracking_events.csv` | ~3,100 | PICKUP, IN_TRANSIT, RFID_SCAN, DELIVERED, POD with GPS, source and off-route distance |
 | `invoices.csv` | 505 | Base, fuel, detention, liftgate, reweigh and total; includes 5 duplicate invoices (`duplicate_of`) |
 | `payments_expected.csv` | 500 | **Answer key**: expected decision, hold reasons, timing, float and fee split under default rules |
@@ -25,6 +26,7 @@ All data is **synthetic**. Company names are fictional, USDOT/MC numbers are mad
 - **tracking_events.off_route_km**: distance from the expected route. Above 50 km is the default hold threshold.
 - **tracking_events.recipient**: who signed at delivery; compare with `shipments.consignee`.
 - **carriers.cash_preference**: `factoring`, `credit_line` or `waits`, which drives the carrier's break-even fee.
+- **shipments.shipper_id**: the shipper whose goods are moving; always one of that shipment's forwarder's customers (`shippers.payer_id` = `shipments.payer_id`).
 - **payers.service_level**: `full` (full forwarding) or `brokerage_only` (the forwarder acts as a broker because the shipper wants limited service). Every payer is a forwarder, never a carrier; the service level doesn't change the hold rules or the economics.
 - **payers.customer_terms_days**: days the shipper (the forwarder's customer) takes to pay the forwarder.
 - **payers.fee_model**: `carrier_pays`, `split` (60% carrier / 40% payer) or `payer_pays`.

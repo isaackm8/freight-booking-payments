@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+/* Mastercard-inspired palette: warm neutrals, near-black ink, orange accent.
+   Brand-inspired only; no Mastercard logos or marks are used. */
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #141413;
+  --color-canvas: #f4f1ee;
+  --color-accent: #ff5f00;      /* decorative accents and focus rings */
+  --color-accent-ink: #cf4500;  /* orange text and links (4.5:1 on white) */
+  --color-accent-soft: #fff0e6;
+}
+
 body {
-  @apply bg-slate-50 text-slate-900 antialiased;
+  @apply bg-canvas font-sans text-ink antialiased;
 }

@@ -38,6 +38,14 @@ export const TABLES: TableSpec[] = [
     },
   },
   {
+    // The forwarders' customers. Each shipper uses one forwarder.
+    table: 'shippers',
+    file: 'shippers.csv',
+    primaryKey: ['shipper_id'],
+    columns: { shipper_id: 'text', name: 'text', payer_id: 'text', industry: 'text' },
+    references: { payer_id: 'payers' },
+  },
+  {
     table: 'carriers',
     file: 'carriers.csv',
     primaryKey: ['carrier_id'],
@@ -77,7 +85,7 @@ export const TABLES: TableSpec[] = [
     file: 'shipments.csv',
     primaryKey: ['shipment_id'],
     columns: {
-      shipment_id: 'text', payer_id: 'text', carrier_id: 'text', mode: 'text',
+      shipment_id: 'text', payer_id: 'text', shipper_id: 'text', carrier_id: 'text', mode: 'text',
       origin_city: 'text', origin_state: 'text', origin_lat: 'real', origin_lon: 'real',
       dest_city: 'text', dest_state: 'text', dest_lat: 'real', dest_lon: 'real',
       consignee: 'text', expected_route_km: 'real', pickup_ts: 'ts', scheduled_delivery_ts: 'ts',
@@ -85,7 +93,7 @@ export const TABLES: TableSpec[] = [
       factoring_rate_pct: 'real', currency: 'text', virtual_card_id: 'text', scenario: 'text',
       carrier_bank_change_request_date: 'text',
     },
-    references: { payer_id: 'payers', carrier_id: 'carriers' },
+    references: { payer_id: 'payers', shipper_id: 'shippers', carrier_id: 'carriers' },
   },
   {
     table: 'tracking_events',

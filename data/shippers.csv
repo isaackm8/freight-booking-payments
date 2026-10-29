@@ -1,0 +1,10 @@
+shipper_id,name,payer_id,industry
+SHPR-01,Midwest Home Goods Co. (fictional),PAY-01,home goods
+SHPR-02,Prairie Pantry Foods (fictional),PAY-01,packaged food
+SHPR-03,Northfield Auto Parts (fictional),PAY-01,auto parts
+SHPR-04,Bluewater Appliances (fictional),PAY-02,appliances
+SHPR-05,Copperline Electronics (fictional),PAY-02,electronics
+SHPR-06,Redwood Outdoor Supply (fictional),PAY-02,outdoor gear
+SHPR-07,Summit Paper Products (fictional),PAY-03,paper goods
+SHPR-08,Cedar & Pine Furniture (fictional),PAY-03,furniture
+SHPR-09,Harvest Valley Beverages (fictional),PAY-03,beverages

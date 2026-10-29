@@ -115,10 +115,11 @@ The approach: synthetic data generated from a defined schema, and live partner f
 | File | Rows | Holds |
 |---|---|---|
 | `payers.csv` | 3 | Forwarders (one acting as a broker): service level, card program, credit limit, customer terms, terms to carriers, statement cycle, fee model |
+| `shippers.csv` | 9 | The forwarders' customers, 3 per forwarder |
 | `carriers.csv` | 20 | Fleet size, segment (12 small, 5 mid, 3 large), how they get cash today (factoring, credit line or waiting), verified bank account |
 | `rate_rules.csv` | 15 | Allowed extra charges and caps per payer |
 | `fuel_index.csv` | 10 | Weekly diesel price and fuel surcharge |
-| `shipments.csv` | 500 | Lane, dates, booked rate, approved maximum, factoring rate (6–8%, randomized per shipment), virtual card ID, test scenario |
+| `shipments.csv` | 500 | Shipper, lane, dates, booked rate, approved maximum, factoring rate (6–8%, randomized per shipment), virtual card ID, test scenario |
 | `tracking_events.csv` | 3,143 | Pickup, in transit, RFID scan, delivered and proof of delivery, with GPS and off-route distance |
 | `invoices.csv` | 505 | Itemized charges, including 5 duplicate invoices |
 | `payments_expected.csv` | 500 | **Answer key:** expected decision, hold reasons, timing, float and fee split |
@@ -187,5 +188,6 @@ Open http://localhost:5173. The API runs on port 3001 and rebuilds a local SQLit
 - `web/`: the React app (Vite, Tailwind).
 - `shared/`: types used by both.
 - `docs/BUILD_PLAN.md`: the build plan and its phases.
+- [`docs/AUDIENCE_NOTES.md`](docs/AUDIENCE_NOTES.md): what to level-set with an audience before a demo (who's who, truckload-only scope, synthetic data).
 
 **Progress:** phase 1 (foundation) is done: shipment list with filters, and a detail page per shipment ID.

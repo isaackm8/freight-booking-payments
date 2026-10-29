@@ -4,6 +4,8 @@ export interface ShipmentSummary {
   shipment_id: string;
   payer_id: string;
   payer_name: string;
+  shipper_id: string;
+  shipper_name: string;
   carrier_id: string;
   carrier_name: string;
   carrier_segment: string;
@@ -24,7 +26,7 @@ export interface ShipmentSummary {
 export interface ShipmentListResponse {
   total: number;
   shipments: ShipmentSummary[];
-  filters: { payers: Option[]; carriers: Option[]; segments: string[]; scenarios: string[] };
+  filters: { payers: Option[]; shippers: Option[]; carriers: Option[]; segments: string[]; scenarios: string[] };
 }
 
 export interface Option {
@@ -47,6 +49,13 @@ export interface Payer {
   fee_model: string;
 }
 
+export interface Shipper {
+  shipper_id: string;
+  name: string;
+  payer_id: string;
+  industry: string;
+}
+
 export interface Carrier {
   carrier_id: string;
   name: string;
@@ -66,6 +75,7 @@ export interface Carrier {
 export interface Shipment {
   shipment_id: string;
   payer_id: string;
+  shipper_id: string;
   carrier_id: string;
   mode: string;
   origin_city: string;
@@ -125,6 +135,7 @@ export interface RateRule {
 export interface ShipmentDetail {
   shipment: Shipment;
   payer: Payer;
+  shipper: Shipper;
   carrier: Carrier;
   events: TrackingEvent[];
   invoices: Invoice[];
