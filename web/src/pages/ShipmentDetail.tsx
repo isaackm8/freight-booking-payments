@@ -8,7 +8,7 @@ import {
 import { NotFound } from './NotFound.tsx';
 
 // Matches the decision engine's default off-route threshold; shown here only as context.
-const OFF_ROUTE_MI = 30;
+const OFF_ROUTE_MI = 2;
 
 export function ShipmentDetailPage() {
   const { id = '' } = useParams();

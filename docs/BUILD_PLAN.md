@@ -69,7 +69,7 @@ A pure, testable function: `decide(shipment, events, invoices, carrier, rules) â
 | # | Check | Hold reason |
 | --- | --- | --- |
 | 1 | Invoice total > approved maximum | amount_above_approved_range |
-| 2 | Any in-transit event > 30 mi off expected route | off_route |
+| 2 | Any in-transit event > 2 mi off expected route | off_route |
 | 3 | Delivery recipient or location â‰  consignee | delivered_to_unexpected_recipient |
 | 4 | Carrier bank details changed within 14 days | bank_account_changed_recently |
 | 5 | Second invoice for the same shipment | pay once, block duplicate |

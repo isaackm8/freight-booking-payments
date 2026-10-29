@@ -146,7 +146,7 @@ Result: 445 paid automatically (89%), 50 held (10%) and 5 awaiting delivery (1%)
 ### Default hold rules
 
 1. The invoice total is above the approved maximum, which is (booked rate + fuel) × 1.10.
-2. Any in-transit event is more than 30 miles off the expected route.
+2. Any in-transit event is more than 2 miles off the expected route.
 3. The delivery recipient doesn't match the consignee.
 4. The carrier's bank details changed within 14 days before payment.
 5. The same shipment is invoiced twice: pay once, block the duplicate.

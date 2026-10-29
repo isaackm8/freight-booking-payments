@@ -142,14 +142,14 @@ test('tracking events are milestones only; proof of delivery is evidence', () =>
   assert.ok(expected('shipment_on_hold').every((p) => p.d === 'awaiting_delivery' && p.r === 'shipment_on_hold'));
 });
 
-test('distances are in miles, and only the off-route test loads go past the 30 mi threshold', () => {
+test('distances are in miles, and only the off-route test loads go past the 2 mi threshold', () => {
   const far = (db.prepare(
     `SELECT DISTINCT s.scenario FROM tracking_events e JOIN shipments s USING (shipment_id)
-      WHERE e.event_type = 'IN_TRANSIT' AND e.off_route_mi > 30`,
+      WHERE e.event_type = 'IN_TRANSIT' AND e.off_route_mi > 2`,
   ).all() as { scenario: string }[]).map((r) => r.scenario);
   assert.deepEqual(far, ['fraud_off_route']);
   const { n } = db.prepare(
-    "SELECT COUNT(DISTINCT shipment_id) AS n FROM tracking_events WHERE event_type = 'IN_TRANSIT' AND off_route_mi > 30",
+    "SELECT COUNT(DISTINCT shipment_id) AS n FROM tracking_events WHERE event_type = 'IN_TRANSIT' AND off_route_mi > 2",
   ).get() as { n: number };
   assert.equal(n, 5);
 });

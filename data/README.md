@@ -24,7 +24,7 @@ All data is **synthetic**. Company names are fictional, USDOT/MC numbers are mad
 - **shipments.factoring_rate_pct**: what factoring this load would cost, randomized per shipment between 6% and 8% (the white paper's range). `carriers.factoring_rate_pct` is the average across that carrier's shipments.
 - **shipments.scenario**: the test case the row was built for (see mix below). Use it to check the prototype's decisions against `payments_expected.csv`.
 - **shipments.carrier_bank_change_request_date**: only on `fraud_bank_changed` rows; a bank-detail change requested days before delivery.
-- **tracking_events.off_route_mi**: distance from the expected route, in miles. Above 30 mi is the default hold threshold.
+- **tracking_events.off_route_mi**: distance from the expected route, in miles. Above 2 mi is the default hold threshold; normal GPS drift stays within 1 mi.
 - **shipments.expected_route_mi**: expected route length, in miles. All distances in the data are in miles.
 - **tracking_events.event_type**: milestones only. A load is BOOKED 1–3 days before pickup. DELAYED is sent at the scheduled delivery time when the load arrives more than 2 hours late. A load ends DELIVERED, EXCEPTION (refused) or ON_HOLD.
 - **tracking_events.reason**: why a DELAYED ("ETA +3.1 h"), EXCEPTION (`damaged`, `refused`, `shortage`) or ON_HOLD ("delivery appointment not set", "held at customer request") event happened.
@@ -57,7 +57,7 @@ Result: 445 paid automatically (89%), 50 held (10%), 5 awaiting delivery (1%). W
 ## Default hold rules
 
 1. Invoice total > approved maximum
-2. Any in-transit event > 30 mi off the expected route
+2. Any in-transit event > 2 mi off the expected route
 3. Delivery recipient or location doesn't match the consignee
 4. Carrier bank details changed within 14 days before payment
 5. Same shipment invoiced twice → pay once, block the duplicate
