@@ -1,6 +1,6 @@
-# Pay on Delivery Prototype: Build Plan
+# CashBridge Prototype: Build Plan
 
-Oct 28, 2026. Source: [Pay on Delivery Prototype: Build Plan](https://claude.ai/artifact/2xnsf8jpEnymLocYQqpwyX) (the living doc; this file is a snapshot).
+Oct 28, 2026. Source: [Pay on Delivery Prototype: Build Plan](https://claude.ai/artifact/2xnsf8jpEnymLocYQqpwyX) (the living doc, written before the product was named CashBridge; this file is a snapshot).
 
 ## Goal and scope
 

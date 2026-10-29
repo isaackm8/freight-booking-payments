@@ -1,4 +1,6 @@
-# Freight Booking Payments
+# CashBridge
+
+**Freight paid faster. Cash gap closed.**
 
 A prototype for paying freight carriers through a payment tied to the shipment ID.
 

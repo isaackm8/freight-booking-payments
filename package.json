@@ -2,7 +2,7 @@
   "name": "freight-booking-payments",
   "version": "0.1.0",
   "private": true,
-  "description": "Pay on Delivery prototype: freight payments tied to the shipment ID",
+  "description": "CashBridge prototype: freight payments tied to the shipment ID",
   "type": "module",
   "engines": {
     "node": ">=24"

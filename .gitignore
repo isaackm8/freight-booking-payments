@@ -25,3 +25,6 @@ desktop.ini
 
 # Local SQLite database, rebuilt from data/ on every start
 var/
+
+# Word export of the build plan (the repo copy is docs/BUILD_PLAN.md)
+Build Plan/

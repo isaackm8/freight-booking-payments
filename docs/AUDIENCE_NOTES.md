@@ -38,7 +38,9 @@ Last updated: Oct 29, 2026.
 - **Approved max** = (booked rate + fuel surcharge) × 1.10, which leaves 10% room for extra charges such as detention or a liftgate.
 - **Fraud cases are generated on purpose.** Hold rates show how the mechanism works, not real-world catch rates.
 
-## About the look
+## About the name and look
+
+- The platform is **CashBridge**, tagline "Freight paid faster. Cash gap closed." It bridges the forwarder's cash gap: the carrier is paid within hours, and the forwarder's card covers it until the shipper pays. The early build plan called it "Pay on Delivery".
 
 - The app uses a Mastercard-*inspired* style: warm neutrals, near-black text, orange accents.
 - It does **not** use Mastercard logos or marks. Official branding needs Mastercard's brand assets and approval.

@@ -64,7 +64,7 @@ export function Overview() {
     <section aria-labelledby="overview-title" className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-200 sm:p-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="max-w-3xl">
-          <h2 id="overview-title" className="text-xl font-bold tracking-tight">How Pay on Delivery works</h2>
+          <h2 id="overview-title" className="text-xl font-bold tracking-tight">How CashBridge works</h2>
           <p className="mt-1 text-stone-600">
             Carriers get paid within hours of a confirmed delivery instead of waiting 30–45 days.
             The forwarder pays with its card, so it still pays about a month later, and anything that looks wrong is held before money moves.
@@ -137,10 +137,10 @@ function PaymentTimeline() {
       <dl className="grid gap-3 text-sm sm:hidden">
         <div className="rounded-xl bg-canvas p-3">
           <dt className="font-semibold">Today</dt>
-          <dd className="text-stone-600">Carrier paid in 30–45 days, or factors the invoice for 6–8%.</dd>
+          <dd className="text-stone-600">Carrier paid by the forwarder in 30–45 days, or factors the invoice for 6–8%. Shipper pays the forwarder at 45 days.</dd>
         </div>
         <div className="rounded-xl bg-accent-soft p-3">
-          <dt className="font-semibold">Pay on Delivery</dt>
+          <dt className="font-semibold">CashBridge</dt>
           <dd className="text-stone-700">Carrier paid in ~12 hours. Forwarder pays its card bill ~32 days later. Shipper pays the forwarder at 45 days.</dd>
         </div>
       </dl>
@@ -149,10 +149,11 @@ function PaymentTimeline() {
       <div className="space-y-5">
         <Row label="Today">
           <Range from={30} to={45} className="bg-stone-300" />
-          <Marker day={37.5} tone="muted" text="Carrier paid in 30–45 days, or factors the invoice for 6–8%" align="end" />
+          <Marker day={37.5} tone="muted" text="Carrier paid by the forwarder in 30–45 days, or factors the invoice for 6–8%" align="end" />
+          <Marker day={45} tone="muted" text="Shipper pays the forwarder, day 45" align="end" below />
         </Row>
 
-        <Row label="Pay on Delivery">
+        <Row label="CashBridge">
           <Range from={0} to={0.8} className="bg-accent" />
           <Marker day={0.5} tone="accent" text="Carrier paid in ~12 hours" align="start" />
           <Range from={14} to={44} className="bg-ink/15" />
@@ -170,7 +171,7 @@ function PaymentTimeline() {
       </div>
       </div>
       <p className="mt-3 text-xs text-stone-400">
-        Pay on Delivery figures are from the sample data (carrier funds in 4–20 hours; card float 14–44 days). Today's 30–45 days and 6–8% factoring cost are from the Mastercard white paper.
+        CashBridge figures are from the sample data (carrier funds in 4–20 hours; card float 14–44 days). Today's 30–45 days and 6–8% factoring cost are from the Mastercard white paper.
       </p>
     </div>
   );

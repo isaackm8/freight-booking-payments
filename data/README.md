@@ -1,4 +1,4 @@
-# Pay on Delivery – Sample Data for the Prototype
+# CashBridge – Sample Data for the Prototype
 
 All data is **synthetic**. Company names are fictional, USDOT/MC numbers are made up, and fees are illustrative assumptions, not any bank's or network's real pricing. Load the CSVs or `all_data.json` directly.
 

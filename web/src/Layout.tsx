@@ -7,7 +7,8 @@ export function Layout() {
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-4">
           <Link to="/" className="flex items-center gap-2.5">
             <span className="h-3 w-3 rounded-full bg-accent" aria-hidden />
-            <span className="text-lg font-bold tracking-tight">Pay on Delivery</span>
+            <span className="text-lg font-bold tracking-tight">CashBridge</span>
+            <span className="hidden border-l border-stone-300 pl-2.5 text-sm text-stone-500 sm:inline">Freight paid faster. Cash gap closed.</span>
           </Link>
           <nav className="flex gap-1 text-sm">
             <NavLink
