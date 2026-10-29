@@ -15,6 +15,7 @@ All data is **synthetic**. Company names are fictional, USDOT/MC numbers are mad
 | `tracking_events.csv` | 3,053 | Shipment milestones: BOOKED, PICKED_UP, IN_TRANSIT, DELAYED, DELIVERED, EXCEPTION, ON_HOLD with GPS, source, off-route distance and reason |
 | `delivery_evidence.csv` | 634 | Proof of delivery: `rfid_scan`, `signature` or `photo`, with time, GPS, source and recipient |
 | `invoices.csv` | 500 | Base, fuel, detention, liftgate, reweigh and total; includes 5 duplicate invoices (`duplicate_of`). Loads on hold have no invoice yet. |
+| `provider_payouts.csv` | 445 | The simulated card-to-account provider's report of when each paid carrier received its money |
 | `payments_expected.csv` | 500 | **Answer key**: expected decision, hold reasons, timing, float and fee split under default rules |
 | `all_data.json` | – | Everything above in one file, plus `assumptions` |
 
@@ -52,7 +53,9 @@ All data is **synthetic**. Company names are fictional, USDOT/MC numbers are mad
 | delivery_exception | 5 | held: delivery_exception (2 damaged, 1 short); refused loads (2) also missing_proof_of_delivery |
 | shipment_on_hold | 5 | awaiting_delivery: shipment_on_hold (no invoice yet) |
 
-Result: 445 paid automatically (89%), 50 held (10%), 5 awaiting delivery (1%). When more than one rule fires, `hold_reasons` lists them separated by `;`.
+Result: 445 paid automatically (89%), 50 held (10%), 5 awaiting delivery (1%). When more than one rule fires, `hold_reasons` lists them in rule order, separated by `;`.
+
+The decision engine (`server/engine.ts`) reproduces this answer key exactly for every shipment. The one exception is `hours_delivery_to_funds`, which the key worked out from unrounded times, so it can differ by 0.1 hour.
 
 ## Default hold rules
 

@@ -73,11 +73,13 @@ A pure, testable function: `decide(shipment, events, invoices, carrier, rules) �
 | 3 | Delivery recipient or location ≠ consignee | delivered_to_unexpected_recipient |
 | 4 | Carrier bank details changed within 14 days | bank_account_changed_recently |
 | 5 | Second invoice for the same shipment | pay once, block duplicate |
-| 6 | No proof-of-delivery event | missing_proof_of_delivery |
+| 6 | No proof of delivery (RFID scan, signature or photo) | missing_proof_of_delivery |
+| 7 | Delivery exception (damaged, refused, short) | delivery_exception |
+| 8 | Load on hold, not yet delivered | shipment_on_hold (awaiting delivery, nothing to pay) |
 
 **Payment and float**
 
-- Card charged at confirmed delivery; carrier funds land 4–20 hours later (same-day target).
+- Card charged 1 hour after confirmed delivery; carrier funds land 4–20 hours later (same-day target). The funding time comes from the simulated provider's report (`provider_payouts.csv`).
 - Float days = payer's statement due date − date carrier received funds (statement closes month-end, due 15 days later).
 
 **Fees per shipment (illustrative assumptions)**
@@ -131,7 +133,7 @@ Each success metric from the problem framing appears on a screen, computed from 
 | Metric | Target (placeholder) | Where it shows |
 | --- | --- | --- |
 | Shipments paid within 24 hours of confirmed delivery, no manual touch (north star) | Tracked | Payer dashboard, program analytics |
-| Auto-approval rate | ≥ 80% (sample: ~91%) | Payer dashboard |
+| Auto-approval rate | ≥ 80% (sample: 89%) | Payer dashboard |
 | Hours from delivery to carrier funds | < 24 | Payer dashboard, carrier portal |
 | Float days kept by payer | 30–45 (sample avg ~32) | Payer dashboard, fee simulator, savings view |
 | Holds by reason; time to clear a hold | Clear < 24 h | Exceptions queue, risk review |
@@ -196,9 +198,9 @@ Each phase ends with something you can click and a check you can run.
     - Done when: all 500 shipments, ~3,050 milestones, 634 pieces of delivery evidence and 500 invoices load, and any shipment ID shows its full record.
 2. **Decision engine:** implement the eight hold rules, payment timing, float and fees as a tested module.
     - Done when: decisions match `payments_expected.csv` for 500 of 500 shipments, with unit tests per rule.
-3. **Payer views:** payer dashboard, exceptions queue with evidence and Release / Reject actions, map of route vs. GPS.
-    - Done when: auto-approval ~91%, 45 holds shown with correct reasons, and actions update status and audit log.
-4. **Carrier and risk views:** carrier portal with payment status and fee vs. factoring; risk review screen.
+3. **Payer views:** payer dashboard, exceptions queue with evidence and Release / Reject actions, map of route vs. GPS. (Started early: held payments already show a notification, a review status and Release / Reject on the shipment page.)
+    - Done when: auto-approval 89%, 50 holds shown with correct reasons, and actions update status and audit log.
+4. **Carrier and risk views:** carrier portal with payment status and fee vs. factoring; risk review screen. Only the forwarder can release or reject a held payment; carriers see status and reasons and can respond (upload proof, explain, dispute), and the API enforces the role.
     - Done when: switching role to any carrier shows only its loads, funds timing and plain-language hold reasons.
 5. **Economics and analytics:** fee model simulator, payer and carrier savings views with editable rates, and program analytics by segment and cash preference.
     - Done when: changing the fee model updates who pays and the break-even comparison for every segment.

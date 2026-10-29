@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export class NotFoundError extends Error {}
 
@@ -9,9 +9,20 @@ async function getJson<T>(url: string, signal: AbortSignal): Promise<T> {
   return res.json();
 }
 
-// Fetches JSON from the API and re-fetches whenever the URL changes.
+// Sends a change to the API; throws with the server's message if it is refused.
+export async function send(url: string, method: 'POST' | 'DELETE', body?: unknown): Promise<void> {
+  const res = await fetch(url, {
+    method,
+    headers: body ? { 'content-type': 'application/json' } : undefined,
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  if (!res.ok) throw new Error((await res.json().catch(() => null))?.error ?? `Request failed (${res.status})`);
+}
+
+// Fetches JSON from the API and re-fetches whenever the URL changes, or when reload() is called.
 export function useApi<T>(url: string) {
   const [state, setState] = useState<{ data?: T; error?: Error; loading: boolean }>({ loading: true });
+  const [version, setVersion] = useState(0);
   useEffect(() => {
     const ctrl = new AbortController();
     setState((s) => ({ ...s, loading: true, error: undefined }));
@@ -21,6 +32,7 @@ export function useApi<T>(url: string) {
         if (error.name !== 'AbortError') setState({ error, loading: false });
       });
     return () => ctrl.abort();
-  }, [url]);
-  return state;
+  }, [url, version]);
+  const reload = useCallback(() => setVersion((v) => v + 1), []);
+  return { ...state, reload };
 }

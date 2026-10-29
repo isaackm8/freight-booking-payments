@@ -34,6 +34,52 @@ Last updated: Oct 29, 2026.
 - **"On hold" means the load is held**, for example waiting on a delivery appointment or held at the customer's request. That's different from CashBridge holding a *payment* for review (phase 2), which the app will call "Payment held".
 - **Delays are flagged, not held.** A late load is still a valid delivery. Exceptions are held for review, and a load on hold isn't paid until it's delivered.
 
+## How the decision is made
+
+- **Pay or hold is fully automated.** When delivery is confirmed, the CashBridge engine runs the 8 hold rules. If the shipment passes, the forwarder's card is charged and the carrier is paid, with no one involved. If it fails a rule, the payment is held automatically and no money moves.
+- **People only handle the holds.** When a payment is held, the forwarder's accounts payable team is notified (by email and in the app; simulated in the demo). Each held payment shows a review status: **awaiting forwarder review**, **released** or **rejected**. A reviewer releases it (CashBridge then pays as usual) or rejects it (nothing is paid and the carrier is told why), with an optional note. Who reviewed it and when is recorded. A full review queue with evidence side by side, and an audit log, are phase 3.
+- **The forwarder sets the rules.** Thresholds such as the 2-mile off-route limit, 10% room for extras and the 14-day bank-change window are the forwarder's choices; the engine applies them the same way every time.
+
+## Where the data would come from in real life
+
+- **Booked rate:** the forwarder's TMS (transportation management system), by API or EDI 204 load tender, or the signed rate confirmation.
+- **Milestones:** the carrier's ELD or app, or a visibility platform, by API or EDI 214.
+- **Proof of delivery:** the driver app (signature, photo) or the warehouse's RFID readers.
+- **Carrier invoice:** EDI 210, API, or a PDF read by OCR.
+- **Payment record:** posted back to the forwarder's ERP or accounting system (SAP, Oracle, NetSuite, QuickBooks) for reconciliation.
+- **No TMS or ERP:** a web portal to enter or upload loads (CSV), rate confirmation and invoice uploads, a driver tracking link, and an export to QuickBooks or Excel. In the prototype, the CSVs in `data/` stand in for all of these.
+
+## Who gets what from each payment
+
+Example: SHP-10001, a $1,278.52 invoice, forwarder on the 60/40 split.
+
+| Partner | Role | On this load |
+|---|---|---|
+| Card issuer (the forwarder's bank) | Earns interchange, 2.0% | +$25.57 |
+| | Funds the ~31-day float (5% a year) | −$5.43 |
+| Card network (Mastercard) | Network fee, ~0.13% | $1.66 |
+| Card-to-account provider | Provider margin, 0.75%; pays the carrier's bank account | +$9.59 |
+
+- **The carrier and forwarder see only the total fee:** interchange + provider margin = 2.75% ($35.16): carrier $21.10, forwarder $14.06. The network fee and cost of funds come out of what the issuer and provider earn.
+- **The rates are illustrative.** Commercial card interchange is roughly 1.5–2.7%, network fees about 0.13–0.15%, provider margins about 0.5–1.5%. Check current published schedules before quoting real numbers.
+- **Room for discounts:**
+    - lower interchange for transactions with rich invoice data (Level 2/3) and for large-ticket B2B payments
+    - issuer rebates to high-volume forwarders
+    - volume pricing on the provider margin
+    - who pays (the fee model)
+    - a shorter float
+- **The comparison that matters:** factoring costs 6–8% and broker quick pay 2–5%, so even 2.75% beats both.
+
+## How the carrier pays its share, and agrees to it
+
+- **The carrier never sends a payment.** The card-to-account provider deducts the carrier's share before paying it out, the same way a merchant receives a card sale minus fees. Example (SHP-10001, 60/40 split): the card is charged $1,278.52, and the carrier receives $1,257.42 ($21.10 deducted). The forwarder's share ($14.06) is added to its card charge or billed to it by the provider; the prototype doesn't model which.
+- **Carriers opt in.** The forwarder sets its fee model (carrier pays, 60/40 split or forwarder pays) in its carrier agreement or on each rate confirmation. A carrier can:
+    - **enroll:** sign up with the provider, verify its bank account and accept the fee terms, then be paid within hours of confirmed delivery, minus its share
+    - **decline:** stay on standard terms, paid in full with no fee but after 30–45 days, or factor the invoice at 6–8% as today
+- **The split is set by the forwarder, not negotiated per load.** Large carriers may negotiate it like rates; small carriers usually accept, because even the full 2.75% beats factoring. Forwarders that want carriers to enroll often cover part of the fee.
+- **Enrollment is also a security step.** The bank account verified at sign-up is what the bank-change rule (rule 4) protects.
+- **In the prototype,** all 20 carriers are treated as enrolled with verified bank accounts. A carrier doesn't need to accept cards, because the provider turns the card charge into a bank deposit. A carrier onboarding screen is a nice-to-have after the MVP.
+
 ## About the data and numbers
 
 - **All data is synthetic.** Companies, USDOT and MC numbers, and shipments are fictional. No real customer or shipment data from past employers is used, even anonymized.

@@ -5,6 +5,8 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFileSync, mkdirSync, rmSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { parse } from 'csv-parse/sync';
+import { runDecisions } from './decisions.ts';
+import { createReviewsTable } from './reviews.ts';
 
 // Column kinds:
 //   text  - stored as is ('' becomes NULL)
@@ -130,6 +132,14 @@ export const TABLES: TableSpec[] = [
     references: { shipment_id: 'shipments', carrier_id: 'carriers' },
   },
   {
+    // The simulated card-to-account provider's report: when each paid carrier received its money.
+    table: 'provider_payouts',
+    file: 'provider_payouts.csv',
+    primaryKey: ['payout_id'],
+    columns: { payout_id: 'text', shipment_id: 'text', carrier_funds_ts: 'ts' },
+    references: { shipment_id: 'shipments' },
+  },
+  {
     // Answer key for tests only; the app's own payments come from the decision engine (phase 2).
     table: 'payments_expected',
     file: 'payments_expected.csv',
@@ -216,9 +226,11 @@ const INDEXES = [
   'CREATE INDEX idx_evidence_shipment ON delivery_evidence(shipment_id, ts)',
   'CREATE INDEX idx_invoices_shipment ON invoices(shipment_id)',
   'CREATE INDEX idx_expected_shipment ON payments_expected(shipment_id)',
+  'CREATE UNIQUE INDEX idx_payouts_shipment ON provider_payouts(shipment_id)',
 ];
 
-// Builds a fresh database from the CSVs. Pass ':memory:' for tests.
+// Builds a fresh database from the CSVs, then runs the decision engine for every shipment.
+// Pass ':memory:' for tests.
 export function loadDatabase(dataDir: string, dbPath: string): { db: DatabaseSync; counts: Record<string, number> } {
   if (dbPath !== ':memory:') {
     mkdirSync(dirname(dbPath), { recursive: true });
@@ -240,5 +252,7 @@ export function loadDatabase(dataDir: string, dbPath: string): { db: DatabaseSyn
     db.close();
     throw err;
   }
+  createReviewsTable(db);
+  counts.decisions = runDecisions(db);
   return { db, counts };
 }

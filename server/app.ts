@@ -1,22 +1,23 @@
 import express from 'express';
 import type { DatabaseSync } from 'node:sqlite';
-import { getShipment, listShipments } from './queries.ts';
+import { FILTER_KEYS, getShipment, listShipments, shipmentNeighbors, type ShipmentFilters } from './queries.ts';
+import { ReviewError, ReviewStore } from './reviews.ts';
 
 const str = (v: unknown) => (typeof v === 'string' && v !== '' ? v : undefined);
 
-export function createApp(db: DatabaseSync) {
+const filtersFrom = (query: Record<string, unknown>): ShipmentFilters =>
+  Object.fromEntries(FILTER_KEYS.map((k) => [k, str(query[k])]).filter(([, v]) => v));
+
+export function createApp(db: DatabaseSync, reviews = new ReviewStore(db)) {
   const app = express();
+  app.use(express.json());
 
   app.get('/api/health', (_req, res) => {
     res.json({ ok: true });
   });
 
   app.get('/api/shipments', (req, res) => {
-    const { payer_id, shipper_id, carrier_id, segment, scenario, q } = req.query;
-    res.json(listShipments(db, {
-      payer_id: str(payer_id), shipper_id: str(shipper_id), carrier_id: str(carrier_id),
-      segment: str(segment), scenario: str(scenario), q: str(q),
-    }));
+    res.json(listShipments(db, filtersFrom(req.query)));
   });
 
   app.get('/api/shipments/:id', (req, res) => {
@@ -26,6 +27,31 @@ export function createApp(db: DatabaseSync) {
       return;
     }
     res.json(detail);
+  });
+
+  app.get('/api/shipments/:id/neighbors', (req, res) => {
+    res.json(shipmentNeighbors(db, req.params.id, filtersFrom(req.query)));
+  });
+
+  // The forwarder releases or rejects a held payment: { status: 'released' | 'rejected', note? }.
+  app.post('/api/shipments/:id/review', (req, res) => {
+    const { status, note } = (req.body ?? {}) as { status?: unknown; note?: unknown };
+    if (status !== 'released' && status !== 'rejected') {
+      res.status(400).json({ error: "status must be 'released' or 'rejected'" });
+      return;
+    }
+    try {
+      res.json(reviews.decide(req.params.id, status, typeof note === 'string' ? note : null));
+    } catch (err) {
+      if (!(err instanceof ReviewError)) throw err;
+      res.status(err.status).json({ error: err.message });
+    }
+  });
+
+  // Undo a review (for demos): the payment goes back to awaiting review.
+  app.delete('/api/shipments/:id/review', (req, res) => {
+    reviews.undo(req.params.id);
+    res.status(204).end();
   });
 
   return app;

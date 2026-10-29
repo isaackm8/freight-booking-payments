@@ -1,24 +1,27 @@
 import type { ReactNode } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import type { Invoice, ShipmentDetail } from '../../../shared/types.ts';
 import { NotFoundError, useApi } from '../api.ts';
 import {
   EVENT_LABELS, EVENT_TONE, EVIDENCE_LABELS, EXCEPTION_LABELS, companyName, day, label, money, pct, when,
 } from '../format.ts';
 import { NotFound } from './NotFound.tsx';
+import { DecisionCard } from '../DecisionCard.tsx';
+import { ShipmentNav } from '../ShipmentNav.tsx';
 
 // Matches the decision engine's default off-route threshold; shown here only as context.
 const OFF_ROUTE_MI = 2;
 
 export function ShipmentDetailPage() {
   const { id = '' } = useParams();
-  const { data, error, loading } = useApi<ShipmentDetail>(`/api/shipments/${encodeURIComponent(id)}`);
+  const { data, error, loading, reload } = useApi<ShipmentDetail>(`/api/shipments/${encodeURIComponent(id)}`);
 
   if (error instanceof NotFoundError) return <NotFound message={`No shipment with ID ${id}.`} />;
   if (error) return <p className="rounded-xl bg-red-50 p-3 text-sm text-red-800">Couldn't load shipment: {error.message}</p>;
-  if (loading || !data) return <p className="text-sm text-stone-500">Loading {id}…</p>;
+  // Keep showing the page while it refreshes after a review; show Loading only when moving to another shipment.
+  if (!data || (loading && data.shipment.shipment_id !== id)) return <p className="text-sm text-stone-500">Loading {id}…</p>;
 
-  const { shipment: s, payer, shipper, carrier, events, evidence, invoices, rate_rules } = data;
+  const { shipment: s, payer, shipper, carrier, events, evidence, invoices, rate_rules, decision, review } = data;
   const status = events.at(-1);
   const original = invoices.find((i) => !i.duplicate_of);
   const fuelCents = Math.round(s.booked_rate_cents * s.fuel_surcharge_pct / 100);
@@ -26,7 +29,8 @@ export function ShipmentDetailPage() {
   return (
     <div className="space-y-6">
       <div>
-        <Link to="/" className="text-sm text-accent-ink hover:underline">← All shipments</Link>
+        {/* Re-mounts after a review so its position in a review-filtered list refreshes. */}
+        <ShipmentNav key={review?.status ?? 'awaiting'} shipmentId={s.shipment_id} />
         <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
           <h1 className="text-3xl font-bold tracking-tight">{s.shipment_id}</h1>
           <p className="text-stone-600">{s.origin_city}, {s.origin_state} → {s.dest_city}, {s.dest_state}</p>
@@ -38,6 +42,8 @@ export function ShipmentDetailPage() {
           <span className="rounded-full bg-stone-100 px-2 py-0.5 text-xs text-stone-600">Scenario: {label(s.scenario)}</span>
         </div>
       </div>
+
+      <DecisionCard shipmentId={s.shipment_id} decision={decision} payer={payer} review={review} onReviewChange={reload} />
 
       <div className="grid gap-4 lg:grid-cols-3">
         <Card title="Booking">
@@ -169,9 +175,6 @@ export function ShipmentDetailPage() {
         </details>
       </Card>
 
-      <Card title="Decision and payment">
-        <p className="text-sm text-stone-500">The decision engine and payment timeline arrive in phase 2.</p>
-      </Card>
     </div>
   );
 }

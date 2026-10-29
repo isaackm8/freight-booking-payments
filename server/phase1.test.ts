@@ -138,7 +138,7 @@ test('tracking events are milestones only; proof of delivery is evidence', () =>
   const expected = (scenario: string) => db.prepare(
     'SELECT p.expected_decision AS d, p.hold_reasons AS r FROM payments_expected p JOIN shipments s USING (shipment_id) WHERE s.scenario = ?',
   ).all(scenario) as { d: string; r: string }[];
-  assert.ok(expected('delivery_exception').every((p) => p.d === 'held_for_review' && p.r.startsWith('delivery_exception')));
+  assert.ok(expected('delivery_exception').every((p) => p.d === 'held_for_review' && p.r.includes('delivery_exception')));
   assert.ok(expected('shipment_on_hold').every((p) => p.d === 'awaiting_delivery' && p.r === 'shipment_on_hold'));
 });
 

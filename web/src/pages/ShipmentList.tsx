@@ -5,8 +5,12 @@ import { useApi } from '../api.ts';
 import { EVENT_LABELS, EVENT_TONE, companyName, day, label, money } from '../format.ts';
 import { InfoTip } from '../InfoTip.tsx';
 import { Overview } from '../Overview.tsx';
+import {
+  DECISION_LABELS, HOLD_REASONS, REVIEW_LABELS, type DecisionKind, type HoldReason, type ReviewStatus,
+} from '../../../shared/decisions.ts';
+import { REVIEW_STYLE } from '../ReviewPanel.tsx';
 
-const FILTER_KEYS = ['q', 'shipper_id', 'payer_id', 'carrier_id', 'segment', 'scenario'] as const;
+const FILTER_KEYS = ['q', 'decision', 'review', 'shipper_id', 'payer_id', 'carrier_id', 'segment', 'scenario'] as const;
 
 // Column headers and the plain-language definition shown in each header's tooltip.
 const COLUMNS: { key: string; title: string; tip: ReactNode; align?: 'right' }[] = [
@@ -26,6 +30,10 @@ const COLUMNS: { key: string; title: string; tip: ReactNode; align?: 'right' }[]
     tip: 'The total on the carrier’s invoice. Red means it is above the approved max. “+1 dup” means a duplicate invoice also arrived.',
   },
   { key: 'status', title: 'Status', tip: 'The latest milestone: booked, picked up, in transit, delayed, delivered, exception (damaged, refused or short) or on hold.' },
+  {
+    key: 'decision', title: 'Decision',
+    tip: 'Decided automatically by the engine: paid, payment held or awaiting delivery. A held payment shows its review status: needs review, released or rejected by the forwarder. Hover a badge for the reasons.',
+  },
   { key: 'scenario', title: 'Scenario', tip: 'The test case this sample shipment was built for. Demo only; real shipments won’t have one.' },
 ];
 
@@ -52,6 +60,8 @@ export function ShipmentList() {
   };
   const hasFilters = FILTER_KEYS.some((k) => params.get(k));
   const scroll = useMirroredScroll();
+  // Carried to the detail page, so previous / next stay within this filtered list.
+  const listQuery = query ? `?${query}` : '';
 
   return (
     <div className="space-y-5">
@@ -62,7 +72,20 @@ export function ShipmentList() {
         {data && <p className="text-sm text-stone-500">{data.total} shown</p>}
       </div>
 
-      <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-6">
+      {data && data.awaiting_review_total > 0 && params.get('review') !== 'awaiting_review' && (
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-amber-50 px-4 py-3 text-sm text-amber-900 ring-1 ring-amber-200">
+          <span>
+            <strong>{data.awaiting_review_total} held payment{data.awaiting_review_total === 1 ? '' : 's'}</strong> awaiting the forwarder’s review.
+            The forwarder has been notified for each one.
+          </span>
+          <button type="button" onClick={() => setParams({ review: 'awaiting_review' }, { replace: true })}
+            className="rounded-full bg-ink px-4 py-1.5 font-semibold text-white hover:bg-stone-800">
+            Review them
+          </button>
+        </div>
+      )}
+
+      <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8">
         <input
           type="search"
           placeholder="Search ID, city, shipper or carrier"
@@ -71,6 +94,10 @@ export function ShipmentList() {
           className="rounded-full border border-stone-300 bg-white px-4 py-2 text-sm focus:border-accent focus:outline-none"
           aria-label="Search shipments"
         />
+        <Select label="Decision" value={params.get('decision')} onChange={(v) => setFilter('decision', v)}
+          options={data?.filters.decisions.map((d) => ({ value: d, text: DECISION_LABELS[d as DecisionKind] ?? d }))} />
+        <Select label="Review" value={params.get('review')} onChange={(v) => setFilter('review', v)}
+          options={(Object.keys(REVIEW_LABELS) as ReviewStatus[]).map((r) => ({ value: r, text: REVIEW_LABELS[r] }))} />
         <Select label="Shipper" value={params.get('shipper_id')} onChange={(v) => setFilter('shipper_id', v)}
           options={data?.filters.shippers.map((s) => ({ value: s.id, text: companyName(s.name) }))} />
         <Select label="Forwarder" value={params.get('payer_id')} onChange={(v) => setFilter('payer_id', v)}
@@ -114,10 +141,10 @@ export function ShipmentList() {
             {data?.shipments.map((s) => {
               const over = s.invoice_total_cents != null && s.invoice_total_cents > s.approved_max_cents;
               return (
-                <tr key={s.shipment_id} onClick={() => navigate(`/shipments/${s.shipment_id}`)}
+                <tr key={s.shipment_id} onClick={() => navigate(`/shipments/${s.shipment_id}${listQuery}`)}
                   className="cursor-pointer hover:bg-accent-soft/50">
                   <td className="whitespace-nowrap px-3 py-2.5 font-semibold">
-                    <Link to={`/shipments/${s.shipment_id}`} className="text-accent-ink hover:underline" onClick={(e) => e.stopPropagation()}>
+                    <Link to={`/shipments/${s.shipment_id}${listQuery}`} className="text-accent-ink hover:underline" onClick={(e) => e.stopPropagation()}>
                       {s.shipment_id}
                     </Link>
                   </td>
@@ -138,6 +165,7 @@ export function ShipmentList() {
                   <td className={`whitespace-nowrap px-3 py-2.5 ${s.latest_event_type && EVENT_TONE[s.latest_event_type] ? `font-medium ${EVENT_TONE[s.latest_event_type]}` : 'text-stone-600'}`}>
                     {s.latest_event_type ? EVENT_LABELS[s.latest_event_type] ?? s.latest_event_type : '—'}
                   </td>
+                  <td className="whitespace-nowrap px-3 py-2.5"><DecisionBadge decision={s.decision} reasons={s.hold_reasons} review={s.review_status} /></td>
                   <td className="whitespace-nowrap px-3 py-2.5 text-stone-500">{label(s.scenario)}</td>
                 </tr>
               );
@@ -156,6 +184,29 @@ export function ShipmentList() {
         any column for its definition.
       </p>
     </div>
+  );
+}
+
+const BADGE: Record<DecisionKind, string> = {
+  auto_approved: 'bg-emerald-50 text-emerald-800',
+  auto_approved_duplicate_blocked: 'bg-emerald-50 text-emerald-800',
+  held_for_review: 'bg-amber-100 text-amber-900',
+  awaiting_delivery: 'bg-stone-100 text-stone-600',
+};
+
+const REVIEW_SHORT: Record<ReviewStatus, string> = {
+  awaiting_review: 'Held · needs review',
+  released: 'Held · released',
+  rejected: 'Held · rejected',
+};
+
+function DecisionBadge({ decision, reasons, review }: { decision: DecisionKind | null; reasons: string | null; review: ReviewStatus | null }) {
+  if (!decision) return <span className="text-stone-400">—</span>;
+  const why = reasons ? reasons.split(';').map((r) => HOLD_REASONS[r as HoldReason] ?? r).join('; ') : undefined;
+  return (
+    <span title={why} className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${review ? REVIEW_STYLE[review] : BADGE[decision]}`}>
+      {review ? REVIEW_SHORT[review] : DECISION_LABELS[decision]}
+    </span>
   );
 }
 

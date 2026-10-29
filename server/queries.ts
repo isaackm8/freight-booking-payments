@@ -1,6 +1,7 @@
 import type { DatabaseSync, SQLInputValue } from 'node:sqlite';
+import type { DecisionRecord, Review } from '../shared/decisions.ts';
 import type {
-  Carrier, DeliveryEvidence, Invoice, Payer, RateRule, Shipment, ShipmentDetail, ShipmentListResponse, ShipmentSummary, Shipper,
+  Carrier, DeliveryEvidence, Invoice, Payer, ShipmentNeighbors, RateRule, Shipment, ShipmentDetail, ShipmentListResponse, ShipmentSummary, Shipper,
   TrackingEvent,
 } from '../shared/types.ts';
 
@@ -10,8 +11,15 @@ export interface ShipmentFilters {
   carrier_id?: string;
   segment?: string;
   scenario?: string;
+  decision?: string;
+  review?: string;
   q?: string;
 }
+
+export const FILTER_KEYS = ['payer_id', 'shipper_id', 'carrier_id', 'segment', 'scenario', 'decision', 'review', 'q'] as const;
+
+// A held payment is awaiting review until the forwarder releases or rejects it; other decisions have no review.
+const REVIEW_STATUS_SQL = "CASE WHEN d.decision = 'held_for_review' THEN COALESCE(r.status, 'awaiting_review') END";
 
 // One row per shipment, joined with names, the original (non-duplicate) invoice
 // total, the invoice count and the latest tracking event.
@@ -26,11 +34,13 @@ const SUMMARY_SQL = `
          (SELECT COUNT(*) FROM invoices i WHERE i.shipment_id = s.shipment_id) AS invoice_count,
          (SELECT e.event_type FROM tracking_events e
            WHERE e.shipment_id = s.shipment_id ORDER BY e.ts DESC LIMIT 1) AS latest_event_type,
-         s.scenario
+         s.scenario, d.decision, d.hold_reasons, ${REVIEW_STATUS_SQL} AS review_status
     FROM shipments s
     JOIN payers p ON p.payer_id = s.payer_id
     JOIN shippers sh ON sh.shipper_id = s.shipper_id
-    JOIN carriers c ON c.carrier_id = s.carrier_id`;
+    JOIN carriers c ON c.carrier_id = s.carrier_id
+    LEFT JOIN decisions d ON d.shipment_id = s.shipment_id
+    LEFT JOIN reviews r ON r.shipment_id = s.shipment_id`;
 
 export function listShipments(db: DatabaseSync, f: ShipmentFilters = {}): ShipmentListResponse {
   const where: string[] = [];
@@ -40,6 +50,8 @@ export function listShipments(db: DatabaseSync, f: ShipmentFilters = {}): Shipme
   if (f.carrier_id) { where.push('s.carrier_id = ?'); params.push(f.carrier_id); }
   if (f.segment) { where.push('c.segment = ?'); params.push(f.segment); }
   if (f.scenario) { where.push('s.scenario = ?'); params.push(f.scenario); }
+  if (f.decision) { where.push('d.decision = ?'); params.push(f.decision); }
+  if (f.review) { where.push(`${REVIEW_STATUS_SQL} = ?`); params.push(f.review); }
   if (f.q) {
     where.push('(s.shipment_id LIKE ? OR s.origin_city LIKE ? OR s.dest_city LIKE ? OR c.name LIKE ? OR sh.name LIKE ?)');
     params.push(...Array(5).fill(`%${f.q}%`));
@@ -48,8 +60,12 @@ export function listShipments(db: DatabaseSync, f: ShipmentFilters = {}): Shipme
   const shipments = db.prepare(sql).all(...params) as unknown as ShipmentSummary[];
 
   const col = (sql: string) => (db.prepare(sql).all() as { v: string }[]).map((r) => r.v);
+  const { awaiting } = db.prepare(
+    `SELECT COUNT(*) AS awaiting FROM decisions d LEFT JOIN reviews r USING (shipment_id) WHERE ${REVIEW_STATUS_SQL} = 'awaiting_review'`,
+  ).get() as { awaiting: number };
   return {
     total: shipments.length,
+    awaiting_review_total: awaiting,
     shipments,
     filters: {
       payers: db.prepare('SELECT payer_id AS id, name FROM payers ORDER BY payer_id').all() as unknown as ShipmentListResponse['filters']['payers'],
@@ -57,11 +73,13 @@ export function listShipments(db: DatabaseSync, f: ShipmentFilters = {}): Shipme
       carriers: db.prepare('SELECT carrier_id AS id, name FROM carriers ORDER BY carrier_id').all() as unknown as ShipmentListResponse['filters']['carriers'],
       segments: col("SELECT DISTINCT segment AS v FROM carriers ORDER BY CASE segment WHEN 'small' THEN 1 WHEN 'mid' THEN 2 ELSE 3 END"),
       scenarios: col('SELECT DISTINCT scenario AS v FROM shipments ORDER BY scenario'),
+      decisions: col('SELECT DISTINCT decision AS v FROM decisions ORDER BY decision'),
     },
   };
 }
 
 // The full record for one shipment ID, or null if it doesn't exist.
+// `decision` is null while runDecisions() is still building it (it calls this function for its inputs).
 export function getShipment(db: DatabaseSync, shipmentId: string): ShipmentDetail | null {
   const shipment = db.prepare('SELECT * FROM shipments WHERE shipment_id = ?').get(shipmentId) as unknown as Shipment | undefined;
   if (!shipment) return null;
@@ -86,5 +104,24 @@ export function getShipment(db: DatabaseSync, shipmentId: string): ShipmentDetai
     rate_rules: db.prepare(
       'SELECT charge_type, allowed, max_cents_per_shipment, cap_note FROM rate_rules WHERE payer_id = ? ORDER BY charge_type',
     ).all(shipment.payer_id) as unknown as RateRule[],
+    decision: decisionOf(db, shipmentId),
+    review: (db.prepare('SELECT status, note, reviewed_ts, reviewed_by FROM reviews WHERE shipment_id = ?')
+      .get(shipmentId) as unknown as Review | undefined) ?? null,
   };
+}
+
+function decisionOf(db: DatabaseSync, shipmentId: string): DecisionRecord | null {
+  const row = db.prepare('SELECT record FROM decisions WHERE shipment_id = ?').get(shipmentId) as { record: string } | undefined;
+  return row ? JSON.parse(row.record) as DecisionRecord : null;
+}
+
+// Where a shipment sits in the (filtered) list, and the shipments before and after it, for
+// previous / next on the detail page. The list is ordered by shipment ID, so a shipment that no
+// longer matches the filters (e.g. just released from the review queue) still gets neighbors.
+export function shipmentNeighbors(db: DatabaseSync, shipmentId: string, f: ShipmentFilters = {}): ShipmentNeighbors {
+  const ids = listShipments(db, f).shipments.map((s) => s.shipment_id);
+  const index = ids.indexOf(shipmentId);
+  const prev = index >= 0 ? ids[index - 1] : ids.filter((id) => id < shipmentId).at(-1);
+  const next = index >= 0 ? ids[index + 1] : ids.find((id) => id > shipmentId);
+  return { position: index >= 0 ? index + 1 : null, total: ids.length, prev: prev ?? null, next: next ?? null };
 }

@@ -7,7 +7,7 @@ const STORAGE_KEY = 'overview-collapsed';
 
 type Actor = 'Forwarder' | 'Carrier' | 'Platform' | 'Card';
 
-const STEPS: { title: string; actor: Actor; text: string; source: string; later?: boolean }[] = [
+const STEPS: { title: string; actor: Actor; text: string; source: string }[] = [
   {
     title: 'Book',
     actor: 'Forwarder',
@@ -31,14 +31,12 @@ const STEPS: { title: string; actor: Actor; text: string; source: string; later?
     actor: 'Platform',
     text: 'Matches the invoice to the shipment ID, checks it against the approved max and the hold rules. Anything suspicious is held for review.',
     source: 'invoices.csv',
-    later: true,
   },
   {
     title: 'Pay',
     actor: 'Card',
     text: "Charges the forwarder's virtual card and pays the carrier's bank account within hours.",
-    source: 'simulated ledger',
-    later: true,
+    source: 'provider_payouts.csv',
   },
 ];
 
@@ -111,7 +109,7 @@ function Flow() {
               </div>
               <p className="text-sm leading-snug text-stone-600">{s.text}</p>
               <p className="text-xs text-stone-400">
-                {s.later ? 'Coming in phase 2' : <>Data: <code className="text-stone-500">{s.source}</code></>}
+                Data: <code className="text-stone-500">{s.source}</code>
               </p>
             </div>
           </li>

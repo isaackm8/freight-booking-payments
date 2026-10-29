@@ -141,7 +141,7 @@ The approach: synthetic data generated from a defined schema, and live partner f
 | Delivery exception (2 damaged, 2 refused, 1 short) | 5 | Held |
 | Shipment on hold | 5 | Not paid yet: awaiting delivery |
 
-Result: 445 paid automatically (89%), 50 held (10%) and 5 awaiting delivery (1%).
+Result: 445 paid automatically (89%), 50 held (10%) and 5 awaiting delivery (1%). The decision engine matches this for 500 of 500 shipments.
 
 ### Default hold rules
 
@@ -185,7 +185,7 @@ Open http://localhost:5173. The API runs on port 3001 and rebuilds a local SQLit
 | Command | What it does |
 |---|---|
 | `npm run dev` | Starts the API and the web app together |
-| `npm test` | Runs the checks, including phase 1's "done when" check |
+| `npm test` | Runs the checks, including the "done when" checks for phases 1 and 2 |
 | `npm run db:load` | Rebuilds `var/freight.db` without starting the app |
 | `npm run typecheck` | Checks TypeScript types |
 | `npm run build` | Builds the web app into `dist/` |
@@ -193,6 +193,8 @@ Open http://localhost:5173. The API runs on port 3001 and rebuilds a local SQLit
 **Project layout**
 
 - `server/`: the API (Express) and the loader that puts the CSVs into SQLite. Money is stored as integer cents and timestamps in UTC.
+- `server/engine.ts`: the decision engine. It runs the 8 hold rules, then works out payment timing, float and fees. It is pure functions, so each rule is unit tested.
+- `server/reviews.ts`: the forwarder's release or reject of a held payment, saved to `var/reviews.json` so it survives restarts.
 - `web/`: the React app (Vite, Tailwind).
 - `shared/`: types used by both.
 - `docs/BUILD_PLAN.md`: the build plan and its phases.

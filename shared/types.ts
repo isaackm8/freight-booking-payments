@@ -1,4 +1,5 @@
 // Shapes returned by the API. Money is integer cents; timestamps are UTC ISO strings.
+import type { DecisionKind, DecisionRecord, Review, ReviewStatus } from './decisions.ts';
 
 export interface ShipmentSummary {
   shipment_id: string;
@@ -21,12 +22,16 @@ export interface ShipmentSummary {
   invoice_count: number;
   latest_event_type: string | null;
   scenario: string;
+  decision: DecisionKind | null;
+  hold_reasons: string | null; // ';'-separated, in rule order
+  review_status: ReviewStatus | null; // only for held payments
 }
 
 export interface ShipmentListResponse {
   total: number;
+  awaiting_review_total: number; // across all shipments, ignoring filters
   shipments: ShipmentSummary[];
-  filters: { payers: Option[]; shippers: Option[]; carriers: Option[]; segments: string[]; scenarios: string[] };
+  filters: { payers: Option[]; shippers: Option[]; carriers: Option[]; segments: string[]; scenarios: string[]; decisions: string[] };
 }
 
 export interface Option {
@@ -154,4 +159,13 @@ export interface ShipmentDetail {
   evidence: DeliveryEvidence[];
   invoices: Invoice[];
   rate_rules: RateRule[];
+  decision: DecisionRecord | null;
+  review: Review | null;
+}
+
+export interface ShipmentNeighbors {
+  position: number | null; // 1-based place in the filtered list; null if this shipment isn't in it
+  total: number;
+  prev: string | null;
+  next: string | null;
 }
