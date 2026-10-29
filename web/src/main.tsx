@@ -7,6 +7,7 @@ import { ShipmentList } from './pages/ShipmentList.tsx';
 import { ShipmentDetailPage } from './pages/ShipmentDetail.tsx';
 import { NotFound } from './pages/NotFound.tsx';
 import { CashFlowHub } from './pages/CashFlowHub.tsx';
+import { HowItWorks } from './pages/HowItWorks.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')!).render(
         <Route element={<Layout />}>
           <Route index element={<ShipmentList />} />
           <Route path="cash-flow-hub" element={<CashFlowHub />} />
+          <Route path="how-it-works" element={<HowItWorks />} />
           {/* The page was called Dashboard at first; keep old links working. */}
           <Route path="dashboard" element={<Navigate to="/cash-flow-hub" replace />} />
           <Route path="shipments/:id" element={<ShipmentDetailPage />} />

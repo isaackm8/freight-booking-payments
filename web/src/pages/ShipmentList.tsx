@@ -4,7 +4,6 @@ import type { ShipmentListResponse } from '../../../shared/types.ts';
 import { useApi } from '../api.ts';
 import { EVENT_LABELS, EVENT_TONE, companyName, day, label, money } from '../format.ts';
 import { InfoTip } from '../InfoTip.tsx';
-import { Overview } from '../Overview.tsx';
 import {
   DECISION_LABELS, HOLD_REASONS, REVIEW_LABELS, type DecisionKind, type HoldReason, type ReviewStatus,
 } from '../../../shared/decisions.ts';
@@ -65,9 +64,7 @@ export function ShipmentList() {
 
   return (
     <div className="space-y-5">
-      <Overview />
-
-      <div className="flex flex-wrap items-baseline justify-between gap-2 pt-2">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h1 className="text-3xl font-bold tracking-tight">Shipments</h1>
         {data && <p className="text-sm text-stone-500">{data.total} shown</p>}
       </div>

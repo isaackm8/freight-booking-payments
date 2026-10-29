@@ -11,7 +11,7 @@ export function Layout() {
             <span className="hidden border-l border-stone-300 pl-2.5 text-sm text-stone-500 sm:inline">Freight paid faster. Cash gap closed.</span>
           </Link>
           <nav className="flex gap-1 text-sm">
-            {[{ to: '/cash-flow-hub', name: 'Cash Flow Hub' }, { to: '/', name: 'Shipments' }].map((item) => (
+            {[{ to: '/cash-flow-hub', name: 'Cash Flow Hub' }, { to: '/', name: 'Shipments' }, { to: '/how-it-works', name: 'How it works' }].map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}

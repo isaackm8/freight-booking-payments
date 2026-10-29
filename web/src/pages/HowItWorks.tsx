@@ -1,9 +1,8 @@
-import { useState, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-// "What this platform does": the five-step flow and a who-gets-paid-when timeline.
+// The How it works page: what CashBridge does, as a five-step flow and a who-gets-paid-when timeline.
 // Timing figures come from the sample data (payments_expected.csv, payers.csv) and the white paper.
 
-const STORAGE_KEY = 'overview-collapsed';
 
 type Actor = 'Forwarder' | 'Carrier' | 'Platform' | 'Card';
 
@@ -47,45 +46,21 @@ const ACTOR_STYLE: Record<Actor, string> = {
   Card: 'bg-accent text-white',
 };
 
-export function Overview() {
-  const [collapsed, setCollapsed] = useState(() => {
-    try { return localStorage.getItem(STORAGE_KEY) === '1'; } catch { return false; }
-  });
-  const toggle = () => {
-    setCollapsed((c) => {
-      try { localStorage.setItem(STORAGE_KEY, c ? '0' : '1'); } catch { /* storage unavailable */ }
-      return !c;
-    });
-  };
-
+export function HowItWorks() {
   return (
-    <section aria-labelledby="overview-title" className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-200 sm:p-6">
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div className="max-w-3xl">
-          <h2 id="overview-title" className="text-xl font-bold tracking-tight">How CashBridge works</h2>
-          <p className="mt-1 text-stone-600">
-            Carriers get paid within hours of a confirmed delivery instead of waiting 30–45 days.
-            The forwarder pays with its card, so it still pays about a month later, and anything that looks wrong is held before money moves.
-          </p>
-        </div>
-        <button
-          type="button"
-          onClick={toggle}
-          aria-expanded={!collapsed}
-          aria-controls="overview-body"
-          className="rounded-full border border-stone-300 px-4 py-1.5 text-sm font-medium text-stone-700 hover:border-ink hover:text-ink"
-        >
-          {collapsed ? 'Show overview' : 'Hide'}
-        </button>
+    <div className="space-y-6">
+      <div className="max-w-3xl">
+        <h1 className="text-3xl font-bold tracking-tight">How CashBridge works</h1>
+        <p className="mt-2 text-stone-600">
+          Carriers get paid within hours of a confirmed delivery instead of waiting 30–45 days.
+          The forwarder pays with its card, so it still pays about a month later, and anything that looks wrong is held before money moves.
+        </p>
       </div>
-
-      {!collapsed && (
-        <div id="overview-body" className="mt-6 space-y-8">
-          <Flow />
-          <PaymentTimeline />
-        </div>
-      )}
-    </section>
+      <section className="space-y-8 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-200 sm:p-6">
+        <Flow />
+        <PaymentTimeline />
+      </section>
+    </div>
   );
 }
 
