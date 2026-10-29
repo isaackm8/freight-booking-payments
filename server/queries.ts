@@ -1,6 +1,6 @@
 import type { DatabaseSync, SQLInputValue } from 'node:sqlite';
 import type {
-  Carrier, Invoice, Payer, RateRule, Shipment, ShipmentDetail, ShipmentListResponse, ShipmentSummary, Shipper,
+  Carrier, DeliveryEvidence, Invoice, Payer, RateRule, Shipment, ShipmentDetail, ShipmentListResponse, ShipmentSummary, Shipper,
   TrackingEvent,
 } from '../shared/types.ts';
 
@@ -71,9 +71,13 @@ export function getShipment(db: DatabaseSync, shipmentId: string): ShipmentDetai
     shipper: db.prepare('SELECT * FROM shippers WHERE shipper_id = ?').get(shipment.shipper_id) as unknown as Shipper,
     carrier: db.prepare('SELECT * FROM carriers WHERE carrier_id = ?').get(shipment.carrier_id) as unknown as Carrier,
     events: db.prepare(
-      `SELECT event_id, event_type, ts, lat, lon, source, off_route_km, recipient
+      `SELECT event_id, event_type, ts, lat, lon, source, off_route_mi, recipient, reason
          FROM tracking_events WHERE shipment_id = ? ORDER BY ts, event_id`,
     ).all(shipmentId) as unknown as TrackingEvent[],
+    evidence: db.prepare(
+      `SELECT evidence_id, kind, ts, lat, lon, source, recipient
+         FROM delivery_evidence WHERE shipment_id = ? ORDER BY ts, evidence_id`,
+    ).all(shipmentId) as unknown as DeliveryEvidence[],
     invoices: db.prepare(
       `SELECT invoice_id, invoice_number, invoice_date, base_cents, fuel_cents, detention_cents,
               liftgate_cents, reweigh_cents, total_cents, currency, duplicate_of

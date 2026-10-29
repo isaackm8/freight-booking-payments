@@ -17,12 +17,35 @@ export const pct = (n: number | null | undefined, digits = 1) => (n == null ? 'â
 export const companyName = (name: string) => name.replace(/\s*\(fictional[^)]*\)/, '');
 
 export const label = (snake: string) =>
-  snake.replace(/_/g, ' ').replace(/^./, (c) => c.toUpperCase()).replace(/\b(rfid|pod|api)\b/gi, (w) => w.toUpperCase());
+  snake.replace(/_/g, ' ').replace(/^./, (c) => c.toUpperCase()).replace(/\b(rfid|pod|api|tms)\b/gi, (w) => w.toUpperCase());
 
+// Shipment milestones, in the order a load normally moves through them.
 export const EVENT_LABELS: Record<string, string> = {
-  PICKUP: 'Picked up',
+  BOOKED: 'Booked',
+  PICKED_UP: 'Picked up',
   IN_TRANSIT: 'In transit',
-  RFID_SCAN: 'RFID scan',
+  DELAYED: 'Delayed',
   DELIVERED: 'Delivered',
-  POD: 'Proof of delivery',
+  EXCEPTION: 'Exception',
+  ON_HOLD: 'On hold',
+};
+
+// Milestones that need attention, and the text color that flags them.
+export const EVENT_TONE: Record<string, string> = {
+  DELAYED: 'text-amber-800',
+  ON_HOLD: 'text-amber-800',
+  EXCEPTION: 'text-red-700',
+};
+
+// Kinds of proof of delivery.
+export const EVIDENCE_LABELS: Record<string, string> = {
+  rfid_scan: 'RFID scan',
+  signature: 'Signature',
+  photo: 'Photo',
+};
+
+export const EXCEPTION_LABELS: Record<string, string> = {
+  damaged: 'Damaged',
+  refused: 'Refused by consignee',
+  shortage: 'Short (pieces missing)',
 };

@@ -101,7 +101,8 @@ Freight payments slow down when the shipment record and the payment record drift
 - **Data the prototype needs:**
   - shipment ID
   - booked rate and approved range
-  - tracking events: pickup, in transit, delivered, proof of delivery, RFID
+  - shipment milestones: booked, picked up, in transit, delayed, delivered, exception, on hold
+  - proof of delivery: an RFID scan, a signature or a photo
   - invoice
   - the carrier's verified bank account
   - hold rules
@@ -122,31 +123,36 @@ The approach: synthetic data generated from a defined schema, and live partner f
 | `rate_rules.csv` | 15 | Allowed extra charges and caps per payer |
 | `fuel_index.csv` | 10 | Weekly diesel price and fuel surcharge |
 | `shipments.csv` | 500 | Shipper, lane, dates, booked rate, approved maximum, factoring rate (6–8%, randomized per shipment), virtual card ID, test scenario |
-| `tracking_events.csv` | 3,143 | Pickup, in transit, RFID scan, delivered and proof of delivery, with GPS and off-route distance |
-| `invoices.csv` | 505 | Itemized charges, including 5 duplicate invoices |
+| `tracking_events.csv` | 3,053 | Shipment milestones: booked, picked up, in transit, delayed, delivered, exception and on hold, with GPS, off-route distance and a reason for delays, exceptions and holds |
+| `delivery_evidence.csv` | 634 | Proof of delivery: RFID scans, signatures and photos |
+| `invoices.csv` | 500 | Itemized charges, including 5 duplicate invoices. Loads on hold aren't invoiced yet. |
 | `payments_expected.csv` | 500 | **Answer key:** expected decision, hold reasons, timing, float and fee split |
 
 ### Scenario mix
 
 | Scenario | Shipments | Expected decision |
 |---|---|---|
-| Clean | 350 | Paid automatically |
+| Clean | 340 | Paid automatically |
 | Extras within approved range | 100 | Paid automatically |
 | Above approved range | 25 | Held |
 | Off route, wrong recipient, recent bank change | 5 each | Held |
 | Missing proof of delivery | 5 | Held |
 | Duplicate invoice | 5 | Original paid, duplicate blocked |
+| Delivery exception (2 damaged, 2 refused, 1 short) | 5 | Held |
+| Shipment on hold | 5 | Not paid yet: awaiting delivery |
 
-Result: 455 paid automatically (91%) and 45 held (9%).
+Result: 445 paid automatically (89%), 50 held (10%) and 5 awaiting delivery (1%).
 
 ### Default hold rules
 
 1. The invoice total is above the approved maximum, which is (booked rate + fuel) × 1.10.
-2. Any in-transit event is more than 50 km off the expected route.
+2. Any in-transit event is more than 30 miles off the expected route.
 3. The delivery recipient doesn't match the consignee.
 4. The carrier's bank details changed within 14 days before payment.
 5. The same shipment is invoiced twice: pay once, block the duplicate.
-6. There is no proof-of-delivery event.
+6. There is no proof of delivery (RFID scan, signature or photo).
+7. The carrier reports a delivery exception (damaged, refused or short).
+8. The load is on hold and not yet delivered: nothing to pay until it is.
 
 ### Real sources to add later
 

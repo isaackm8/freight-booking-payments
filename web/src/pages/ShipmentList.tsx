@@ -1,8 +1,8 @@
-import { useMemo, type ReactNode } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import type { ShipmentListResponse } from '../../../shared/types.ts';
 import { useApi } from '../api.ts';
-import { EVENT_LABELS, companyName, day, label, money } from '../format.ts';
+import { EVENT_LABELS, EVENT_TONE, companyName, day, label, money } from '../format.ts';
 import { InfoTip } from '../InfoTip.tsx';
 import { Overview } from '../Overview.tsx';
 
@@ -25,7 +25,7 @@ const COLUMNS: { key: string; title: string; tip: ReactNode; align?: 'right' }[]
     key: 'invoiced', title: 'Invoiced', align: 'right',
     tip: 'The total on the carrier’s invoice. Red means it is above the approved max. “+1 dup” means a duplicate invoice also arrived.',
   },
-  { key: 'event', title: 'Last event', tip: 'The latest tracking update: picked up, in transit, RFID scan, delivered or proof of delivery.' },
+  { key: 'status', title: 'Status', tip: 'The latest milestone: booked, picked up, in transit, delayed, delivered, exception (damaged, refused or short) or on hold.' },
   { key: 'scenario', title: 'Scenario', tip: 'The test case this sample shipment was built for. Demo only; real shipments won’t have one.' },
 ];
 
@@ -51,6 +51,7 @@ export function ShipmentList() {
     setParams(next, { replace: true });
   };
   const hasFilters = FILTER_KEYS.some((k) => params.get(k));
+  const scroll = useMirroredScroll();
 
   return (
     <div className="space-y-5">
@@ -89,8 +90,16 @@ export function ShipmentList() {
 
       {error && <p className="rounded-xl bg-red-50 p-3 text-sm text-red-800">Couldn't load shipments: {error.message}</p>}
 
-      <div className={`overflow-x-auto rounded-2xl bg-white shadow-sm ring-1 ring-stone-200 ${loading ? 'opacity-60' : ''}`}>
-        <table className="min-w-full text-sm">
+      {/* A second horizontal scroll bar above the table, kept in view while scrolling down the rows. */}
+      {scroll.overflows && (
+        <div ref={scroll.top} onScroll={scroll.onTopScroll} aria-hidden
+          className="sticky top-0 z-20 overflow-x-auto overflow-y-hidden bg-canvas/90 backdrop-blur">
+          <div style={{ width: scroll.width, height: 1 }} />
+        </div>
+      )}
+      <div ref={scroll.body} onScroll={scroll.onBodyScroll}
+        className={`overflow-x-auto rounded-2xl bg-white shadow-sm ring-1 ring-stone-200 ${loading ? 'opacity-60' : ''}`}>
+        <table ref={scroll.table} className="min-w-full text-sm">
           <thead className="border-b border-stone-200 text-left text-xs font-semibold uppercase tracking-wide text-stone-500">
             <tr>
               {COLUMNS.map((c) => (
@@ -126,7 +135,9 @@ export function ShipmentList() {
                     {money(s.invoice_total_cents)}
                     {s.invoice_count > 1 && <span className="ml-1 text-xs font-normal text-amber-700">+{s.invoice_count - 1} dup</span>}
                   </td>
-                  <td className="whitespace-nowrap px-3 py-2.5 text-stone-600">{s.latest_event_type ? EVENT_LABELS[s.latest_event_type] ?? s.latest_event_type : '—'}</td>
+                  <td className={`whitespace-nowrap px-3 py-2.5 ${s.latest_event_type && EVENT_TONE[s.latest_event_type] ? `font-medium ${EVENT_TONE[s.latest_event_type]}` : 'text-stone-600'}`}>
+                    {s.latest_event_type ? EVENT_LABELS[s.latest_event_type] ?? s.latest_event_type : '—'}
+                  </td>
                   <td className="whitespace-nowrap px-3 py-2.5 text-stone-500">{label(s.scenario)}</td>
                 </tr>
               );
@@ -146,6 +157,35 @@ export function ShipmentList() {
       </p>
     </div>
   );
+}
+
+// Keeps a top scroll bar and the table's own scroll position in step.
+function useMirroredScroll() {
+  const top = useRef<HTMLDivElement>(null);
+  const body = useRef<HTMLDivElement>(null);
+  const table = useRef<HTMLTableElement>(null);
+  const [size, setSize] = useState({ width: 0, overflows: false });
+
+  useEffect(() => {
+    if (!body.current || !table.current) return;
+    const measure = () => {
+      const width = table.current!.scrollWidth;
+      setSize({ width, overflows: width > body.current!.clientWidth + 1 });
+    };
+    const observer = new ResizeObserver(measure);
+    observer.observe(body.current);
+    observer.observe(table.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const mirror = (from: HTMLDivElement | null, to: HTMLDivElement | null) => {
+    if (from && to && to.scrollLeft !== from.scrollLeft) to.scrollLeft = from.scrollLeft;
+  };
+  return {
+    top, body, table, ...size,
+    onTopScroll: () => mirror(top.current, body.current),
+    onBodyScroll: () => mirror(body.current, top.current),
+  };
 }
 
 function Select({ label: name, value, onChange, options }: {

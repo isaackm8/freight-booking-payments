@@ -27,6 +27,13 @@ Last updated: Oct 29, 2026.
 - **Air and ocean are out of scope, for later.** They involve paying airlines and shipping lines (large companies on their own terms), and delivery is confirmed by bills of lading and arrival notices, not truck GPS. They would need different hold rules and data.
 - **Possible light step:** label some shipments as drayage (port to warehouse) to show the forwarder's wider business, without changing any rules.
 
+## Milestones and proof of delivery
+
+- **Milestones say where the load is:** booked (tendered), picked up, in transit, delayed, delivered, exception (damaged, refused or short) and on hold.
+- **Proof of delivery is a record, not a milestone.** It can be an RFID scan at the dock door, a signature or a photo; any one confirms delivery. It shows on the shipment detail page, under Proof of delivery.
+- **"On hold" means the load is held**, for example waiting on a delivery appointment or held at the customer's request. That's different from CashBridge holding a *payment* for review (phase 2), which the app will call "Payment held".
+- **Delays are flagged, not held.** A late load is still a valid delivery. Exceptions are held for review, and a load on hold isn't paid until it's delivered.
+
 ## About the data and numbers
 
 - **All data is synthetic.** Companies, USDOT and MC numbers, and shipments are fictional. No real customer or shipment data from past employers is used, even anonymized.
@@ -35,6 +42,7 @@ Last updated: Oct 29, 2026.
     - From sources: 30–45 day waits, 6–8% factoring cost, 45%, 52%, 60%, 58% and 63%. The 60% is from a 2022 Denim report cited in the paper; the rest are from Mastercard's survey.
     - Assumptions to test: the 80% auto-approval, 50% time saved, 24-hour and 2% false-hold targets.
 - **Factoring rates** are randomized per shipment between 6% and 8%, the white paper's range.
+- **US units throughout:** distances in miles, money in US dollars, diesel per gallon. An in-transit update more than 30 miles off the expected route is held for review.
 - **Approved max** = (booked rate + fuel surcharge) × 1.10, which leaves 10% room for extra charges such as detention or a liftgate.
 - **Fraud cases are generated on purpose.** Hold rates show how the mechanism works, not real-world catch rates.
 

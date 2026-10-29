@@ -17,14 +17,14 @@ const STEPS: { title: string; actor: Actor; text: string; source: string; later?
   {
     title: 'Track',
     actor: 'Carrier',
-    text: 'Moves the load. GPS, RFID and carrier updates show where it is and whether it stays on route.',
+    text: 'Moves the load. GPS and carrier updates show each milestone, whether it stays on route and if it runs late.',
     source: 'tracking_events.csv',
   },
   {
     title: 'Confirm delivery',
     actor: 'Carrier',
-    text: 'Delivers the load and records proof of delivery, signed by the right recipient.',
-    source: 'tracking_events.csv',
+    text: 'Delivers the load to the right recipient, with proof of delivery: an RFID scan, a signature or a photo.',
+    source: 'delivery_evidence.csv',
   },
   {
     title: 'Check',

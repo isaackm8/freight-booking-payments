@@ -87,7 +87,7 @@ export interface Shipment {
   dest_lat: number;
   dest_lon: number;
   consignee: string;
-  expected_route_km: number;
+  expected_route_mi: number;
   pickup_ts: string;
   scheduled_delivery_ts: string;
   booked_rate_cents: number;
@@ -107,7 +107,20 @@ export interface TrackingEvent {
   lat: number;
   lon: number;
   source: string;
-  off_route_km: number;
+  off_route_mi: number;
+  recipient: string | null;
+  // Why a DELAYED, EXCEPTION or ON_HOLD event happened, e.g. "ETA +3.1 h", "damaged", "held at customer request".
+  reason: string | null;
+}
+
+// Proof of delivery. kind: rfid_scan, signature or photo.
+export interface DeliveryEvidence {
+  evidence_id: string;
+  kind: string;
+  ts: string;
+  lat: number;
+  lon: number;
+  source: string;
   recipient: string | null;
 }
 
@@ -138,6 +151,7 @@ export interface ShipmentDetail {
   shipper: Shipper;
   carrier: Carrier;
   events: TrackingEvent[];
+  evidence: DeliveryEvidence[];
   invoices: Invoice[];
   rate_rules: RateRule[];
 }

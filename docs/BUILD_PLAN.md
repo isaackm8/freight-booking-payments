@@ -36,7 +36,7 @@ One app with a role switcher at the top; each role sees its own view of the same
 Each shipment moves through one lifecycle; the app's views, data and replay all follow it.
 
 1. Booked: rate and approved range set.
-2. Picked up, then in transit: tracking and RFID events arrive.
+2. Picked up, then in transit: milestones arrive (delayed, exception or on hold when something goes wrong).
 3. Delivered, with proof of delivery.
 4. Invoice received and matched by shipment ID.
 5. Decision: auto-approved, or held with a reason.
@@ -69,7 +69,7 @@ A pure, testable function: `decide(shipment, events, invoices, carrier, rules) â
 | # | Check | Hold reason |
 | --- | --- | --- |
 | 1 | Invoice total > approved maximum | amount_above_approved_range |
-| 2 | Any in-transit event > 50 km off expected route | off_route |
+| 2 | Any in-transit event > 30 mi off expected route | off_route |
 | 3 | Delivery recipient or location â‰  consignee | delivered_to_unexpected_recipient |
 | 4 | Carrier bank details changed within 14 days | bank_account_changed_recently |
 | 5 | Second invoice for the same shipment | pay once, block duplicate |
@@ -98,7 +98,8 @@ Load the synthetic sample set (the CSVs in [`data/`](../data/)) at startup; ever
 | rate_rules | payer_id + charge_type | payers | allowed extras and caps |
 | fuel_index | week_start | shipments | weekly fuel surcharge % |
 | shipments | shipment_id | everything | booked rate, approved maximum, factoring rate, consignee, expected route, scenario |
-| tracking_events | event_id | shipment_id | pickup, in transit, RFID, delivered, POD with GPS and off-route km |
+| tracking_events | event_id | shipment_id | milestones: booked, picked up, in transit, delayed, delivered, exception, on hold, with GPS and off-route miles |
+| delivery_evidence | evidence_id | shipment_id | proof of delivery: RFID scan, signature or photo |
 | invoices | invoice_id | shipment_id | line items; `duplicate_of` marks duplicates |
 | payments | payment_id | shipment_id | written by the decision engine at run time |
 | holds | hold_id | payment_id | reason, evidence, reviewer action, audit note |
@@ -192,8 +193,8 @@ A small "Rates" panel on each view shows the current values, a "Use my rates" to
 Each phase ends with something you can click and a check you can run.
 
 1. **Foundation:** project setup, load the sample CSVs into SQLite, shipment list and shipment detail page.
-    - Done when: all 500 shipments, ~3,100 events and 505 invoices load, and any shipment ID shows its full record.
-2. **Decision engine:** implement the six hold rules, payment timing, float and fees as a tested module.
+    - Done when: all 500 shipments, ~3,050 milestones, 634 pieces of delivery evidence and 500 invoices load, and any shipment ID shows its full record.
+2. **Decision engine:** implement the eight hold rules, payment timing, float and fees as a tested module.
     - Done when: decisions match `payments_expected.csv` for 500 of 500 shipments, with unit tests per rule.
 3. **Payer views:** payer dashboard, exceptions queue with evidence and Release / Reject actions, map of route vs. GPS.
     - Done when: auto-approval ~91%, 45 holds shown with correct reasons, and actions update status and audit log.

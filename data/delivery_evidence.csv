@@ -1,0 +1,635 @@
+evidence_id,shipment_id,kind,ts,lat,lon,source,recipient
+EVD-10001-1,SHP-10001,photo,2026-10-15T04:35:23,35.1495,-90.049,visibility_platform,Memphis DC 1
+EVD-10002-1,SHP-10002,rfid_scan,2026-11-02T08:58:46,39.0997,-94.5786,rfid_reader,
+EVD-10002-2,SHP-10002,photo,2026-11-02T09:14:52,39.0997,-94.5786,visibility_platform,Kansas City DC 4
+EVD-10003-1,SHP-10003,photo,2026-11-12T21:04:17,36.1627,-86.7816,visibility_platform,Nashville DC 4
+EVD-10004-1,SHP-10004,signature,2026-11-04T21:03:48,41.8781,-87.6298,carrier_api,Chicago DC 3
+EVD-10005-1,SHP-10005,photo,2026-10-15T12:35:40,42.0993,-82.3944,carrier_api,"Unlisted address, Kansas City"
+EVD-10006-1,SHP-10006,photo,2026-11-15T07:28:14,39.7684,-86.1581,carrier_api,Indianapolis DC 3
+EVD-10007-1,SHP-10007,signature,2026-11-11T06:49:28,36.1627,-86.7816,visibility_platform,Nashville DC 4
+EVD-10008-1,SHP-10008,signature,2026-10-31T05:24:05,35.1495,-90.049,carrier_api,Memphis DC 4
+EVD-10009-1,SHP-10009,signature,2026-10-28T13:35:03,39.7684,-86.1581,visibility_platform,Indianapolis DC 2
+EVD-10010-1,SHP-10010,rfid_scan,2026-11-06T09:37:39,33.749,-84.388,rfid_reader,
+EVD-10010-2,SHP-10010,signature,2026-11-06T09:53:14,33.749,-84.388,visibility_platform,Atlanta DC 4
+EVD-10011-1,SHP-10011,signature,2026-11-04T03:51:28,40.4406,-79.9959,visibility_platform,Pittsburgh DC 1
+EVD-10012-1,SHP-10012,signature,2026-10-07T23:51:56,38.627,-90.1994,visibility_platform,St. Louis DC 4
+EVD-10013-1,SHP-10013,signature,2026-10-11T08:39:46,43.0389,-87.9065,carrier_api,Milwaukee DC 1
+EVD-10014-1,SHP-10014,signature,2026-10-21T03:06:49,39.0997,-94.5786,carrier_api,Kansas City DC 1
+EVD-10015-1,SHP-10015,signature,2026-11-16T01:01:43,42.3314,-83.0458,carrier_api,Detroit DC 4
+EVD-10016-1,SHP-10016,rfid_scan,2026-10-21T04:19:55,42.3314,-83.0458,rfid_reader,
+EVD-10016-2,SHP-10016,photo,2026-10-21T04:37:44,42.3314,-83.0458,carrier_api,Detroit DC 3
+EVD-10017-1,SHP-10017,photo,2026-10-02T23:51:24,33.749,-84.388,carrier_api,Atlanta DC 1
+EVD-10018-1,SHP-10018,signature,2026-10-22T04:11:19,33.749,-84.388,visibility_platform,Atlanta DC 2
+EVD-10019-1,SHP-10019,signature,2026-11-03T03:58:53,35.2271,-80.8431,carrier_api,Charlotte DC 4
+EVD-10020-1,SHP-10020,signature,2026-10-03T15:42:58,40.4406,-79.9959,visibility_platform,Pittsburgh DC 2
+EVD-10021-1,SHP-10021,signature,2026-11-16T08:13:21,40.4406,-79.9959,carrier_api,Pittsburgh DC 4
+EVD-10022-1,SHP-10022,photo,2026-10-01T23:03:40,35.2271,-80.8431,visibility_platform,Charlotte DC 4
+EVD-10023-1,SHP-10023,rfid_scan,2026-10-27T23:28:21,36.1627,-86.7816,rfid_reader,
+EVD-10023-2,SHP-10023,photo,2026-10-27T23:34:17,36.1627,-86.7816,visibility_platform,Nashville DC 4
+EVD-10024-1,SHP-10024,signature,2026-10-29T19:29:53,41.8781,-87.6298,carrier_api,Chicago DC 4
+EVD-10025-1,SHP-10025,rfid_scan,2026-10-26T05:12:19,41.4993,-81.6944,rfid_reader,
+EVD-10025-2,SHP-10025,signature,2026-10-26T05:24:32,41.4993,-81.6944,carrier_api,Cleveland DC 4
+EVD-10026-1,SHP-10026,signature,2026-10-03T00:09:29,39.9612,-82.9988,visibility_platform,Columbus DC 1
+EVD-10027-1,SHP-10027,rfid_scan,2026-11-08T06:41:31,41.4993,-81.6944,rfid_reader,
+EVD-10027-2,SHP-10027,signature,2026-11-08T06:53:45,41.4993,-81.6944,visibility_platform,Cleveland DC 3
+EVD-10028-1,SHP-10028,photo,2026-10-21T01:39:05,38.2527,-85.7585,carrier_api,Louisville DC 4
+EVD-10029-1,SHP-10029,signature,2026-10-05T07:54:26,38.627,-90.1994,visibility_platform,St. Louis DC 3
+EVD-10030-1,SHP-10030,signature,2026-11-08T03:57:09,35.2271,-80.8431,visibility_platform,Charlotte DC 1
+EVD-10031-1,SHP-10031,signature,2026-10-20T02:55:40,38.627,-90.1994,carrier_api,St. Louis DC 4
+EVD-10032-1,SHP-10032,rfid_scan,2026-10-25T17:24:41,32.7767,-96.797,rfid_reader,
+EVD-10032-2,SHP-10032,photo,2026-10-25T17:35:51,32.7767,-96.797,visibility_platform,Dallas DC 3
+EVD-10033-1,SHP-10033,rfid_scan,2026-10-31T01:16:52,41.8781,-87.6298,rfid_reader,
+EVD-10033-2,SHP-10033,signature,2026-10-31T01:25:17,41.8781,-87.6298,carrier_api,Chicago DC 1
+EVD-10034-1,SHP-10034,rfid_scan,2026-10-11T06:21:29,39.0997,-94.5786,rfid_reader,
+EVD-10034-2,SHP-10034,photo,2026-10-11T06:33:05,39.0997,-94.5786,visibility_platform,Kansas City DC 4
+EVD-10035-1,SHP-10035,rfid_scan,2026-10-27T14:31:10,41.4993,-81.6944,rfid_reader,
+EVD-10035-2,SHP-10035,photo,2026-10-27T14:41:47,41.4993,-81.6944,carrier_api,Cleveland DC 1
+EVD-10036-1,SHP-10036,rfid_scan,2026-10-16T06:28:14,39.7684,-86.1581,rfid_reader,
+EVD-10036-2,SHP-10036,photo,2026-10-16T06:36:47,39.7684,-86.1581,carrier_api,Indianapolis DC 1
+EVD-10037-1,SHP-10037,photo,2026-10-05T05:38:56,42.3314,-83.0458,visibility_platform,Detroit DC 1
+EVD-10038-1,SHP-10038,rfid_scan,2026-10-03T00:13:07,35.1495,-90.049,rfid_reader,
+EVD-10038-2,SHP-10038,signature,2026-10-03T00:20:49,35.1495,-90.049,carrier_api,Memphis DC 4
+EVD-10039-1,SHP-10039,signature,2026-11-09T07:33:23,33.749,-84.388,carrier_api,Atlanta DC 4
+EVD-10040-1,SHP-10040,rfid_scan,2026-10-29T06:04:51,40.4406,-79.9959,rfid_reader,
+EVD-10040-2,SHP-10040,signature,2026-10-29T06:11:18,40.4406,-79.9959,visibility_platform,Pittsburgh DC 3
+EVD-10041-1,SHP-10041,rfid_scan,2026-10-28T12:58:26,33.749,-84.388,rfid_reader,
+EVD-10041-2,SHP-10041,photo,2026-10-28T13:15:35,33.749,-84.388,visibility_platform,Atlanta DC 4
+EVD-10042-1,SHP-10042,signature,2026-11-07T07:05:28,41.8781,-87.6298,visibility_platform,Chicago DC 1
+EVD-10043-1,SHP-10043,signature,2026-10-02T22:20:46,39.9612,-82.9988,visibility_platform,Columbus DC 2
+EVD-10044-1,SHP-10044,signature,2026-11-13T19:34:52,35.2271,-80.8431,visibility_platform,Charlotte DC 4
+EVD-10045-1,SHP-10045,rfid_scan,2026-10-27T01:54:42,38.2527,-85.7585,rfid_reader,
+EVD-10045-2,SHP-10045,signature,2026-10-27T02:09:50,38.2527,-85.7585,carrier_api,Louisville DC 2
+EVD-10046-1,SHP-10046,signature,2026-11-12T22:30:49,39.7684,-86.1581,carrier_api,Indianapolis DC 1
+EVD-10047-1,SHP-10047,photo,2026-11-10T11:32:21,33.749,-84.388,visibility_platform,Atlanta DC 3
+EVD-10048-1,SHP-10048,rfid_scan,2026-11-10T20:58:20,39.9612,-82.9988,rfid_reader,
+EVD-10048-2,SHP-10048,photo,2026-11-10T21:12:12,39.9612,-82.9988,visibility_platform,Columbus DC 2
+EVD-10049-1,SHP-10049,rfid_scan,2026-10-31T06:55:28,35.2271,-80.8431,rfid_reader,
+EVD-10049-2,SHP-10049,signature,2026-10-31T07:10:14,35.2271,-80.8431,visibility_platform,Charlotte DC 4
+EVD-10050-1,SHP-10050,signature,2026-10-31T09:41:57,32.7767,-96.797,carrier_api,Dallas DC 3
+EVD-10051-1,SHP-10051,signature,2026-10-14T06:31:02,35.2271,-80.8431,visibility_platform,Charlotte DC 2
+EVD-10052-1,SHP-10052,signature,2026-10-12T02:22:33,32.7767,-96.797,visibility_platform,Dallas DC 3
+EVD-10053-1,SHP-10053,signature,2026-11-13T07:15:47,43.0389,-87.9065,carrier_api,Milwaukee DC 3
+EVD-10054-1,SHP-10054,photo,2026-11-14T03:58:50,39.9612,-82.9988,visibility_platform,Columbus DC 4
+EVD-10055-1,SHP-10055,rfid_scan,2026-10-08T05:00:33,38.2527,-85.7585,rfid_reader,
+EVD-10055-2,SHP-10055,photo,2026-10-08T05:07:20,38.2527,-85.7585,visibility_platform,Louisville DC 1
+EVD-10056-1,SHP-10056,signature,2026-10-17T07:05:37,36.1627,-86.7816,carrier_api,Nashville DC 4
+EVD-10057-1,SHP-10057,rfid_scan,2026-10-28T00:57:32,36.1627,-86.7816,rfid_reader,
+EVD-10057-2,SHP-10057,photo,2026-10-28T01:07:09,36.1627,-86.7816,carrier_api,Nashville DC 2
+EVD-10058-1,SHP-10058,rfid_scan,2026-10-29T01:23:19,32.7767,-96.797,rfid_reader,
+EVD-10058-2,SHP-10058,signature,2026-10-29T01:35:49,32.7767,-96.797,visibility_platform,Dallas DC 2
+EVD-10059-1,SHP-10059,rfid_scan,2026-10-20T03:54:43,39.9612,-82.9988,rfid_reader,
+EVD-10059-2,SHP-10059,signature,2026-10-20T04:12:08,39.9612,-82.9988,visibility_platform,Columbus DC 2
+EVD-10060-1,SHP-10060,photo,2026-10-16T21:53:51,38.2527,-85.7585,carrier_api,Louisville DC 4
+EVD-10061-1,SHP-10061,signature,2026-10-13T09:09:50,39.7684,-86.1581,carrier_api,Indianapolis DC 3
+EVD-10062-1,SHP-10062,photo,2026-10-08T07:03:11,40.4406,-79.9959,carrier_api,Pittsburgh DC 3
+EVD-10063-1,SHP-10063,signature,2026-10-03T22:48:59,35.2271,-80.8431,visibility_platform,Charlotte DC 2
+EVD-10064-1,SHP-10064,signature,2026-10-09T06:20:53,41.4993,-81.6944,visibility_platform,Cleveland DC 4
+EVD-10065-1,SHP-10065,signature,2026-10-07T12:03:34,38.2527,-85.7585,visibility_platform,Louisville DC 3
+EVD-10067-1,SHP-10067,rfid_scan,2026-10-24T19:00:29,41.4993,-81.6944,rfid_reader,
+EVD-10067-2,SHP-10067,signature,2026-10-24T19:05:53,41.4993,-81.6944,carrier_api,Cleveland DC 1
+EVD-10068-1,SHP-10068,signature,2026-10-30T02:29:02,35.2271,-80.8431,carrier_api,Charlotte DC 3
+EVD-10070-1,SHP-10070,photo,2026-10-10T13:19:52,35.2271,-80.8431,visibility_platform,Charlotte DC 1
+EVD-10071-1,SHP-10071,rfid_scan,2026-11-06T11:35:41,39.9612,-82.9988,rfid_reader,
+EVD-10071-2,SHP-10071,photo,2026-11-06T11:50:11,39.9612,-82.9988,carrier_api,Columbus DC 2
+EVD-10072-1,SHP-10072,signature,2026-11-11T18:33:40,32.7767,-96.797,carrier_api,Dallas DC 1
+EVD-10073-1,SHP-10073,signature,2026-10-04T10:57:24,43.0389,-87.9065,carrier_api,Milwaukee DC 3
+EVD-10074-1,SHP-10074,signature,2026-10-04T22:40:20,35.1495,-90.049,carrier_api,Memphis DC 4
+EVD-10075-1,SHP-10075,signature,2026-10-17T13:16:14,43.0389,-87.9065,carrier_api,Milwaukee DC 4
+EVD-10076-1,SHP-10076,rfid_scan,2026-11-03T05:31:34,35.2271,-80.8431,rfid_reader,
+EVD-10076-2,SHP-10076,signature,2026-11-03T05:49:29,35.2271,-80.8431,carrier_api,Charlotte DC 3
+EVD-10077-1,SHP-10077,signature,2026-11-01T00:15:39,38.627,-90.1994,carrier_api,St. Louis DC 1
+EVD-10078-1,SHP-10078,photo,2026-10-30T02:01:21,41.8781,-87.6298,carrier_api,Chicago DC 1
+EVD-10079-1,SHP-10079,photo,2026-11-16T01:42:36,43.0389,-87.9065,carrier_api,Milwaukee DC 4
+EVD-10080-1,SHP-10080,signature,2026-10-21T07:44:24,35.1495,-90.049,carrier_api,Memphis DC 3
+EVD-10081-1,SHP-10081,rfid_scan,2026-11-08T03:40:08,39.7684,-86.1581,rfid_reader,
+EVD-10081-2,SHP-10081,signature,2026-11-08T03:53:03,39.7684,-86.1581,carrier_api,Indianapolis DC 4
+EVD-10082-1,SHP-10082,photo,2026-11-01T11:53:48,35.2271,-80.8431,visibility_platform,Charlotte DC 2
+EVD-10083-1,SHP-10083,signature,2026-10-17T01:43:39,35.1495,-90.049,visibility_platform,Memphis DC 2
+EVD-10084-1,SHP-10084,signature,2026-10-11T00:41:14,43.0389,-87.9065,visibility_platform,Milwaukee DC 1
+EVD-10085-1,SHP-10085,rfid_scan,2026-10-17T06:59:35,40.4406,-79.9959,rfid_reader,
+EVD-10085-2,SHP-10085,photo,2026-10-17T07:10:08,40.4406,-79.9959,carrier_api,Pittsburgh DC 2
+EVD-10086-1,SHP-10086,signature,2026-10-19T21:44:22,39.7684,-86.1581,carrier_api,Indianapolis DC 1
+EVD-10087-1,SHP-10087,photo,2026-10-19T21:12:08,35.1495,-90.049,visibility_platform,Memphis DC 1
+EVD-10088-1,SHP-10088,signature,2026-11-12T04:57:52,39.9612,-82.9988,visibility_platform,Columbus DC 1
+EVD-10089-1,SHP-10089,photo,2026-10-10T01:51:29,41.8781,-87.6298,visibility_platform,Chicago DC 2
+EVD-10090-1,SHP-10090,photo,2026-10-09T01:33:18,39.7684,-86.1581,visibility_platform,Indianapolis DC 4
+EVD-10091-1,SHP-10091,signature,2026-11-01T02:33:25,36.1627,-86.7816,carrier_api,Nashville DC 2
+EVD-10092-1,SHP-10092,signature,2026-11-04T16:53:23,39.9612,-82.9988,visibility_platform,Columbus DC 2
+EVD-10093-1,SHP-10093,photo,2026-10-01T21:43:33,42.3314,-83.0458,visibility_platform,Detroit DC 1
+EVD-10094-1,SHP-10094,signature,2026-11-12T02:16:50,39.9612,-82.9988,visibility_platform,Columbus DC 4
+EVD-10095-1,SHP-10095,signature,2026-10-16T11:26:59,39.9612,-82.9988,visibility_platform,Columbus DC 3
+EVD-10096-1,SHP-10096,rfid_scan,2026-10-03T07:48:03,35.2271,-80.8431,rfid_reader,
+EVD-10096-2,SHP-10096,signature,2026-10-03T08:00:01,35.2271,-80.8431,carrier_api,Charlotte DC 1
+EVD-10097-1,SHP-10097,signature,2026-10-16T17:49:31,32.7767,-96.797,visibility_platform,Dallas DC 3
+EVD-10098-1,SHP-10098,rfid_scan,2026-11-02T01:06:32,43.0389,-87.9065,rfid_reader,
+EVD-10098-2,SHP-10098,signature,2026-11-02T01:11:51,43.0389,-87.9065,visibility_platform,Milwaukee DC 4
+EVD-10099-1,SHP-10099,signature,2026-10-28T01:46:21,42.3314,-83.0458,visibility_platform,Detroit DC 4
+EVD-10100-1,SHP-10100,rfid_scan,2026-10-14T14:53:01,42.3314,-83.0458,rfid_reader,
+EVD-10100-2,SHP-10100,signature,2026-10-14T15:07:55,42.3314,-83.0458,carrier_api,Detroit DC 2
+EVD-10101-1,SHP-10101,signature,2026-10-17T03:11:48,39.7684,-86.1581,visibility_platform,Indianapolis DC 3
+EVD-10102-1,SHP-10102,signature,2026-10-15T06:20:43,38.627,-90.1994,carrier_api,St. Louis DC 1
+EVD-10103-1,SHP-10103,rfid_scan,2026-11-02T07:50:07,39.0997,-94.5786,rfid_reader,
+EVD-10103-2,SHP-10103,signature,2026-11-02T07:59:56,39.0997,-94.5786,visibility_platform,Kansas City DC 3
+EVD-10104-1,SHP-10104,rfid_scan,2026-10-06T19:28:57,42.3314,-83.0458,rfid_reader,
+EVD-10104-2,SHP-10104,photo,2026-10-06T19:45:28,42.3314,-83.0458,carrier_api,Detroit DC 1
+EVD-10105-1,SHP-10105,rfid_scan,2026-10-03T05:14:08,35.1495,-90.049,rfid_reader,
+EVD-10105-2,SHP-10105,photo,2026-10-03T05:19:16,35.1495,-90.049,carrier_api,Memphis DC 4
+EVD-10106-1,SHP-10106,signature,2026-10-17T21:24:50,43.0389,-87.9065,visibility_platform,Milwaukee DC 4
+EVD-10107-1,SHP-10107,photo,2026-11-06T03:03:19,36.1627,-86.7816,carrier_api,Nashville DC 1
+EVD-10108-1,SHP-10108,photo,2026-10-06T09:15:14,38.2527,-85.7585,visibility_platform,Louisville DC 1
+EVD-10109-1,SHP-10109,signature,2026-11-14T03:58:28,38.627,-90.1994,visibility_platform,St. Louis DC 2
+EVD-10110-1,SHP-10110,signature,2026-10-24T10:41:21,35.1495,-90.049,visibility_platform,Memphis DC 4
+EVD-10111-1,SHP-10111,photo,2026-10-07T21:51:54,36.1627,-86.7816,visibility_platform,Nashville DC 3
+EVD-10112-1,SHP-10112,signature,2026-11-09T13:01:51,32.7767,-96.797,visibility_platform,Dallas DC 1
+EVD-10113-1,SHP-10113,photo,2026-10-05T23:33:40,43.0389,-87.9065,visibility_platform,Milwaukee DC 4
+EVD-10114-1,SHP-10114,signature,2026-10-25T21:31:02,33.749,-84.388,carrier_api,Atlanta DC 4
+EVD-10115-1,SHP-10115,rfid_scan,2026-10-26T14:21:48,35.2271,-80.8431,rfid_reader,
+EVD-10115-2,SHP-10115,signature,2026-10-26T14:37:41,35.2271,-80.8431,carrier_api,Charlotte DC 4
+EVD-10116-1,SHP-10116,signature,2026-10-06T03:33:05,38.2527,-85.7585,visibility_platform,Louisville DC 2
+EVD-10117-1,SHP-10117,rfid_scan,2026-11-04T22:03:22,38.627,-90.1994,rfid_reader,
+EVD-10117-2,SHP-10117,photo,2026-11-04T22:12:33,38.627,-90.1994,carrier_api,St. Louis DC 3
+EVD-10118-1,SHP-10118,signature,2026-10-28T17:09:32,33.749,-84.388,carrier_api,Atlanta DC 3
+EVD-10119-1,SHP-10119,signature,2026-10-11T00:56:05,41.8781,-87.6298,visibility_platform,Chicago DC 4
+EVD-10120-1,SHP-10120,signature,2026-11-14T04:47:25,33.749,-84.388,carrier_api,Atlanta DC 2
+EVD-10121-1,SHP-10121,rfid_scan,2026-10-14T06:12:04,42.3314,-83.0458,rfid_reader,
+EVD-10121-2,SHP-10121,signature,2026-10-14T06:27:04,42.3314,-83.0458,carrier_api,Detroit DC 4
+EVD-10122-1,SHP-10122,photo,2026-11-02T12:07:51,41.8781,-87.6298,visibility_platform,Chicago DC 3
+EVD-10123-1,SHP-10123,photo,2026-10-08T20:57:19,41.4993,-81.6944,carrier_api,Cleveland DC 2
+EVD-10124-1,SHP-10124,rfid_scan,2026-10-10T10:51:13,39.9612,-82.9988,rfid_reader,
+EVD-10124-2,SHP-10124,photo,2026-10-10T11:01:01,39.9612,-82.9988,carrier_api,Columbus DC 4
+EVD-10125-1,SHP-10125,signature,2026-10-30T08:40:29,35.1495,-90.049,visibility_platform,Memphis DC 1
+EVD-10126-1,SHP-10126,signature,2026-10-25T05:31:11,38.2527,-85.7585,carrier_api,Louisville DC 1
+EVD-10127-1,SHP-10127,rfid_scan,2026-10-16T22:26:18,41.8781,-87.6298,rfid_reader,
+EVD-10127-2,SHP-10127,signature,2026-10-16T22:38:53,41.8781,-87.6298,visibility_platform,Chicago DC 3
+EVD-10128-1,SHP-10128,rfid_scan,2026-10-20T03:50:08,33.749,-84.388,rfid_reader,
+EVD-10128-2,SHP-10128,signature,2026-10-20T04:01:39,33.749,-84.388,visibility_platform,Atlanta DC 1
+EVD-10129-1,SHP-10129,signature,2026-11-02T04:17:53,38.627,-90.1994,visibility_platform,St. Louis DC 3
+EVD-10130-1,SHP-10130,rfid_scan,2026-10-07T04:46:19,33.749,-84.388,rfid_reader,
+EVD-10130-2,SHP-10130,photo,2026-10-07T04:55:36,33.749,-84.388,visibility_platform,Atlanta DC 3
+EVD-10131-1,SHP-10131,signature,2026-11-13T15:49:02,35.1495,-90.049,carrier_api,Memphis DC 4
+EVD-10132-1,SHP-10132,photo,2026-10-24T20:04:11,38.2527,-85.7585,visibility_platform,Louisville DC 2
+EVD-10133-1,SHP-10133,signature,2026-10-02T07:08:47,32.7767,-96.797,carrier_api,Dallas DC 1
+EVD-10135-1,SHP-10135,rfid_scan,2026-10-09T02:39:08,43.0389,-87.9065,rfid_reader,
+EVD-10135-2,SHP-10135,signature,2026-10-09T02:52:45,43.0389,-87.9065,visibility_platform,Milwaukee DC 3
+EVD-10136-1,SHP-10136,rfid_scan,2026-10-14T12:12:19,32.7767,-96.797,rfid_reader,
+EVD-10136-2,SHP-10136,signature,2026-10-14T12:19:02,32.7767,-96.797,visibility_platform,Dallas DC 1
+EVD-10137-1,SHP-10137,rfid_scan,2026-10-27T22:43:43,38.627,-90.1994,rfid_reader,
+EVD-10137-2,SHP-10137,photo,2026-10-27T22:50:51,38.627,-90.1994,carrier_api,St. Louis DC 2
+EVD-10138-1,SHP-10138,signature,2026-10-26T22:26:31,36.1627,-86.7816,carrier_api,Nashville DC 2
+EVD-10139-1,SHP-10139,signature,2026-10-16T18:19:01,40.4406,-79.9959,visibility_platform,Pittsburgh DC 4
+EVD-10140-1,SHP-10140,rfid_scan,2026-10-18T08:57:38,32.7767,-96.797,rfid_reader,
+EVD-10140-2,SHP-10140,photo,2026-10-18T09:11:27,32.7767,-96.797,carrier_api,Dallas DC 3
+EVD-10141-1,SHP-10141,signature,2026-10-12T01:33:17,39.0997,-94.5786,carrier_api,Kansas City DC 1
+EVD-10142-1,SHP-10142,photo,2026-10-22T03:44:28,33.749,-84.388,carrier_api,Atlanta DC 3
+EVD-10143-1,SHP-10143,signature,2026-10-25T09:58:19,32.7767,-96.797,carrier_api,Dallas DC 3
+EVD-10144-1,SHP-10144,signature,2026-11-15T08:56:56,32.7767,-96.797,visibility_platform,Dallas DC 1
+EVD-10145-1,SHP-10145,photo,2026-11-04T01:26:39,42.3314,-83.0458,carrier_api,Detroit DC 3
+EVD-10146-1,SHP-10146,rfid_scan,2026-10-26T23:46:27,43.0389,-87.9065,rfid_reader,
+EVD-10146-2,SHP-10146,signature,2026-10-26T23:53:07,43.0389,-87.9065,carrier_api,Milwaukee DC 3
+EVD-10147-1,SHP-10147,signature,2026-10-15T10:38:07,33.749,-84.388,carrier_api,Atlanta DC 3
+EVD-10148-1,SHP-10148,rfid_scan,2026-11-13T19:07:20,36.1627,-86.7816,rfid_reader,
+EVD-10148-2,SHP-10148,signature,2026-11-13T19:17:08,36.1627,-86.7816,visibility_platform,Nashville DC 2
+EVD-10149-1,SHP-10149,rfid_scan,2026-10-25T03:18:31,39.7684,-86.1581,rfid_reader,
+EVD-10149-2,SHP-10149,signature,2026-10-25T03:27:51,39.7684,-86.1581,visibility_platform,Indianapolis DC 1
+EVD-10150-1,SHP-10150,signature,2026-11-07T10:51:05,35.1495,-90.049,carrier_api,Memphis DC 4
+EVD-10151-1,SHP-10151,signature,2026-10-20T05:30:27,43.0389,-87.9065,carrier_api,Milwaukee DC 4
+EVD-10152-1,SHP-10152,rfid_scan,2026-11-01T06:48:03,35.2271,-80.8431,rfid_reader,
+EVD-10152-2,SHP-10152,signature,2026-11-01T07:00:22,35.2271,-80.8431,visibility_platform,Charlotte DC 3
+EVD-10153-1,SHP-10153,signature,2026-10-15T17:10:19,35.2271,-80.8431,carrier_api,Charlotte DC 2
+EVD-10154-1,SHP-10154,signature,2026-11-07T22:18:19,40.4406,-79.9959,carrier_api,Pittsburgh DC 3
+EVD-10155-1,SHP-10155,signature,2026-10-03T02:44:00,39.7684,-86.1581,carrier_api,Indianapolis DC 3
+EVD-10156-1,SHP-10156,signature,2026-10-25T04:20:26,41.8781,-87.6298,carrier_api,Chicago DC 4
+EVD-10157-1,SHP-10157,rfid_scan,2026-10-16T17:59:08,39.0997,-94.5786,rfid_reader,
+EVD-10157-2,SHP-10157,signature,2026-10-16T18:04:38,39.0997,-94.5786,visibility_platform,Kansas City DC 2
+EVD-10158-1,SHP-10158,signature,2026-11-10T07:23:55,39.0997,-94.5786,carrier_api,Kansas City DC 1
+EVD-10159-1,SHP-10159,signature,2026-10-17T03:27:37,42.3314,-83.0458,carrier_api,Detroit DC 1
+EVD-10160-1,SHP-10160,signature,2026-11-07T06:35:23,35.1495,-90.049,visibility_platform,Memphis DC 2
+EVD-10161-1,SHP-10161,rfid_scan,2026-10-07T02:46:37,41.8781,-87.6298,rfid_reader,
+EVD-10161-2,SHP-10161,signature,2026-10-07T02:58:40,41.8781,-87.6298,visibility_platform,Chicago DC 4
+EVD-10162-1,SHP-10162,signature,2026-11-13T01:43:26,43.0389,-87.9065,visibility_platform,Milwaukee DC 1
+EVD-10163-1,SHP-10163,signature,2026-10-15T00:42:41,39.7684,-86.1581,carrier_api,Indianapolis DC 1
+EVD-10165-1,SHP-10165,signature,2026-11-04T23:23:30,42.3314,-83.0458,carrier_api,Detroit DC 4
+EVD-10166-1,SHP-10166,photo,2026-10-12T08:02:04,35.2271,-80.8431,visibility_platform,Charlotte DC 2
+EVD-10167-1,SHP-10167,photo,2026-10-22T08:10:35,32.7767,-96.797,visibility_platform,Dallas DC 1
+EVD-10168-1,SHP-10168,signature,2026-10-18T11:12:45,33.749,-84.388,carrier_api,Atlanta DC 4
+EVD-10169-1,SHP-10169,signature,2026-10-03T03:07:33,38.2527,-85.7585,visibility_platform,Louisville DC 3
+EVD-10170-1,SHP-10170,signature,2026-11-11T19:03:24,40.4406,-79.9959,visibility_platform,Pittsburgh DC 2
+EVD-10171-1,SHP-10171,rfid_scan,2026-11-06T23:36:47,38.627,-90.1994,rfid_reader,
+EVD-10171-2,SHP-10171,signature,2026-11-06T23:48:24,38.627,-90.1994,carrier_api,St. Louis DC 2
+EVD-10172-1,SHP-10172,photo,2026-11-01T22:45:25,42.3314,-83.0458,visibility_platform,Detroit DC 4
+EVD-10173-1,SHP-10173,signature,2026-11-13T18:46:17,39.7684,-86.1581,carrier_api,Indianapolis DC 4
+EVD-10174-1,SHP-10174,signature,2026-10-21T08:20:48,39.0997,-94.5786,visibility_platform,Kansas City DC 4
+EVD-10175-1,SHP-10175,rfid_scan,2026-10-20T18:21:56,41.4993,-81.6944,rfid_reader,
+EVD-10175-2,SHP-10175,signature,2026-10-20T18:35:57,41.4993,-81.6944,visibility_platform,Cleveland DC 4
+EVD-10176-1,SHP-10176,photo,2026-11-09T04:41:57,39.7684,-86.1581,visibility_platform,Indianapolis DC 2
+EVD-10177-1,SHP-10177,signature,2026-11-01T22:20:22,32.7767,-96.797,carrier_api,Dallas DC 3
+EVD-10178-1,SHP-10178,rfid_scan,2026-10-21T09:14:44,33.749,-84.388,rfid_reader,
+EVD-10178-2,SHP-10178,signature,2026-10-21T09:32:35,33.749,-84.388,visibility_platform,Atlanta DC 3
+EVD-10179-1,SHP-10179,signature,2026-11-03T21:46:36,38.627,-90.1994,carrier_api,St. Louis DC 2
+EVD-10180-1,SHP-10180,signature,2026-10-04T15:21:43,39.9612,-82.9988,carrier_api,Columbus DC 2
+EVD-10181-1,SHP-10181,photo,2026-10-24T20:01:03,43.0389,-87.9065,carrier_api,Milwaukee DC 2
+EVD-10182-1,SHP-10182,rfid_scan,2026-10-20T03:42:36,38.627,-90.1994,rfid_reader,
+EVD-10182-2,SHP-10182,signature,2026-10-20T03:55:42,38.627,-90.1994,carrier_api,St. Louis DC 3
+EVD-10183-1,SHP-10183,rfid_scan,2026-11-02T19:05:47,40.4406,-79.9959,rfid_reader,
+EVD-10183-2,SHP-10183,signature,2026-11-02T19:13:40,40.4406,-79.9959,visibility_platform,Pittsburgh DC 1
+EVD-10184-1,SHP-10184,rfid_scan,2026-10-18T03:31:01,36.1627,-86.7816,rfid_reader,
+EVD-10184-2,SHP-10184,signature,2026-10-18T03:41:07,36.1627,-86.7816,carrier_api,Nashville DC 2
+EVD-10185-1,SHP-10185,signature,2026-11-01T23:18:33,41.8781,-87.6298,carrier_api,Chicago DC 3
+EVD-10186-1,SHP-10186,rfid_scan,2026-11-07T06:35:15,41.8781,-87.6298,rfid_reader,
+EVD-10186-2,SHP-10186,photo,2026-11-07T06:41:36,41.8781,-87.6298,carrier_api,Chicago DC 1
+EVD-10187-1,SHP-10187,signature,2026-10-20T05:01:26,39.9612,-82.9988,carrier_api,Columbus DC 3
+EVD-10188-1,SHP-10188,signature,2026-10-22T21:03:59,40.4406,-79.9959,visibility_platform,Pittsburgh DC 4
+EVD-10189-1,SHP-10189,photo,2026-11-08T10:38:53,39.9612,-82.9988,visibility_platform,Columbus DC 4
+EVD-10190-1,SHP-10190,signature,2026-11-12T05:53:55,42.3314,-83.0458,visibility_platform,Detroit DC 2
+EVD-10191-1,SHP-10191,photo,2026-11-09T18:26:21,38.627,-90.1994,visibility_platform,St. Louis DC 2
+EVD-10192-1,SHP-10192,signature,2026-10-16T23:22:31,36.1627,-86.7816,visibility_platform,Nashville DC 4
+EVD-10193-1,SHP-10193,rfid_scan,2026-11-10T03:18:29,41.8781,-87.6298,rfid_reader,
+EVD-10193-2,SHP-10193,signature,2026-11-10T03:24:06,41.8781,-87.6298,visibility_platform,Chicago DC 2
+EVD-10194-1,SHP-10194,photo,2026-10-29T13:26:21,41.4993,-81.6944,visibility_platform,Cleveland DC 2
+EVD-10195-1,SHP-10195,photo,2026-10-27T21:50:49,38.627,-90.1994,carrier_api,St. Louis DC 2
+EVD-10196-1,SHP-10196,signature,2026-10-31T13:01:02,35.2271,-80.8431,carrier_api,Charlotte DC 2
+EVD-10197-1,SHP-10197,rfid_scan,2026-10-07T22:42:13,40.4406,-79.9959,rfid_reader,
+EVD-10197-2,SHP-10197,signature,2026-10-07T22:58:55,40.4406,-79.9959,visibility_platform,Pittsburgh DC 3
+EVD-10198-1,SHP-10198,signature,2026-11-03T02:47:08,36.1627,-86.7816,carrier_api,Nashville DC 3
+EVD-10199-1,SHP-10199,photo,2026-11-16T16:33:06,40.4406,-79.9959,visibility_platform,Pittsburgh DC 4
+EVD-10200-1,SHP-10200,rfid_scan,2026-10-13T21:44:22,42.3314,-83.0458,rfid_reader,
+EVD-10200-2,SHP-10200,signature,2026-10-13T21:52:13,42.3314,-83.0458,visibility_platform,Detroit DC 2
+EVD-10201-1,SHP-10201,signature,2026-10-16T11:08:13,41.4993,-81.6944,visibility_platform,Cleveland DC 2
+EVD-10202-1,SHP-10202,rfid_scan,2026-11-10T04:15:46,40.4406,-79.9959,rfid_reader,
+EVD-10202-2,SHP-10202,signature,2026-11-10T04:24:45,40.4406,-79.9959,carrier_api,Pittsburgh DC 3
+EVD-10203-1,SHP-10203,signature,2026-10-12T17:29:16,32.7767,-96.797,visibility_platform,Dallas DC 1
+EVD-10204-1,SHP-10204,signature,2026-10-06T12:16:12,39.0997,-94.5786,carrier_api,Kansas City DC 2
+EVD-10205-1,SHP-10205,signature,2026-11-09T23:07:41,39.7684,-86.1581,visibility_platform,Indianapolis DC 1
+EVD-10206-1,SHP-10206,signature,2026-10-03T16:41:36,32.7767,-96.797,visibility_platform,Dallas DC 3
+EVD-10207-1,SHP-10207,rfid_scan,2026-10-15T04:01:43,41.4993,-81.6944,rfid_reader,
+EVD-10207-2,SHP-10207,signature,2026-10-15T04:08:26,41.4993,-81.6944,visibility_platform,Cleveland DC 1
+EVD-10208-1,SHP-10208,signature,2026-10-06T06:53:35,35.2271,-80.8431,visibility_platform,Charlotte DC 3
+EVD-10210-1,SHP-10210,rfid_scan,2026-11-04T21:55:00,40.4406,-79.9959,rfid_reader,
+EVD-10210-2,SHP-10210,signature,2026-11-04T22:05:08,40.4406,-79.9959,visibility_platform,Pittsburgh DC 2
+EVD-10211-1,SHP-10211,rfid_scan,2026-10-23T21:45:14,38.2527,-85.7585,rfid_reader,
+EVD-10211-2,SHP-10211,photo,2026-10-23T21:54:34,38.2527,-85.7585,carrier_api,Louisville DC 2
+EVD-10212-1,SHP-10212,rfid_scan,2026-11-13T12:38:27,32.7767,-96.797,rfid_reader,
+EVD-10212-2,SHP-10212,signature,2026-11-13T12:48:49,32.7767,-96.797,visibility_platform,Dallas DC 2
+EVD-10213-1,SHP-10213,signature,2026-11-15T11:50:38,39.0997,-94.5786,visibility_platform,Kansas City DC 3
+EVD-10214-1,SHP-10214,signature,2026-10-24T06:10:08,35.1495,-90.049,carrier_api,Memphis DC 1
+EVD-10215-1,SHP-10215,signature,2026-11-07T21:51:25,42.3314,-83.0458,visibility_platform,Detroit DC 2
+EVD-10216-1,SHP-10216,rfid_scan,2026-10-07T05:34:45,35.1495,-90.049,rfid_reader,
+EVD-10216-2,SHP-10216,signature,2026-10-07T05:50:18,35.1495,-90.049,carrier_api,Memphis DC 1
+EVD-10217-1,SHP-10217,signature,2026-11-01T03:01:06,38.627,-90.1994,carrier_api,St. Louis DC 4
+EVD-10218-1,SHP-10218,signature,2026-11-15T22:28:02,41.4993,-81.6944,carrier_api,Cleveland DC 3
+EVD-10219-1,SHP-10219,rfid_scan,2026-10-24T01:19:05,33.749,-84.388,rfid_reader,
+EVD-10219-2,SHP-10219,signature,2026-10-24T01:34:38,33.749,-84.388,carrier_api,Atlanta DC 1
+EVD-10220-1,SHP-10220,rfid_scan,2026-10-22T19:30:03,39.7684,-86.1581,rfid_reader,
+EVD-10220-2,SHP-10220,signature,2026-10-22T19:42:47,39.7684,-86.1581,carrier_api,Indianapolis DC 4
+EVD-10221-1,SHP-10221,signature,2026-10-13T02:59:59,42.3314,-83.0458,visibility_platform,Detroit DC 1
+EVD-10222-1,SHP-10222,signature,2026-10-13T16:53:51,39.0997,-94.5786,visibility_platform,Kansas City DC 3
+EVD-10223-1,SHP-10223,signature,2026-10-13T06:17:58,39.9612,-82.9988,carrier_api,Columbus DC 1
+EVD-10224-1,SHP-10224,photo,2026-11-04T03:50:35,38.627,-90.1994,visibility_platform,St. Louis DC 4
+EVD-10225-1,SHP-10225,rfid_scan,2026-10-14T00:08:59,32.7767,-96.797,rfid_reader,
+EVD-10225-2,SHP-10225,signature,2026-10-14T00:24:10,32.7767,-96.797,carrier_api,Dallas DC 1
+EVD-10226-1,SHP-10226,signature,2026-10-25T09:10:40,32.7767,-96.797,visibility_platform,Dallas DC 4
+EVD-10227-1,SHP-10227,signature,2026-11-12T19:07:20,39.9612,-82.9988,carrier_api,Columbus DC 4
+EVD-10228-1,SHP-10228,signature,2026-11-01T10:55:44,41.8781,-87.6298,carrier_api,Chicago DC 1
+EVD-10229-1,SHP-10229,photo,2026-11-11T07:23:12,35.2271,-80.8431,visibility_platform,Charlotte DC 2
+EVD-10230-1,SHP-10230,rfid_scan,2026-10-27T01:11:31,41.8781,-87.6298,rfid_reader,
+EVD-10230-2,SHP-10230,signature,2026-10-27T01:27:25,41.8781,-87.6298,carrier_api,Chicago DC 4
+EVD-10231-1,SHP-10231,rfid_scan,2026-10-27T05:04:00,39.7684,-86.1581,rfid_reader,
+EVD-10231-2,SHP-10231,signature,2026-10-27T05:17:18,40.3684,-86.8581,carrier_api,"Unlisted address, Louisville"
+EVD-10232-1,SHP-10232,rfid_scan,2026-11-07T12:29:10,35.1495,-90.049,rfid_reader,
+EVD-10232-2,SHP-10232,signature,2026-11-07T12:37:19,35.1495,-90.049,visibility_platform,Memphis DC 3
+EVD-10233-1,SHP-10233,signature,2026-10-01T20:47:56,33.749,-84.388,visibility_platform,Atlanta DC 1
+EVD-10234-1,SHP-10234,photo,2026-10-17T06:48:16,40.4406,-79.9959,visibility_platform,Pittsburgh DC 2
+EVD-10235-1,SHP-10235,rfid_scan,2026-10-22T04:38:37,35.1495,-90.049,rfid_reader,
+EVD-10235-2,SHP-10235,photo,2026-10-22T04:46:56,35.1495,-90.049,carrier_api,Memphis DC 3
+EVD-10236-1,SHP-10236,photo,2026-11-14T06:38:58,33.749,-84.388,visibility_platform,Atlanta DC 1
+EVD-10237-1,SHP-10237,signature,2026-11-01T13:28:56,38.2527,-85.7585,visibility_platform,Louisville DC 2
+EVD-10238-1,SHP-10238,rfid_scan,2026-10-17T01:54:43,41.8781,-87.6298,rfid_reader,
+EVD-10238-2,SHP-10238,signature,2026-10-17T02:06:06,41.8781,-87.6298,carrier_api,Chicago DC 4
+EVD-10239-1,SHP-10239,photo,2026-11-02T16:54:29,40.4406,-79.9959,carrier_api,Pittsburgh DC 1
+EVD-10240-1,SHP-10240,photo,2026-10-18T07:23:34,32.7767,-96.797,carrier_api,Dallas DC 1
+EVD-10241-1,SHP-10241,signature,2026-10-19T21:24:48,41.8781,-87.6298,visibility_platform,Chicago DC 2
+EVD-10242-1,SHP-10242,signature,2026-10-30T15:04:32,41.4993,-81.6944,carrier_api,Cleveland DC 4
+EVD-10243-1,SHP-10243,signature,2026-10-03T05:35:34,35.1495,-90.049,visibility_platform,Memphis DC 1
+EVD-10244-1,SHP-10244,photo,2026-10-04T11:38:13,38.627,-90.1994,visibility_platform,St. Louis DC 3
+EVD-10245-1,SHP-10245,signature,2026-11-06T20:14:52,40.4406,-79.9959,visibility_platform,Pittsburgh DC 3
+EVD-10246-1,SHP-10246,signature,2026-11-02T04:08:29,32.7767,-96.797,carrier_api,Dallas DC 4
+EVD-10247-1,SHP-10247,rfid_scan,2026-10-07T01:13:08,36.1627,-86.7816,rfid_reader,
+EVD-10247-2,SHP-10247,signature,2026-10-07T01:28:27,36.1627,-86.7816,visibility_platform,Nashville DC 3
+EVD-10248-1,SHP-10248,rfid_scan,2026-10-10T23:25:44,39.7684,-86.1581,rfid_reader,
+EVD-10248-2,SHP-10248,signature,2026-10-10T23:35:50,39.7684,-86.1581,carrier_api,Indianapolis DC 1
+EVD-10249-1,SHP-10249,photo,2026-10-25T03:56:23,35.2271,-80.8431,carrier_api,Charlotte DC 1
+EVD-10250-1,SHP-10250,signature,2026-11-16T01:01:55,42.3314,-83.0458,carrier_api,Detroit DC 4
+EVD-10251-1,SHP-10251,rfid_scan,2026-11-05T20:13:54,41.4993,-81.6944,rfid_reader,
+EVD-10251-2,SHP-10251,signature,2026-11-05T20:20:29,41.4993,-81.6944,visibility_platform,Cleveland DC 4
+EVD-10252-1,SHP-10252,rfid_scan,2026-10-26T20:34:32,38.2527,-85.7585,rfid_reader,
+EVD-10252-2,SHP-10252,signature,2026-10-26T20:40:08,38.2527,-85.7585,visibility_platform,Louisville DC 1
+EVD-10253-1,SHP-10253,signature,2026-11-15T13:58:15,33.749,-84.388,carrier_api,Atlanta DC 2
+EVD-10254-1,SHP-10254,photo,2026-10-30T01:22:23,42.3314,-83.0458,carrier_api,Detroit DC 4
+EVD-10255-1,SHP-10255,photo,2026-11-04T23:54:35,38.2527,-85.7585,carrier_api,Louisville DC 4
+EVD-10256-1,SHP-10256,signature,2026-10-11T10:29:54,35.1495,-90.049,visibility_platform,Memphis DC 4
+EVD-10257-1,SHP-10257,signature,2026-10-26T04:18:22,42.9314,-83.7458,visibility_platform,"Unlisted address, Milwaukee"
+EVD-10258-1,SHP-10258,rfid_scan,2026-10-28T11:45:59,32.7767,-96.797,rfid_reader,
+EVD-10258-2,SHP-10258,signature,2026-10-28T11:54:07,32.7767,-96.797,visibility_platform,Dallas DC 1
+EVD-10259-1,SHP-10259,signature,2026-11-04T15:01:54,36.1627,-86.7816,visibility_platform,Nashville DC 2
+EVD-10260-1,SHP-10260,signature,2026-11-05T14:00:35,33.749,-84.388,visibility_platform,Atlanta DC 3
+EVD-10261-1,SHP-10261,photo,2026-10-18T19:29:58,32.7767,-96.797,carrier_api,Dallas DC 4
+EVD-10262-1,SHP-10262,signature,2026-11-15T05:35:45,33.749,-84.388,carrier_api,Atlanta DC 2
+EVD-10263-1,SHP-10263,signature,2026-11-01T00:59:04,41.8781,-87.6298,visibility_platform,Chicago DC 1
+EVD-10264-1,SHP-10264,signature,2026-10-16T07:59:24,38.627,-90.1994,visibility_platform,St. Louis DC 1
+EVD-10265-1,SHP-10265,rfid_scan,2026-11-03T00:27:47,35.2271,-80.8431,rfid_reader,
+EVD-10265-2,SHP-10265,signature,2026-11-03T00:44:09,35.2271,-80.8431,carrier_api,Charlotte DC 3
+EVD-10266-1,SHP-10266,signature,2026-10-14T04:16:40,39.9612,-82.9988,carrier_api,Columbus DC 2
+EVD-10267-1,SHP-10267,rfid_scan,2026-10-03T06:38:08,43.0389,-87.9065,rfid_reader,
+EVD-10267-2,SHP-10267,signature,2026-10-03T06:52:42,43.0389,-87.9065,visibility_platform,Milwaukee DC 3
+EVD-10268-1,SHP-10268,rfid_scan,2026-11-09T20:38:19,42.3314,-83.0458,rfid_reader,
+EVD-10268-2,SHP-10268,signature,2026-11-09T20:54:51,42.3314,-83.0458,visibility_platform,Detroit DC 3
+EVD-10269-1,SHP-10269,signature,2026-11-09T23:19:42,38.2527,-85.7585,carrier_api,Louisville DC 1
+EVD-10270-1,SHP-10270,rfid_scan,2026-11-13T05:59:08,41.4993,-81.6944,rfid_reader,
+EVD-10270-2,SHP-10270,photo,2026-11-13T06:13:55,41.4993,-81.6944,visibility_platform,Cleveland DC 1
+EVD-10271-1,SHP-10271,signature,2026-11-15T19:57:30,35.1495,-90.049,visibility_platform,Memphis DC 3
+EVD-10272-1,SHP-10272,signature,2026-10-26T03:55:58,42.3314,-83.0458,carrier_api,Detroit DC 3
+EVD-10273-1,SHP-10273,rfid_scan,2026-10-21T07:24:42,39.0997,-94.5786,rfid_reader,
+EVD-10273-2,SHP-10273,signature,2026-10-21T07:35:12,39.0997,-94.5786,carrier_api,Kansas City DC 2
+EVD-10274-1,SHP-10274,signature,2026-10-22T06:08:15,39.0997,-94.5786,visibility_platform,Kansas City DC 1
+EVD-10275-1,SHP-10275,rfid_scan,2026-10-09T20:16:58,35.2271,-80.8431,rfid_reader,
+EVD-10275-2,SHP-10275,signature,2026-10-09T20:26:37,35.2271,-80.8431,carrier_api,Charlotte DC 3
+EVD-10276-1,SHP-10276,rfid_scan,2026-10-25T21:36:17,41.4993,-81.6944,rfid_reader,
+EVD-10276-2,SHP-10276,photo,2026-10-25T21:46:34,41.4993,-81.6944,carrier_api,Cleveland DC 2
+EVD-10277-1,SHP-10277,photo,2026-11-02T07:36:57,35.1495,-90.049,visibility_platform,Memphis DC 2
+EVD-10278-1,SHP-10278,rfid_scan,2026-10-04T10:25:19,41.8781,-87.6298,rfid_reader,
+EVD-10278-2,SHP-10278,signature,2026-10-04T10:39:57,41.8781,-87.6298,visibility_platform,Chicago DC 4
+EVD-10279-1,SHP-10279,photo,2026-10-05T07:35:35,36.1627,-86.7816,visibility_platform,Nashville DC 4
+EVD-10280-1,SHP-10280,signature,2026-11-08T07:54:49,42.3314,-83.0458,visibility_platform,Detroit DC 1
+EVD-10281-1,SHP-10281,photo,2026-11-03T20:10:53,32.7767,-96.797,visibility_platform,Dallas DC 4
+EVD-10282-1,SHP-10282,signature,2026-10-29T20:49:50,38.2527,-85.7585,carrier_api,Louisville DC 1
+EVD-10283-1,SHP-10283,rfid_scan,2026-10-31T04:04:55,39.0997,-94.5786,rfid_reader,
+EVD-10283-2,SHP-10283,signature,2026-10-31T04:10:54,39.0997,-94.5786,visibility_platform,Kansas City DC 1
+EVD-10284-1,SHP-10284,photo,2026-10-21T13:06:32,39.0997,-94.5786,visibility_platform,Kansas City DC 1
+EVD-10285-1,SHP-10285,rfid_scan,2026-10-04T09:24:07,39.0997,-94.5786,rfid_reader,
+EVD-10285-2,SHP-10285,photo,2026-10-04T09:41:32,39.6997,-95.2786,visibility_platform,"Unlisted address, Chicago"
+EVD-10286-1,SHP-10286,signature,2026-10-15T09:48:15,32.7767,-96.797,visibility_platform,Dallas DC 1
+EVD-10287-1,SHP-10287,signature,2026-10-12T21:55:04,41.4993,-81.6944,carrier_api,Cleveland DC 3
+EVD-10288-1,SHP-10288,photo,2026-11-11T03:47:15,43.0389,-87.9065,visibility_platform,Milwaukee DC 2
+EVD-10289-1,SHP-10289,photo,2026-10-14T10:56:20,42.3314,-83.0458,carrier_api,Detroit DC 4
+EVD-10290-1,SHP-10290,photo,2026-11-14T06:26:56,32.7767,-96.797,visibility_platform,Dallas DC 1
+EVD-10291-1,SHP-10291,signature,2026-10-26T01:07:03,39.9612,-82.9988,carrier_api,Columbus DC 3
+EVD-10292-1,SHP-10292,signature,2026-10-14T03:45:34,33.749,-84.388,carrier_api,Atlanta DC 1
+EVD-10293-1,SHP-10293,rfid_scan,2026-10-03T21:31:22,39.9612,-82.9988,rfid_reader,
+EVD-10293-2,SHP-10293,signature,2026-10-03T21:38:31,39.9612,-82.9988,visibility_platform,Columbus DC 1
+EVD-10294-1,SHP-10294,rfid_scan,2026-11-11T04:51:18,39.0997,-94.5786,rfid_reader,
+EVD-10294-2,SHP-10294,signature,2026-11-11T05:06:08,39.0997,-94.5786,visibility_platform,Kansas City DC 2
+EVD-10295-1,SHP-10295,photo,2026-10-24T13:46:12,41.8781,-87.6298,carrier_api,Chicago DC 2
+EVD-10296-1,SHP-10296,signature,2026-10-29T02:04:12,36.1627,-86.7816,visibility_platform,Nashville DC 4
+EVD-10297-1,SHP-10297,signature,2026-11-12T07:23:28,35.1495,-90.049,visibility_platform,Memphis DC 2
+EVD-10298-1,SHP-10298,rfid_scan,2026-10-31T00:38:30,41.8781,-87.6298,rfid_reader,
+EVD-10298-2,SHP-10298,photo,2026-10-31T00:47:46,42.4781,-88.3298,carrier_api,"Unlisted address, Chicago"
+EVD-10299-1,SHP-10299,signature,2026-11-10T04:09:17,39.0997,-94.5786,carrier_api,Kansas City DC 4
+EVD-10300-1,SHP-10300,rfid_scan,2026-11-01T23:46:12,43.0389,-87.9065,rfid_reader,
+EVD-10300-2,SHP-10300,photo,2026-11-01T23:51:17,43.0389,-87.9065,carrier_api,Milwaukee DC 4
+EVD-10301-1,SHP-10301,signature,2026-10-07T08:48:19,41.4993,-81.6944,carrier_api,Cleveland DC 1
+EVD-10302-1,SHP-10302,rfid_scan,2026-10-24T03:45:19,36.1627,-86.7816,rfid_reader,
+EVD-10302-2,SHP-10302,signature,2026-10-24T04:01:50,36.1627,-86.7816,visibility_platform,Nashville DC 4
+EVD-10303-1,SHP-10303,rfid_scan,2026-11-11T05:31:09,40.4406,-79.9959,rfid_reader,
+EVD-10303-2,SHP-10303,photo,2026-11-11T05:45:35,40.4406,-79.9959,visibility_platform,Pittsburgh DC 4
+EVD-10304-1,SHP-10304,signature,2026-10-02T03:52:14,41.4993,-81.6944,visibility_platform,Cleveland DC 2
+EVD-10305-1,SHP-10305,signature,2026-10-30T03:25:23,32.7767,-96.797,carrier_api,Dallas DC 2
+EVD-10306-1,SHP-10306,rfid_scan,2026-10-09T07:08:17,35.1495,-90.049,rfid_reader,
+EVD-10306-2,SHP-10306,signature,2026-10-09T07:24:30,35.1495,-90.049,visibility_platform,Memphis DC 1
+EVD-10307-1,SHP-10307,signature,2026-10-05T13:48:24,39.0997,-94.5786,visibility_platform,Kansas City DC 1
+EVD-10308-1,SHP-10308,photo,2026-11-06T21:02:04,38.2527,-85.7585,carrier_api,Louisville DC 4
+EVD-10310-1,SHP-10310,photo,2026-10-04T08:51:09,39.9612,-82.9988,carrier_api,Columbus DC 2
+EVD-10312-1,SHP-10312,photo,2026-10-02T19:37:57,32.7767,-96.797,visibility_platform,Dallas DC 4
+EVD-10313-1,SHP-10313,photo,2026-10-08T01:22:32,38.2527,-85.7585,carrier_api,Louisville DC 4
+EVD-10314-1,SHP-10314,photo,2026-10-07T23:24:09,41.8781,-87.6298,carrier_api,Chicago DC 4
+EVD-10315-1,SHP-10315,signature,2026-10-08T23:45:45,41.8781,-87.6298,carrier_api,Chicago DC 2
+EVD-10316-1,SHP-10316,photo,2026-10-21T16:36:29,41.4993,-81.6944,carrier_api,Cleveland DC 1
+EVD-10317-1,SHP-10317,rfid_scan,2026-10-07T22:36:58,39.9612,-82.9988,rfid_reader,
+EVD-10317-2,SHP-10317,signature,2026-10-07T22:46:08,39.9612,-82.9988,carrier_api,Columbus DC 4
+EVD-10318-1,SHP-10318,photo,2026-10-04T00:35:52,41.4993,-81.6944,visibility_platform,Cleveland DC 2
+EVD-10319-1,SHP-10319,rfid_scan,2026-10-09T13:37:23,38.627,-90.1994,rfid_reader,
+EVD-10319-2,SHP-10319,photo,2026-10-09T13:42:46,38.627,-90.1994,visibility_platform,St. Louis DC 3
+EVD-10320-1,SHP-10320,rfid_scan,2026-10-26T17:21:35,32.7767,-96.797,rfid_reader,
+EVD-10320-2,SHP-10320,photo,2026-10-26T17:34:44,32.7767,-96.797,visibility_platform,Dallas DC 4
+EVD-10321-1,SHP-10321,signature,2026-11-05T01:20:32,36.1627,-86.7816,carrier_api,Nashville DC 4
+EVD-10322-1,SHP-10322,signature,2026-10-05T16:40:58,40.4406,-79.9959,carrier_api,Pittsburgh DC 4
+EVD-10323-1,SHP-10323,photo,2026-10-06T01:37:19,39.9612,-82.9988,carrier_api,Columbus DC 2
+EVD-10324-1,SHP-10324,signature,2026-10-04T08:56:44,35.2271,-80.8431,visibility_platform,Charlotte DC 1
+EVD-10325-1,SHP-10325,photo,2026-11-01T17:51:01,35.2271,-80.8431,visibility_platform,Charlotte DC 2
+EVD-10326-1,SHP-10326,rfid_scan,2026-10-13T14:39:22,40.4406,-79.9959,rfid_reader,
+EVD-10326-2,SHP-10326,signature,2026-10-13T14:52:20,40.4406,-79.9959,visibility_platform,Pittsburgh DC 1
+EVD-10327-1,SHP-10327,rfid_scan,2026-11-12T23:18:03,35.1495,-90.049,rfid_reader,
+EVD-10327-2,SHP-10327,signature,2026-11-12T23:35:50,35.1495,-90.049,carrier_api,Memphis DC 2
+EVD-10328-1,SHP-10328,rfid_scan,2026-11-09T21:59:59,36.1627,-86.7816,rfid_reader,
+EVD-10328-2,SHP-10328,signature,2026-11-09T22:08:00,36.1627,-86.7816,carrier_api,Nashville DC 1
+EVD-10329-1,SHP-10329,photo,2026-10-22T00:53:18,40.4406,-79.9959,carrier_api,Pittsburgh DC 3
+EVD-10330-1,SHP-10330,signature,2026-10-26T00:55:17,39.0997,-94.5786,visibility_platform,Kansas City DC 2
+EVD-10332-1,SHP-10332,rfid_scan,2026-10-17T02:51:13,36.1627,-86.7816,rfid_reader,
+EVD-10332-2,SHP-10332,signature,2026-10-17T03:09:03,36.1627,-86.7816,carrier_api,Nashville DC 2
+EVD-10333-1,SHP-10333,signature,2026-10-08T10:41:04,43.0389,-87.9065,carrier_api,Milwaukee DC 1
+EVD-10334-1,SHP-10334,photo,2026-11-06T22:18:58,40.4406,-79.9959,carrier_api,Pittsburgh DC 4
+EVD-10336-1,SHP-10336,signature,2026-10-04T01:35:51,33.749,-84.388,carrier_api,Atlanta DC 1
+EVD-10337-1,SHP-10337,signature,2026-10-29T01:02:48,38.2527,-85.7585,visibility_platform,Louisville DC 3
+EVD-10339-1,SHP-10339,photo,2026-10-28T07:25:29,39.9612,-82.9988,carrier_api,Columbus DC 1
+EVD-10340-1,SHP-10340,rfid_scan,2026-11-06T12:32:16,41.4993,-81.6944,rfid_reader,
+EVD-10340-2,SHP-10340,photo,2026-11-06T12:37:33,41.4993,-81.6944,carrier_api,Cleveland DC 2
+EVD-10341-1,SHP-10341,signature,2026-10-20T07:29:48,39.9612,-82.9988,carrier_api,Columbus DC 2
+EVD-10342-1,SHP-10342,rfid_scan,2026-10-12T06:07:05,35.1495,-90.049,rfid_reader,
+EVD-10342-2,SHP-10342,signature,2026-10-12T06:21:45,35.1495,-90.049,visibility_platform,Memphis DC 1
+EVD-10343-1,SHP-10343,signature,2026-11-07T04:15:51,38.2527,-85.7585,carrier_api,Louisville DC 4
+EVD-10344-1,SHP-10344,signature,2026-11-09T11:40:06,41.8781,-87.6298,carrier_api,Chicago DC 2
+EVD-10345-1,SHP-10345,signature,2026-10-25T17:05:30,42.3314,-83.0458,visibility_platform,Detroit DC 4
+EVD-10346-1,SHP-10346,photo,2026-10-29T05:34:55,35.1495,-90.049,carrier_api,Memphis DC 1
+EVD-10347-1,SHP-10347,signature,2026-10-28T02:25:10,41.4993,-81.6944,carrier_api,Cleveland DC 2
+EVD-10348-1,SHP-10348,rfid_scan,2026-10-10T19:55:32,42.3314,-83.0458,rfid_reader,
+EVD-10348-2,SHP-10348,signature,2026-10-10T20:10:07,42.3314,-83.0458,visibility_platform,Detroit DC 4
+EVD-10349-1,SHP-10349,rfid_scan,2026-11-07T08:03:09,33.749,-84.388,rfid_reader,
+EVD-10349-2,SHP-10349,photo,2026-11-07T08:15:14,33.749,-84.388,visibility_platform,Atlanta DC 4
+EVD-10350-1,SHP-10350,rfid_scan,2026-10-25T05:49:53,39.9612,-82.9988,rfid_reader,
+EVD-10350-2,SHP-10350,signature,2026-10-25T05:55:56,39.9612,-82.9988,visibility_platform,Columbus DC 3
+EVD-10351-1,SHP-10351,signature,2026-11-14T03:04:04,38.627,-90.1994,visibility_platform,St. Louis DC 3
+EVD-10352-1,SHP-10352,rfid_scan,2026-11-06T03:30:44,39.7684,-86.1581,rfid_reader,
+EVD-10352-2,SHP-10352,signature,2026-11-06T03:43:36,39.7684,-86.1581,visibility_platform,Indianapolis DC 1
+EVD-10353-1,SHP-10353,rfid_scan,2026-10-13T10:59:43,35.2271,-80.8431,rfid_reader,
+EVD-10353-2,SHP-10353,signature,2026-10-13T11:10:33,35.2271,-80.8431,carrier_api,Charlotte DC 1
+EVD-10354-1,SHP-10354,signature,2026-10-28T23:12:35,35.2271,-80.8431,carrier_api,Charlotte DC 1
+EVD-10355-1,SHP-10355,signature,2026-10-11T07:34:06,33.749,-84.388,carrier_api,Atlanta DC 3
+EVD-10356-1,SHP-10356,signature,2026-10-12T01:58:04,39.7684,-86.1581,visibility_platform,Indianapolis DC 1
+EVD-10357-1,SHP-10357,photo,2026-10-09T06:24:32,35.2271,-80.8431,visibility_platform,Charlotte DC 2
+EVD-10358-1,SHP-10358,photo,2026-11-06T05:56:02,38.627,-90.1994,carrier_api,St. Louis DC 4
+EVD-10359-1,SHP-10359,photo,2026-10-11T01:37:45,43.0389,-87.9065,carrier_api,Milwaukee DC 1
+EVD-10360-1,SHP-10360,photo,2026-11-08T03:32:53,35.2271,-80.8431,visibility_platform,Charlotte DC 4
+EVD-10361-1,SHP-10361,photo,2026-10-09T18:30:06,39.7684,-86.1581,visibility_platform,Indianapolis DC 1
+EVD-10362-1,SHP-10362,rfid_scan,2026-10-14T06:42:59,35.1495,-90.049,rfid_reader,
+EVD-10362-2,SHP-10362,signature,2026-10-14T06:49:56,35.1495,-90.049,visibility_platform,Memphis DC 4
+EVD-10363-1,SHP-10363,photo,2026-11-06T15:40:16,42.3314,-83.0458,visibility_platform,Detroit DC 3
+EVD-10364-1,SHP-10364,signature,2026-10-12T01:38:55,35.1495,-90.049,visibility_platform,Memphis DC 3
+EVD-10365-1,SHP-10365,rfid_scan,2026-11-11T00:47:56,40.4406,-79.9959,rfid_reader,
+EVD-10365-2,SHP-10365,signature,2026-11-11T01:00:28,40.4406,-79.9959,visibility_platform,Pittsburgh DC 4
+EVD-10366-1,SHP-10366,photo,2026-11-05T05:54:39,33.749,-84.388,visibility_platform,Atlanta DC 4
+EVD-10367-1,SHP-10367,signature,2026-11-02T01:33:00,41.4993,-81.6944,visibility_platform,Cleveland DC 3
+EVD-10368-1,SHP-10368,signature,2026-10-16T10:12:41,39.0997,-94.5786,carrier_api,Kansas City DC 1
+EVD-10369-1,SHP-10369,rfid_scan,2026-11-13T16:28:33,35.2271,-80.8431,rfid_reader,
+EVD-10369-2,SHP-10369,signature,2026-11-13T16:39:36,35.2271,-80.8431,visibility_platform,Charlotte DC 4
+EVD-10370-1,SHP-10370,rfid_scan,2026-10-31T01:32:01,41.4993,-81.6944,rfid_reader,
+EVD-10370-2,SHP-10370,photo,2026-10-31T01:40:14,41.4993,-81.6944,carrier_api,Cleveland DC 4
+EVD-10371-1,SHP-10371,rfid_scan,2026-11-11T00:30:10,43.0389,-87.9065,rfid_reader,
+EVD-10371-2,SHP-10371,signature,2026-11-11T00:41:57,43.0389,-87.9065,carrier_api,Milwaukee DC 3
+EVD-10372-1,SHP-10372,signature,2026-10-29T10:15:19,32.7767,-96.797,visibility_platform,Dallas DC 2
+EVD-10373-1,SHP-10373,signature,2026-10-22T07:46:47,38.627,-90.1994,visibility_platform,St. Louis DC 1
+EVD-10374-1,SHP-10374,photo,2026-11-07T21:25:18,41.8781,-87.6298,carrier_api,Chicago DC 1
+EVD-10375-1,SHP-10375,signature,2026-10-19T00:55:47,39.9612,-82.9988,visibility_platform,Columbus DC 1
+EVD-10376-1,SHP-10376,signature,2026-10-21T05:23:14,40.4406,-79.9959,carrier_api,Pittsburgh DC 1
+EVD-10377-1,SHP-10377,rfid_scan,2026-10-30T05:11:08,38.627,-90.1994,rfid_reader,
+EVD-10377-2,SHP-10377,signature,2026-10-30T05:23:04,38.627,-90.1994,visibility_platform,St. Louis DC 4
+EVD-10378-1,SHP-10378,signature,2026-10-07T07:21:42,42.3314,-83.0458,visibility_platform,Detroit DC 4
+EVD-10379-1,SHP-10379,signature,2026-10-03T01:55:36,33.749,-84.388,visibility_platform,Atlanta DC 2
+EVD-10380-1,SHP-10380,rfid_scan,2026-10-22T00:30:30,39.0997,-94.5786,rfid_reader,
+EVD-10380-2,SHP-10380,signature,2026-10-22T00:46:25,39.0997,-94.5786,carrier_api,Kansas City DC 2
+EVD-10381-1,SHP-10381,signature,2026-11-06T04:39:31,42.3314,-83.0458,visibility_platform,Detroit DC 2
+EVD-10382-1,SHP-10382,signature,2026-11-04T05:27:35,41.8781,-87.6298,carrier_api,Chicago DC 4
+EVD-10383-1,SHP-10383,photo,2026-10-20T06:52:00,39.7684,-86.1581,carrier_api,Indianapolis DC 2
+EVD-10384-1,SHP-10384,signature,2026-10-22T12:18:32,35.1495,-90.049,visibility_platform,Memphis DC 4
+EVD-10385-1,SHP-10385,signature,2026-10-26T03:34:53,38.2527,-85.7585,carrier_api,Louisville DC 3
+EVD-10386-1,SHP-10386,signature,2026-10-21T23:46:36,39.9612,-82.9988,visibility_platform,Columbus DC 4
+EVD-10387-1,SHP-10387,rfid_scan,2026-10-11T11:14:24,40.4406,-79.9959,rfid_reader,
+EVD-10387-2,SHP-10387,signature,2026-10-11T11:27:25,40.4406,-79.9959,carrier_api,Pittsburgh DC 4
+EVD-10388-1,SHP-10388,photo,2026-11-06T03:42:26,33.749,-84.388,carrier_api,Atlanta DC 1
+EVD-10389-1,SHP-10389,signature,2026-10-02T09:11:51,39.0997,-94.5786,carrier_api,Kansas City DC 2
+EVD-10390-1,SHP-10390,signature,2026-10-07T09:30:04,33.749,-84.388,visibility_platform,Atlanta DC 4
+EVD-10391-1,SHP-10391,photo,2026-11-11T19:30:28,39.7684,-86.1581,visibility_platform,Indianapolis DC 1
+EVD-10392-1,SHP-10392,rfid_scan,2026-10-10T22:18:20,35.2271,-80.8431,rfid_reader,
+EVD-10392-2,SHP-10392,photo,2026-10-10T22:32:09,35.2271,-80.8431,carrier_api,Charlotte DC 4
+EVD-10393-1,SHP-10393,signature,2026-10-25T05:28:28,41.8781,-87.6298,carrier_api,Chicago DC 4
+EVD-10394-1,SHP-10394,rfid_scan,2026-10-06T23:28:38,38.2527,-85.7585,rfid_reader,
+EVD-10394-2,SHP-10394,photo,2026-10-06T23:43:37,38.2527,-85.7585,carrier_api,Louisville DC 2
+EVD-10395-1,SHP-10395,rfid_scan,2026-10-18T06:40:33,41.4993,-81.6944,rfid_reader,
+EVD-10395-2,SHP-10395,photo,2026-10-18T06:51:18,41.4993,-81.6944,carrier_api,Cleveland DC 1
+EVD-10396-1,SHP-10396,rfid_scan,2026-11-13T12:35:47,39.0997,-94.5786,rfid_reader,
+EVD-10396-2,SHP-10396,signature,2026-11-13T12:44:15,39.0997,-94.5786,carrier_api,Kansas City DC 3
+EVD-10397-1,SHP-10397,signature,2026-11-01T01:22:53,42.3314,-83.0458,visibility_platform,Detroit DC 4
+EVD-10398-1,SHP-10398,signature,2026-10-15T03:29:47,39.7684,-86.1581,carrier_api,Indianapolis DC 2
+EVD-10399-1,SHP-10399,signature,2026-10-13T23:15:02,35.1495,-90.049,visibility_platform,Memphis DC 4
+EVD-10400-1,SHP-10400,rfid_scan,2026-11-03T14:15:22,35.1495,-90.049,rfid_reader,
+EVD-10400-2,SHP-10400,signature,2026-11-03T14:30:17,35.1495,-90.049,carrier_api,Memphis DC 4
+EVD-10401-1,SHP-10401,signature,2026-11-15T07:59:24,41.4993,-81.6944,visibility_platform,Cleveland DC 3
+EVD-10402-1,SHP-10402,signature,2026-10-26T00:14:50,38.2527,-85.7585,carrier_api,Louisville DC 3
+EVD-10403-1,SHP-10403,signature,2026-10-04T13:44:31,39.7684,-86.1581,carrier_api,Indianapolis DC 3
+EVD-10404-1,SHP-10404,signature,2026-10-23T04:53:52,35.1495,-90.049,carrier_api,Memphis DC 3
+EVD-10405-1,SHP-10405,rfid_scan,2026-11-06T03:24:27,38.627,-90.1994,rfid_reader,
+EVD-10405-2,SHP-10405,signature,2026-11-06T03:35:44,38.627,-90.1994,carrier_api,St. Louis DC 2
+EVD-10406-1,SHP-10406,signature,2026-10-14T08:12:54,39.9612,-82.9988,visibility_platform,Columbus DC 1
+EVD-10407-1,SHP-10407,signature,2026-10-16T07:55:49,43.0389,-87.9065,visibility_platform,Milwaukee DC 4
+EVD-10408-1,SHP-10408,photo,2026-10-12T06:14:07,33.749,-84.388,carrier_api,Atlanta DC 1
+EVD-10409-1,SHP-10409,signature,2026-10-21T06:10:34,41.4993,-81.6944,carrier_api,Cleveland DC 1
+EVD-10410-1,SHP-10410,photo,2026-10-06T23:09:41,39.7684,-86.1581,visibility_platform,Indianapolis DC 4
+EVD-10411-1,SHP-10411,signature,2026-10-21T00:43:05,39.7684,-86.1581,visibility_platform,Indianapolis DC 1
+EVD-10412-1,SHP-10412,signature,2026-11-08T07:10:39,33.749,-84.388,visibility_platform,Atlanta DC 2
+EVD-10413-1,SHP-10413,rfid_scan,2026-10-25T02:48:15,39.0997,-94.5786,rfid_reader,
+EVD-10413-2,SHP-10413,signature,2026-10-25T03:02:23,39.0997,-94.5786,carrier_api,Kansas City DC 4
+EVD-10414-1,SHP-10414,signature,2026-10-18T19:42:19,35.2271,-80.8431,visibility_platform,Charlotte DC 4
+EVD-10415-1,SHP-10415,rfid_scan,2026-10-15T07:52:48,32.7767,-96.797,rfid_reader,
+EVD-10415-2,SHP-10415,photo,2026-10-15T08:08:10,32.7767,-96.797,visibility_platform,Dallas DC 2
+EVD-10416-1,SHP-10416,rfid_scan,2026-10-21T00:20:37,38.2527,-85.7585,rfid_reader,
+EVD-10416-2,SHP-10416,signature,2026-10-21T00:37:22,38.2527,-85.7585,visibility_platform,Louisville DC 2
+EVD-10417-1,SHP-10417,signature,2026-11-01T02:31:59,38.627,-90.1994,visibility_platform,St. Louis DC 4
+EVD-10418-1,SHP-10418,signature,2026-10-07T07:45:39,38.627,-90.1994,carrier_api,St. Louis DC 4
+EVD-10419-1,SHP-10419,rfid_scan,2026-11-16T09:34:41,41.4993,-81.6944,rfid_reader,
+EVD-10419-2,SHP-10419,signature,2026-11-16T09:41:37,41.4993,-81.6944,carrier_api,Cleveland DC 1
+EVD-10420-1,SHP-10420,signature,2026-10-12T18:23:03,41.4993,-81.6944,visibility_platform,Cleveland DC 2
+EVD-10421-1,SHP-10421,rfid_scan,2026-10-26T01:39:59,38.627,-90.1994,rfid_reader,
+EVD-10421-2,SHP-10421,photo,2026-10-26T01:45:24,38.627,-90.1994,carrier_api,St. Louis DC 1
+EVD-10422-1,SHP-10422,rfid_scan,2026-10-20T20:16:04,42.3314,-83.0458,rfid_reader,
+EVD-10422-2,SHP-10422,photo,2026-10-20T20:23:01,42.3314,-83.0458,visibility_platform,Detroit DC 2
+EVD-10423-1,SHP-10423,rfid_scan,2026-10-22T06:01:38,41.8781,-87.6298,rfid_reader,
+EVD-10423-2,SHP-10423,photo,2026-10-22T06:10:29,41.8781,-87.6298,carrier_api,Chicago DC 1
+EVD-10424-1,SHP-10424,signature,2026-10-07T09:48:22,39.0997,-94.5786,carrier_api,Kansas City DC 2
+EVD-10425-1,SHP-10425,photo,2026-10-31T20:05:46,39.9612,-82.9988,carrier_api,Columbus DC 4
+EVD-10426-1,SHP-10426,signature,2026-10-19T01:47:45,39.9612,-82.9988,visibility_platform,Columbus DC 3
+EVD-10427-1,SHP-10427,signature,2026-10-02T02:43:03,40.4406,-79.9959,visibility_platform,Pittsburgh DC 1
+EVD-10428-1,SHP-10428,rfid_scan,2026-10-26T02:46:18,41.8781,-87.6298,rfid_reader,
+EVD-10428-2,SHP-10428,signature,2026-10-26T02:56:20,41.8781,-87.6298,carrier_api,Chicago DC 2
+EVD-10429-1,SHP-10429,photo,2026-11-10T23:34:50,41.8781,-87.6298,visibility_platform,Chicago DC 2
+EVD-10430-1,SHP-10430,signature,2026-10-14T12:21:37,35.1495,-90.049,carrier_api,Memphis DC 2
+EVD-10431-1,SHP-10431,signature,2026-10-31T03:15:01,38.2527,-85.7585,visibility_platform,Louisville DC 1
+EVD-10432-1,SHP-10432,signature,2026-10-13T23:12:13,33.749,-84.388,visibility_platform,Atlanta DC 1
+EVD-10433-1,SHP-10433,rfid_scan,2026-10-23T09:06:30,35.2271,-80.8431,rfid_reader,
+EVD-10433-2,SHP-10433,photo,2026-10-23T09:18:14,35.2271,-80.8431,visibility_platform,Charlotte DC 4
+EVD-10434-1,SHP-10434,signature,2026-10-04T20:41:00,41.8781,-87.6298,carrier_api,Chicago DC 1
+EVD-10435-1,SHP-10435,rfid_scan,2026-11-09T22:55:28,36.1627,-86.7816,rfid_reader,
+EVD-10435-2,SHP-10435,signature,2026-11-09T23:08:56,36.1627,-86.7816,visibility_platform,Nashville DC 1
+EVD-10436-1,SHP-10436,photo,2026-10-08T05:10:54,39.0997,-94.5786,carrier_api,Kansas City DC 1
+EVD-10437-1,SHP-10437,signature,2026-10-21T08:09:14,42.3314,-83.0458,carrier_api,Detroit DC 3
+EVD-10438-1,SHP-10438,photo,2026-11-06T07:15:46,32.7767,-96.797,carrier_api,Dallas DC 2
+EVD-10439-1,SHP-10439,photo,2026-10-23T03:42:11,39.0997,-94.5786,carrier_api,Kansas City DC 1
+EVD-10440-1,SHP-10440,signature,2026-10-01T20:10:55,36.1627,-86.7816,carrier_api,Nashville DC 3
+EVD-10441-1,SHP-10441,photo,2026-10-22T21:08:51,38.2527,-85.7585,carrier_api,Louisville DC 2
+EVD-10442-1,SHP-10442,rfid_scan,2026-10-25T05:06:54,39.7684,-86.1581,rfid_reader,
+EVD-10442-2,SHP-10442,photo,2026-10-25T05:22:59,39.7684,-86.1581,carrier_api,Indianapolis DC 4
+EVD-10443-1,SHP-10443,rfid_scan,2026-11-07T23:21:01,42.3314,-83.0458,rfid_reader,
+EVD-10443-2,SHP-10443,signature,2026-11-07T23:33:03,42.3314,-83.0458,visibility_platform,Detroit DC 3
+EVD-10444-1,SHP-10444,signature,2026-11-10T02:50:58,35.1495,-90.049,visibility_platform,Memphis DC 4
+EVD-10445-1,SHP-10445,signature,2026-10-13T23:11:54,42.3314,-83.0458,visibility_platform,Detroit DC 4
+EVD-10446-1,SHP-10446,signature,2026-11-07T22:18:38,32.7767,-96.797,visibility_platform,Dallas DC 3
+EVD-10447-1,SHP-10447,rfid_scan,2026-11-02T21:48:08,41.8781,-87.6298,rfid_reader,
+EVD-10447-2,SHP-10447,signature,2026-11-02T21:58:20,41.8781,-87.6298,carrier_api,Chicago DC 1
+EVD-10448-1,SHP-10448,signature,2026-10-10T09:15:44,40.4406,-79.9959,visibility_platform,Pittsburgh DC 1
+EVD-10449-1,SHP-10449,signature,2026-10-15T00:00:29,43.0389,-87.9065,visibility_platform,Milwaukee DC 4
+EVD-10450-1,SHP-10450,signature,2026-10-10T08:35:39,39.9612,-82.9988,visibility_platform,Columbus DC 1
+EVD-10451-1,SHP-10451,photo,2026-11-09T07:57:35,33.749,-84.388,carrier_api,Atlanta DC 4
+EVD-10452-1,SHP-10452,rfid_scan,2026-10-12T20:24:25,41.8781,-87.6298,rfid_reader,
+EVD-10452-2,SHP-10452,photo,2026-10-12T20:31:40,41.8781,-87.6298,carrier_api,Chicago DC 4
+EVD-10453-1,SHP-10453,photo,2026-10-28T15:39:27,42.3314,-83.0458,visibility_platform,Detroit DC 1
+EVD-10454-1,SHP-10454,photo,2026-10-21T10:33:29,39.0997,-94.5786,carrier_api,Kansas City DC 4
+EVD-10455-1,SHP-10455,signature,2026-10-20T15:30:25,42.3314,-83.0458,visibility_platform,Detroit DC 4
+EVD-10456-1,SHP-10456,signature,2026-11-06T21:10:27,41.4993,-81.6944,carrier_api,Cleveland DC 1
+EVD-10457-1,SHP-10457,rfid_scan,2026-10-08T12:16:23,33.749,-84.388,rfid_reader,
+EVD-10457-2,SHP-10457,photo,2026-10-08T12:25:22,33.749,-84.388,visibility_platform,Atlanta DC 3
+EVD-10458-1,SHP-10458,rfid_scan,2026-10-26T20:52:33,36.1627,-86.7816,rfid_reader,
+EVD-10458-2,SHP-10458,signature,2026-10-26T21:05:54,36.1627,-86.7816,visibility_platform,Nashville DC 1
+EVD-10459-1,SHP-10459,signature,2026-10-07T22:05:09,38.627,-90.1994,carrier_api,St. Louis DC 4
+EVD-10460-1,SHP-10460,photo,2026-11-12T12:20:57,41.4993,-81.6944,visibility_platform,Cleveland DC 1
+EVD-10461-1,SHP-10461,signature,2026-10-14T05:32:43,43.0389,-87.9065,carrier_api,Milwaukee DC 2
+EVD-10462-1,SHP-10462,signature,2026-10-08T01:25:34,41.8781,-87.6298,visibility_platform,Chicago DC 1
+EVD-10464-1,SHP-10464,photo,2026-10-22T09:43:24,35.2271,-80.8431,visibility_platform,Charlotte DC 3
+EVD-10465-1,SHP-10465,rfid_scan,2026-10-17T03:26:15,40.4406,-79.9959,rfid_reader,
+EVD-10465-2,SHP-10465,signature,2026-10-17T03:35:44,40.4406,-79.9959,visibility_platform,Pittsburgh DC 2
+EVD-10466-1,SHP-10466,signature,2026-10-04T02:03:52,38.2527,-85.7585,visibility_platform,Louisville DC 4
+EVD-10468-1,SHP-10468,photo,2026-10-15T05:56:21,39.0997,-94.5786,visibility_platform,Kansas City DC 4
+EVD-10469-1,SHP-10469,rfid_scan,2026-10-06T23:11:55,38.627,-90.1994,rfid_reader,
+EVD-10469-2,SHP-10469,photo,2026-10-06T23:27:53,38.627,-90.1994,visibility_platform,St. Louis DC 2
+EVD-10470-1,SHP-10470,photo,2026-10-21T03:33:17,41.8781,-87.6298,visibility_platform,Chicago DC 2
+EVD-10471-1,SHP-10471,rfid_scan,2026-10-25T06:12:44,38.627,-90.1994,rfid_reader,
+EVD-10471-2,SHP-10471,signature,2026-10-25T06:30:13,38.627,-90.1994,visibility_platform,St. Louis DC 4
+EVD-10472-1,SHP-10472,photo,2026-10-18T03:12:28,35.2271,-80.8431,visibility_platform,Charlotte DC 4
+EVD-10473-1,SHP-10473,rfid_scan,2026-10-18T00:15:05,41.4993,-81.6944,rfid_reader,
+EVD-10473-2,SHP-10473,signature,2026-10-18T00:22:54,41.4993,-81.6944,carrier_api,Cleveland DC 2
+EVD-10474-1,SHP-10474,signature,2026-10-13T18:45:43,41.8781,-87.6298,visibility_platform,Chicago DC 4
+EVD-10475-1,SHP-10475,signature,2026-10-15T05:23:26,39.9612,-82.9988,visibility_platform,Columbus DC 1
+EVD-10476-1,SHP-10476,signature,2026-10-13T02:27:03,39.9612,-82.9988,carrier_api,Columbus DC 4
+EVD-10477-1,SHP-10477,signature,2026-10-19T23:28:42,41.4993,-81.6944,visibility_platform,Cleveland DC 3
+EVD-10478-1,SHP-10478,photo,2026-11-03T23:27:46,42.3314,-83.0458,visibility_platform,Detroit DC 3
+EVD-10479-1,SHP-10479,signature,2026-10-24T07:18:30,39.0997,-94.5786,visibility_platform,Kansas City DC 1
+EVD-10480-1,SHP-10480,signature,2026-11-01T05:05:33,39.0997,-94.5786,visibility_platform,Kansas City DC 2
+EVD-10481-1,SHP-10481,photo,2026-11-01T15:13:40,41.8781,-87.6298,visibility_platform,Chicago DC 1
+EVD-10482-1,SHP-10482,signature,2026-11-05T23:29:44,38.627,-90.1994,visibility_platform,St. Louis DC 4
+EVD-10483-1,SHP-10483,signature,2026-10-19T03:55:04,33.749,-84.388,carrier_api,Atlanta DC 4
+EVD-10484-1,SHP-10484,signature,2026-10-26T10:07:17,40.4406,-79.9959,carrier_api,Pittsburgh DC 4
+EVD-10485-1,SHP-10485,signature,2026-10-26T13:08:53,39.9612,-82.9988,carrier_api,Columbus DC 3
+EVD-10486-1,SHP-10486,signature,2026-11-04T22:54:21,41.8781,-87.6298,visibility_platform,Chicago DC 3
+EVD-10487-1,SHP-10487,signature,2026-11-16T07:44:11,41.8781,-87.6298,visibility_platform,Chicago DC 2
+EVD-10488-1,SHP-10488,signature,2026-11-02T01:10:40,38.627,-90.1994,visibility_platform,St. Louis DC 2
+EVD-10489-1,SHP-10489,signature,2026-11-07T23:26:51,41.8781,-87.6298,carrier_api,Chicago DC 3
+EVD-10490-1,SHP-10490,rfid_scan,2026-11-14T03:52:34,38.627,-90.1994,rfid_reader,
+EVD-10490-2,SHP-10490,photo,2026-11-14T04:00:51,38.627,-90.1994,carrier_api,St. Louis DC 4
+EVD-10491-1,SHP-10491,photo,2026-10-03T16:43:52,40.4406,-79.9959,carrier_api,Pittsburgh DC 4
+EVD-10492-1,SHP-10492,rfid_scan,2026-10-07T05:23:34,42.3314,-83.0458,rfid_reader,
+EVD-10492-2,SHP-10492,signature,2026-10-07T05:41:27,42.3314,-83.0458,visibility_platform,Detroit DC 2
+EVD-10493-1,SHP-10493,photo,2026-11-05T06:13:33,41.8781,-87.6298,visibility_platform,Chicago DC 1
+EVD-10494-1,SHP-10494,signature,2026-10-29T18:08:55,39.9612,-82.9988,carrier_api,Columbus DC 2
+EVD-10495-1,SHP-10495,signature,2026-11-13T08:53:49,39.9612,-82.9988,visibility_platform,Columbus DC 1
+EVD-10496-1,SHP-10496,signature,2026-10-03T21:41:18,41.8781,-87.6298,carrier_api,Chicago DC 2
+EVD-10497-1,SHP-10497,signature,2026-10-11T22:12:17,36.1627,-86.7816,carrier_api,Nashville DC 3
+EVD-10498-1,SHP-10498,photo,2026-10-11T11:36:40,39.9612,-82.9988,carrier_api,Columbus DC 4
+EVD-10499-1,SHP-10499,rfid_scan,2026-10-11T06:21:33,43.0389,-87.9065,rfid_reader,
+EVD-10499-2,SHP-10499,photo,2026-10-11T06:35:26,43.0389,-87.9065,carrier_api,Milwaukee DC 1
+EVD-10500-1,SHP-10500,photo,2026-10-20T12:41:12,33.749,-84.388,carrier_api,Atlanta DC 1

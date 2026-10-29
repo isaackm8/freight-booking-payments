@@ -9,7 +9,7 @@ import { parse } from 'csv-parse/sync';
 // Column kinds:
 //   text  - stored as is ('' becomes NULL)
 //   int   - integer
-//   real  - decimal number that is not money (rates, km, coordinates)
+//   real  - decimal number that is not money (rates, miles, coordinates)
 //   bool  - 'True'/'False' -> 1/0
 //   cents - a *_usd money column, stored as integer cents under a *_cents name
 //   ts    - timestamp with no zone in the CSV, treated as UTC and stored with 'Z'
@@ -88,7 +88,7 @@ export const TABLES: TableSpec[] = [
       shipment_id: 'text', payer_id: 'text', shipper_id: 'text', carrier_id: 'text', mode: 'text',
       origin_city: 'text', origin_state: 'text', origin_lat: 'real', origin_lon: 'real',
       dest_city: 'text', dest_state: 'text', dest_lat: 'real', dest_lon: 'real',
-      consignee: 'text', expected_route_km: 'real', pickup_ts: 'ts', scheduled_delivery_ts: 'ts',
+      consignee: 'text', expected_route_mi: 'real', pickup_ts: 'ts', scheduled_delivery_ts: 'ts',
       booked_rate_usd: 'cents', fuel_surcharge_pct: 'real', approved_max_usd: 'cents',
       factoring_rate_pct: 'real', currency: 'text', virtual_card_id: 'text', scenario: 'text',
       carrier_bank_change_request_date: 'text',
@@ -96,12 +96,24 @@ export const TABLES: TableSpec[] = [
     references: { payer_id: 'payers', shipper_id: 'shippers', carrier_id: 'carriers' },
   },
   {
+    // Shipment milestones: BOOKED, PICKED_UP, IN_TRANSIT, DELAYED, DELIVERED, EXCEPTION, ON_HOLD.
     table: 'tracking_events',
     file: 'tracking_events.csv',
     primaryKey: ['event_id'],
     columns: {
       event_id: 'text', shipment_id: 'text', event_type: 'text', ts: 'ts', lat: 'real', lon: 'real',
-      source: 'text', off_route_km: 'real', recipient: 'text',
+      source: 'text', off_route_mi: 'real', recipient: 'text', reason: 'text',
+    },
+    references: { shipment_id: 'shipments' },
+  },
+  {
+    // Proof of delivery: an RFID dock-door scan, a signature or a photo. Not a milestone.
+    table: 'delivery_evidence',
+    file: 'delivery_evidence.csv',
+    primaryKey: ['evidence_id'],
+    columns: {
+      evidence_id: 'text', shipment_id: 'text', kind: 'text', ts: 'ts', lat: 'real', lon: 'real',
+      source: 'text', recipient: 'text',
     },
     references: { shipment_id: 'shipments' },
   },
@@ -201,6 +213,7 @@ const INDEXES = [
   'CREATE INDEX idx_shipments_carrier ON shipments(carrier_id)',
   'CREATE INDEX idx_shipments_payer ON shipments(payer_id)',
   'CREATE INDEX idx_events_shipment ON tracking_events(shipment_id, ts)',
+  'CREATE INDEX idx_evidence_shipment ON delivery_evidence(shipment_id, ts)',
   'CREATE INDEX idx_invoices_shipment ON invoices(shipment_id)',
   'CREATE INDEX idx_expected_shipment ON payments_expected(shipment_id)',
 ];

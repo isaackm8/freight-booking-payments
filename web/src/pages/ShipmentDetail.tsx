@@ -2,11 +2,13 @@ import type { ReactNode } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import type { Invoice, ShipmentDetail } from '../../../shared/types.ts';
 import { NotFoundError, useApi } from '../api.ts';
-import { EVENT_LABELS, companyName, day, label, money, pct, when } from '../format.ts';
+import {
+  EVENT_LABELS, EVENT_TONE, EVIDENCE_LABELS, EXCEPTION_LABELS, companyName, day, label, money, pct, when,
+} from '../format.ts';
 import { NotFound } from './NotFound.tsx';
 
 // Matches the decision engine's default off-route threshold; shown here only as context.
-const OFF_ROUTE_KM = 50;
+const OFF_ROUTE_MI = 30;
 
 export function ShipmentDetailPage() {
   const { id = '' } = useParams();
@@ -16,7 +18,8 @@ export function ShipmentDetailPage() {
   if (error) return <p className="rounded-xl bg-red-50 p-3 text-sm text-red-800">Couldn't load shipment: {error.message}</p>;
   if (loading || !data) return <p className="text-sm text-stone-500">Loading {id}…</p>;
 
-  const { shipment: s, payer, shipper, carrier, events, invoices, rate_rules } = data;
+  const { shipment: s, payer, shipper, carrier, events, evidence, invoices, rate_rules } = data;
+  const status = events.at(-1);
   const original = invoices.find((i) => !i.duplicate_of);
   const fuelCents = Math.round(s.booked_rate_cents * s.fuel_surcharge_pct / 100);
 
@@ -27,6 +30,11 @@ export function ShipmentDetailPage() {
         <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
           <h1 className="text-3xl font-bold tracking-tight">{s.shipment_id}</h1>
           <p className="text-stone-600">{s.origin_city}, {s.origin_state} → {s.dest_city}, {s.dest_state}</p>
+          {status && (
+            <span className={`rounded-full bg-white px-2.5 py-0.5 text-xs font-semibold ring-1 ring-stone-300 ${EVENT_TONE[status.event_type] ?? 'text-ink'}`}>
+              {EVENT_LABELS[status.event_type] ?? status.event_type}
+            </span>
+          )}
           <span className="rounded-full bg-stone-100 px-2 py-0.5 text-xs text-stone-600">Scenario: {label(s.scenario)}</span>
         </div>
       </div>
@@ -41,7 +49,7 @@ export function ShipmentDetailPage() {
             ['Consignee', s.consignee],
             ['Pickup', when(s.pickup_ts)],
             ['Scheduled delivery', when(s.scheduled_delivery_ts)],
-            ['Expected route', `${s.expected_route_km.toLocaleString('en-US')} km`],
+            ['Expected route', `${s.expected_route_mi.toLocaleString('en-US')} mi`],
             ['Virtual card', s.virtual_card_id],
           ]} />
         </Card>
@@ -74,40 +82,75 @@ export function ShipmentDetailPage() {
         </Card>
       </div>
 
-      <Card title={`Tracking timeline · ${events.length} events`}>
-        <ol className="relative space-y-3 border-l border-stone-200 pl-5">
-          {events.map((e) => {
-            const offRoute = e.off_route_km > OFF_ROUTE_KM;
-            const otherRecipient = e.recipient != null && e.recipient !== s.consignee;
-            return (
-              <li key={e.event_id} className="relative">
-                <span className={`absolute -left-[1.6rem] top-1.5 h-2.5 w-2.5 rounded-full ${offRoute || otherRecipient ? 'bg-amber-500' : 'bg-stone-400'}`} />
-                <div className="flex flex-wrap items-baseline gap-x-3">
-                  <span className="font-medium">{EVENT_LABELS[e.event_type] ?? e.event_type}</span>
-                  <span className="text-sm text-stone-500">{when(e.ts)}</span>
-                  <span className="text-xs text-stone-400">{label(e.source)}</span>
-                </div>
-                <div className="text-sm text-stone-600">
-                  {e.lat.toFixed(4)}, {e.lon.toFixed(4)}
-                  {e.event_type === 'IN_TRANSIT' && (
-                    <span className={offRoute ? 'ml-2 font-medium text-amber-800' : 'ml-2'}>
-                      · {e.off_route_km} km off expected route{offRoute ? ` (above ${OFF_ROUTE_KM} km)` : ''}
-                    </span>
-                  )}
-                  {e.recipient && (
-                    <span className={otherRecipient ? 'ml-2 font-medium text-amber-800' : 'ml-2'}>
-                      · Signed by {e.recipient}{otherRecipient ? ` (consignee is ${s.consignee})` : ''}
-                    </span>
-                  )}
-                </div>
-              </li>
-            );
-          })}
-        </ol>
-        {!events.some((e) => e.event_type === 'POD') && (
-          <p className="mt-3 text-sm font-medium text-amber-800">No proof-of-delivery event received.</p>
-        )}
-      </Card>
+      <div className="grid gap-4 lg:grid-cols-3">
+        <div className="lg:col-span-2">
+          <Card title={`Milestones · ${events.length}`}>
+            <ol className="relative space-y-3 border-l border-stone-200 pl-5">
+              {events.map((e) => {
+                const offRoute = e.off_route_mi > OFF_ROUTE_MI;
+                const otherRecipient = e.recipient != null && e.recipient !== s.consignee;
+                const tone = EVENT_TONE[e.event_type];
+                const dot = e.event_type === 'EXCEPTION' ? 'bg-red-500'
+                  : tone || offRoute || otherRecipient ? 'bg-amber-500'
+                  : e.event_type === 'DELIVERED' ? 'bg-emerald-500' : 'bg-stone-400';
+                return (
+                  <li key={e.event_id} className="relative">
+                    <span className={`absolute -left-[1.6rem] top-1.5 h-2.5 w-2.5 rounded-full ${dot}`} />
+                    <div className="flex flex-wrap items-baseline gap-x-3">
+                      <span className={`font-medium ${tone ?? ''}`}>
+                        {EVENT_LABELS[e.event_type] ?? e.event_type}
+                        {e.reason && <> · {e.event_type === 'EXCEPTION' ? EXCEPTION_LABELS[e.reason] ?? e.reason : e.reason}</>}
+                      </span>
+                      <span className="text-sm text-stone-500">{when(e.ts)}</span>
+                      <span className="text-xs text-stone-400">{label(e.source)}</span>
+                    </div>
+                    <div className="text-sm text-stone-600">
+                      {e.lat.toFixed(4)}, {e.lon.toFixed(4)}
+                      {e.event_type === 'IN_TRANSIT' && (
+                        <span className={offRoute ? 'ml-2 font-medium text-amber-800' : 'ml-2'}>
+                          · {e.off_route_mi} mi off expected route{offRoute ? ` (above ${OFF_ROUTE_MI} mi)` : ''}
+                        </span>
+                      )}
+                      {e.recipient && (
+                        <span className={otherRecipient ? 'ml-2 font-medium text-amber-800' : 'ml-2'}>
+                          · Delivered to {e.recipient}{otherRecipient ? ` (consignee is ${s.consignee})` : ''}
+                        </span>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </Card>
+        </div>
+
+        <Card title="Proof of delivery">
+          {evidence.length === 0 ? (
+            <p className="text-sm font-medium text-amber-800">No proof of delivery received.</p>
+          ) : (
+            <ul className="space-y-3">
+              {evidence.map((v) => {
+                const otherRecipient = v.recipient != null && v.recipient !== s.consignee;
+                return (
+                  <li key={v.evidence_id} className="rounded-xl bg-canvas p-3 text-sm">
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-3">
+                      <span className="font-medium">{EVIDENCE_LABELS[v.kind] ?? v.kind}</span>
+                      <span className="text-xs text-stone-400">{label(v.source)}</span>
+                    </div>
+                    <div className="text-stone-500">{when(v.ts)}</div>
+                    <div className="text-stone-600">
+                      {v.kind === 'rfid_scan' ? 'Scanned at the dock door when unloaded'
+                        : `${v.kind === 'signature' ? 'Signed' : 'Photo taken'}${v.recipient ? ` at ${v.recipient}` : ''}`}
+                    </div>
+                    {otherRecipient && <div className="font-medium text-amber-800">Consignee is {s.consignee}</div>}
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+          <p className="mt-3 text-xs text-stone-500">Proof can be an RFID scan, a signature or a photo. Any one confirms delivery.</p>
+        </Card>
+      </div>
 
       <Card title={`Invoices · ${invoices.length}`}>
         <InvoiceTable invoices={invoices} approvedMax={s.approved_max_cents} />
