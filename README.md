@@ -30,7 +30,7 @@ Freight payments slow down when the shipment record and the payment record drift
 
 ### Primary
 
-1. **Payer's accounts payable or finance lead** (broker, forwarder or shipper)
+1. **Forwarder's accounts payable or finance lead** (a forwarder may also act as a broker when the shipper wants limited service)
    - *Job:* pay carriers accurately and on time, and hold on to cash for 30–45 days.
    - *Pain:* manual invoice matching, disputes over extra charges, and exposure to fraud.
    - *Needs:* a queue that shows only exceptions, one record per shipment ID, and an audit trail.
@@ -45,7 +45,7 @@ Freight payments slow down when the shipment record and the payment record drift
 4. **Risk and compliance analyst** (at the payer or card issuer): reviews held payments and fraud signals such as route deviations, wrong recipients and changed bank details.
 5. **API partners** (no user interface): transport management systems, visibility platforms, carrier tracking and RFID feeds, card issuers, and card-to-account providers.
 
-**Starting segment for the prototype:** a broker or forwarder paying small truckload carriers.
+**Demo use case:** a shipper relies on a forwarder, and the forwarder pays small and mid-sized truckload carriers. The forwarder is never a carrier. This is where the value is largest: the card closes the gap between the forwarder paying the carrier and the shipper paying the forwarder.
 
 ## Hypotheses
 
@@ -114,7 +114,7 @@ The approach: synthetic data generated from a defined schema, and live partner f
 
 | File | Rows | Holds |
 |---|---|---|
-| `payers.csv` | 3 | Broker, forwarder and shipper: card program, credit limit, current terms, statement cycle, fee model |
+| `payers.csv` | 3 | Forwarders (one acting as a broker): service level, card program, credit limit, customer terms, terms to carriers, statement cycle, fee model |
 | `carriers.csv` | 20 | Fleet size, segment (12 small, 5 mid, 3 large), how they get cash today (factoring, credit line or waiting), verified bank account |
 | `rate_rules.csv` | 15 | Allowed extra charges and caps per payer |
 | `fuel_index.csv` | 10 | Weekly diesel price and fuel surcharge |
@@ -164,4 +164,28 @@ No real customer or shipment data from past employers is used, even anonymized.
 
 ## Getting Started
 
-_Setup instructions will be added as the project takes shape._
+You need [Node.js](https://nodejs.org) 24 or later. Then, from the project folder:
+
+```bash
+npm install
+npm run dev
+```
+
+Open http://localhost:5173. The API runs on port 3001 and rebuilds a local SQLite database (`var/freight.db`) from the CSVs in `data/` every time it starts.
+
+| Command | What it does |
+|---|---|
+| `npm run dev` | Starts the API and the web app together |
+| `npm test` | Runs the checks, including phase 1's "done when" check |
+| `npm run db:load` | Rebuilds `var/freight.db` without starting the app |
+| `npm run typecheck` | Checks TypeScript types |
+| `npm run build` | Builds the web app into `dist/` |
+
+**Project layout**
+
+- `server/`: the API (Express) and the loader that puts the CSVs into SQLite. Money is stored as integer cents and timestamps in UTC.
+- `web/`: the React app (Vite, Tailwind).
+- `shared/`: types used by both.
+- `docs/BUILD_PLAN.md`: the build plan and its phases.
+
+**Progress:** phase 1 (foundation) is done: shipment list with filters, and a detail page per shipment ID.

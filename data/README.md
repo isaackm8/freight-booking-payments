@@ -6,7 +6,7 @@ All data is **synthetic**. Company names are fictional, USDOT/MC numbers are mad
 
 | File | Rows | What it holds |
 |---|---|---|
-| `payers.csv` | 3 | A broker, a forwarder and a shipper; card program, credit limit, today's terms to carriers, statement cycle, fee model |
+| `payers.csv` | 3 | Three forwarders (the payers in this demo); card program, credit limit, customer (shipper) terms, today's terms to carriers, statement cycle, fee model |
 | `carriers.csv` | 20 | Fleet size, segment (small/mid/large), how they get cash today (factoring / credit line / waits), factoring rate or credit APR, verified bank account |
 | `rate_rules.csv` | 15 | Allowed extra charges and caps per payer (detention, liftgate, reweigh, lumper, fuel) |
 | `fuel_index.csv` | 10 | Weekly diesel price and fuel surcharge % (synthetic; real index = EIA weekly diesel) |
@@ -25,6 +25,8 @@ All data is **synthetic**. Company names are fictional, USDOT/MC numbers are mad
 - **tracking_events.off_route_km**: distance from the expected route. Above 50 km is the default hold threshold.
 - **tracking_events.recipient**: who signed at delivery; compare with `shipments.consignee`.
 - **carriers.cash_preference**: `factoring`, `credit_line` or `waits`, which drives the carrier's break-even fee.
+- **payers.service_level**: `full` (full forwarding) or `brokerage_only` (the forwarder acts as a broker because the shipper wants limited service). Every payer is a forwarder, never a carrier; the service level doesn't change the hold rules or the economics.
+- **payers.customer_terms_days**: days the shipper (the forwarder's customer) takes to pay the forwarder.
 - **payers.fee_model**: `carrier_pays`, `split` (60% carrier / 40% payer) or `payer_pays`.
 
 ## Scenario mix (500 shipments)

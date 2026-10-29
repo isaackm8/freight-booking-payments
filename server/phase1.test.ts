@@ -1,0 +1,120 @@
+// Phase 1 "done when" check: all 500 shipments, ~3,100 events and 505 invoices
+// load, and any shipment ID shows its full record.
+import { test, before, after } from 'node:test';
+import assert from 'node:assert/strict';
+import type { AddressInfo } from 'node:net';
+import type { Server } from 'node:http';
+import type { DatabaseSync } from 'node:sqlite';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { parse } from 'csv-parse/sync';
+import { loadDatabase } from './db.ts';
+import { createApp } from './app.ts';
+import { getShipment, listShipments } from './queries.ts';
+import { DATA_DIR } from './paths.ts';
+import type { ShipmentDetail, ShipmentListResponse } from '../shared/types.ts';
+
+let db: DatabaseSync;
+let counts: Record<string, number>;
+let server: Server;
+let baseUrl: string;
+
+const csv = (file: string): Record<string, string>[] =>
+  parse(readFileSync(join(DATA_DIR, file), 'utf8'), { columns: true, skip_empty_lines: true });
+
+before(async () => {
+  ({ db, counts } = loadDatabase(DATA_DIR, ':memory:'));
+  server = createApp(db).listen(0);
+  await new Promise((resolve) => server.once('listening', resolve));
+  baseUrl = `http://localhost:${(server.address() as AddressInfo).port}`;
+});
+
+after(() => {
+  server.close();
+  db.close();
+});
+
+test('loads 500 shipments, 3,143 tracking events and 505 invoices', () => {
+  assert.equal(counts.shipments, 500);
+  assert.equal(counts.tracking_events, 3143);
+  assert.equal(counts.invoices, 505);
+  assert.equal(counts.payers, 3);
+  assert.equal(counts.carriers, 20);
+  assert.equal(counts.payments_expected, 500);
+});
+
+test('every row in every CSV made it into SQLite', () => {
+  for (const [table, file] of [
+    ['payers', 'payers.csv'], ['carriers', 'carriers.csv'], ['rate_rules', 'rate_rules.csv'],
+    ['fuel_index', 'fuel_index.csv'], ['shipments', 'shipments.csv'], ['tracking_events', 'tracking_events.csv'],
+    ['invoices', 'invoices.csv'], ['payments_expected', 'payments_expected.csv'],
+  ]) {
+    const { n } = db.prepare(`SELECT COUNT(*) AS n FROM ${table}`).get() as { n: number };
+    assert.equal(n, csv(file).length, table);
+  }
+});
+
+test('money is stored as exact integer cents', () => {
+  const rows = csv('invoices.csv');
+  const stored = new Map(
+    (db.prepare('SELECT invoice_id, total_cents, base_cents FROM invoices').all() as { invoice_id: string; total_cents: number; base_cents: number }[])
+      .map((r) => [r.invoice_id, r]),
+  );
+  for (const r of rows) {
+    const s = stored.get(r.invoice_id)!;
+    assert.ok(Number.isInteger(s.total_cents));
+    assert.equal(s.total_cents, Math.round(Number(r.total_usd) * 100), r.invoice_id);
+    assert.equal(s.base_cents, Math.round(Number(r.base_usd) * 100), r.invoice_id);
+  }
+});
+
+test('timestamps are stored as UTC', () => {
+  const { bad } = db.prepare(
+    "SELECT COUNT(*) AS bad FROM tracking_events WHERE ts NOT GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]Z'",
+  ).get() as { bad: number };
+  assert.equal(bad, 0);
+});
+
+test('every shipment ID returns its full record', () => {
+  const eventsPer = Map.groupBy(csv('tracking_events.csv'), (e) => e.shipment_id);
+  const invoicesPer = Map.groupBy(csv('invoices.csv'), (i) => i.shipment_id);
+  for (const row of csv('shipments.csv')) {
+    const d = getShipment(db, row.shipment_id);
+    assert.ok(d, `${row.shipment_id} not found`);
+    assert.equal(d.shipment.shipment_id, row.shipment_id);
+    assert.equal(d.payer.payer_id, row.payer_id);
+    assert.equal(d.carrier.carrier_id, row.carrier_id);
+    assert.equal(d.events.length, eventsPer.get(row.shipment_id)?.length ?? 0, `${row.shipment_id} events`);
+    assert.equal(d.invoices.length, invoicesPer.get(row.shipment_id)?.length ?? 0, `${row.shipment_id} invoices`);
+    assert.ok(d.events.length > 0, `${row.shipment_id} has no events`);
+    assert.ok(d.invoices.length > 0, `${row.shipment_id} has no invoices`);
+    assert.ok(d.rate_rules.length > 0, `${row.shipment_id} has no rate rules`);
+    // Events come back in time order for the timeline.
+    assert.deepEqual(d.events.map((e) => e.ts), [...d.events.map((e) => e.ts)].sort());
+  }
+});
+
+test('shipment list returns all 500 and filters work', () => {
+  assert.equal(listShipments(db).total, 500);
+  assert.equal(listShipments(db, { scenario: 'clean' }).total, 350);
+  assert.equal(listShipments(db, { scenario: 'error_duplicate_invoice' }).shipments.every((s) => s.invoice_count === 2), true);
+  const byCarrier = listShipments(db, { carrier_id: 'CAR-01' });
+  assert.ok(byCarrier.total > 0 && byCarrier.shipments.every((s) => s.carrier_id === 'CAR-01'));
+  assert.equal(listShipments(db, { q: 'SHP-10001' }).shipments[0].shipment_id, 'SHP-10001');
+});
+
+test('API serves the list, any shipment detail, and 404 for unknown IDs', async () => {
+  const list = (await (await fetch(`${baseUrl}/api/shipments`)).json()) as ShipmentListResponse;
+  assert.equal(list.total, 500);
+
+  for (const id of ['SHP-10001', 'SHP-10250', 'SHP-10500']) {
+    const res = await fetch(`${baseUrl}/api/shipments/${id}`);
+    assert.equal(res.status, 200);
+    const d = (await res.json()) as ShipmentDetail;
+    assert.equal(d.shipment.shipment_id, id);
+    assert.ok(d.events.length > 0 && d.invoices.length > 0);
+  }
+
+  const missing = await fetch(`${baseUrl}/api/shipments/SHP-99999`);
+  assert.equal(missing.status, 404);
+});

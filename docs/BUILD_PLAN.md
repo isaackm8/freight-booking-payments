@@ -13,7 +13,7 @@ Build a clickable web app that shows a freight payment triggered at confirmed de
 3. Carriers receive funds within hours of delivery while payers keep about 30–45 days of float.
 4. The unit economics are visible per shipment, and change with the fee model (carrier pays, split, payer pays).
 
-**Starting segment:** a broker or forwarder paying small and mid-sized truckload carriers.
+**Demo use case:** a shipper relies on a forwarder, and the forwarder pays small and mid-sized truckload carriers. The forwarder is never a carrier; a forwarder may act as a broker when the shipper wants limited service. Screens say "Forwarder" (code keeps `payer_id`).
 
 **In scope:** simulated shipments, tracking events, invoices, decision engine, simulated card and card-to-account payments, dashboards, a time-replay control.
 
@@ -25,8 +25,8 @@ One app with a role switcher at the top; each role sees its own view of the same
 
 | Role | Key jobs | Main view |
 | --- | --- | --- |
-| Payer finance / AP lead (broker, forwarder, shipper) | See what paid automatically, clear exceptions, track float and fees | Payer dashboard + exceptions queue |
-| Payer operations coordinator | Book loads, set booked rate and approved range | Shipment booking and detail |
+| Forwarder finance / AP lead | See what paid automatically, clear exceptions, track float and fees | Payer dashboard + exceptions queue |
+| Forwarder operations coordinator | Book loads, set booked rate and approved range | Shipment booking and detail |
 | Carrier owner / dispatcher | See each load's payment status, when funds arrive, why a payment is held, fees vs. factoring | Carrier portal |
 | Risk analyst (payer or issuer) | Review holds, see the shipment signals behind each one, release or reject | Risk review |
 | Program / commercial view (Mastercard, issuer) | Volume, approval rate, float, unit economics by segment and fee model | Program analytics |
@@ -92,7 +92,7 @@ Load the synthetic sample set (the CSVs in [`data/`](../data/)) at startup; ever
 
 | Table | Key | Joins to | Notes |
 | --- | --- | --- | --- |
-| payers | payer_id | shipments | broker / forwarder / shipper, fee model, statement cycle |
+| payers | payer_id | shipments | forwarders: customer terms, fee model, statement cycle |
 | carriers | carrier_id | shipments, invoices | segment, cash preference, factoring rate or credit APR, bank details |
 | rate_rules | payer_id + charge_type | payers | allowed extras and caps |
 | fuel_index | week_start | shipments | weekly fuel surcharge % |
@@ -149,7 +149,7 @@ Two views show each side what the flow is worth in dollars. Both start with plac
 | Rate | Placeholder | Who sets it | Used in |
 | --- | --- | --- | --- |
 | Payer borrowing rate (credit line or cost of capital) | 9% a year | Payer | Forwarder view |
-| Customer (shipper) payment terms | 45 days | Payer | Forwarder view |
+| Customer (shipper) payment terms | 45 days, from `payers.csv` | Forwarder | Forwarder view |
 | Today's terms to carriers | From `payers.csv` | Payer | Both views |
 | Factoring rate | From `shipments.csv`: 6–8%, randomized per shipment (placeholder 7% if blank) | Carrier | Carrier view |
 | Credit-line APR | From `carriers.csv` (placeholder 12% if blank) | Carrier | Carrier view |
