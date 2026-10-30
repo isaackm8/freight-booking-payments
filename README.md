@@ -209,6 +209,19 @@ Open http://localhost:5173. The API runs on port 3001 and rebuilds a local SQLit
 | `npm run db:load` | Rebuilds `var/freight.db` without starting the app |
 | `npm run typecheck` | Checks TypeScript types |
 | `npm run build` | Builds the web app into `dist/` |
+| `npm start` | Production mode: serves the built pages and the API on one port (used by Render) |
+
+**Deploy a shareable link (Render)**
+
+The repo includes a [`render.yaml`](render.yaml) that runs CashBridge as one free web service: `npm run build` makes the pages, and `npm start` serves them and the API together.
+
+1. Sign up at [render.com](https://render.com) (free) and connect your GitHub account.
+2. In Render, choose **New → Blueprint**, pick this repository, and click **Apply**.
+3. Wait for the first deploy (a few minutes), then share the link Render shows, for example `https://cashbridge.onrender.com`.
+
+On the free plan the service sleeps when idle, so the first visit after a while takes about a minute. Reviews made on the hosted demo reset whenever it restarts or redeploys. Each push to `main` redeploys it.
+
+To try production mode locally: `npm run build`, then `npm start` (port 3001, or `PORT`).
 
 **Project layout**
 

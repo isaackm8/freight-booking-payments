@@ -1,0 +1,14 @@
+# Render Blueprint: deploys CashBridge as one free web service.
+# The server rebuilds its SQLite database from data/ on every start, so reviews made on the
+# hosted demo reset whenever Render restarts or redeploys it.
+services:
+  - type: web
+    name: cashbridge
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
