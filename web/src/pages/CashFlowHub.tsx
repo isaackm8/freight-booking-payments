@@ -52,7 +52,7 @@ export function CashFlowHub() {
             <strong>{r.awaiting_review} held payment{r.awaiting_review === 1 ? '' : 's'} awaiting review</strong>
             {r.oldest_days_waiting != null && <> · oldest held {r.oldest_days_waiting} day{r.oldest_days_waiting === 1 ? '' : 's'}</>}
           </span>
-          <Link to={list({ review: 'awaiting_review' })} className="rounded-full bg-ink px-4 py-1.5 font-semibold text-white hover:bg-stone-800">
+          <Link to={`/review-queue${payerId ? `?payer_id=${payerId}` : ''}`} className="rounded-full bg-ink px-4 py-1.5 font-semibold text-white hover:bg-stone-800">
             Open review queue
           </Link>
         </div>
@@ -142,7 +142,7 @@ export function CashFlowHub() {
                 {data.queue.map((q) => (
                   <tr key={q.shipment_id}>
                     <td className="whitespace-nowrap py-2 pr-4 font-semibold">
-                      <Link to={`/shipments/${q.shipment_id}?${new URLSearchParams({ ...(payerId ? { payer_id: payerId } : {}), review: 'awaiting_review' })}`}
+                      <Link to={`/review-queue?${new URLSearchParams({ ...(payerId ? { payer_id: payerId } : {}), id: q.shipment_id })}`}
                         className="text-accent-ink hover:underline">{q.shipment_id}</Link>
                     </td>
                     <td className="whitespace-nowrap py-2 pr-4 text-stone-600">{companyName(q.carrier_name)}</td>

@@ -1,5 +1,12 @@
 import { Link, NavLink, Outlet } from 'react-router-dom';
 
+const NAV = [
+  { to: '/cash-flow-hub', name: 'Cash Flow Hub' },
+  { to: '/review-queue', name: 'Review queue' },
+  { to: '/', name: 'Shipments' },
+  { to: '/how-it-works', name: 'How it works' },
+];
+
 export function Layout() {
   return (
     <div className="flex min-h-screen flex-col">
@@ -11,7 +18,7 @@ export function Layout() {
             <span className="hidden border-l border-stone-300 pl-2.5 text-sm text-stone-500 sm:inline">Freight paid faster. Cash gap closed.</span>
           </Link>
           <nav className="flex gap-1 text-sm">
-            {[{ to: '/cash-flow-hub', name: 'Cash Flow Hub' }, { to: '/', name: 'Shipments' }, { to: '/how-it-works', name: 'How it works' }].map((item) => (
+            {NAV.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}

@@ -1,5 +1,7 @@
 // Shapes returned by the API. Money is integer cents; timestamps are UTC ISO strings.
-import type { AuditEntry, DecisionKind, DecisionRecord, HistoryEntry, HoldReason, Review, ReviewStatus } from './decisions.ts';
+import type {
+  AuditEntry, DecisionKind, DecisionRecord, HistoryEntry, HoldReason, InfoRequest, Review, ReviewStatus,
+} from './decisions.ts';
 
 export interface ShipmentSummary {
   shipment_id: string;
@@ -162,13 +164,14 @@ export interface ShipmentDetail {
   decision: DecisionRecord | null;
   review: Review | null;
   can_release: boolean;            // held and delivered (a refused load can only be rejected)
+  info_request: InfoRequest | null; // an open request to the carrier, while the payment awaits review
   payment: DecisionRecord | null;  // the payment made: automatic, or after the forwarder released it
   history: HistoryEntry[];
 }
 
 export interface AuditLogResponse {
   entries: (AuditEntry & { carrier_name: string; payer_name: string })[];
-  counts: { released: number; rejected: number; review_undone: number };
+  counts: { released: number; rejected: number; review_undone: number; info_requested: number };
 }
 
 export interface ShipmentNeighbors {
@@ -210,4 +213,28 @@ export interface Dashboard {
     factoring_avoided_cents: number; // factoring at each load's rate, for carriers that factor today
     paid_cent_days: number;          // sum of invoice cents x days the carrier would otherwise wait (forwarder's terms)
   }[];
+}
+
+// Held payments for the review queue, oldest first.
+export type QueueStatus = 'awaiting_review' | 'info_requested' | 'released' | 'rejected' | 'all';
+
+export interface ReviewQueueItem {
+  shipment_id: string;
+  payer_id: string;
+  payer_name: string;
+  carrier_name: string;
+  lane: string;
+  invoice_cents: number | null;
+  approved_max_cents: number;
+  reasons: HoldReason[];
+  held_since: string;       // when the engine held it
+  days_waiting: number;     // to the end of the sample data
+  review_status: ReviewStatus;
+  info_requested: boolean;  // awaiting review, with an open request to the carrier
+}
+
+export interface ReviewQueueResponse {
+  items: ReviewQueueItem[];
+  counts: Record<Exclude<QueueStatus, 'all'>, number>; // for the chosen forwarder, ignoring the status filter
+  payers: Option[];
 }

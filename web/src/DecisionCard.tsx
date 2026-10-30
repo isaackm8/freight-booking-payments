@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
-import { DECISION_LABELS, HOLD_REASONS, type DecisionKind, type DecisionRecord, type HoldReason, type Review } from '../../shared/decisions.ts';
+import { DECISION_LABELS, HOLD_REASONS, type DecisionKind, type DecisionRecord, type HoldReason, type InfoRequest, type Review } from '../../shared/decisions.ts';
 import type { Payer } from '../../shared/types.ts';
 import { InfoTip } from './InfoTip.tsx';
-import { ReviewPanel } from './ReviewPanel.tsx';
+import { ReviewPanel, type ReviewAction } from './ReviewPanel.tsx';
 import { day, money, when } from './format.ts';
 
 export const DECISION_STYLE: Record<DecisionKind, string> = {
@@ -25,14 +25,15 @@ const FEE_PAYER: Record<string, string> = {
   payer_pays: 'forwarder pays the fee',
 };
 
-export function DecisionCard({ shipmentId, decision: d, payment, payer, review, canRelease, onReviewChange }: {
+export function DecisionCard({ shipmentId, decision: d, payment, payer, review, infoRequest, canRelease, onReviewChange }: {
   shipmentId: string;
   decision: DecisionRecord | null;
   payment: DecisionRecord | null; // the payment made: automatic, or after the forwarder released it
   payer: Payer;
   review: Review | null;
+  infoRequest: InfoRequest | null;
   canRelease: boolean;
-  onReviewChange: () => void;
+  onReviewChange: (action: ReviewAction) => void;
 }) {
   if (!d) return null;
   const paid = d.decision === 'auto_approved' || d.decision === 'auto_approved_duplicate_blocked';
@@ -71,7 +72,7 @@ export function DecisionCard({ shipmentId, decision: d, payment, payer, review, 
       )}
 
       {d.decision === 'held_for_review' && (
-        <ReviewPanel shipmentId={shipmentId} forwarder={payer.name} notifiedTs={d.decided_ts} review={review} canRelease={canRelease} onChange={onReviewChange} />
+        <ReviewPanel shipmentId={shipmentId} forwarder={payer.name} notifiedTs={d.decided_ts} review={review} infoRequest={infoRequest} canRelease={canRelease} onChange={onReviewChange} />
       )}
 
       {p && (paid || released) && (

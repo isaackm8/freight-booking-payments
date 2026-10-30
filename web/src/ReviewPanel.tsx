@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { REVIEW_LABELS, type Review } from '../../shared/decisions.ts';
+import { REVIEW_LABELS, type InfoRequest, type Review } from '../../shared/decisions.ts';
 import { send } from './api.ts';
 import { companyName, when } from './format.ts';
 
@@ -14,27 +14,33 @@ const OUTCOME = {
   rejected: 'Payment rejected. Nothing is paid; the carrier is told the reason and can take it up with the forwarder.',
 } as const;
 
-// A held payment: who was notified, the review status, and Release / Reject for the forwarder.
-export function ReviewPanel({ shipmentId, forwarder, notifiedTs, review, canRelease, onChange }: {
+export type ReviewAction = 'released' | 'rejected' | 'info_requested' | 'undone';
+
+// A held payment: who was notified, the review status, and Release / Reject / Request info for the forwarder.
+export function ReviewPanel({ shipmentId, forwarder, notifiedTs, review, infoRequest, canRelease, onChange }: {
   shipmentId: string;
   forwarder: string;
   notifiedTs: string | null;
   review: Review | null;
+  infoRequest: InfoRequest | null; // an open request to the carrier
   canRelease: boolean; // false for a load that was never delivered (refused)
-  onChange: () => void;
+  onChange: (action: ReviewAction) => void;
 }) {
   const [note, setNote] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const status = review?.status ?? 'awaiting_review';
 
-  const act = async (method: 'POST' | 'DELETE', body?: unknown) => {
+  const act = async (action: ReviewAction) => {
     setBusy(true);
     setError(null);
+    const base = `/api/shipments/${encodeURIComponent(shipmentId)}`;
     try {
-      await send(`/api/shipments/${encodeURIComponent(shipmentId)}/review`, method, body);
+      if (action === 'undone') await send(`${base}/review`, 'DELETE');
+      else if (action === 'info_requested') await send(`${base}/request-info`, 'POST', { note });
+      else await send(`${base}/review`, 'POST', { status: action, note });
       setNote('');
-      onChange();
+      onChange(action);
     } catch (err) {
       setError((err as Error).message);
     } finally {
@@ -64,25 +70,38 @@ export function ReviewPanel({ shipmentId, forwarder, notifiedTs, review, canRele
             {review.status === 'released' ? 'Released' : 'Rejected'} by {review.reviewed_by} on {when(review.reviewed_ts)}
             {review.note && <> · “{review.note}”</>}
           </p>
-          <button type="button" disabled={busy} onClick={() => act('DELETE')}
+          <button type="button" disabled={busy} onClick={() => act('undone')}
             className="text-sm font-medium text-accent-ink hover:underline disabled:opacity-50">
             Undo review (demo)
           </button>
         </div>
       ) : (
         <div className="mt-3 space-y-2">
-          <label className="block text-sm text-stone-600" htmlFor={`note-${shipmentId}`}>Note for the record (optional)</label>
+          {infoRequest && (
+            <p className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900">
+              <strong>Info requested from the carrier</strong> on {when(infoRequest.ts)}: “{infoRequest.note}”. The payment stays held
+              until you release or reject it.
+            </p>
+          )}
+          <label className="block text-sm text-stone-600" htmlFor={`note-${shipmentId}`}>
+            Note for the record (optional; required to request info)
+          </label>
           <textarea id={`note-${shipmentId}`} value={note} onChange={(e) => setNote(e.target.value)} rows={2}
             placeholder="e.g. Detour confirmed with the carrier"
             className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm focus:border-accent focus:outline-none" />
           <div className="flex flex-wrap gap-2">
-            <button type="button" disabled={busy || !canRelease} onClick={() => act('POST', { status: 'released', note })}
+            <button type="button" disabled={busy || !canRelease} onClick={() => act('released')}
               className="rounded-full bg-ink px-4 py-1.5 text-sm font-semibold text-white hover:bg-stone-800 disabled:opacity-50">
               Release payment
             </button>
-            <button type="button" disabled={busy} onClick={() => act('POST', { status: 'rejected', note })}
+            <button type="button" disabled={busy} onClick={() => act('rejected')}
               className="rounded-full border border-stone-300 px-4 py-1.5 text-sm font-semibold text-stone-700 hover:border-red-400 hover:text-red-700 disabled:opacity-50">
               Reject payment
+            </button>
+            <button type="button" disabled={busy || !note.trim()} onClick={() => act('info_requested')}
+              title={note.trim() ? 'Ask the carrier for this information; the payment stays held' : 'Write what you need in the note first'}
+              className="rounded-full border border-stone-300 px-4 py-1.5 text-sm font-semibold text-stone-700 hover:border-ink hover:text-ink disabled:opacity-50">
+              Request info from carrier
             </button>
           </div>
         </div>

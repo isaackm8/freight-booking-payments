@@ -1,9 +1,9 @@
 import type { DatabaseSync, SQLInputValue } from 'node:sqlite';
 import type { AuditEntry, DecisionRecord, Review } from '../shared/decisions.ts';
-import { canRelease, releasedPayment } from './payouts.ts';
+import { canRelease, demoNow, releasedPayment } from './payouts.ts';
 import { shipmentHistory } from './history.ts';
 import type {
-  AuditLogResponse, Carrier, DeliveryEvidence, Invoice, Payer, ShipmentNeighbors, RateRule, Shipment, ShipmentDetail, ShipmentListResponse, ShipmentSummary, Shipper,
+  AuditLogResponse, Carrier, QueueStatus, ReviewQueueItem, ReviewQueueResponse, DeliveryEvidence, Invoice, Payer, ShipmentNeighbors, RateRule, Shipment, ShipmentDetail, ShipmentListResponse, ShipmentSummary, Shipper,
   TrackingEvent,
 } from '../shared/types.ts';
 
@@ -117,9 +117,12 @@ export function getShipment(db: DatabaseSync, shipmentId: string): ShipmentDetai
     : review?.status === 'released' && canRelease(decision) ? releasedPayment(db, base, decision!)
     : null;
   const audit = db.prepare('SELECT * FROM audit_log WHERE shipment_id = ? ORDER BY id').all(shipmentId) as unknown as AuditEntry[];
+  // An info request is open while it is the latest review action and nothing has been decided since.
+  const last = audit.at(-1);
   return {
     ...base,
     can_release: canRelease(decision),
+    info_request: !review && last?.action === 'info_requested' ? { ts: last.ts, note: last.note ?? '' } : null,
     payment,
     history: shipmentHistory(decision, payment, audit, base.payer.name.replace(/\s*\(fictional[^)]*\)/, '')),
   };
@@ -133,7 +136,7 @@ export function auditLog(db: DatabaseSync): AuditLogResponse {
        JOIN carriers c ON c.carrier_id = s.carrier_id JOIN payers p ON p.payer_id = s.payer_id
       ORDER BY a.id DESC`,
   ).all() as unknown as AuditLogResponse['entries'];
-  const counts = { released: 0, rejected: 0, review_undone: 0 };
+  const counts = { released: 0, rejected: 0, review_undone: 0, info_requested: 0 };
   for (const e of entries) counts[e.action] += 1;
   return { entries, counts };
 }
@@ -152,4 +155,36 @@ export function shipmentNeighbors(db: DatabaseSync, shipmentId: string, f: Shipm
   const prev = index >= 0 ? ids[index - 1] : ids.filter((id) => id < shipmentId).at(-1);
   const next = index >= 0 ? ids[index + 1] : ids.find((id) => id > shipmentId);
   return { position: index >= 0 ? index + 1 : null, total: ids.length, prev: prev ?? null, next: next ?? null };
+}
+
+// Held payments for the review queue, longest waiting first, for one forwarder or all.
+export function reviewQueue(db: DatabaseSync, payerId?: string, status: QueueStatus = 'awaiting_review'): ReviewQueueResponse {
+  const asOf = Date.parse(demoNow(db));
+  const all: ReviewQueueItem[] = listShipments(db, { decision: 'held_for_review', ...(payerId ? { payer_id: payerId } : {}) })
+    .shipments.map((s) => {
+      const d = decisionOf(db, s.shipment_id)!;
+      const last = db.prepare('SELECT action FROM audit_log WHERE shipment_id = ? ORDER BY id DESC LIMIT 1').get(s.shipment_id) as { action: string } | undefined;
+      const review_status = s.review_status ?? 'awaiting_review';
+      return {
+        shipment_id: s.shipment_id, payer_id: s.payer_id, payer_name: s.payer_name, carrier_name: s.carrier_name,
+        lane: `${s.origin_city}, ${s.origin_state} → ${s.dest_city}, ${s.dest_state}`,
+        invoice_cents: s.invoice_total_cents, approved_max_cents: s.approved_max_cents, reasons: d.reasons,
+        held_since: d.decided_ts!, days_waiting: Math.max(0, Math.floor((asOf - Date.parse(d.decided_ts!)) / 86_400_000)),
+        review_status, info_requested: review_status === 'awaiting_review' && last?.action === 'info_requested',
+      };
+    })
+    .sort((a, b) => a.held_since.localeCompare(b.held_since) || a.shipment_id.localeCompare(b.shipment_id));
+  const counts = {
+    awaiting_review: all.filter((i) => i.review_status === 'awaiting_review').length,
+    info_requested: all.filter((i) => i.info_requested).length,
+    released: all.filter((i) => i.review_status === 'released').length,
+    rejected: all.filter((i) => i.review_status === 'rejected').length,
+  };
+  const items = status === 'all' ? all
+    : status === 'info_requested' ? all.filter((i) => i.info_requested)
+    : all.filter((i) => i.review_status === status);
+  return {
+    items, counts,
+    payers: db.prepare('SELECT payer_id AS id, name FROM payers ORDER BY payer_id').all() as unknown as ReviewQueueResponse['payers'],
+  };
 }

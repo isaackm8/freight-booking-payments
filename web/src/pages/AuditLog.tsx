@@ -7,6 +7,7 @@ const ACTION: Record<AuditLogResponse['entries'][number]['action'], { text: stri
   released: { text: 'Released', style: 'bg-emerald-100 text-emerald-800' },
   rejected: { text: 'Rejected', style: 'bg-red-100 text-red-800' },
   review_undone: { text: 'Review undone', style: 'bg-stone-100 text-stone-700' },
+  info_requested: { text: 'Info requested', style: 'bg-amber-100 text-amber-900' },
 };
 
 // Every review action on a held payment, newest first. Append-only: an undo is its own entry.
@@ -22,11 +23,11 @@ export function AuditLog() {
         <Link to="/cash-flow-hub" className="text-sm text-accent-ink hover:underline">← Cash Flow Hub</Link>
         <h1 className="mt-2 text-3xl font-bold tracking-tight">Audit log</h1>
         <p className="mt-1 max-w-3xl text-stone-600">
-          Every review of a held payment: who did what, when, and why. Entries are never edited or deleted; undoing a review
+          Every review action on a held payment: who did what, when, and why. Entries are never edited or deleted; undoing a review
           adds its own entry.
         </p>
         <p className="mt-2 text-sm text-stone-500">
-          {counts.released} released · {counts.rejected} rejected · {counts.review_undone} undone
+          {counts.released} released · {counts.rejected} rejected · {counts.info_requested} info requests · {counts.review_undone} undone
         </p>
       </div>
 
@@ -34,7 +35,7 @@ export function AuditLog() {
         {entries.length === 0 ? (
           <p className="text-sm text-stone-500">
             No reviews yet. When someone releases or rejects a held payment, it shows up here.{' '}
-            <Link to="/?review=awaiting_review" className="font-medium text-accent-ink hover:underline">Payments awaiting review</Link>
+            <Link to="/review-queue" className="font-medium text-accent-ink hover:underline">Open the review queue</Link>
           </p>
         ) : (
           <div className="overflow-x-auto">

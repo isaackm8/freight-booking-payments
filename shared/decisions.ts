@@ -67,9 +67,15 @@ export interface AuditEntry {
   id: number;
   ts: string;               // when the reviewer acted (real time)
   actor: string;
-  action: 'released' | 'rejected' | 'review_undone';
+  action: 'released' | 'rejected' | 'review_undone' | 'info_requested';
   shipment_id: string;
   note: string | null;
+}
+
+// The forwarder asked the carrier for more information; the payment stays held meanwhile.
+export interface InfoRequest {
+  ts: string;
+  note: string;
 }
 
 // One line in a shipment's history: what the engine, the reviewer or the payment provider did.

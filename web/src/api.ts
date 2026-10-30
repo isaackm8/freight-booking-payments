@@ -20,10 +20,15 @@ export async function send(url: string, method: 'POST' | 'DELETE', body?: unknow
 }
 
 // Fetches JSON from the API and re-fetches whenever the URL changes, or when reload() is called.
-export function useApi<T>(url: string) {
+// Pass null to fetch nothing (e.g. nothing selected yet).
+export function useApi<T>(url: string | null) {
   const [state, setState] = useState<{ data?: T; error?: Error; loading: boolean }>({ loading: true });
   const [version, setVersion] = useState(0);
   useEffect(() => {
+    if (url == null) {
+      setState({ loading: false });
+      return;
+    }
     const ctrl = new AbortController();
     setState((s) => ({ ...s, loading: true, error: undefined }));
     getJson<T>(url, ctrl.signal)

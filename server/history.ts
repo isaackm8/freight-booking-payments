@@ -11,6 +11,7 @@ const REVIEW_TEXT: Record<AuditEntry['action'], string> = {
   released: 'Released the held payment',
   rejected: 'Rejected the held payment',
   review_undone: 'Undid the review; the payment is held again',
+  info_requested: 'Asked the carrier for more information',
 };
 
 export function shipmentHistory(

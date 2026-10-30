@@ -75,10 +75,9 @@ export function ShipmentList() {
             <strong>{data.awaiting_review_total} held payment{data.awaiting_review_total === 1 ? '' : 's'}</strong> awaiting the forwarder’s review.
             The forwarder has been notified for each one.
           </span>
-          <button type="button" onClick={() => setParams({ review: 'awaiting_review' }, { replace: true })}
-            className="rounded-full bg-ink px-4 py-1.5 font-semibold text-white hover:bg-stone-800">
-            Review them
-          </button>
+          <Link to="/review-queue" className="rounded-full bg-ink px-4 py-1.5 font-semibold text-white hover:bg-stone-800">
+            Open review queue
+          </Link>
         </div>
       )}
 

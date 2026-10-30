@@ -32,7 +32,7 @@ export function createReviewsTable(db: DatabaseSync) {
     id INTEGER PRIMARY KEY,
     ts TEXT NOT NULL,
     actor TEXT NOT NULL,
-    action TEXT NOT NULL CHECK (action IN ('released', 'rejected', 'review_undone')),
+    action TEXT NOT NULL CHECK (action IN ('released', 'rejected', 'review_undone', 'info_requested')),
     shipment_id TEXT NOT NULL REFERENCES shipments(shipment_id),
     note TEXT
   )`);
@@ -88,6 +88,15 @@ export class ReviewStore {
     this.log(shipmentId, status, review.note, now);
     this.save();
     return review;
+  }
+
+  // Ask the carrier for more information. The payment stays held and awaiting review.
+  requestInfo(shipmentId: string, note: string, now = new Date()) {
+    if (this.decision(shipmentId)?.decision !== 'held_for_review') throw new ReviewError(`${shipmentId} has no payment held for review`, 409);
+    if (this.get(shipmentId)) throw new ReviewError(`${shipmentId} has already been reviewed`, 409);
+    if (!note.trim()) throw new ReviewError('Say what information is needed', 400);
+    this.log(shipmentId, 'info_requested', note.trim(), now);
+    this.save();
   }
 
   undo(shipmentId: string, now = new Date()) {

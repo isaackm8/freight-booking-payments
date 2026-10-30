@@ -1,6 +1,9 @@
 import express from 'express';
 import type { DatabaseSync } from 'node:sqlite';
-import { FILTER_KEYS, auditLog, getShipment, listShipments, shipmentNeighbors, type ShipmentFilters } from './queries.ts';
+import {
+  FILTER_KEYS, auditLog, getShipment, listShipments, reviewQueue, shipmentNeighbors, type ShipmentFilters,
+} from './queries.ts';
+import type { QueueStatus } from '../shared/types.ts';
 import { ReviewError, ReviewStore } from './reviews.ts';
 import { getDashboard } from './dashboard.ts';
 
@@ -25,6 +28,16 @@ export function createApp(db: DatabaseSync, reviews = new ReviewStore(db)) {
       return;
     }
     res.json(dashboard);
+  });
+
+  // ?payer_id= for one forwarder; ?status= awaiting_review (default), info_requested, released, rejected or all.
+  app.get('/api/review-queue', (req, res) => {
+    const status = str(req.query.status) ?? 'awaiting_review';
+    if (!['awaiting_review', 'info_requested', 'released', 'rejected', 'all'].includes(status)) {
+      res.status(400).json({ error: `Unknown status ${status}` });
+      return;
+    }
+    res.json(reviewQueue(db, str(req.query.payer_id), status as QueueStatus));
   });
 
   app.get('/api/audit-log', (_req, res) => {
@@ -57,6 +70,18 @@ export function createApp(db: DatabaseSync, reviews = new ReviewStore(db)) {
     }
     try {
       res.json(reviews.decide(req.params.id, status, typeof note === 'string' ? note : null));
+    } catch (err) {
+      if (!(err instanceof ReviewError)) throw err;
+      res.status(err.status).json({ error: err.message });
+    }
+  });
+
+  // Ask the carrier for more information: { note }. The payment stays held.
+  app.post('/api/shipments/:id/request-info', (req, res) => {
+    const { note } = (req.body ?? {}) as { note?: unknown };
+    try {
+      reviews.requestInfo(req.params.id, typeof note === 'string' ? note : '');
+      res.status(204).end();
     } catch (err) {
       if (!(err instanceof ReviewError)) throw err;
       res.status(err.status).json({ error: err.message });

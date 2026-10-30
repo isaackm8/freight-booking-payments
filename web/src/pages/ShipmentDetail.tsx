@@ -22,7 +22,7 @@ export function ShipmentDetailPage() {
   // Keep showing the page while it refreshes after a review; show Loading only when moving to another shipment.
   if (!data || (loading && data.shipment.shipment_id !== id)) return <p className="text-sm text-stone-500">Loading {id}…</p>;
 
-  const { shipment: s, payer, shipper, carrier, events, evidence, invoices, rate_rules, decision, review, payment, can_release, history } = data;
+  const { shipment: s, payer, shipper, carrier, events, evidence, invoices, rate_rules, decision, review, payment, can_release, info_request, history } = data;
   const status = events.at(-1);
   const original = invoices.find((i) => !i.duplicate_of);
   const fuelCents = Math.round(s.booked_rate_cents * s.fuel_surcharge_pct / 100);
@@ -45,7 +45,7 @@ export function ShipmentDetailPage() {
       </div>
 
       <DecisionCard shipmentId={s.shipment_id} decision={decision} payment={payment} payer={payer} review={review}
-        canRelease={can_release} onReviewChange={reload} />
+        infoRequest={info_request} canRelease={can_release} onReviewChange={reload} />
 
       <div className="grid gap-4 lg:grid-cols-3">
         <Card title="Booking">

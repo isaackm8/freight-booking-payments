@@ -9,6 +9,7 @@ import { NotFound } from './pages/NotFound.tsx';
 import { CashFlowHub } from './pages/CashFlowHub.tsx';
 import { HowItWorks } from './pages/HowItWorks.tsx';
 import { AuditLog } from './pages/AuditLog.tsx';
+import { ReviewQueue } from './pages/ReviewQueue.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="cash-flow-hub" element={<CashFlowHub />} />
           <Route path="how-it-works" element={<HowItWorks />} />
           <Route path="audit-log" element={<AuditLog />} />
+          <Route path="review-queue" element={<ReviewQueue />} />
           {/* The page was called Dashboard at first; keep old links working. */}
           <Route path="dashboard" element={<Navigate to="/cash-flow-hub" replace />} />
           <Route path="shipments/:id" element={<ShipmentDetailPage />} />

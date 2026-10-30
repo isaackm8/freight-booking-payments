@@ -197,6 +197,7 @@ Open http://localhost:5173. The API runs on port 3001 and rebuilds a local SQLit
 - `server/dashboard.ts`: the figures for the Cash Flow Hub, the forwarder's dashboard (KPIs, card bills, holds by reason, review queue, by carrier), computed from the decisions and reviews.
 - `server/reviews.ts`: the forwarder's release or reject of a held payment, and an append-only audit log of every review action. Both are saved to `var/` (`reviews.json`, `audit.json`) so they survive restarts.
 - `server/payouts.ts`: pays a released payment, charged at the demo's current time (the end of the sample data) and funded by the simulated provider 4–20 hours later.
+- `web/src/pages/ReviewQueue.tsx` and `web/src/Evidence.tsx`: the review queue and the evidence shown for each hold reason.
 - `server/history.ts`: each shipment's history: the engine's decision, review actions and the payment.
 - `web/`: the React app (Vite, Tailwind).
 - `shared/`: types used by both.

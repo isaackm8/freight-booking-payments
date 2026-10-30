@@ -78,7 +78,7 @@ test('undo is logged, not erased; the payment goes away until released again', (
   assert.deepEqual(log.entries.map((e) => [e.shipment_id, e.action]), [
     [ABOVE_MAX, 'review_undone'], [REFUSED, 'rejected'], [ABOVE_MAX, 'released'],
   ]);
-  assert.deepEqual(log.counts, { released: 1, rejected: 1, review_undone: 1 });
+  assert.deepEqual(log.counts, { released: 1, rejected: 1, review_undone: 1, info_requested: 0 });
   assert.equal(log.entries[1].note, 'Consignee refused the load');
   assert.ok(log.entries.every((e) => e.carrier_name && e.payer_name));
 });
