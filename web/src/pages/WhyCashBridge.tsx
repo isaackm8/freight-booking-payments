@@ -28,6 +28,15 @@ const HOLDS: Record<HoldReason, string> = {
 
 const TODAY_PARTS = ['Tracking', 'Invoice checks', 'Payment', 'Financing (factoring)'];
 
+// What CashBridge does instead, in one connected flow. The engine is rules-based today; AI is the
+// next step (learning from reviewers' decisions), so the page says so rather than claiming AI now.
+const CASHBRIDGE_PARTS: { title: string; text: string; next?: boolean }[] = [
+  { title: 'Authenticated shipment', text: 'GPS, RFID, signature or photo prove the load was delivered, to the right place.' },
+  { title: 'Automated decisioning', text: 'Every invoice checked against 8 rules in seconds; most are paid with no one involved.' },
+  { title: 'Instant payment', text: 'Card charge and payout to the carrier’s bank within hours of proven delivery.' },
+  { title: 'AI, next', text: 'Learn from reviewers’ decisions to spot fraud earlier and cut false holds.', next: true },
+];
+
 type Actor = 'Forwarder' | 'Carrier' | 'Platform' | 'Card';
 
 const STEPS: { title: string; actor: Actor; text: string; source: string }[] = [
@@ -111,12 +120,24 @@ export function WhyCashBridge() {
             ))}
           </div>
           <span aria-hidden className="text-center text-2xl text-stone-400 md:px-2"><span className="md:hidden">↓</span><span className="hidden md:inline">→</span></span>
-          <div className="rounded-2xl bg-accent-soft p-5 text-center ring-2 ring-accent">
+          <div className="rounded-2xl bg-accent-soft p-5 ring-2 ring-accent">
             <div className="text-lg font-bold">CashBridge</div>
-            <p className="mt-1 text-sm text-stone-700">Tracking, invoice checks, payment and financing in one step, tied to the shipment.</p>
+            <p className="text-sm text-stone-700">Automated decisioning and payment on authenticated shipments, in one flow.</p>
+            <ul className="mt-3 space-y-2">
+              {CASHBRIDGE_PARTS.map((part) => (
+                <li key={part.title} className="text-sm">
+                  <span className="font-semibold">{part.title}</span>
+                  {part.next && <span className="ml-1.5 rounded-full bg-white px-1.5 py-0.5 text-[10px] font-semibold uppercase text-accent-ink ring-1 ring-accent/40">roadmap</span>}
+                  <span className="block text-stone-600">{part.text}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <p className="mt-4 text-stone-700">Nothing ties the payment to proof of delivery for both the forwarder and the carrier.</p>
+        <p className="mt-4 text-stone-700">
+          Today these are separate tools with manual handoffs, and nothing ties the payment to proof of delivery for both the forwarder and
+          the carrier. CashBridge connects them: the shipment is authenticated, the decision is automated, and the money moves.
+        </p>
       </Section>
 
       {/* 3. The fix */}
