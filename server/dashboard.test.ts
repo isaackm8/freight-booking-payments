@@ -85,11 +85,13 @@ test('the review queue shows the oldest waiting first and updates when a payment
   assert.ok(before.queue.every((q, i) => i === 0 || before.queue[i - 1].days_waiting >= q.days_waiting));
   assert.equal(before.reviews.oldest_days_waiting, before.queue[0].days_waiting);
 
-  new ReviewStore(db).decide(before.queue[0].shipment_id, 'released', null);
+  const store = new ReviewStore(db);
+  store.decide(before.queue[0].shipment_id, 'released', null);
   const afterReview = getDashboard(db)!;
   assert.equal(afterReview.reviews.awaiting_review, 49);
   assert.equal(afterReview.reviews.released, 1);
   assert.notEqual(afterReview.queue[0].shipment_id, before.queue[0].shipment_id);
+  store.undo(before.queue[0].shipment_id); // leave the database as the other tests expect
 });
 
 test('credit-line inputs: each paid load counts its invoice for the days that forwarder makes carriers wait', () => {

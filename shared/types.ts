@@ -1,5 +1,5 @@
 // Shapes returned by the API. Money is integer cents; timestamps are UTC ISO strings.
-import type { DecisionKind, DecisionRecord, HoldReason, Review, ReviewStatus } from './decisions.ts';
+import type { AuditEntry, DecisionKind, DecisionRecord, HistoryEntry, HoldReason, Review, ReviewStatus } from './decisions.ts';
 
 export interface ShipmentSummary {
   shipment_id: string;
@@ -161,6 +161,14 @@ export interface ShipmentDetail {
   rate_rules: RateRule[];
   decision: DecisionRecord | null;
   review: Review | null;
+  can_release: boolean;            // held and delivered (a refused load can only be rejected)
+  payment: DecisionRecord | null;  // the payment made: automatic, or after the forwarder released it
+  history: HistoryEntry[];
+}
+
+export interface AuditLogResponse {
+  entries: (AuditEntry & { carrier_name: string; payer_name: string })[];
+  counts: { released: number; rejected: number; review_undone: number };
 }
 
 export interface ShipmentNeighbors {
@@ -178,9 +186,10 @@ export interface Dashboard {
   totals: {
     shipments: number;
     paid: number;               // paid automatically (including duplicates blocked)
+    released_paid: number;      // held, then released by the forwarder and paid
     held: number;
     awaiting_delivery: number;
-    paid_within_24h: number;    // paid loads funded within 24 hours of delivery
+    paid_within_24h: number;    // automatically paid loads funded within 24 hours of delivery
     avg_hours_to_funds: number | null;
     max_hours_to_funds: number | null;
     avg_float_days: number | null;

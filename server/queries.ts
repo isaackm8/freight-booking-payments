@@ -1,7 +1,9 @@
 import type { DatabaseSync, SQLInputValue } from 'node:sqlite';
-import type { DecisionRecord, Review } from '../shared/decisions.ts';
+import type { AuditEntry, DecisionRecord, Review } from '../shared/decisions.ts';
+import { canRelease, releasedPayment } from './payouts.ts';
+import { shipmentHistory } from './history.ts';
 import type {
-  Carrier, DeliveryEvidence, Invoice, Payer, ShipmentNeighbors, RateRule, Shipment, ShipmentDetail, ShipmentListResponse, ShipmentSummary, Shipper,
+  AuditLogResponse, Carrier, DeliveryEvidence, Invoice, Payer, ShipmentNeighbors, RateRule, Shipment, ShipmentDetail, ShipmentListResponse, ShipmentSummary, Shipper,
   TrackingEvent,
 } from '../shared/types.ts';
 
@@ -85,7 +87,7 @@ export function listShipments(db: DatabaseSync, f: ShipmentFilters = {}): Shipme
 export function getShipment(db: DatabaseSync, shipmentId: string): ShipmentDetail | null {
   const shipment = db.prepare('SELECT * FROM shipments WHERE shipment_id = ?').get(shipmentId) as unknown as Shipment | undefined;
   if (!shipment) return null;
-  return {
+  const base = {
     shipment,
     payer: db.prepare('SELECT * FROM payers WHERE payer_id = ?').get(shipment.payer_id) as unknown as Payer,
     shipper: db.prepare('SELECT * FROM shippers WHERE shipper_id = ?').get(shipment.shipper_id) as unknown as Shipper,
@@ -110,6 +112,30 @@ export function getShipment(db: DatabaseSync, shipmentId: string): ShipmentDetai
     review: (db.prepare('SELECT status, note, reviewed_ts, reviewed_by FROM reviews WHERE shipment_id = ?')
       .get(shipmentId) as unknown as Review | undefined) ?? null,
   };
+  const { decision, review } = base;
+  const payment = decision?.settlement ? decision
+    : review?.status === 'released' && canRelease(decision) ? releasedPayment(db, base, decision!)
+    : null;
+  const audit = db.prepare('SELECT * FROM audit_log WHERE shipment_id = ? ORDER BY id').all(shipmentId) as unknown as AuditEntry[];
+  return {
+    ...base,
+    can_release: canRelease(decision),
+    payment,
+    history: shipmentHistory(decision, payment, audit, base.payer.name.replace(/\s*\(fictional[^)]*\)/, '')),
+  };
+}
+
+// Every review action, newest first, for the audit log page.
+export function auditLog(db: DatabaseSync): AuditLogResponse {
+  const entries = db.prepare(
+    `SELECT a.*, c.name AS carrier_name, p.name AS payer_name
+       FROM audit_log a JOIN shipments s USING (shipment_id)
+       JOIN carriers c ON c.carrier_id = s.carrier_id JOIN payers p ON p.payer_id = s.payer_id
+      ORDER BY a.id DESC`,
+  ).all() as unknown as AuditLogResponse['entries'];
+  const counts = { released: 0, rejected: 0, review_undone: 0 };
+  for (const e of entries) counts[e.action] += 1;
+  return { entries, counts };
 }
 
 function decisionOf(db: DatabaseSync, shipmentId: string): DecisionRecord | null {

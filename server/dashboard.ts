@@ -1,8 +1,11 @@
-// The forwarder dashboard: every figure is computed from the engine's decisions and the
-// forwarder's reviews, for one forwarder or all of them.
+// The Cash Flow Hub (the forwarder dashboard): every figure is computed from the engine's decisions
+// and the forwarder's reviews, for one forwarder or all of them. Money figures include payments the
+// forwarder released after review; speed figures (hours to funds, paid within 24 h) are automatic only.
 import type { DatabaseSync, SQLInputValue } from 'node:sqlite';
 import { HOLD_REASONS, type DecisionRecord, type HoldReason, type ReviewStatus } from '../shared/decisions.ts';
 import type { Dashboard, Payer } from '../shared/types.ts';
+import { demoNow } from './payouts.ts';
+import { getShipment } from './queries.ts';
 
 const RULE_ORDER = Object.keys(HOLD_REASONS) as HoldReason[];
 const HOUR = 3_600_000;
@@ -44,15 +47,21 @@ export function getDashboard(db: DatabaseSync, payerId?: string): Dashboard | nu
       LEFT JOIN reviews r ON r.shipment_id = s.shipment_id
       ${where}
      ORDER BY s.shipment_id`).all(...params) as unknown as Row[])
-    .map((r) => ({ ...r, d: JSON.parse(r.record) as DecisionRecord }));
+    .map((r) => {
+      const d = JSON.parse(r.record) as DecisionRecord;
+      // The payment made, if any: automatic, or after the forwarder released it.
+      const p = d.settlement ? d : r.review_status === 'released' ? getShipment(db, r.shipment_id)!.payment : null;
+      return { ...r, d, p };
+    });
 
   // The sample data is a fixed window in time, so "now" is the last tracking update in it.
-  const { as_of } = db.prepare('SELECT MAX(ts) AS as_of FROM tracking_events').get() as { as_of: string };
+  const as_of = demoNow(db);
   const { first } = db.prepare(
     `SELECT MIN(e.ts) AS first FROM tracking_events e JOIN shipments s USING (shipment_id) ${where}`,
   ).get(...params) as { first: string };
 
-  const paid = rows.filter((r) => r.d.settlement);
+  const paid = rows.filter((r) => r.d.settlement);   // paid automatically
+  const paidAll = rows.filter((r) => r.p?.settlement); // plus released after review
   const held = rows.filter((r) => r.d.decision === 'held_for_review');
   const sum = (xs: typeof rows, f: (r: (typeof rows)[number]) => number) => xs.reduce((a, r) => a + f(r), 0);
   const hours = paid.map((r) => r.d.settlement!.hours_delivery_to_funds);
@@ -62,12 +71,12 @@ export function getDashboard(db: DatabaseSync, payerId?: string): Dashboard | nu
 
   // Card bills: one per statement due date.
   const bills = new Map<string, { loads: number; invoice_cents: number; forwarder_fee_cents: number }>();
-  for (const r of paid) {
-    const b = bills.get(r.d.statement_due_date!) ?? { loads: 0, invoice_cents: 0, forwarder_fee_cents: 0 };
+  for (const r of paidAll) {
+    const b = bills.get(r.p!.statement_due_date!) ?? { loads: 0, invoice_cents: 0, forwarder_fee_cents: 0 };
     b.loads += 1;
-    b.invoice_cents += r.d.amount_cents;
-    b.forwarder_fee_cents += r.d.settlement!.fee_paid_by_payer_cents;
-    bills.set(r.d.statement_due_date!, b);
+    b.invoice_cents += r.p!.amount_cents;
+    b.forwarder_fee_cents += r.p!.settlement!.fee_paid_by_payer_cents;
+    bills.set(r.p!.statement_due_date!, b);
   }
 
   // Holds by reason, most common first, then rule order (a shipment with two reasons counts under both).
@@ -83,14 +92,15 @@ export function getDashboard(db: DatabaseSync, payerId?: string): Dashboard | nu
       factoring_avoided_cents: 0, paid_cent_days: 0, _hours: [],
     };
     c.loads += 1;
-    if (r.d.settlement) {
+    const s = r.p?.settlement;
+    if (s) {
       c.paid += 1;
-      c.paid_cents += r.d.amount_cents;
-      c.fees_paid_by_carrier_cents += r.d.settlement.fee_paid_by_carrier_cents;
-      c.factoring_avoided_cents += r.d.settlement.carrier_factoring_avoided_cents;
+      c.paid_cents += r.p!.amount_cents;
+      c.fees_paid_by_carrier_cents += s.fee_paid_by_carrier_cents;
+      c.factoring_avoided_cents += s.carrier_factoring_avoided_cents;
       // For credit-line interest: invoice x days the carrier would otherwise wait for this forwarder.
-      c.paid_cent_days += r.d.amount_cents * r.terms_days;
-      c._hours.push(r.d.settlement.hours_delivery_to_funds);
+      c.paid_cent_days += r.p!.amount_cents * r.terms_days;
+      if (r.d.settlement) c._hours.push(s.hours_delivery_to_funds);
     }
     if (r.d.decision === 'held_for_review') c.held += 1;
     carriers.set(r.carrier_id, c);
@@ -103,17 +113,18 @@ export function getDashboard(db: DatabaseSync, payerId?: string): Dashboard | nu
     totals: {
       shipments: rows.length,
       paid: paid.length,
+      released_paid: paidAll.length - paid.length,
       held: held.length,
       awaiting_delivery: rows.filter((r) => r.d.decision === 'awaiting_delivery').length,
       paid_within_24h: hours.filter((h) => h <= 24).length,
       avg_hours_to_funds: round1(avg(hours)),
       max_hours_to_funds: hours.length ? Math.max(...hours) : null,
-      avg_float_days: round1(avg(paid.map((r) => r.d.settlement!.float_days))),
-      paid_cents: sum(paid, (r) => r.d.amount_cents),
-      fees_total_cents: sum(paid, (r) => r.d.settlement!.total_fee_cents),
-      fees_forwarder_cents: sum(paid, (r) => r.d.settlement!.fee_paid_by_payer_cents),
-      fees_carrier_cents: sum(paid, (r) => r.d.settlement!.fee_paid_by_carrier_cents),
-      factoring_avoided_cents: sum(paid, (r) => r.d.settlement!.carrier_factoring_avoided_cents),
+      avg_float_days: round1(avg(paidAll.map((r) => r.p!.settlement!.float_days))),
+      paid_cents: sum(paidAll, (r) => r.p!.amount_cents),
+      fees_total_cents: sum(paidAll, (r) => r.p!.settlement!.total_fee_cents),
+      fees_forwarder_cents: sum(paidAll, (r) => r.p!.settlement!.fee_paid_by_payer_cents),
+      fees_carrier_cents: sum(paidAll, (r) => r.p!.settlement!.fee_paid_by_carrier_cents),
+      factoring_avoided_cents: sum(paidAll, (r) => r.p!.settlement!.carrier_factoring_avoided_cents),
     },
     reviews: {
       awaiting_review: awaiting.length,

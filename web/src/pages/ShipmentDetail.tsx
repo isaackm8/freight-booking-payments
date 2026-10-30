@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import type { Invoice, ShipmentDetail } from '../../../shared/types.ts';
+import type { HistoryEntry } from '../../../shared/decisions.ts';
 import { NotFoundError, useApi } from '../api.ts';
 import {
   EVENT_LABELS, EVENT_TONE, EVIDENCE_LABELS, EXCEPTION_LABELS, companyName, day, label, money, pct, when,
@@ -21,7 +22,7 @@ export function ShipmentDetailPage() {
   // Keep showing the page while it refreshes after a review; show Loading only when moving to another shipment.
   if (!data || (loading && data.shipment.shipment_id !== id)) return <p className="text-sm text-stone-500">Loading {id}…</p>;
 
-  const { shipment: s, payer, shipper, carrier, events, evidence, invoices, rate_rules, decision, review } = data;
+  const { shipment: s, payer, shipper, carrier, events, evidence, invoices, rate_rules, decision, review, payment, can_release, history } = data;
   const status = events.at(-1);
   const original = invoices.find((i) => !i.duplicate_of);
   const fuelCents = Math.round(s.booked_rate_cents * s.fuel_surcharge_pct / 100);
@@ -43,7 +44,8 @@ export function ShipmentDetailPage() {
         </div>
       </div>
 
-      <DecisionCard shipmentId={s.shipment_id} decision={decision} payer={payer} review={review} onReviewChange={reload} />
+      <DecisionCard shipmentId={s.shipment_id} decision={decision} payment={payment} payer={payer} review={review}
+        canRelease={can_release} onReviewChange={reload} />
 
       <div className="grid gap-4 lg:grid-cols-3">
         <Card title="Booking">
@@ -175,6 +177,14 @@ export function ShipmentDetailPage() {
         </details>
       </Card>
 
+      <Card title={`History · ${history.length}`}>
+        <HistoryList entries={history} />
+        <p className="mt-3 text-xs text-stone-500">
+          Engine and payment times follow the sample data’s calendar, which runs to Nov 16, 2026. Review times are when someone
+          actually clicked. <Link to="/audit-log" className="font-medium text-accent-ink hover:underline">See the full audit log</Link>
+        </p>
+      </Card>
+
     </div>
   );
 }
@@ -248,5 +258,22 @@ function InvoiceTable({ invoices, approvedMax }: { invoices: Invoice[]; approved
         </tbody>
       </table>
     </div>
+  );
+}
+
+const HISTORY_DOT: Record<HistoryEntry['kind'], string> = { engine: 'bg-stone-400', review: 'bg-ink', payment: 'bg-accent' };
+
+function HistoryList({ entries }: { entries: HistoryEntry[] }) {
+  if (entries.length === 0) return <p className="text-sm text-stone-500">Nothing yet.</p>;
+  return (
+    <ol className="relative space-y-3 border-l border-stone-200 pl-5 text-sm">
+      {entries.map((e, i) => (
+        <li key={i} className="relative">
+          <span className={`absolute -left-[1.6rem] top-1.5 h-2.5 w-2.5 rounded-full ${HISTORY_DOT[e.kind]}`} />
+          <div>{e.text}</div>
+          <div className="text-xs text-stone-500">{e.actor}{e.ts && <> · {when(e.ts)}</>}</div>
+        </li>
+      ))}
+    </ol>
   );
 }

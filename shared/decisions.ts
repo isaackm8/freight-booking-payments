@@ -62,6 +62,24 @@ export interface Review {
   reviewed_by: string;
 }
 
+// One review action in the audit log. Append-only: an undo is its own entry.
+export interface AuditEntry {
+  id: number;
+  ts: string;               // when the reviewer acted (real time)
+  actor: string;
+  action: 'released' | 'rejected' | 'review_undone';
+  shipment_id: string;
+  note: string | null;
+}
+
+// One line in a shipment's history: what the engine, the reviewer or the payment provider did.
+export interface HistoryEntry {
+  ts: string | null;
+  actor: string;
+  text: string;
+  kind: 'engine' | 'review' | 'payment';
+}
+
 // A decision plus, once the provider reports the payout, its timing and fees.
 export interface DecisionRecord extends Decision {
   settlement: Settlement | null;

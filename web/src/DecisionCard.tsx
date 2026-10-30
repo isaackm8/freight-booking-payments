@@ -25,16 +25,22 @@ const FEE_PAYER: Record<string, string> = {
   payer_pays: 'forwarder pays the fee',
 };
 
-export function DecisionCard({ shipmentId, decision: d, payer, review, onReviewChange }: {
+export function DecisionCard({ shipmentId, decision: d, payment, payer, review, canRelease, onReviewChange }: {
   shipmentId: string;
   decision: DecisionRecord | null;
+  payment: DecisionRecord | null; // the payment made: automatic, or after the forwarder released it
   payer: Payer;
   review: Review | null;
+  canRelease: boolean;
   onReviewChange: () => void;
 }) {
   if (!d) return null;
-  const s = d.settlement;
   const paid = d.decision === 'auto_approved' || d.decision === 'auto_approved_duplicate_blocked';
+  const released = review?.status === 'released' && payment != null;
+  // The breakdown and timeline below describe the payment made, which for a released payment
+  // differs from the engine's decision (amount, charge time).
+  const p = payment;
+  const s = p?.settlement ?? null;
   return (
     <section className={`rounded-2xl p-5 shadow-sm ring-1 ${DECISION_STYLE[d.decision]}`}>
       <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -44,6 +50,7 @@ export function DecisionCard({ shipmentId, decision: d, payer, review, onReviewC
       <p className="mt-1 text-2xl font-bold tracking-tight">
         {DECISION_LABELS[d.decision]}{paid && <> · {money(d.amount_cents)}</>}
         {review && <> · {review.status === 'released' ? 'released' : 'rejected'} by forwarder</>}
+        {released && <> · {money(p!.amount_cents)} paid</>}
       </p>
       <p className="mt-1 max-w-3xl text-sm">
         {review ? 'Held automatically before any money moved, then reviewed by the forwarder.' : SUMMARY[d.decision]}
@@ -64,17 +71,19 @@ export function DecisionCard({ shipmentId, decision: d, payer, review, onReviewC
       )}
 
       {d.decision === 'held_for_review' && (
-        <ReviewPanel shipmentId={shipmentId} forwarder={payer.name} notifiedTs={d.decided_ts} review={review} onChange={onReviewChange} />
+        <ReviewPanel shipmentId={shipmentId} forwarder={payer.name} notifiedTs={d.decided_ts} review={review} canRelease={canRelease} onChange={onReviewChange} />
       )}
 
-      {paid && (
+      {p && (paid || released) && (
         <div className="mt-5 grid gap-4 lg:grid-cols-5">
           {s && (
             <div className="rounded-xl bg-white p-4 text-ink ring-1 ring-stone-200 lg:col-span-3">
               <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-stone-500">Payment breakdown</h3>
               <ol className="space-y-4 text-sm">
-                <Section n={1} title="Invoice amount" cents={d.amount_cents}>
-                  <p className="text-stone-500">The carrier’s invoice {d.paid_invoice_id}, within the approved maximum.</p>
+                <Section n={1} title="Invoice amount" cents={p.amount_cents}>
+                  <p className="text-stone-500">
+                    The carrier’s invoice {p.paid_invoice_id}, {released ? 'paid as it stands after the forwarder released it' : 'within the approved maximum'}.
+                  </p>
                 </Section>
 
                 <Section n={2} title="CashBridge fee, 2.75%" cents={s.total_fee_cents}>
@@ -92,15 +101,15 @@ export function DecisionCard({ shipmentId, decision: d, payer, review, onReviewC
                   <div className="grid gap-3 sm:grid-cols-2">
                     <BottomLine
                       title="Carrier receives"
-                      cents={d.amount_cents - s.fee_paid_by_carrier_cents}
-                      math={`${money(d.amount_cents)} − ${money(s.fee_paid_by_carrier_cents)}`}
-                      note={`In its bank account ${when(s.carrier_funds_ts)}, ${s.hours_delivery_to_funds} hours after delivery`}
+                      cents={p.amount_cents - s.fee_paid_by_carrier_cents}
+                      math={`${money(p.amount_cents)} − ${money(s.fee_paid_by_carrier_cents)}`}
+                      note={`In its bank account ${when(s.carrier_funds_ts)}, ${hoursText(s.hours_delivery_to_funds)} after delivery`}
                     />
                     <BottomLine
                       title="Forwarder owes"
-                      cents={d.amount_cents + s.fee_paid_by_payer_cents}
-                      math={`${money(d.amount_cents)} + ${money(s.fee_paid_by_payer_cents)}`}
-                      note={`On its card bill due ${day(d.statement_due_date)}, ${s.float_days} days after the carrier was paid`}
+                      cents={p.amount_cents + s.fee_paid_by_payer_cents}
+                      math={`${money(p.amount_cents)} + ${money(s.fee_paid_by_payer_cents)}`}
+                      note={`On its card bill due ${day(p.statement_due_date)}, ${s.float_days} days after the carrier was paid`}
                     />
                   </div>
                 </li>
@@ -116,16 +125,20 @@ export function DecisionCard({ shipmentId, decision: d, payer, review, onReviewC
           <div className="rounded-xl bg-white p-4 text-ink ring-1 ring-stone-200 lg:col-span-2">
             <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-stone-500">Payment timeline</h3>
             <ol className="relative space-y-3 border-l border-stone-200 pl-5 text-sm">
-              <Step title="Delivered" detail={when(d.delivered_ts)} />
-              <Step title="Forwarder’s card charged" detail={`${when(d.card_charge_ts)} · 1 hour after delivery`} />
+              <Step title="Delivered" detail={when(p.delivered_ts)} />
+              {released && <Step title="Held, then released by the forwarder" detail={`Held ${when(d.decided_ts)}`} />}
+              <Step
+                title="Forwarder’s card charged"
+                detail={`${when(p.card_charge_ts)} · ${released ? 'on release, at the demo’s current time' : '1 hour after delivery'}`}
+              />
               <Step
                 title="Carrier funded"
-                detail={s ? `${when(s.carrier_funds_ts)} · ${s.hours_delivery_to_funds} hours after delivery` : 'Waiting for the provider to confirm'}
+                detail={s ? `${when(s.carrier_funds_ts)} · ${hoursText(s.hours_delivery_to_funds)} after delivery` : 'Waiting for the provider to confirm'}
                 accent
               />
               <Step
                 title="Forwarder’s card bill due"
-                detail={`${day(d.statement_due_date)}${s ? ` · ${s.float_days} days after the carrier was paid` : ''}`}
+                detail={`${day(p.statement_due_date)}${s ? ` · ${s.float_days} days after the carrier was paid` : ''}`}
               />
             </ol>
           </div>
@@ -135,6 +148,9 @@ export function DecisionCard({ shipmentId, decision: d, payer, review, onReviewC
     </section>
   );
 }
+
+// Hours under two days read as hours; a released payment can take longer, so show days.
+const hoursText = (h: number) => (h < 48 ? `${h} hours` : `${Math.round(h / 24)} days`);
 
 function Num({ n }: { n: number }) {
   return (

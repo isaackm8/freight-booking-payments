@@ -10,16 +10,17 @@ export const REVIEW_STYLE = {
 } as const;
 
 const OUTCOME = {
-  released: 'Payment released. CashBridge charges the forwarder’s card and pays the carrier, the same as an automatic payment.',
+  released: 'Payment released and paid. CashBridge charged the forwarder’s card and paid the carrier; the breakdown is below.',
   rejected: 'Payment rejected. Nothing is paid; the carrier is told the reason and can take it up with the forwarder.',
 } as const;
 
 // A held payment: who was notified, the review status, and Release / Reject for the forwarder.
-export function ReviewPanel({ shipmentId, forwarder, notifiedTs, review, onChange }: {
+export function ReviewPanel({ shipmentId, forwarder, notifiedTs, review, canRelease, onChange }: {
   shipmentId: string;
   forwarder: string;
   notifiedTs: string | null;
   review: Review | null;
+  canRelease: boolean; // false for a load that was never delivered (refused)
   onChange: () => void;
 }) {
   const [note, setNote] = useState('');
@@ -75,7 +76,7 @@ export function ReviewPanel({ shipmentId, forwarder, notifiedTs, review, onChang
             placeholder="e.g. Detour confirmed with the carrier"
             className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm focus:border-accent focus:outline-none" />
           <div className="flex flex-wrap gap-2">
-            <button type="button" disabled={busy} onClick={() => act('POST', { status: 'released', note })}
+            <button type="button" disabled={busy || !canRelease} onClick={() => act('POST', { status: 'released', note })}
               className="rounded-full bg-ink px-4 py-1.5 text-sm font-semibold text-white hover:bg-stone-800 disabled:opacity-50">
               Release payment
             </button>
@@ -85,6 +86,9 @@ export function ReviewPanel({ shipmentId, forwarder, notifiedTs, review, onChang
             </button>
           </div>
         </div>
+      )}
+      {!review && !canRelease && (
+        <p className="mt-2 text-sm text-stone-600">This load wasn’t delivered, so its payment can’t be released. It can only be rejected.</p>
       )}
       {error && <p className="mt-2 text-sm text-red-700">{error}</p>}
     </div>

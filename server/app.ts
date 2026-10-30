@@ -1,6 +1,6 @@
 import express from 'express';
 import type { DatabaseSync } from 'node:sqlite';
-import { FILTER_KEYS, getShipment, listShipments, shipmentNeighbors, type ShipmentFilters } from './queries.ts';
+import { FILTER_KEYS, auditLog, getShipment, listShipments, shipmentNeighbors, type ShipmentFilters } from './queries.ts';
 import { ReviewError, ReviewStore } from './reviews.ts';
 import { getDashboard } from './dashboard.ts';
 
@@ -25,6 +25,10 @@ export function createApp(db: DatabaseSync, reviews = new ReviewStore(db)) {
       return;
     }
     res.json(dashboard);
+  });
+
+  app.get('/api/audit-log', (_req, res) => {
+    res.json(auditLog(db));
   });
 
   app.get('/api/shipments', (req, res) => {

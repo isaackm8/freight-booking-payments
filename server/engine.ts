@@ -6,7 +6,7 @@
 import type {
   Carrier, DeliveryEvidence, Invoice, Payer, Shipment, TrackingEvent,
 } from '../shared/types.ts';
-import type { Decision, HoldReason, Settlement } from '../shared/decisions.ts';
+import type { Decision, DecisionRecord, HoldReason, Settlement } from '../shared/decisions.ts';
 
 export interface Rules {
   offRouteMi: number;              // rule 2
@@ -141,4 +141,19 @@ export function settle(d: Decision, input: DecisionInput, carrierFundsTs: string
     fee_paid_by_payer_cents: total - byCarrier,
     carrier_factoring_avoided_cents: input.carrier.cash_preference === 'factoring' ? pctOf(input.shipment.factoring_rate_pct) : 0,
   };
+}
+
+// A held payment the forwarder released: the original invoice is paid as it stands, with the card
+// charged when it was released. A load that was never delivered (refused) can't be released.
+export function payReleased(d: Decision, input: DecisionInput, chargeTs: string, carrierFundsTs: string, rules: Rules = DEFAULT_RULES): DecisionRecord {
+  const original = input.invoices.find((i) => !i.duplicate_of);
+  if (!d.delivered_ts || !original) throw new Error(`${input.shipment.shipment_id} can't be paid: it wasn't delivered or invoiced`);
+  const paid: Decision = {
+    ...d,
+    paid_invoice_id: original.invoice_id,
+    amount_cents: original.total_cents,
+    card_charge_ts: chargeTs,
+    statement_due_date: statementDueDate(chargeTs, rules.statementGraceDays),
+  };
+  return { ...paid, settlement: settle(paid, input, carrierFundsTs, rules) };
 }

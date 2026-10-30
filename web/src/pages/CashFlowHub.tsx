@@ -89,7 +89,10 @@ export function CashFlowHub() {
         <Card title="Cash and fees">
           <p className="text-sm text-stone-600">Paid to carriers</p>
           <p className="text-3xl font-bold tabular-nums">{money(t.paid_cents)}</p>
-          <p className="text-sm text-stone-500">across {t.paid} loads, each within hours of delivery</p>
+          <p className="text-sm text-stone-500">
+            across {t.paid + t.released_paid} loads: {t.paid} paid automatically within hours of delivery
+            {t.released_paid > 0 && <>, {t.released_paid} released after review</>}
+          </p>
 
           <h3 className="mt-5 text-xs font-semibold uppercase tracking-wide text-stone-500">
             Card bills: when the cash leaves
@@ -152,14 +155,17 @@ export function CashFlowHub() {
             </table>
           </div>
         )}
-        <p className="mt-3 text-xs text-stone-500">Waiting time is counted to {day(data.period.to)}, the end of the sample data.</p>
+        <p className="mt-3 text-xs text-stone-500">
+          Waiting time is counted to {day(data.period.to)}, the end of the sample data.{' '}
+          <Link to="/audit-log" className="font-medium text-accent-ink hover:underline">Audit log of every review</Link>
+        </p>
       </Card>
 
       <CarrierCosts carriers={data.carriers} listHref={list} />
 
       <p className="text-xs text-stone-500">
-        Every figure is computed from the engine’s decisions and the forwarder’s reviews. Released payments are counted as reviewed,
-        not yet as paid: simulating their payout is still to come in phase 3.
+        Every figure is computed from the engine’s decisions and the forwarder’s reviews. Payments the forwarder released are
+        included in the money figures; the speed figures (hours to funds, paid within 24 h) count automatic payments only.
       </p>
     </div>
   );
