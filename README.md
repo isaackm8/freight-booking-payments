@@ -8,7 +8,27 @@ Sources: Mastercard's freight payments white paper (including the page 11 scenar
 
 ## Status
 
-Early prototype — work in progress.
+Working prototype, ready to demo. Built: the decision engine (matches the answer key for 500 of 500 shipments), payment breakdown, review queue, audit log, Cash Flow Hub and the Why CashBridge story. Next: a carrier view (phase 4). Skipped to keep it simple: the fee simulator (phase 5) and time replay. See [docs/BUILD_PLAN.md](docs/BUILD_PLAN.md).
+
+| Tab | What it's for |
+|---|---|
+| **Why CashBridge** | The story in about a minute: the forwarder's cash gap, the fix, who wins, why it matters for Mastercard |
+| **Cash Flow Hub** | The forwarder's view: paid automatically, hours to carrier funds, float, card bills, holds, carrier costs |
+| **Review queue** | Held payments with their evidence: release, reject or request info |
+| **Shipments** | All 500 loads; each opens to its milestones, proof of delivery, payment breakdown and history |
+
+## Demo script (about 3 minutes)
+
+**Before you start:** run `npm run dev` and open http://localhost:5173. For a clean start, delete `var/reviews.json` and `var/audit.json`, then restart, so all 50 held payments are awaiting review.
+
+1. **Why CashBridge (1 min).** *"Forwarders pay truckers in about 30 days but wait 45 days for their shippers, so their own cash is tied up on every load. Truckers can't wait either: small ones sell their invoices for 6–8% less (factoring). Today that's pieced together across separate tools. CashBridge pays the trucker within hours of proven delivery on the forwarder's Mastercard; the card bill comes due about when the shipper pays."* Point to **Who wins** and **Why it matters for Mastercard**, then read the one-sentence pitch.
+2. **Cash Flow Hub (45 s).** *"89% of payments needed no one. Carriers had their money in about 12 hours, and forwarders kept their cash about 32 days."* Show the card bills, the holds by reason, then switch to one forwarder.
+3. **One clean load, SHP-10001 (30 s).** Open it from **Shipments**. Show the milestones and proof of delivery, then the payment breakdown: invoice $1,278.52 → 2.75% fee → who pays → *carrier receives $1,257.42 in hours; forwarder owes $1,292.58 on a card bill due a month later.*
+4. **Review queue (45 s).** The oldest held payment is first. *"The engine held it before any money moved. The evidence is right here."* For example, an invoice over the approved maximum shows which extra charges broke the forwarder's caps; SHP-10058 shows the truck 99 miles off route. Release one with a note, and the next opens. Show that a refused load (SHP-10164) can only be rejected, and that **Request info** asks the carrier while the payment stays held.
+5. **Audit trail (15 s).** Open the released shipment's **History**, or the audit log from the Cash Flow Hub: every action, who did it, when and why.
+6. **Close (15 s).** Repeat the one-sentence pitch. Be clear about what's simulated: synthetic data, illustrative pricing, and a simulated card-to-account provider.
+
+**Likely questions:** answers are in [docs/AUDIENCE_NOTES.md](docs/AUDIENCE_NOTES.md), for example why forwarders are the buyer, why credit-line carriers gain speed rather than money, the forwarder's fee-model break-even, and who earns what from each payment.
 
 ## Problem Statement
 

@@ -78,6 +78,7 @@ Example: SHP-10001, a $1,278.52 invoice, forwarder on the 60/40 split.
     - who pays (the fee model)
     - a shorter float
 - **The comparison that matters:** factoring costs 6–8% and broker quick pay 2–5%, so even 2.75% beats both.
+- **For the forwarder, the pitch is cash flow, not cost savings.** Its borrowing rate is yearly, while the fee is charged once per load: at 8% a year, 32 days of float is worth about 0.7% of the invoice. Against its fee share that means carrier pays (0%) puts it ahead, a 60/40 split (1.1%) breaks even at about 12.5% a year, and paying the whole fee (2.75%) only at about 31%. So the value is a month of working capital without asking a bank, which matters most to forwarders short of credit, and the fee model is the lever.
 - **Credit-line carriers are a harder sell.** A credit line charges yearly interest only for the days borrowed: invoice × rate × days waiting ÷ 365. At 11.5–19.5% a year for 30 days, that's roughly 0.9–1.6% of the invoice. In the sample data, 4 of the 5 credit-line carriers would pay more in CashBridge fees than in interest. At a 60/40 split and 30-day terms, a credit-line carrier breaks even at about 20% a year. For them the pitch is speed and freeing up their credit line, or a forwarder that covers more of the fee.
 
 ## How the carrier pays its share, and agrees to it
