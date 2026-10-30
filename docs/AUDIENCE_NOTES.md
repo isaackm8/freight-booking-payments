@@ -4,6 +4,15 @@ What to tell an audience before the demo, so everyone reads it the same way. Eac
 
 Last updated: Oct 29, 2026.
 
+## Start with Why CashBridge
+
+- **Open on the Why CashBridge tab** (`/why-cashbridge`). It is written for Mastercard leadership who don't know freight and takes about a minute: the problem, the fix, who wins, why it matters for Mastercard, one load (SHP-10001) today vs CashBridge, why it's safe, and the cash and savings for forwarders and carriers from the demo's live data. It ends with the line to repeat: "CashBridge lets forwarders pay carriers within hours of a proven delivery without tying up their own cash: the card bill comes due about when the shipper pays."
+- **The forwarder is the assumed primary buyer; carriers come second.** This is an assumption, so say it as one. Lead with the forwarder's cash gap: shippers pay it on long terms (45 days in the sample data) while it pays carriers in about 30, so its own cash is tied up for weeks on every load, cash it needs for payroll, growth and taking on more loads. On the card, that cash stays in its account until the bill is due, close to when the shipper pays. The carrier's 30–45 day wait and factoring cost are the other side of the same problem.
+- **The forwarder's float has a dollar value only under an assumption.** The page values it at an assumed 8% a year cost of borrowing, labeled illustrative.
+- **Say "factoring" with every 6–8%.** Explain it once (selling the invoice to a finance company that pays now but keeps 6–8%), then say "factoring (6–8%)".
+- **Don't claim no one else does this.** Competitors such as TriumphPay exist; the claim is that today nothing ties the payment to proof of delivery for both the forwarder and the carrier.
+- **The market-size line is a placeholder** until a sourced figure replaces it.
+
 ## Who's who
 
 | Role | In the demo | Never |

@@ -82,8 +82,8 @@ export function CarrierCosts({ carriers, listHref }: { carriers: Carrier[]; list
         </Control>
         <RateSlider
           title="Factoring rate" unit="of invoice" range={FACTORING} value={draft.factoringPct} onChange={(v) => setDraft({ ...draft, factoringPct: v })}
-          ownLabel="Each load’s own rate (6–8%)"
-          tip="What a factoring company keeps for paying the invoice early. The white paper puts it at 6–8%; each sample load has its own rate in that range."
+          ownLabel="Each load’s own factoring rate (6–8%)"
+          tip="What a factoring company keeps for paying the invoice early. The white paper puts factoring at 6–8%; each sample load has its own rate in that range."
         />
         <RateSlider
           title="Credit line rate" unit="a year" range={CREDIT_APR} value={draft.aprPct} onChange={(v) => setDraft({ ...draft, aprPct: v })}

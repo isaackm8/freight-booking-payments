@@ -1,10 +1,10 @@
 import { Link, NavLink, Outlet } from 'react-router-dom';
 
 const NAV = [
+  { to: '/why-cashbridge', name: 'Why CashBridge' },
   { to: '/cash-flow-hub', name: 'Cash Flow Hub' },
   { to: '/review-queue', name: 'Review queue' },
   { to: '/', name: 'Shipments' },
-  { to: '/how-it-works', name: 'How it works' },
 ];
 
 export function Layout() {

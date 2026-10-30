@@ -57,6 +57,7 @@ Held payments go to the exceptions queue with their evidence; a reviewer release
 6. **Savings views:** forwarder or payer savings from closing the cash gap, and carrier savings vs. factoring or a credit line, using placeholder rates or the user's own (see Savings views).
 7. **Program analytics:** volume, approval and hold rates, float, issuer margin and network fees, broken down by carrier segment and cash preference (factoring / credit line / waits).
 8. **Replay control:** step or play the 500 shipments through time so events, decisions and payments appear as they would live.
+9. **Why CashBridge (built):** the first tab, a one-minute read for Mastercard leadership who don't know freight, told from the forwarder's side first (the assumed primary buyer), then the carrier's: the problem (the forwarder's cash gap between 45-day shipper terms and 30-day carrier terms; carriers' 30–45 day waits and factoring (6–8%)), today's pieced-together tools vs CashBridge, who wins, why it matters for Mastercard, SHP-10001 today vs CashBridge and the cash and savings for forwarders and carriers (both live from the API), the 8 hold rules, a one-sentence pitch, and the five-step flow and timeline under How it works. Market-size figures are placeholders until sourced.
 
 **Nice to have, after the MVP:** editable hold rules and thresholds, CSV upload of new shipments, a simple carrier onboarding and bank-verification screen.
 
