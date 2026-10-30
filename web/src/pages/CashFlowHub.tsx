@@ -18,7 +18,7 @@ export function CashFlowHub() {
   const { data, error } = useApi<DashboardData>(`/api/dashboard${payerId ? `?payer_id=${encodeURIComponent(payerId)}` : ''}`);
   // Links into the shipment list keep the forwarder selected here.
   const list = (filters: Record<string, string>) =>
-    `/?${new URLSearchParams({ ...(payerId ? { payer_id: payerId } : {}), ...filters })}`;
+    `/shipments?${new URLSearchParams({ ...(payerId ? { payer_id: payerId } : {}), ...filters })}`;
 
   if (error) return <p className="rounded-xl bg-red-50 p-3 text-sm text-red-800">Couldn't load the Cash Flow Hub: {error.message}</p>;
   if (!data) return <p className="text-sm text-stone-500">Loading the Cash Flow Hub…</p>;

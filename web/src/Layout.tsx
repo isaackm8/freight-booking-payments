@@ -4,7 +4,7 @@ const NAV = [
   { to: '/why-cashbridge', name: 'Why CashBridge' },
   { to: '/cash-flow-hub', name: 'Cash Flow Hub' },
   { to: '/review-queue', name: 'Review queue' },
-  { to: '/', name: 'Shipments' },
+  { to: '/shipments', name: 'Shipments' },
 ];
 
 export function Layout() {
@@ -12,7 +12,7 @@ export function Layout() {
     <div className="flex min-h-screen flex-col">
       <header className="bg-white">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-4">
-          <Link to="/" className="flex items-center gap-2.5">
+          <Link to="/why-cashbridge" className="flex items-center gap-2.5">
             <span className="h-3 w-3 rounded-full bg-accent" aria-hidden />
             <span className="text-lg font-bold tracking-tight">CashBridge</span>
             <span className="hidden border-l border-stone-300 pl-2.5 text-sm text-stone-500 sm:inline">Freight paid faster. Cash gap closed.</span>
@@ -22,7 +22,8 @@ export function Layout() {
               <NavLink
                 key={item.to}
                 to={item.to}
-                end
+                // Shipments stays highlighted on a shipment's own page (/shipments/SHP-10001).
+                end={item.to !== '/shipments'}
                 className={({ isActive }) =>
                   `rounded-full px-4 py-1.5 font-medium ${isActive ? 'bg-ink text-white' : 'text-stone-600 hover:bg-stone-100 hover:text-ink'}`
                 }

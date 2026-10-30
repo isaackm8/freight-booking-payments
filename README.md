@@ -8,7 +8,7 @@ Sources: Mastercard's freight payments white paper (including the page 11 scenar
 
 ## Status
 
-Working prototype, ready to demo. Built: the decision engine (matches the answer key for 500 of 500 shipments), payment breakdown, review queue, audit log, Cash Flow Hub and the Why CashBridge story. Next: a carrier view (phase 4). Skipped to keep it simple: the fee simulator (phase 5) and time replay. See [docs/BUILD_PLAN.md](docs/BUILD_PLAN.md).
+Working prototype, ready to demo, live at **https://freight-booking-payments.onrender.com** (opens on Why CashBridge). Built: the decision engine (matches the answer key for 500 of 500 shipments), payment breakdown, review queue, audit log, Cash Flow Hub and the Why CashBridge story. Next: a carrier view (phase 4). Skipped to keep it simple: the fee simulator (phase 5) and time replay. See [docs/BUILD_PLAN.md](docs/BUILD_PLAN.md).
 
 | Tab | What it's for |
 |---|---|
@@ -217,7 +217,7 @@ The repo includes a [`render.yaml`](render.yaml) that runs CashBridge as one fre
 
 1. Sign up at [render.com](https://render.com) (free) and connect your GitHub account.
 2. In Render, choose **New → Blueprint**, pick this repository, and click **Apply**.
-3. Wait for the first deploy (a few minutes), then share the link Render shows, for example `https://cashbridge.onrender.com`.
+3. Wait for the first deploy (a few minutes), then share the link Render shows. This project's is https://freight-booking-payments.onrender.com.
 
 On the free plan the service sleeps when idle, so the first visit after a while takes about a minute. Reviews made on the hosted demo reset whenever it restarts or redeploys. Each push to `main` redeploys it.
 

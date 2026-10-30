@@ -27,7 +27,7 @@ export function ShipmentNav({ shipmentId }: { shipmentId: string }) {
   const step = 'rounded-full border border-stone-300 bg-white px-3 py-1 font-medium text-stone-700 hover:border-ink hover:text-ink';
   return (
     <nav aria-label="Shipments" className="flex flex-wrap items-center justify-between gap-2 text-sm">
-      <Link to={`/${search}`} className="text-accent-ink hover:underline">
+      <Link to={`/shipments${search}`} className="text-accent-ink hover:underline">
         ← {filtered ? 'Back to filtered list' : 'All shipments'}
       </Link>
       <div className="flex items-center gap-2">
