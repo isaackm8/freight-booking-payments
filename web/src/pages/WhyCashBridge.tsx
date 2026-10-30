@@ -26,15 +26,14 @@ const HOLDS: Record<HoldReason, string> = {
   shipment_on_hold: 'Load on hold, not delivered',
 };
 
-const TODAY_PARTS = ['Tracking', 'Invoice checks', 'Payment', 'Financing (factoring)'];
-
-// What CashBridge does instead, in one connected flow. The engine is rules-based today; AI is the
-// next step (learning from reviewers' decisions), so the page says so rather than claiming AI now.
-const CASHBRIDGE_PARTS: { title: string; text: string; next?: boolean }[] = [
-  { title: 'Authenticated shipment', text: 'GPS, RFID, signature or photo prove the load was delivered, to the right place.' },
-  { title: 'Automated decisioning', text: 'Every invoice checked against 8 rules in seconds; most are paid with no one involved.' },
-  { title: 'Instant payment', text: 'Card charge and payout to the carrier’s bank within hours of proven delivery.' },
-  { title: 'AI, next', text: 'Learn from reviewers’ decisions to spot fraud earlier and cut false holds.', next: true },
+// Each step today (separate tools, manual handoffs) next to what CashBridge does instead. The engine is
+// rules-based today; AI is the next step (learning from reviewers' decisions), so it's marked roadmap.
+const COMPARISON: { step: string; today: string; cashbridge: string; title: string; next?: boolean }[] = [
+  { step: 'Prove delivery', today: 'A tracking tool; proof of delivery emailed or chased by hand', title: 'Authenticated shipment', cashbridge: 'GPS, RFID, signature or photo prove the load was delivered, to the right place' },
+  { step: 'Check the invoice', today: 'Checked by hand, often days later', title: 'Automated decisioning', cashbridge: 'Every invoice checked against 8 rules in seconds; most paid with no one involved' },
+  { step: 'Pay the carrier', today: 'A payment run 30–45 days later, by ACH or check', title: 'Instant payment', cashbridge: 'Card charge and payout to the carrier’s bank within hours of proven delivery' },
+  { step: 'Get cash sooner', today: 'The carrier pays factoring (6–8%)', title: 'No factoring needed', cashbridge: 'The carrier is already paid; the forwarder’s card covers the gap' },
+  { step: 'Get smarter', today: 'Nothing learns from past decisions', title: 'AI, next', cashbridge: 'Learn from reviewers’ decisions to spot fraud earlier and cut false holds', next: true },
 ];
 
 type Actor = 'Forwarder' | 'Carrier' | 'Platform' | 'Card';
@@ -111,28 +110,25 @@ export function WhyCashBridge() {
 
       {/* 2. Today it's pieced together */}
       <Section title="Today it's pieced together">
-        <div className="grid items-center gap-4 md:grid-cols-[1fr_auto_1fr]">
-          <div className="grid grid-cols-2 gap-2">
-            {TODAY_PARTS.map((p) => (
-              <div key={p} className="rounded-xl border border-dashed border-stone-300 bg-canvas px-3 py-4 text-center text-sm font-medium text-stone-600">
-                {p}
+        <div className="overflow-hidden rounded-2xl ring-1 ring-stone-200">
+          <div className="hidden grid-cols-[10rem_1fr_1fr] text-xs font-semibold uppercase tracking-wide md:grid">
+            <div className="bg-stone-50 px-4 py-2 text-stone-500">Step</div>
+            <div className="bg-stone-50 px-4 py-2 text-stone-500">Today: separate tools</div>
+            <div className="bg-accent-soft px-4 py-2 text-accent-ink">CashBridge: one flow</div>
+          </div>
+          {COMPARISON.map((row) => (
+            <div key={row.step} className="grid border-t border-stone-200 first:border-t-0 md:grid-cols-[10rem_1fr_1fr] md:first:border-t">
+              <div className="bg-stone-50 px-4 pt-3 text-sm font-semibold md:py-3">{row.step}</div>
+              <div className="bg-stone-50 px-4 py-2 text-sm text-stone-500 md:bg-white md:py-3">
+                <span className="font-semibold text-stone-400 md:hidden">Today: </span>{row.today}
               </div>
-            ))}
-          </div>
-          <span aria-hidden className="text-center text-2xl text-stone-400 md:px-2"><span className="md:hidden">↓</span><span className="hidden md:inline">→</span></span>
-          <div className="rounded-2xl bg-accent-soft p-5 ring-2 ring-accent">
-            <div className="text-lg font-bold">CashBridge</div>
-            <p className="text-sm text-stone-700">Automated decisioning and payment on authenticated shipments, in one flow.</p>
-            <ul className="mt-3 space-y-2">
-              {CASHBRIDGE_PARTS.map((part) => (
-                <li key={part.title} className="text-sm">
-                  <span className="font-semibold">{part.title}</span>
-                  {part.next && <span className="ml-1.5 rounded-full bg-white px-1.5 py-0.5 text-[10px] font-semibold uppercase text-accent-ink ring-1 ring-accent/40">roadmap</span>}
-                  <span className="block text-stone-600">{part.text}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+              <div className="bg-accent-soft px-4 py-3 text-sm">
+                <span className="font-semibold">{row.title}</span>
+                {row.next && <span className="ml-1.5 rounded-full bg-white px-1.5 py-0.5 text-[10px] font-semibold uppercase text-accent-ink ring-1 ring-accent/40">roadmap</span>}
+                <span className="block text-stone-700">{row.cashbridge}</span>
+              </div>
+            </div>
+          ))}
         </div>
         <p className="mt-4 text-stone-700">
           Today these are separate tools with manual handoffs, and nothing ties the payment to proof of delivery for both the forwarder and
