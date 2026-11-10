@@ -6,13 +6,15 @@ import { useApi } from '../api.ts';
 import { day, money } from '../format.ts';
 
 // The Why CashBridge page: the value in about a minute, for readers who don't know freight, told from the
-// forwarder's side first (the assumed primary buyer), then the carrier's,
-// then how it works (a five-step flow and a who-gets-paid-when timeline).
-// Example-load and demo figures come live from the API; 30–45 days and 6–8% are from the Mastercard white paper.
+// forwarder's side first (the assumed primary buyer), then the carrier's. Order: the one-line pitch, the problem,
+// what CashBridge does, one load today vs CashBridge, how it works, why it's safer, and who wins, then links to the live figures.
+// Example-load and automatic-payment figures come live from the API; 30–45 days and 6–8% are from the Mastercard white paper.
 
 const EXAMPLE_ID = 'SHP-10001';
 const EXAMPLE_FACTORING_PCT = 7; // the middle of the white paper's 6–8%
-const FORWARDER_BORROWING_APR = 8; // %, an assumed cost of borrowing to value the float (illustrative)
+// Staff time to match, approve and pay one carrier invoice by hand: a placeholder, not sourced (the build plan's
+// $15 per manual touch, also used on the Virtual Card page).
+const HANDLING_COST_CENTS = 1500;
 
 // Short names for the 8 hold rules (full wording in HOLD_REASONS).
 const HOLDS: Record<HoldReason, string> = {
@@ -91,25 +93,32 @@ export function WhyCashBridge() {
 
   return (
     <div className="mx-auto max-w-5xl space-y-10">
-      {/* 1. The problem: the forwarder's cash gap first, the carrier's wait second */}
-      <header className="space-y-3">
+      {/* The line to repeat, first */}
+      <header className="space-y-4">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Why CashBridge</h1>
+        <figure className="rounded-2xl bg-accent-soft p-6 ring-1 ring-accent/30 sm:p-8">
+          <figcaption className="mb-2 text-xs font-semibold uppercase tracking-wide text-accent-ink">In one sentence</figcaption>
+          <blockquote className="text-xl font-semibold leading-snug sm:text-2xl">
+            “CashBridge lets forwarders pay carriers within hours of a proven delivery without tying up their own cash.”
+          </blockquote>
+        </figure>
         <p className="text-sm text-stone-500">
           Written for the forwarder (freight forwarder or broker), our <strong>assumed primary buyer</strong>. Carriers are the second audience.
         </p>
-        <p className="max-w-3xl text-lg leading-relaxed text-stone-700 sm:text-xl">
+      </header>
+
+      {/* 1. The problem: the forwarder's cash gap first, the carrier's wait second, and today's pieced-together tools */}
+      <Section title="The problem">
+        <p className="max-w-3xl text-lg leading-relaxed text-stone-700">
           Shippers pay the forwarder in <strong>{shipperTerms} days</strong>, but the forwarder pays its carriers in about{' '}
           <strong>{carrierTerms} days</strong>. So on every load the forwarder's own cash is tied up for weeks: money it needs to run the
           business, make payroll, grow and take on more loads.
         </p>
-        <p className="max-w-3xl leading-relaxed text-stone-600">
+        <p className="mt-3 max-w-3xl leading-relaxed text-stone-600">
           The other side of the same problem: truckers (carriers) wait 30–45 days to get paid. To get money sooner, small carriers use{' '}
           <strong>factoring</strong>: they sell the invoice to a finance company, which pays now but keeps <strong>6–8%</strong>.
         </p>
-      </header>
-
-      {/* 2. Today it's pieced together */}
-      <Section title="Today it's pieced together">
+        <h3 className="mb-3 mt-6 text-xs font-semibold uppercase tracking-wide text-stone-500">Today it's pieced together</h3>
         <div className="overflow-hidden rounded-2xl ring-1 ring-stone-200">
           <div className="hidden grid-cols-[10rem_1fr_1fr] text-xs font-semibold uppercase tracking-wide md:grid">
             <div className="bg-stone-50 px-4 py-2 text-stone-500">Step</div>
@@ -132,18 +141,49 @@ export function WhyCashBridge() {
         </div>
         <p className="mt-4 text-stone-700">
           Today these are separate tools with manual handoffs, and nothing ties the payment to proof of delivery for both the forwarder and
-          the carrier. CashBridge connects them: the shipment is authenticated, the decision is automated, and the money moves.
+          the carrier.
         </p>
       </Section>
 
-      {/* 3. The fix */}
+      {/* 2. What CashBridge does */}
       <div className="rounded-2xl bg-ink p-6 text-lg leading-relaxed text-white sm:text-xl">
-        <span className="font-semibold text-accent">The fix: </span>
-        the forwarder pays on its card, so its cash <strong>stays in its account</strong> until the card bill is due, about a month after the carrier is paid and close to when the shipper pays.
-        The carrier still gets paid <strong>within hours of proven delivery</strong>.
+        <span className="font-semibold text-accent">What CashBridge does: </span>
+        once delivery is proven, it checks the invoice automatically and pays the carrier with the forwarder's virtual card, so the carrier
+        has its money <strong>within hours</strong>. The forwarder pays the card bill about a month later, so its own cash{' '}
+        <strong>stays in its account</strong> meanwhile.
       </div>
 
-      {/* 4. Who wins */}
+      {/* 3. The solution, on one load */}
+      <Section title="One load, today vs CashBridge">
+        <ExampleLoad detail={example.data} error={example.error} />
+      </Section>
+
+      {/* 4. The flow */}
+      <Section title="How it works">
+        <div className="space-y-8">
+          <Flow />
+          <PaymentTimeline />
+        </div>
+      </Section>
+
+      {/* 5. Safer and more secure */}
+      <Section title="Safer and more secure">
+        <p className="text-stone-700">
+          Money moves <strong>only after proven delivery</strong>: an RFID scan at the dock, a signature or a photo. Each load has its own
+          single-use virtual card, capped at the approved amount, and the payout goes only to the carrier's verified bank account.
+          Eight kinds of problems are held for the forwarder to review before any payment:
+        </p>
+        <ul className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
+          {Object.values(HOLDS).map((h) => (
+            <li key={h} className="flex items-start gap-2 rounded-lg bg-canvas px-3 py-2">
+              <span aria-hidden className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent" />
+              {h}
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      {/* 6. Who wins, including why it matters for Mastercard */}
       <Section title="Who wins">
         <div className="grid gap-4 md:grid-cols-3">
           <WinCard who="Forwarder" tag="Primary buyer" points={[
@@ -158,10 +198,7 @@ export function WhyCashBridge() {
           ]} />
           <WinCard who="Mastercard and issuing banks" accent points={['New payment volume on Mastercard rails', 'A network fee and interchange on every load', 'More commercial card spend']} />
         </div>
-      </Section>
-
-      {/* 5. Why it matters for Mastercard */}
-      <Section title="Why it matters for Mastercard">
+        <h3 className="mb-3 mt-6 text-xs font-semibold uppercase tracking-wide text-stone-500">Why it matters for Mastercard</h3>
         <ul className="space-y-3">
           <Point title="New volume on Mastercard rails">
             Carrier payments are mostly ACH or check today. CashBridge moves them to commercial card, with a Mastercard Move payout to the carrier's bank.
@@ -179,57 +216,56 @@ export function WhyCashBridge() {
             CashBridge puts the thesis of Mastercard's own freight white paper into practice.
           </Point>
         </ul>
-        <p className="mt-4 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900 ring-1 ring-amber-200">
-          <strong>Market size: [placeholder, to verify]</strong> US carrier payments a year, and the share paid by card today. No figure is quoted until sourced.
-        </p>
+        <MarketSize />
       </Section>
 
-      {/* 6. One load, today vs CashBridge */}
-      <Section title="One load, today vs CashBridge">
-        <ExampleLoad detail={example.data} error={example.error} />
-      </Section>
+      {/* See it live: the figures are in the demo's own pages */}
+      <p className="text-center text-stone-600">
+        See it live: the <Link to="/cash-flow-hub" className="font-semibold text-accent-ink hover:underline">Cash Flow Hub</Link> (operations)
+        and the <Link to="/virtual-card" className="font-semibold text-accent-ink hover:underline">Virtual Card</Link> (value to the forwarder).
+      </p>
+    </div>
+  );
+}
 
-      {/* 7. Why it's safe */}
-      <Section title="Why it's safe">
-        <p className="text-stone-700">
-          Money moves <strong>only after proven delivery</strong>: an RFID scan at the dock, a signature or a photo.
-          Eight kinds of problems are held for the forwarder to review before any payment:
-        </p>
-        <ul className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
-          {Object.values(HOLDS).map((h) => (
-            <li key={h} className="flex items-start gap-2 rounded-lg bg-canvas px-3 py-2">
-              <span aria-hidden className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent" />
-              {h}
-            </li>
-          ))}
-        </ul>
-      </Section>
+// How big the opportunity is. US broker and 3PL payments to carriers = gross revenue minus net revenue for the
+// domestic transportation management segment (Armstrong & Associates, 2025): $128.3B - $19.6B ≈ $109B, an estimate
+// (the segment also includes some intermodal and dedicated moves). No public figure gives the share paid by card
+// today, so the box quotes the check share from Mastercard's own white paper instead of guessing.
+const MARKET_FLOW_BILLIONS = 128.3 - 19.6;
 
-      {/* 8. Savings and cash, from the demo */}
-      <Section title="Savings and cash, from the demo">
-        {demo.error ? (
-          <p className="text-sm text-red-800">Couldn't load the demo figures: {demo.error.message}</p>
-        ) : !demo.data ? (
-          <p className="text-sm text-stone-500">Loading…</p>
-        ) : (
-          <DemoProof data={demo.data} />
-        )}
-      </Section>
-
-      {/* 9. Say it in one sentence */}
-      <figure className="rounded-2xl bg-accent-soft p-6 ring-1 ring-accent/30 sm:p-8">
-        <figcaption className="mb-2 text-xs font-semibold uppercase tracking-wide text-accent-ink">Say it in one sentence</figcaption>
-        <blockquote className="text-xl font-semibold leading-snug sm:text-2xl">
-          “CashBridge lets forwarders pay carriers within hours of a proven delivery without tying up their own cash: the card bill comes due about when the shipper pays.”
-        </blockquote>
-      </figure>
-
-      <Section title="How it works">
-        <div className="space-y-8">
-          <Flow />
-          <PaymentTimeline />
+function MarketSize() {
+  const flow = Math.round(MARKET_FLOW_BILLIONS);
+  const perPoint = (MARKET_FLOW_BILLIONS / 100).toFixed(1);
+  const link = 'text-stone-600 underline decoration-stone-300 hover:text-accent-ink';
+  return (
+    <div className="mt-6 rounded-xl bg-canvas p-4 sm:p-5">
+      <h3 className="text-xs font-semibold uppercase tracking-wide text-stone-500">How big is this?</h3>
+      <p className="mt-2 text-stone-700">
+        Freight and logistics companies spend <strong>more than US$4 trillion</strong> a year, by Mastercard’s own white paper.
+        CashBridge starts with one slice of it: what US brokers and 3PLs pay their trucking carriers.
+      </p>
+      <div className="mt-4 grid gap-4 sm:grid-cols-3">
+        <div>
+          <div className="text-3xl font-bold tracking-tight tabular-nums">~${flow}B</div>
+          <p className="text-sm text-stone-700">a year from US brokers and 3PLs to the carriers that haul their freight (estimate)</p>
         </div>
-      </Section>
+        <div>
+          <div className="text-3xl font-bold tracking-tight tabular-nums">~60%</div>
+          <p className="text-sm text-stone-700">of freight brokers still use paper checks</p>
+        </div>
+        <div>
+          <div className="text-3xl font-bold tracking-tight tabular-nums">${perPoint}B</div>
+          <p className="text-sm text-stone-700">in new card volume for every 1% of that flow moved onto card</p>
+        </div>
+      </div>
+      <p className="mt-4 text-xs leading-relaxed text-stone-500">
+        Sources: US$4 trillion: McKinsey Payments Map &amp; Research 2023, as cited in Mastercard, “Transforming freight payments
+        for efficiency and growth” (June 2025). ${flow}B is gross minus net revenue of US domestic transportation management 3PLs in 2025 ($128.3B − $19.6B),{' '}
+        <a href="https://www.3plogistics.com/3pl-market-info-resources/3pl-market-information/us-3pl-market-size-estimates/" target="_blank" rel="noreferrer" className={link}>Armstrong &amp; Associates</a>;
+        brokerage is about 83% of it (about $90B). International forwarding is left out. Check share: Denim, Freight Broker Pulse Report 2022,
+        as cited in the same white paper. No public figure reports the share paid by card today.
+      </p>
     </div>
   );
 }
@@ -279,6 +315,7 @@ function ExampleLoad({ detail, error }: { detail?: ShipmentDetail; error?: Error
   const factoring = Math.round((amount * EXAMPLE_FACTORING_PCT) / 100);
   const terms = detail.payer.current_terms_to_carriers_days;
   const carrierShare = Math.round((s.fee_paid_by_carrier_cents / s.total_fee_cents) * 100);
+  const automatic = detail.decision?.settlement != null; // paid with no one involved
 
   const rows: { who: string; today: ReactNode; cashbridge: ReactNode }[] = [
     {
@@ -290,6 +327,13 @@ function ExampleLoad({ detail, error }: { detail?: ShipmentDetail; error?: Error
       who: 'Carrier gets',
       today: <><strong>{money(amount)}</strong> in {terms} days, or <strong>{money(amount - factoring)}</strong> now through factoring (about {EXAMPLE_FACTORING_PCT}%, {money(factoring)})</>,
       cashbridge: <><strong>{money(amount - s.fee_paid_by_carrier_cents)}</strong> about <strong>{s.hours_delivery_to_funds} hours</strong> after delivery (its fee share: {money(s.fee_paid_by_carrier_cents)})</>,
+    },
+    {
+      who: 'Handling cost',
+      today: <>About <strong>{money(HANDLING_COST_CENTS)}</strong> of the forwarder's staff time to match, approve and pay the invoice by hand (placeholder)</>,
+      cashbridge: automatic
+        ? <><strong>{money(0)}</strong>: matched to the shipment, checked and paid automatically</>
+        : <>Still {money(HANDLING_COST_CENTS)}: this load was held and reviewed by hand</>,
     },
     {
       who: 'Mastercard',
@@ -317,46 +361,6 @@ function ExampleLoad({ detail, error }: { detail?: ShipmentDetail; error?: Error
         ))}
       </div>
     </div>
-  );
-}
-
-function DemoProof({ data }: { data: Dashboard }) {
-  const t = data.totals;
-  const floatValue = t.avg_float_days != null ? Math.round((t.paid_cents * t.avg_float_days * FORWARDER_BORROWING_APR) / 100 / 365) : null;
-  const factoring = data.carriers.filter((c) => c.cash_preference === 'factoring');
-  const avoided = factoring.reduce((a, c) => a + c.factoring_avoided_cents, 0);
-  const fees = factoring.reduce((a, c) => a + c.fees_paid_by_carrier_cents, 0);
-  return (
-    <>
-      <div className="grid gap-4 md:grid-cols-2">
-        <div className="rounded-xl bg-accent-soft p-4 ring-1 ring-accent/30">
-          <div className="text-sm font-semibold">Forwarders: cash kept</div>
-          <div className="mt-1 text-3xl font-bold tracking-tight tabular-nums">{money(t.paid_cents)}</div>
-          <p className="text-sm text-stone-700">
-            paid to carriers within hours on the card, while the forwarders' own cash stayed in their accounts about <strong>{t.avg_float_days ?? '—'} days</strong> on average
-          </p>
-          {floatValue != null && (
-            <p className="mt-2 text-xs text-stone-600">
-              Worth about <strong>{money(floatValue)}</strong> in borrowing they don't need (illustrative: at {FORWARDER_BORROWING_APR}% a year, an assumed cost of borrowing).
-            </p>
-          )}
-        </div>
-        <div className="rounded-xl bg-canvas p-4">
-          <div className="text-sm font-semibold">Carriers that factor: saved</div>
-          <div className="mt-1 text-3xl font-bold tracking-tight tabular-nums">{money(avoided - fees)}</div>
-          <p className="text-sm text-stone-700">
-            {money(avoided)} of factoring (6–8%) avoided, less {money(fees)} in CashBridge fees
-          </p>
-        </div>
-      </div>
-      <p className="mt-3 text-sm text-stone-600">
-        Also: <strong>{Math.round((t.paid / t.shipments) * 100)}%</strong> of {t.shipments} shipments paid automatically, and about{' '}
-        <strong>{t.avg_hours_to_funds != null ? Math.round(t.avg_hours_to_funds) : '—'} hours</strong> from proven delivery to the carrier's bank.
-      </p>
-      <p className="mt-1 text-xs text-stone-500">
-        Live from the demo's synthetic shipments; see the <Link to="/cash-flow-hub" className="text-accent-ink hover:underline">Cash Flow Hub</Link>.
-      </p>
-    </>
   );
 }
 
