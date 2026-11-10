@@ -10,12 +10,19 @@ import { CashFlowHub } from './pages/CashFlowHub.tsx';
 import { WhyCashBridge } from './pages/WhyCashBridge.tsx';
 import { AuditLog } from './pages/AuditLog.tsx';
 import { ReviewQueue } from './pages/ReviewQueue.tsx';
+import { VirtualCard } from './pages/VirtualCard.tsx';
 
 // The home address opens the story. The shipment list used to live at "/", so an old list link
 // with filters (e.g. /?decision=held_for_review) goes to /shipments with the same filters.
 function Home() {
   const { search } = useLocation();
   return <Navigate to={search ? `/shipments${search}` : '/why-cashbridge'} replace />;
+}
+
+// Redirects and keeps the query string, e.g. ?payer_id=PAY-02.
+function KeepQuery({ to }: { to: string }) {
+  const { search } = useLocation();
+  return <Navigate to={`${to}${search}`} replace />;
 }
 
 createRoot(document.getElementById('root')!).render(
@@ -26,6 +33,9 @@ createRoot(document.getElementById('root')!).render(
           <Route index element={<Home />} />
           <Route path="shipments" element={<ShipmentList />} />
           <Route path="cash-flow-hub" element={<CashFlowHub />} />
+          <Route path="virtual-card" element={<VirtualCard />} />
+          {/* The page was called Payments at first; keep old links (and the chosen forwarder) working. */}
+          <Route path="payments" element={<KeepQuery to="/virtual-card" />} />
           <Route path="why-cashbridge" element={<WhyCashBridge />} />
           <Route path="audit-log" element={<AuditLog />} />
           <Route path="review-queue" element={<ReviewQueue />} />

@@ -2,7 +2,7 @@
 
 What to tell an audience before the demo, so everyone reads it the same way. Each point is a decision we've made; add new ones as they come up.
 
-Last updated: Oct 29, 2026.
+Last updated: Nov 10, 2026.
 
 ## Start with Why CashBridge
 
@@ -12,6 +12,15 @@ Last updated: Oct 29, 2026.
 - **Say "factoring" with every 6–8%.** Explain it once (selling the invoice to a finance company that pays now but keeps 6–8%), then say "factoring (6–8%)".
 - **Don't claim no one else does this.** Competitors such as TriumphPay exist; the claim is that today nothing ties the payment to proof of delivery for both the forwarder and the carrier.
 - **The market-size line is a placeholder** until a sourced figure replaces it.
+
+## The Virtual Card page: what "value gained" is measured against
+
+- **The tab is called Virtual Card; the page is headed "Mastercard Virtual Card" and names the issuing bank.** The name says what the page is about (the forwarder's card account and what it is worth) and keeps it distinct from the Cash Flow Hub (is everything paid, what needs attention). A forwarder admin knows the card from their bank; Mastercard is the network it runs on, so the page says both.
+- **The baseline is paying carriers same day from the forwarder's own cash** (for example, quick pay), not today's net-30 terms. The page says so: "vs paying carriers same day from your own cash".
+- **Why:** against net-30 the card barely changes when the forwarder's cash leaves. The card bill is due about 32 days after the carrier is paid, versus 30 days today, so cash stays put only about 2 days longer. The real gain is that carriers are paid within hours *without* the forwarder using its own cash: the same speed as quick pay, funded by the card for about a month. Comparing with net-30 would undersell that; comparing with same-day pay from own cash measures it.
+- **Every figure is an estimate** at placeholder rates the viewer can change: borrowing 9% a year (the build plan's placeholder; Why CashBridge uses 8%) and $15 per manual touch.
+- **Who pays the fee decides the sign.** Borrowing for about 32 days at 9% is worth roughly 0.8% of a payment, less than the 2.75% fee. So in the sample data the net value is positive when the carrier pays (Great Lakes) or splits the fee (Harborline, with process savings), but negative when the forwarder pays the whole fee (Midwest: about −$2,100 at the placeholders). The break-even borrowing rate for a forwarder paying the whole fee is about 31% a year; on the 60/40 split it is about 12.5% before process savings. Say this plainly if asked: the forwarder's case rests on the carrier paying most of the fee, which the carrier accepts because 2.75% beats factoring (6–8%).
+- **The setup is pre-configured and display-only.** The account, card program, rules, terms of service and virtual cards are simulated, and nothing on the page changes a payment decision.
 
 ## Who's who
 

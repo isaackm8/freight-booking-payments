@@ -64,9 +64,11 @@ export function ShipmentList() {
 
   return (
     <div className="space-y-5">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h1 className="text-3xl font-bold tracking-tight">Shipments</h1>
-        {data && <p className="text-sm text-stone-500">{data.total} shown</p>}
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight">All Shipments</h1>
+        <p className="text-sm text-stone-500">
+          Every load with its proof of delivery and payment decision{data && <> · {data.total} shown</>}
+        </p>
       </div>
 
       {data && data.awaiting_review_total > 0 && params.get('review') !== 'awaiting_review' && (

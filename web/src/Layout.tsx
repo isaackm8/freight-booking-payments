@@ -3,8 +3,9 @@ import { Link, NavLink, Outlet } from 'react-router-dom';
 const NAV = [
   { to: '/why-cashbridge', name: 'Why CashBridge' },
   { to: '/cash-flow-hub', name: 'Cash Flow Hub' },
+  { to: '/virtual-card', name: 'Virtual Card' },
   { to: '/review-queue', name: 'Review queue' },
-  { to: '/shipments', name: 'Shipments' },
+  { to: '/shipments', name: 'All Shipments' },
 ];
 
 export function Layout() {
@@ -17,15 +18,15 @@ export function Layout() {
             <span className="text-lg font-bold tracking-tight">CashBridge</span>
             <span className="hidden border-l border-stone-300 pl-2.5 text-sm text-stone-500 sm:inline">Freight paid faster. Cash gap closed.</span>
           </Link>
-          <nav className="flex gap-1 text-sm">
+          <nav className="flex flex-wrap gap-1 text-sm">
             {NAV.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
-                // Shipments stays highlighted on a shipment's own page (/shipments/SHP-10001).
+                // All Shipments stays highlighted on a shipment's own page (/shipments/SHP-10001).
                 end={item.to !== '/shipments'}
                 className={({ isActive }) =>
-                  `rounded-full px-4 py-1.5 font-medium ${isActive ? 'bg-ink text-white' : 'text-stone-600 hover:bg-stone-100 hover:text-ink'}`
+                  `rounded-full px-3 py-1.5 font-medium sm:px-4 ${isActive ? 'bg-ink text-white' : 'text-stone-600 hover:bg-stone-100 hover:text-ink'}`
                 }
               >
                 {item.name}

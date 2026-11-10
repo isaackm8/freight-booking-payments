@@ -238,3 +238,87 @@ export interface ReviewQueueResponse {
   counts: Record<Exclude<QueueStatus, 'all'>, number>; // for the chosen forwarder, ignoring the status filter
   payers: Option[];
 }
+
+// The Payments page: one forwarder's card program, virtual cards, payment history and the
+// per-shipment figures behind "value gained". The page works out borrowing cost and net value
+// itself, from these figures and the viewer's own rates.
+export type VirtualCardStatus = 'issued' | 'authorized' | 'charged' | 'cancelled';
+export type PaymentStatus = 'paid' | 'held' | 'released' | 'blocked' | 'rejected';
+
+// One paid load (automatically, or released after review): what the card funded and for how long.
+export interface PaymentValueRow {
+  shipment_id: string;
+  carrier_name: string;
+  amount_cents: number;
+  card_charge_ts: string;
+  paid_to_carrier_ts: string;          // the provider's funds-received time
+  statement_due_date: string;          // the card bill this charge is on
+  expected_customer_payment_date: string; // delivery + the forwarder's customer terms
+  days_funded: number;                 // statement due date - date paid to carrier
+  forwarder_fee_cents: number;         // the forwarder's share of the fee, under its fee model
+  automatic: boolean;                  // paid with no one involved (false = released after review)
+  outstanding_now: boolean;            // charged and not yet due, as of the demo's now
+}
+
+export interface VirtualCard {
+  card_last4: string;
+  shipment_id: string;
+  carrier_name: string;
+  min_cents: number;                   // booked rate + fuel
+  max_cents: number;                   // approved maximum (+10%)
+  status: VirtualCardStatus;
+  issued_ts: string;                   // when the load was booked
+  expires_date: string;
+  charged_cents: number | null;
+}
+
+export interface PaymentHistoryRow {
+  key: string;                         // shipment ID, or shipment ID + blocked invoice
+  shipment_id: string;
+  carrier_id: string;
+  carrier_name: string;
+  lane: string;
+  delivered_ts: string | null;
+  decided_ts: string | null;
+  card_charge_ts: string | null;
+  funds_received_ts: string | null;
+  amount_cents: number;                // charged, or the invoice total if not charged
+  fee_cents: number | null;            // total fee on a charged payment
+  forwarder_fee_cents: number | null;
+  status: PaymentStatus;
+  reasons: HoldReason[];
+}
+
+export interface PaymentsResponse {
+  payer: Payer;
+  payers: Option[];
+  as_of: string;                       // the demo's now: the last tracking update in the sample data
+  setup: {
+    admins: string[];
+    payout_method: string;
+    approved_range_tolerance_pct: number;
+    hold_rules: HoldReason[];
+    charge_delay_hours: number;
+    fee_split: { carrier_pct: number; forwarder_pct: number; total_fee_pct: number };
+    card_expiry_days: number;          // after scheduled delivery
+  };
+  terms: { version: string; accepted_by: string; accepted_on: string };
+  card_program: {
+    issuer: string;
+    credit_limit_cents: number;
+    statement_balance_cents: number;   // charges since the last statement closed, plus the forwarder's fee share
+    available_credit_cents: number;
+    statement_closes: string;
+    statement_due: string;
+    last_statement: { closed: string; due: string; total_cents: number; paid: boolean } | null;
+  };
+  value: {
+    rows: PaymentValueRow[];
+    working_capital_now_cents: number;
+    series: { date: string; outstanding_cents: number }[]; // card-funded, charged and not yet due, per day
+  };
+  cards: VirtualCard[];
+  history: PaymentHistoryRow[];
+  carriers: Option[];
+  lanes: string[];
+}

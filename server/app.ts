@@ -6,6 +6,7 @@ import {
 import type { QueueStatus } from '../shared/types.ts';
 import { ReviewError, ReviewStore } from './reviews.ts';
 import { getDashboard } from './dashboard.ts';
+import { getPayments } from './payments.ts';
 
 const str = (v: unknown) => (typeof v === 'string' && v !== '' ? v : undefined);
 
@@ -28,6 +29,17 @@ export function createApp(db: DatabaseSync, reviews = new ReviewStore(db)) {
       return;
     }
     res.json(dashboard);
+  });
+
+  // The Payments page for one forwarder: ?payer_id= (required; one card program per forwarder).
+  app.get('/api/payments', (req, res) => {
+    const payerId = str(req.query.payer_id);
+    const payments = payerId ? getPayments(db, payerId) : null;
+    if (!payments) {
+      res.status(payerId ? 404 : 400).json({ error: payerId ? `No forwarder with ID ${payerId}` : 'payer_id is required' });
+      return;
+    }
+    res.json(payments);
   });
 
   // ?payer_id= for one forwarder; ?status= awaiting_review (default), info_requested, released, rejected or all.
