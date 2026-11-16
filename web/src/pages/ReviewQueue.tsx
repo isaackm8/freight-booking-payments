@@ -171,9 +171,10 @@ function SelectedPayment({ d, onChange }: { d: ShipmentDetail; onChange: (action
       </div>
 
       {invoice && status !== 'released' && (
-        <p className="rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-900 ring-1 ring-emerald-200">
-          <strong>{money(invoice.total_cents)} {status === 'rejected' ? 'never paid' : 'held before any money moved'}.</strong>{' '}
-          Without the shipment check, it would have been paid on the invoice alone.
+        <p className={`flex gap-2 rounded-xl px-4 py-3 text-sm ring-1 ${status === 'rejected' ? 'bg-stone-50 text-stone-800 ring-stone-200' : 'bg-amber-50 text-amber-900 ring-amber-200'}`}>
+          <span aria-hidden>{status === 'rejected' ? '✕' : '❚❚'}</span>
+          <span><strong>{money(invoice.total_cents)} {status === 'rejected' ? 'never paid' : 'held before any money moved'}.</strong>{' '}
+          Without the shipment check, it would have been paid on the invoice alone.</span>
         </p>
       )}
 
