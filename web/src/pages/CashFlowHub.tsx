@@ -50,7 +50,7 @@ export function CashFlowHub() {
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-amber-50 px-4 py-3 text-sm text-amber-900 ring-1 ring-amber-200">
           <span>
             <strong>{r.awaiting_review} held payment{r.awaiting_review === 1 ? '' : 's'} awaiting review</strong>
-            {r.oldest_days_waiting != null && <> · oldest held {r.oldest_days_waiting} day{r.oldest_days_waiting === 1 ? '' : 's'}</>}
+            {data.queue[0] && <> · oldest held {day(data.queue[0].held_since)}</>}
           </span>
           <Link to={`/review-queue${payerId ? `?payer_id=${payerId}` : ''}`} className="rounded-full bg-ink px-4 py-1.5 font-semibold text-white hover:bg-stone-800">
             Open review queue
@@ -136,7 +136,7 @@ export function CashFlowHub() {
           <div className="overflow-x-auto">
             <table className="min-w-full text-sm">
               <thead className="text-left text-xs uppercase tracking-wide text-stone-500">
-                <tr><th className="py-1.5 pr-4">Shipment</th><th className="py-1.5 pr-4">Carrier</th><th className="py-1.5 pr-4 text-right">Invoice</th><th className="py-1.5 pr-4">Why it’s held</th><th className="py-1.5 text-right">Waiting</th></tr>
+                <tr><th className="py-1.5 pr-4">Shipment</th><th className="py-1.5 pr-4">Carrier</th><th className="py-1.5 pr-4 text-right">Invoice</th><th className="py-1.5 pr-4">Why it’s held</th><th className="py-1.5 text-right">Held</th></tr>
               </thead>
               <tbody className="divide-y divide-stone-100">
                 {data.queue.map((q) => (
@@ -148,7 +148,7 @@ export function CashFlowHub() {
                     <td className="whitespace-nowrap py-2 pr-4 text-stone-600">{companyName(q.carrier_name)}</td>
                     <td className="whitespace-nowrap py-2 pr-4 text-right tabular-nums">{money(q.invoice_cents)}</td>
                     <td className="py-2 pr-4 text-stone-600">{q.reasons.map((x) => HOLD_REASONS[x]).join('; ')}</td>
-                    <td className="whitespace-nowrap py-2 text-right tabular-nums">{q.days_waiting} day{q.days_waiting === 1 ? '' : 's'}</td>
+                    <td className="whitespace-nowrap py-2 text-right tabular-nums">{day(q.held_since)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -156,7 +156,6 @@ export function CashFlowHub() {
           </div>
         )}
         <p className="mt-3 text-xs text-stone-500">
-          Waiting time is counted to {day(data.period.to)}, the end of the sample data.{' '}
           <Link to="/audit-log" className="font-medium text-accent-ink hover:underline">Audit log of every review</Link>
         </p>
       </Card>

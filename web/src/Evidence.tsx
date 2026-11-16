@@ -64,14 +64,20 @@ const EVIDENCE: Partial<Record<HoldReason, (d: ShipmentDetail) => ReactNode>> = 
 
   off_route: ({ events, shipment: s }) => {
     const off = events.filter((e) => e.event_type === 'IN_TRANSIT' && e.off_route_mi > OFF_ROUTE_MI);
+    const worst = Math.max(...off.map((e) => e.off_route_mi));
     return (
       <>
-        <p className="text-stone-600">
-          {off.length} in-transit update{off.length === 1 ? '' : 's'} more than {OFF_ROUTE_MI} mi off the expected {s.expected_route_mi.toLocaleString('en-US')} mi route:
+        <p className="text-stone-700">
+          GPS put the truck up to <strong className="text-red-700">{worst.toLocaleString('en-US')} mi</strong> off the planned{' '}
+          {s.origin_city} → {s.dest_city} route ({s.expected_route_mi.toLocaleString('en-US')} mi).
         </p>
+        <RouteMap shipment={s} events={events} />
         <Facts rows={off.map((e) => [when(e.ts), (
-          <span key={e.event_id}><strong className="text-red-700">{e.off_route_mi} mi off route</strong> · {e.lat.toFixed(3)}, {e.lon.toFixed(3)} · {label(e.source)}</span>
+          <span key={e.event_id}><strong className="text-red-700">{e.off_route_mi} mi off route</strong> · {label(e.source)}</span>
         )])} />
+        <p className="mt-2 text-xs text-stone-500">
+          Hold rule: any in-transit GPS update more than {OFF_ROUTE_MI} mi from the planned route, set tight so a reviewer sees every detour.
+        </p>
       </>
     );
   },
@@ -128,6 +134,51 @@ const EVIDENCE: Partial<Record<HoldReason, (d: ShipmentDetail) => ReactNode>> = 
     )])} />
   ),
 };
+
+// A sketch of the load's path: the planned route as a straight dashed line from origin to destination,
+// the truck's GPS updates joined in order, and the off-route ones in red with how far off they were.
+// Positions are projected from latitude and longitude; there is no basemap.
+function RouteMap({ shipment: s, events }: { shipment: ShipmentDetail['shipment']; events: ShipmentDetail['events'] }) {
+  const W = 520, H = 200, PAD_X = 70, PAD_Y = 34;
+  const track = [
+    { lat: s.origin_lat, lon: s.origin_lon, off: 0 },
+    ...events.filter((e) => e.event_type === 'IN_TRANSIT').map((e) => ({ lat: e.lat, lon: e.lon, off: e.off_route_mi })),
+    { lat: s.dest_lat, lon: s.dest_lon, off: 0 },
+  ];
+  const kx = Math.cos((((s.origin_lat + s.dest_lat) / 2) * Math.PI) / 180); // shrink longitude to match latitude
+  const xs = track.map((p) => p.lon * kx), ys = track.map((p) => p.lat);
+  const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
+  const scale = Math.min((W - 2 * PAD_X) / (x1 - x0 || 1), (H - 2 * PAD_Y) / (y1 - y0 || 1));
+  const cx = (W - (x1 - x0) * scale) / 2, cy = (H - (y1 - y0) * scale) / 2;
+  const pt = (p: { lat: number; lon: number }) => ({ x: cx + (p.lon * kx - x0) * scale, y: H - cy - (p.lat - y0) * scale });
+  const pts = track.map(pt);
+  const [a, b] = [pts[0], pts[pts.length - 1]];
+  return (
+    <figure className="my-3">
+      <svg viewBox={`0 0 ${W} ${H}`} role="img" className="w-full rounded-lg bg-canvas"
+        aria-label={`Planned route ${s.origin_city} to ${s.dest_city}, with ${track.filter((p) => p.off > OFF_ROUTE_MI).length} GPS updates off route`}>
+        <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#a8a29e" strokeWidth={3} strokeDasharray="6 5" />
+        <polyline points={pts.map((p) => `${p.x},${p.y}`).join(' ')} fill="none" stroke="#141413" strokeWidth={1.5} />
+        {track.map((p, i) => {
+          const q = pts[i], bad = p.off > OFF_ROUTE_MI, end = i === 0 || i === track.length - 1;
+          return (
+            <g key={i}>
+              <circle cx={q.x} cy={q.y} r={bad ? 7 : end ? 6 : 4} fill={bad ? '#dc2626' : end ? '#141413' : '#fff'} stroke="#141413" strokeWidth={bad ? 0 : 1.5} />
+              {bad && <text x={q.x} y={q.y - 12} textAnchor="middle" fontSize={13} fontWeight={700} fill="#b91c1c">{p.off} mi off</text>}
+            </g>
+          );
+        })}
+        <text x={a.x} y={a.y + 22} textAnchor="middle" fontSize={12} fill="#44403c">{s.origin_city}</text>
+        <text x={b.x} y={b.y + 22} textAnchor="middle" fontSize={12} fill="#44403c">{s.dest_city}</text>
+      </svg>
+      <figcaption className="mt-1 flex flex-wrap gap-x-4 text-xs text-stone-500">
+        <span><span aria-hidden className="mr-1 inline-block w-4 border-t-2 border-dashed border-stone-400 align-middle" />Planned route</span>
+        <span><span aria-hidden className="mr-1 inline-block w-4 border-t border-ink align-middle" />Truck’s GPS path</span>
+        <span><span aria-hidden className="mr-1 inline-block h-2 w-2 rounded-full bg-red-600 align-middle" />Off route</span>
+      </figcaption>
+    </figure>
+  );
+}
 
 function Facts({ rows }: { rows: [string, ReactNode][] }) {
   return (

@@ -5,7 +5,7 @@ import type { QueueStatus, ReviewQueueResponse, ShipmentDetail } from '../../../
 import { useApi } from '../api.ts';
 import { Evidence } from '../Evidence.tsx';
 import { ReviewPanel, REVIEW_STYLE, type ReviewAction } from '../ReviewPanel.tsx';
-import { companyName, money } from '../format.ts';
+import { companyName, day, money } from '../format.ts';
 
 const STATUSES: { id: QueueStatus; text: string }[] = [
   { id: 'awaiting_review', text: 'Needs review' },
@@ -62,10 +62,18 @@ export function ReviewQueue() {
   const d = detail.data?.shipment.shipment_id === selectedId ? detail.data : null;
   const counts = queue.data?.counts;
 
-  // On narrow screens, bring the opened row (and its details below it) into view.
+  // A link straight to a payment (?id=…) opens with it at the top of the list. On narrow screens the page
+  // scrolls to the row and its details below it; on wide ones only the list scrolls, so the page stays put.
+  const linkedId = useRef(params.get('id'));
   useEffect(() => {
-    if (!wide && params.get('id')) activeRow.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, [wide, selectedId, d != null]);
+    const row = activeRow.current;
+    if (!row || !params.get('id')) return;
+    if (!wide) row.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    else if (linkedId.current === selectedId) {
+      row.parentElement!.scrollTop = row.offsetTop; // the list is positioned, so offsetTop is within it
+      linkedId.current = null; // only on arrival; later picks keep the list where the reviewer left it
+    }
+  }, [wide, selectedId, d != null, items.length]);
 
   const panel = !selectedId ? null : !d ? (
     <p className="p-4 text-sm text-stone-500">Loading {selectedId}…</p>
@@ -107,7 +115,7 @@ export function ReviewQueue() {
       {queue.error && <p className="rounded-xl bg-red-50 p-3 text-sm text-red-800">Couldn't load the queue: {queue.error.message}</p>}
 
       <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
-        <ol aria-label="Held payments" className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-200 lg:max-h-[75vh] lg:overflow-y-auto">
+        <ol aria-label="Held payments" className="relative overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-200 lg:max-h-[75vh] lg:overflow-y-auto">
           {queue.data && items.length === 0 && (
             <li className="p-5 text-sm text-stone-500">
               {status === 'awaiting_review' ? 'Nothing waiting. Every held payment has been reviewed.' : 'No payments here.'}
@@ -121,7 +129,7 @@ export function ReviewQueue() {
                   className={`block w-full px-4 py-3 text-left hover:bg-canvas ${active ? 'bg-accent-soft hover:bg-accent-soft' : ''}`}>
                   <div className="flex items-baseline justify-between gap-2">
                     <span className="font-semibold">{q.shipment_id}</span>
-                    <span className="text-xs tabular-nums text-stone-500">{q.days_waiting} day{q.days_waiting === 1 ? '' : 's'} waiting</span>
+                    <span className="text-xs tabular-nums text-stone-500">Held {day(q.held_since)}</span>
                   </div>
                   <div className="text-sm text-stone-600">{companyName(q.carrier_name)} · {money(q.invoice_cents)}</div>
                   <div className="text-xs text-stone-500">{q.reasons.map((r) => HOLD_REASONS[r]).join('; ')}</div>
@@ -143,10 +151,13 @@ export function ReviewQueue() {
   );
 }
 
+// The selected payment: what it is, what was protected, the evidence, then the decision.
 function SelectedPayment({ d, onChange }: { d: ShipmentDetail; onChange: (action: ReviewAction) => void }) {
+  const invoice = d.invoices.find((i) => !i.duplicate_of);
+  const status = d.review?.status ?? 'awaiting_review';
   return (
-    <>
-      <section className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-200">
+    <section className="space-y-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-200">
+      <div>
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h2 className="text-2xl font-bold tracking-tight">{d.shipment.shipment_id}</h2>
           <Link to={`/shipments/${d.shipment.shipment_id}?decision=held_for_review`} className="text-sm font-medium text-accent-ink hover:underline">
@@ -157,13 +168,22 @@ function SelectedPayment({ d, onChange }: { d: ShipmentDetail; onChange: (action
         <p className="mt-1 text-sm text-stone-500">
           Carrier {companyName(d.carrier.name)} · Forwarder {companyName(d.payer.name)} · Shipper {companyName(d.shipper.name)}
         </p>
-        <ReviewPanel shipmentId={d.shipment.shipment_id} forwarder={d.payer.name} notifiedTs={d.decision?.decided_ts ?? null}
-          review={d.review} infoRequest={d.info_request} canRelease={d.can_release} onChange={onChange} />
-      </section>
+      </div>
+
+      {invoice && status !== 'released' && (
+        <p className="rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-900 ring-1 ring-emerald-200">
+          <strong>{money(invoice.total_cents)} {status === 'rejected' ? 'never paid' : 'held before any money moved'}.</strong>{' '}
+          Without the shipment check, it would have been paid on the invoice alone.
+        </p>
+      )}
+
       <div>
-        <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-stone-500">Evidence</h3>
+        <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-stone-500">Why it’s held</h3>
         <Evidence detail={d} />
       </div>
-    </>
+
+      <ReviewPanel shipmentId={d.shipment.shipment_id} forwarder={d.payer.name} notifiedTs={d.decision?.decided_ts ?? null}
+        review={d.review} infoRequest={d.info_request} canRelease={d.can_release} onChange={onChange} />
+    </section>
   );
 }
